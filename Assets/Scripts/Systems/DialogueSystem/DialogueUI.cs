@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class DialogueUI : MonoBehaviour
 {
-    [SerializeField] private float timeBetweenDialogue = 0.02f;
+   
     [SerializeField] private TMP_Text textLabel;
     private TextEffects textEffects;
     private GameObject dialogueBox;
+    private bool showingText = false;
+    public bool GetShowingText() => showingText;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class DialogueUI : MonoBehaviour
     public void ShowDialogueBox(bool _on)
     {
         dialogueBox.SetActive(_on);
+        showingText = _on;
     }
     public void ShowDialogue(DialogueObject _dialogueObject)
     {
@@ -36,9 +39,11 @@ public class DialogueUI : MonoBehaviour
         for (int i = 0; i < _dialogueObject.GetDialogue.Length; i++)
         {
             yield return textEffects.Run(_dialogueObject.GetDialogue[i]);
-            yield return new WaitForSeconds(timeBetweenDialogue);
+            yield return new WaitUntil(()=>Input.GetMouseButtonDown(0));
         }
+        ShowText(string.Empty);
         ShowDialogueBox(false);
     }
+    
 }
    

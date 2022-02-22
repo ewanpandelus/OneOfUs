@@ -6,11 +6,10 @@ public class NPC : MonoBehaviour
 {
     [SerializeField] private TextTreeObject textTreeObject;
     [SerializeField] private DialogueUI dialogueUI;
-    [SerializeField] private DialogueObject dialogueObject;
  
     public void RunDialogue()
     {
-        dialogueUI.ShowDialogue(dialogueObject);
+        dialogueUI.ShowDialogue(textTreeObject.GetCurrentNode().GetDialogueObject());
     }
     public void MakeDecision(bool _left)
     {

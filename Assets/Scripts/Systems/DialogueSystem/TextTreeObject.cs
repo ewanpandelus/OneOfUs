@@ -13,11 +13,16 @@ public class TextTreeObject :ScriptableObject
         else currentID *= 2 + 1;
     }
     public List<Node> dialogueTree = new List<Node>();
-    public Node GetCurrentNode() => dialogueTree.Find(x => x.id == currentID);
+    public Node GetCurrentNode() => dialogueTree.Find(x => x.GetID() == currentID);
 }
 [System.Serializable]
 public class Node
 {
-    [SerializeField] public int id;
-    [SerializeField] DialogueObject dialogueObject;
+    [SerializeField] private int id;
+    [SerializeField] private DialogueObject dialogueObject;
+
+    public int GetID() => id;
+    public DialogueObject GetDialogueObject() => dialogueObject;
+
+   
 }

@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
             NPC closestNPC = ClosestNPC();
             if (FacingCharacter(closestNPC))
             {
-                closestNPC.RunDialogue();
+                if(!dialogueUI.GetShowingText()) closestNPC.RunDialogue();
             }
         }
     }

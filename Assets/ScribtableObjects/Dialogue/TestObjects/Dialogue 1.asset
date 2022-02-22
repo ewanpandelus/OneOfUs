@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7a0078926dc0bf4b89bcbe0fe38653d, type: 3}
-  m_Name: MainCharacterTest
+  m_Name: Dialogue 1
   m_EditorClassIdentifier: 
   dialogue:
   - 'Hey!
 
-    Let''s talk!'
-  - 'Hey!
-
-    Let''s not! '
-  - This could go on forever...
+'
+  - What's your name?
+  response:
+  - 'Ewan '
+  - I'm not sure..
