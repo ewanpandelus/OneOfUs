@@ -6,14 +6,15 @@ public class TextEffects : MonoBehaviour
 {
     private DialogueUI dialogueUI;
     [SerializeField] float timeBetweenCharacters = 0;
-    private void Start()
+    private void Awake()
     {
         dialogueUI = GetComponent<DialogueUI>();
         Run("This is a test! Wonderful!\nLets add more lines!\n....");
+        dialogueUI.ShowDialogueBox(false);
     }
-    public void Run(string _textToType)
+    public Coroutine Run(string _textToType)
     {
-        StartCoroutine(TypingText(_textToType));
+        return StartCoroutine(TypingText(_textToType));
     }
 
 
@@ -26,6 +27,6 @@ public class TextEffects : MonoBehaviour
             dialogueUI.ShowText(currentText);
             yield return new WaitForSeconds(timeBetweenCharacters);
         }
-        dialogueUI.ShowDialogueBox(false);
+    
     }
 }
