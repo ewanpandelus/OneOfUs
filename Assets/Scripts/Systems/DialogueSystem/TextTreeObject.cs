@@ -7,13 +7,23 @@ using System.Linq;
 public class TextTreeObject :ScriptableObject
 {
     private int currentID = 1;
+    public void Initialise()
+    {
+        currentID = 1;
+    }
     public void Traverse(bool left)
     {
         if (left) currentID *= 2;
-        else currentID *= 2 + 1;
+        else 
+        { 
+            currentID *= 2;
+            currentID += 1;
+        }
+       
     }
     public List<Node> dialogueTree = new List<Node>();
     public Node GetCurrentNode() => dialogueTree.Find(x => x.GetID() == currentID);
+    public List<Node> GetAllNodes() => dialogueTree;
 }
 [System.Serializable]
 public class Node

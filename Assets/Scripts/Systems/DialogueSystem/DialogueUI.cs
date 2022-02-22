@@ -7,6 +7,7 @@ public class DialogueUI : MonoBehaviour
 {
    
     [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private ResponseHandler reponseHandler;
     private TextEffects textEffects;
     private GameObject dialogueBox;
     private bool showingText = false;
@@ -36,10 +37,20 @@ public class DialogueUI : MonoBehaviour
     public IEnumerator RunThroughDialogue(DialogueObject _dialogueObject)
     {
         yield return new WaitForSeconds(0.2f);
+        reponseHandler.SetResponseChosen(false);
         for (int i = 0; i < _dialogueObject.GetDialogue.Length; i++)
         {
             yield return textEffects.Run(_dialogueObject.GetDialogue[i]);
-            yield return new WaitUntil(()=>Input.GetMouseButtonDown(0));
+            if (i == _dialogueObject.GetDialogue.Length - 1) 
+            {
+                reponseHandler.ShowReponses(_dialogueObject);
+                yield return new WaitUntil(() => reponseHandler.GetResponseChosen() == true);
+            }
+            else
+            {
+                yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            }
+     
         }
         ShowText(string.Empty);
         ShowDialogueBox(false);

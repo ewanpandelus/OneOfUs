@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
            
             List<GameObject> surroundingNPCS = new List<GameObject>();
             surroundingNPCS = surroundingGameObjects.Where(x => x.GetComponent<NPC>() != null).ToList();
-            return ClosestObj(surroundingNPCS).GetComponent<NPC>();
+            if (surroundingNPCS.Count > 0) { return ClosestObj(surroundingNPCS).GetComponent<NPC>(); }
         }
         return null;
     }
