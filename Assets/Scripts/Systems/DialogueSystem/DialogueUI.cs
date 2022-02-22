@@ -34,6 +34,7 @@ public class DialogueUI : MonoBehaviour
         ShowDialogueBox(true);
         StartCoroutine(RunThroughDialogue(_dialogueObject));
     }
+    
     public IEnumerator RunThroughDialogue(DialogueObject _dialogueObject)
     {
         yield return new WaitForSeconds(0.2f);

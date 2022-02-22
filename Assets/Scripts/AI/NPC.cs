@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField] private TextTreeObject textTreeObject;
+    [SerializeField] private ResponseHandler responseHandler;
+    [SerializeField] private DialogueTreeObject textTreeObject;
     [SerializeField] private DialogueUI dialogueUI;
 
     public void Awake()
@@ -15,18 +16,35 @@ public class NPC : MonoBehaviour
         {
             _node.GetDialogueObject().SetAssociatedNPC(this);
         }
-        textTreeObject.Initialise();
+        textTreeObject.Reset();
     }
     public void RunDialogue()
     {
-        if (textTreeObject.GetCurrentNode()== null) return;
-        dialogueUI.ShowDialogue(textTreeObject.GetCurrentNode().GetDialogueObject());
+        StartCoroutine(RunThroughDialogueTree());
+      /*  if (textTreeObject.GetCurrentNode() == null)
+        {
+
+            return;
+        }
+        dialogueUI.ShowDialogue(textTreeObject.GetCurrentNode().GetDialogueObject());*/
        
     }
-    //public IEnumerator RunThroughDialogueTree()
-    //{
-
-    //}
+    public IEnumerator RunThroughDialogueTree()
+    {
+        if (textTreeObject.GetCurrentNode() == null) 
+        { 
+            textTreeObject.Reset(); 
+            yield return null; 
+        }
+        do
+        {
+            responseHandler.SetResponseChosen(false);
+            dialogueUI.ShowDialogue(textTreeObject.GetCurrentNode().GetDialogueObject());
+            yield return new WaitUntil(() => responseHandler.GetResponseChosen() == true);
+        }
+        while (textTreeObject.GetCurrentNode() != null);
+        
+    }
     public void MakeDecision(bool _left)
     {
         textTreeObject.Traverse(_left);

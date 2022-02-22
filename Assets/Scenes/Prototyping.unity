@@ -762,6 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37775d015b3355447bfddf506325011c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  responseHandler: {fileID: 1058706763}
   textTreeObject: {fileID: 11400000, guid: 1b536524b81b7894d827d69b2d8ff004, type: 2}
   dialogueUI: {fileID: 1058706761}
 --- !u!61 &923387528

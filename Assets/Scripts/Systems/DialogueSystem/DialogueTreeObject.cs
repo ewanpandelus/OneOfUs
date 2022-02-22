@@ -4,10 +4,10 @@ using UnityEngine;
 using System.Linq;
 [CreateAssetMenu(menuName = "Dialogue/TextTreeObject")]
 
-public class TextTreeObject :ScriptableObject
+public class DialogueTreeObject :ScriptableObject
 {
     private int currentID = 1;
-    public void Initialise()
+    public void Reset()
     {
         currentID = 1;
     }
