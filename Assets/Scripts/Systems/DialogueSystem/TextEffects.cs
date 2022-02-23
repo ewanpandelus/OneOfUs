@@ -9,7 +9,6 @@ public class TextEffects : MonoBehaviour
     private void Awake()
     {
         dialogueUI = GetComponent<DialogueUI>();
-        Run("This is a test! Wonderful!\nLets add more lines!\n....");
         dialogueUI.ShowDialogueBox(false);
     }
     public Coroutine Run(string _textToType)
