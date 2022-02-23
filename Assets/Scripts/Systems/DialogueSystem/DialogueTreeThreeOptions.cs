@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-[CreateAssetMenu(menuName = "Dialogue/DialogueTreeThreeOptions")]
+[CreateAssetMenu(menuName = "Dialogue/ThreeOptions/DialogueTreeThreeOptions")]
 
 public class DialogueTreeThreeOptions : DialogueTreeBaseObject
 {

@@ -4,7 +4,7 @@ Shader "Unlit/CultLogo"
     {
 
         [HDR] _ColourA("Colour A", Color) = (0,1,0,1)
-        _Color("Tint", Color) = (0, 0, 0, 1)
+        _Tint("Tint", Color) = (0, 0, 0, 1)
         _MainTex("Texture", 2D) = "white" {}
         [HDR]_ColourB("Colour B", Color) = (1,1,0,1)
          _Transparency("Float with range", Range(0.0, 1.0)) = 0
@@ -31,10 +31,8 @@ Shader "Unlit/CultLogo"
             #include "UnityCG.cginc"
 
 
-            float4 _ColourA;
-            float4 _ColourB;
-            float _ColourStart;
-            float _ColourEnd;
+            float4 _Tint;
+           
             float4 _MainTex_ST;
             fixed4 _Color;
             sampler2D _MainTex;
@@ -80,16 +78,17 @@ Shader "Unlit/CultLogo"
 
             float4 frag(Interpolators i) : SV_Target
             {
+
                 float2 uvsCentred = i.uv * 2 - 1;
                 float radialDistance = length(uvsCentred);
                 float xOffset = sin(cos(i.uv.y * TAU)) * 0.02f;
                 float yOffset = sin(cos(i.uv.x * TAU)) * 0.02f;
                 float waves = (cos((1 - radialDistance + _Time.y) * TAU * 1.2f) * 0.5 + 0.5);
-
+               
                 fixed4 col = tex2D(_MainTex, i.uv);
-                col *= _Color;
+                col *= _Tint;
 
-                float3 colOutput = lerp(_ColourA, _ColourB, i.uv.y) * col*waves;
+                float3 colOutput =col*waves;
                 float amount = sin(_Time.y *2) * 0.5 + 0.5;
                 float3 color = lerp(float3(0, 0, 0), colOutput, _Transparency*1 - (radialDistance));
              

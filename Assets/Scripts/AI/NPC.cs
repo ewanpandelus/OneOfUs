@@ -5,48 +5,45 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     [SerializeField] private ResponseHandler responseHandler;
-    [SerializeField] private DialogueTreeObject textTreeObject;
+    [SerializeField] private DialogueTreeObject dialogueTreeObject;
     [SerializeField] private DialogueUI dialogueUI;
 
     public void Awake()
     {
         List<Node> allNodes = new List<Node>();
-        allNodes = textTreeObject.GetAllNodes();
+        if (dialogueTreeObject)
+        {
+            allNodes = dialogueTreeObject.GetAllNodes();
+        }
+ 
         foreach(Node _node in allNodes)
         {
             _node.GetDialogueObject().SetAssociatedNPC(this);
         }
-        textTreeObject.Reset();
+        dialogueTreeObject.Reset();
     }
     public void RunDialogue()
     {
-        StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC
-      /*  if (textTreeObject.GetCurrentNode() == null)
-        {
-
-            return;
-        }
-        dialogueUI.ShowDialogue(textTreeObject.GetCurrentNode().GetDialogueObject());*/
-       
+        StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC     
     }
     public IEnumerator RunThroughDialogueTree()
     {
-        if (textTreeObject.GetCurrentNode() == null) 
+        if (dialogueTreeObject.GetCurrentNode() == null) 
         { 
-            textTreeObject.Reset(); 
+            dialogueTreeObject.Reset(); 
             yield return null; 
         }
         do
         {
             responseHandler.SetResponseChosen(false);
-            dialogueUI.ShowDialogue(textTreeObject.GetCurrentNode().GetDialogueObject());
+            dialogueUI.ShowDialogue(dialogueTreeObject.GetCurrentNode().GetDialogueObject());
             yield return new WaitUntil(() => responseHandler.GetResponseChosen() == true);
         }
-        while (textTreeObject.GetCurrentNode() != null);
+        while (dialogueTreeObject.GetCurrentNode() != null);
         
     }
     public void MakeDecision(bool _left)
     {
-        textTreeObject.Traverse(_left);
+        dialogueTreeObject.Traverse(_left);
     }
 }

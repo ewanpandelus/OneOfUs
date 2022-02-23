@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-[CreateAssetMenu(menuName = "Dialogue/DialogueNode")]
+[CreateAssetMenu(menuName = "Dialogue/ThreeOptions/DialogueNode")]
 public class Node 
 {
     [SerializeField] private int id;

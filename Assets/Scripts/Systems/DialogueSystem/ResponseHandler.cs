@@ -37,6 +37,7 @@ public class ResponseHandler : MonoBehaviour
         responseChosen = true;
         CleanUp(_responseButtons);
     }
+    //Possibly refactor these methods
     public void ChooseResponseRight(DialogueObject _dialogueObject, List<GameObject> _responseButtons)
     {
         _dialogueObject.GetAssociatedNPC().MakeDecision(true);

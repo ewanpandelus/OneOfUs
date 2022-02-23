@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a0078926dc0bf4b89bcbe0fe38653d, type: 3}
-  m_Name: Dialogue 1
+  m_Script: {fileID: 11500000, guid: f241c563bd5af154dacf9b35e3d53337, type: 3}
+  m_Name: Apple
   m_EditorClassIdentifier: 
-  dialogue:
-  - '... '
-  - What's your name?
-  response:
-  - 'Ewan '
-  - I'm not sure..
+  name: Apple
+  description: Juicy
+  itemType: 1
+  sprite: {fileID: 0}
