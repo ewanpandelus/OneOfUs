@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab01c26760157045b0cb1aeaa7eedff, type: 3}
+  m_Name: ThreeResponseTest
+  m_EditorClassIdentifier: 
+  currentID: 1
+  dialogueTree:
+  - id: 1
+    dialogueObject: {fileID: 11400000, guid: e248777742a9c49458f54c8e0d29f030, type: 2}
+  - id: 0
+    dialogueObject: {fileID: 0}
+  - id: 0
+    dialogueObject: {fileID: 0}
+  - id: 0
+    dialogueObject: {fileID: 0}

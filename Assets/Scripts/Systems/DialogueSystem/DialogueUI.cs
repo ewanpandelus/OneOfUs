@@ -35,7 +35,7 @@ public class DialogueUI : MonoBehaviour
         StartCoroutine(RunThroughDialogue(_dialogueObject));
     }
     
-    public IEnumerator RunThroughDialogue(DialogueObject _dialogueObject)
+    public IEnumerator RunThroughDialogue(DialogueObject _dialogueObject) //Shows individual dialogue section for NPC
     {
         yield return new WaitForSeconds(0.2f);
         reponseHandler.SetResponseChosen(false);

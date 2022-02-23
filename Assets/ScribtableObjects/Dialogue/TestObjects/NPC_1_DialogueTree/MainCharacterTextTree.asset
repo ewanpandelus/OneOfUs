@@ -15,15 +15,22 @@ MonoBehaviour:
   dialogueTree:
   - id: 1
     dialogueObject: {fileID: 11400000, guid: 0feef252595129245be5f48e305644ff, type: 2}
+    happinessChange: 0
   - id: 2
     dialogueObject: {fileID: 11400000, guid: 3389bea1454f5bb4980dc6222fb01de1, type: 2}
+    happinessChange: 0
   - id: 3
     dialogueObject: {fileID: 11400000, guid: 61fc7d730dd15a64f900d35a9908ff0a, type: 2}
+    happinessChange: 0
   - id: 4
     dialogueObject: {fileID: 11400000, guid: 70ee341cd35539640be43c2493862465, type: 2}
+    happinessChange: 0
   - id: 5
     dialogueObject: {fileID: 11400000, guid: 017b3282e4fd9db4ea84e08c3dcaf580, type: 2}
+    happinessChange: 0
   - id: 6
     dialogueObject: {fileID: 11400000, guid: 1a4168907f3b9df4fbd608df714988a7, type: 2}
+    happinessChange: 0
   - id: 7
     dialogueObject: {fileID: 11400000, guid: 556d054f98c9fbd4fbb833ac684ae965, type: 2}
+    happinessChange: 0

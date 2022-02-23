@@ -18,7 +18,7 @@ public class TextEffects : MonoBehaviour
     }
 
 
-    private IEnumerator TypingText(string _textToType)
+    private IEnumerator TypingText(string _textToType) //Typewriter effect
     {
         string currentText = "";
         for(int i = 0; i< _textToType.Length; i++)

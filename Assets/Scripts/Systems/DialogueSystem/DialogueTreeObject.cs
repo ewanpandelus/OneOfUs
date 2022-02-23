@@ -21,18 +21,8 @@ public class DialogueTreeObject :ScriptableObject
         }
        
     }
-    public List<Node> dialogueTree = new List<Node>();
+    [SerializeField]
+    private List<Node> dialogueTree = new List<Node>();
     public Node GetCurrentNode() => dialogueTree.Find(x => x.GetID() == currentID);
     public List<Node> GetAllNodes() => dialogueTree;
-}
-[System.Serializable]
-public class Node
-{
-    [SerializeField] private int id;
-    [SerializeField] private DialogueObject dialogueObject;
-
-    public int GetID() => id;
-    public DialogueObject GetDialogueObject() => dialogueObject;
-
-   
 }

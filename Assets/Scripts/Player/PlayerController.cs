@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public bool FacingCharacter(NPC _closestNPC)
+    public bool FacingCharacter(NPC _closestNPC)  // Placeholder code, will be updated later 
     {
         if (_closestNPC == null) return false;
         _closestNPC = ClosestNPC();

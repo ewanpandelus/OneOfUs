@@ -20,7 +20,7 @@ public class NPC : MonoBehaviour
     }
     public void RunDialogue()
     {
-        StartCoroutine(RunThroughDialogueTree());
+        StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC
       /*  if (textTreeObject.GetCurrentNode() == null)
         {
 

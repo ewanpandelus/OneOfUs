@@ -12,7 +12,7 @@ public class ResponseHandler : MonoBehaviour
     public bool GetResponseChosen() => responseChosen;
     public void SetResponseChosen(bool _responseChosen) => responseChosen = _responseChosen;
 
-    public void ShowReponses(DialogueObject _dialogueObject)
+    public void ShowReponses(DialogueObject _dialogueObject) // Dynamically creates the player dialogue choice UI
     {
         float responseBoxHeight = 0;
         int index = 0;
@@ -23,21 +23,21 @@ public class ResponseHandler : MonoBehaviour
             responseButtons.Add(responseButton);
             responseButton.gameObject.SetActive(true);
             responseButton.GetComponent<TMP_Text>().text = response;
-            if (index == 0) { responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseTrue(_dialogueObject, responseButtons)); }
-            else { responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseFalse(_dialogueObject, responseButtons)); }
+            if (index == 0) { responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseRight(_dialogueObject, responseButtons)); }
+            else { responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseLeft(_dialogueObject, responseButtons)); }
             index++;
             responseBoxHeight += repsonseButtonTemplate.sizeDelta.y;
             repsonseBox.sizeDelta = new Vector2(repsonseBox.sizeDelta.x, responseBoxHeight);
             repsonseBox.gameObject.SetActive(true);
         }
     }
-    public void ChooseResponseFalse(DialogueObject _dialogueObject, List<GameObject> _responseButtons)
+    public void ChooseResponseLeft(DialogueObject _dialogueObject, List<GameObject> _responseButtons)
     {
         _dialogueObject.GetAssociatedNPC().MakeDecision(false);
         responseChosen = true;
         CleanUp(_responseButtons);
     }
-    public void ChooseResponseTrue(DialogueObject _dialogueObject, List<GameObject> _responseButtons)
+    public void ChooseResponseRight(DialogueObject _dialogueObject, List<GameObject> _responseButtons)
     {
         _dialogueObject.GetAssociatedNPC().MakeDecision(true);
         responseChosen = true;
