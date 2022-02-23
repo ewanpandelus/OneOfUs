@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Okay, suit yourself!
-  - 
   response:
   - I will...
   - ...

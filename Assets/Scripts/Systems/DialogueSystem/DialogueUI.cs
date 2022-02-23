@@ -49,7 +49,7 @@ public class DialogueUI : MonoBehaviour
             }
             else
             {
-                yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+                yield return new WaitUntil(() => Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space));
             }
      
         }

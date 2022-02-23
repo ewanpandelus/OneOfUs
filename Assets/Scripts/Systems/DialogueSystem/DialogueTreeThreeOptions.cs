@@ -14,7 +14,7 @@ public class DialogueTreeThreeOptions : DialogueTreeBaseObject
     public override void Traverse(int _direction)
     {
         if(depth == 0) depth++;
-        currentID *= 2;
+        currentID *= 2;                                                 //wrong -> change to use children 
         if (_direction == 0) { currentID += depth; return; }
         if (_direction == 1) { currentID += (depth * 2); return; }
         currentID += 0;

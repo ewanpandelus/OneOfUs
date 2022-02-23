@@ -6,12 +6,13 @@ using System.Linq;
 
 public class DialogueTreeObject :ScriptableObject
 {
+
     private int currentID = 1;
     public void Reset()
     {
         currentID = 1;
     }
-    public void Traverse(bool left)
+    public float Traverse(bool left)
     {
         if (left) currentID *= 2;
         else 
@@ -19,7 +20,15 @@ public class DialogueTreeObject :ScriptableObject
             currentID *= 2;
             currentID += 1;
         }
-       
+        return EvaluateHappinessEffect();
+    }
+    private float EvaluateHappinessEffect()
+    {
+        if (GetCurrentNode() != null)
+        {
+            return GetCurrentNode().GetHappinessEffect();
+        }
+        return 0;
     }
     [SerializeField]
     private List<Node> dialogueTree = new List<Node>();
