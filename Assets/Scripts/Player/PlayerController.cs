@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (dialogueUI.GetShowingText()) return;
         EvaluateInput();
         transform.position += movement * Time.deltaTime;
     }
