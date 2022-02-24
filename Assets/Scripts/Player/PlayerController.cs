@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     }
     private void EvaluateInteraction()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.E))
         {
             NPC closestNPC = ClosestNPC();
             if (FacingCharacter(closestNPC))
