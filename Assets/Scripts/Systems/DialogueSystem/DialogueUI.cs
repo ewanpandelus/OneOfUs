@@ -17,6 +17,7 @@ public class DialogueUI : MonoBehaviour
     {
         dialogueBox = gameObject;
         textEffects = GetComponent<TextEffects>();
+        ShowDialogueBox(false);
     }
 
     public void ShowText(string _text)
@@ -26,8 +27,12 @@ public class DialogueUI : MonoBehaviour
     }
     public void ShowDialogueBox(bool _on)
     {
-        dialogueBox.SetActive(_on);
-        showingText = _on;
+        if (dialogueBox)
+        {
+            dialogueBox.SetActive(_on);
+            showingText = _on;
+        }
+     
     }
     public void ShowDialogue(DialogueObject _dialogueObject)
     {
