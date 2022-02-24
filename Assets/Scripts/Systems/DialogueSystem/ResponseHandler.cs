@@ -8,6 +8,13 @@ public class ResponseHandler : MonoBehaviour
     [SerializeField] private RectTransform repsonseBox;
     [SerializeField] private RectTransform repsonseButtonTemplate;
     [SerializeField] private RectTransform repsonseContainer;
+    private DialogueButtonNav dialogueButtonNav;
+
+    private void Start()
+    {
+        dialogueButtonNav = GetComponent<DialogueButtonNav>();
+    }
+
     private bool responseChosen = false;
     public bool GetResponseChosen() => responseChosen;
     public void SetResponseChosen(bool _responseChosen) => responseChosen = _responseChosen;
@@ -30,6 +37,7 @@ public class ResponseHandler : MonoBehaviour
             repsonseBox.sizeDelta = new Vector2(repsonseBox.sizeDelta.x, responseBoxHeight);
             repsonseBox.gameObject.SetActive(true);
         }
+        dialogueButtonNav.AddNavigationToButtons(responseButtons);
     }
     public void ChooseResponseLeft(DialogueObject _dialogueObject, List<GameObject> _responseButtons)
     {

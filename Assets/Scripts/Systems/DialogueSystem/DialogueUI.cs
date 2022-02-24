@@ -54,13 +54,17 @@ public class DialogueUI : MonoBehaviour
             }
             else
             {
-                yield return new WaitUntil(() => Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space));
+                yield return new WaitUntil(() => AnyValidContinueKey());
             }
      
         }
         ShowText(string.Empty);
         ShowDialogueBox(false);
     }
-    
+    private bool AnyValidContinueKey()
+    {
+        return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return);
 }
-   
+
+}
+
