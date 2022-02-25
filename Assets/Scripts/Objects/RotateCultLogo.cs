@@ -26,7 +26,7 @@ public class RotateCultLogo : MonoBehaviour
             {
                 t += Time.deltaTime;
                 float zRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360.0f;
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.x, zRotation);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, zRotation);
                 SetShaderTransparency(t / duration, direction);
            
             

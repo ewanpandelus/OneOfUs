@@ -1,4 +1,4 @@
-Shader "Unlit/CultLogo"
+Shader "Unlit/ParticleSystem"
 {
     Properties
     {
@@ -6,7 +6,7 @@ Shader "Unlit/CultLogo"
         [HDR] _ColourA("Colour A", Color) = (0,1,0,1)
         [HDR] _Tint("Tint", Color) = (0, 0, 0, 1)
         _MainTex("Texture", 2D) = "white" {}
- 
+        [HDR]_ColourB("Colour B", Color) = (1,1,0,1)
          _Transparency("Float with range", Range(0.0, 1.0)) = 0
         _ColourStart("Colour Start" , Range(0,1)) = 0
         _ColourEnd("Colour End" , Range(0,1)) = 1
@@ -20,7 +20,7 @@ Shader "Unlit/CultLogo"
             Pass
             {
                 ZWrite Off
-                Blend One One
+           
                 Cull Off
                 CGPROGRAM
                 #pragma vertex vert
@@ -32,7 +32,7 @@ Shader "Unlit/CultLogo"
 
 
             float4 _Tint;
-            float4 _ColourA;
+           
             float4 _MainTex_ST;
             fixed4 _Color;
             sampler2D _MainTex;
@@ -79,24 +79,13 @@ Shader "Unlit/CultLogo"
             float4 frag(Interpolators i) : SV_Target
             {
 
-                float2 uvsCentred = i.uv * 2 - 1;
-                float radialDistance = length(uvsCentred);
-                float xOffset = sin(cos(i.uv.y * TAU)) * 0.02f;
-                float yOffset = sin(cos(i.uv.x * TAU)) * 0.02f;
-                float waves = (cos((1 - radialDistance+0.2f + _Time.y) * TAU) * 0.5 + 0.5);
-                float waves2 = (cos(((radialDistance - 1) + _Time.y*0.5)) * 4 + 0.5);
+       
+               
                 fixed4 col = tex2D(_MainTex, i.uv);
-                col *= lerp(_Tint, _ColourA, _Transparency);
+                col *= _Tint;
+                return col;
 
-                float3 colOutput = col * saturate(waves2);
-                
-                float amount = sin(_Time.y *2) * 0.5 + 0.5;
-                float3 color = saturate(lerp(float3(0, 0, 0), colOutput, _Transparency));
-             
-                return float4(color, 0);
-
-                //return float4(i.normal,0);
-                //return
+               
             }
             ENDCG
         }
