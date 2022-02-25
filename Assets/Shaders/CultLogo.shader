@@ -86,7 +86,8 @@ Shader "Unlit/CultLogo"
                 float waves = (cos((1 - radialDistance+0.2f + _Time.y) * TAU) * 0.5 + 0.5);
                 float waves2 = (cos(((radialDistance - 1) + _Time.y*0.5)) * 4 + 0.5);
                 fixed4 col = tex2D(_MainTex, i.uv);
-                col *= lerp(_Tint, _ColourA, _Transparency);
+                col *= _Tint;
+                //col *= lerp(_Tint, _ColourA, _Transparency);
 
                 float3 colOutput = col * saturate(waves2);
                 
