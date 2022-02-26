@@ -10,13 +10,17 @@ public class NPC : MonoBehaviour
 
     public void Awake()
     {
-        List<Node> allNodes = new List<Node>();
+        PopulateDialogueNodes();
+    }
+    private void PopulateDialogueNodes()
+    {
+        List<DialogueNode> allNodes = new List<DialogueNode>();
         if (dialogueTreeObject)
         {
             allNodes = dialogueTreeObject.GetAllNodes();
         }
- 
-        foreach(Node _node in allNodes)
+
+        foreach (var _node in allNodes)
         {
             _node.GetDialogueObject().SetAssociatedNPC(this);
         }
@@ -42,8 +46,8 @@ public class NPC : MonoBehaviour
         while (dialogueTreeObject.GetCurrentNode() != null);
         
     }
-    public void MakeDecision(bool _left)
+    public void MakeDecision(int _direction)
     {
-        dialogueTreeObject.Traverse(_left);
+        dialogueTreeObject.Traverse(_direction);
     }
 }

@@ -34,13 +34,13 @@ public class DialogueUI : MonoBehaviour
         }
      
     }
-    public void ShowDialogue(DialogueObject _dialogueObject)
+    public void ShowDialogue(DialogueNode _dialogueObject)
     {
         ShowDialogueBox(true);
         StartCoroutine(RunThroughDialogue(_dialogueObject));
     }
     
-    public IEnumerator RunThroughDialogue(DialogueObject _dialogueObject) //Shows individual dialogue section for NPC
+    public IEnumerator RunThroughDialogue(DialogueNode _dialogueObject) //Shows individual dialogue section for NPC
     {
         yield return new WaitForSeconds(0.2f);
         reponseHandler.SetResponseChosen(false);

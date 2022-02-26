@@ -73,7 +73,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Time: 0
-    - _Transparency: -0.001427412
+    - _Transparency: 0.84064466
     - _UVSec: 0
     - _WaveAmp: 0
     - _ZWrite: 1
@@ -82,5 +82,5 @@ Material:
     - _ColourA: {r: 1, g: 0.019607844, b: 0, a: 1}
     - _ColourB: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Tint: {r: 1.1764706, g: 0, b: 4, a: 1}
+    - _Tint: {r: 0.3964136, g: 0, b: 1.7207954, a: 1}
   m_BuildTextureStacks: []

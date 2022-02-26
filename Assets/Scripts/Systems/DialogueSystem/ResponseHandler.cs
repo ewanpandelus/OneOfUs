@@ -19,7 +19,7 @@ public class ResponseHandler : MonoBehaviour
     public bool GetResponseChosen() => responseChosen;
     public void SetResponseChosen(bool _responseChosen) => responseChosen = _responseChosen;
 
-    public void ShowReponses(DialogueObject _dialogueObject) // Dynamically creates the player dialogue choice UI
+    public void ShowReponses(DialogueNode _dialogueObject) // Dynamically creates the player dialogue choice UI
     {
         float responseBoxHeight = 0;
         int index = 0;
@@ -30,8 +30,9 @@ public class ResponseHandler : MonoBehaviour
             responseButtons.Add(responseButton);
             responseButton.gameObject.SetActive(true);
             responseButton.GetComponent<TMP_Text>().text = response;
-            if (index == 0) { responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseRight(_dialogueObject, responseButtons)); }
-            else { responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseLeft(_dialogueObject, responseButtons)); }
+            if (index == 0) { responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseLeft(_dialogueObject, responseButtons)); }
+            if (index == 1) { responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseMiddle(_dialogueObject, responseButtons)); }
+            if(index ==2) {responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseRight(_dialogueObject, responseButtons)); }
             index++;
             responseBoxHeight += repsonseButtonTemplate.sizeDelta.y;
             repsonseBox.sizeDelta = new Vector2(repsonseBox.sizeDelta.x, responseBoxHeight);
@@ -39,16 +40,22 @@ public class ResponseHandler : MonoBehaviour
         }
         dialogueButtonNav.AddNavigationToButtons(responseButtons);
     }
-    public void ChooseResponseLeft(DialogueObject _dialogueObject, List<GameObject> _responseButtons)
+    public void ChooseResponseLeft(DialogueNode _dialogueObject, List<GameObject> _responseButtons)
     {
-        _dialogueObject.GetAssociatedNPC().MakeDecision(false);
+        _dialogueObject.GetAssociatedNPC().MakeDecision(0);
+        responseChosen = true;
+        CleanUp(_responseButtons);
+    }
+    public void ChooseResponseMiddle(DialogueNode _dialogueObject, List<GameObject> _responseButtons)
+    {
+        _dialogueObject.GetAssociatedNPC().MakeDecision(1);
         responseChosen = true;
         CleanUp(_responseButtons);
     }
     //Possibly refactor these methods
-    public void ChooseResponseRight(DialogueObject _dialogueObject, List<GameObject> _responseButtons)
+    public void ChooseResponseRight(DialogueNode _dialogueObject, List<GameObject> _responseButtons)
     {
-        _dialogueObject.GetAssociatedNPC().MakeDecision(true);
+        _dialogueObject.GetAssociatedNPC().MakeDecision(2);
         responseChosen = true;
         CleanUp(_responseButtons);
     }

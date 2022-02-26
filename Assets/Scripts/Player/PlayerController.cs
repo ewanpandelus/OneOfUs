@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
         if (dialogueUI.GetShowingText()) return;
         EvaluateInput();
         transform.position += movement * Time.deltaTime;
+        Debug.Log(movement * Time.deltaTime);
     }
     private void EvaluateInput()
     {
