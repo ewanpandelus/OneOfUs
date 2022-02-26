@@ -16,7 +16,7 @@ MonoBehaviour:
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  happinessEffect: 0
+  happinessEffect: -3
   dialogue:
   - Hey Duncan!
   response:

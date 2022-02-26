@@ -7,10 +7,12 @@ public class NPC : MonoBehaviour
     [SerializeField] private ResponseHandler responseHandler;
     [SerializeField] private DialogueTreeObject dialogueTreeObject;
     [SerializeField] private DialogueUI dialogueUI;
+    private PlayerStats player;
 
     public void Awake()
     {
         PopulateDialogueNodes();
+        player = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
     private void PopulateDialogueNodes()
     {
@@ -39,6 +41,7 @@ public class NPC : MonoBehaviour
         }
         do
         {
+            player.SetInfluence(dialogueTreeObject.GetCurrentNode().GetHappinessEffect());
             responseHandler.SetResponseChosen(false);
             dialogueUI.ShowDialogue(dialogueTreeObject.GetCurrentNode().GetDialogueObject());
             yield return new WaitUntil(() => responseHandler.GetResponseChosen() == true);
