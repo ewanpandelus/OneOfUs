@@ -83,13 +83,14 @@ Shader "Unlit/CultLogo"
                 float radialDistance = length(uvsCentred);
                 float xOffset = sin(cos(i.uv.y * TAU)) * 0.02f;
                 float yOffset = sin(cos(i.uv.x * TAU)) * 0.02f;
-               // float waves = (cos((1 - radialDistance + _Time.y) * TAU) * 0.5 + 0.5);
-                float waves2 = (cos(((radialDistance - 1) + _Time.y)) * 3 + 0.5);
+                float waves = (cos(((radialDistance - 1) + _Time.y)) * 3+ 0.5);
+           
+
                 fixed4 col = tex2D(_MainTex, i.uv);
                 col *= _Tint;
                 //col *= lerp(_Tint, _ColourA, _Transparency);
 
-                float3 colOutput = col * saturate(waves2);
+                float3 colOutput = col * saturate(waves);
                 
                 float amount = sin(_Time.y *2) * 0.5 + 0.5;
                 float3 color = saturate(lerp(float3(0, 0, 0), colOutput, _Transparency));

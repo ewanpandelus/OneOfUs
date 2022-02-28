@@ -900,7 +900,7 @@ PrefabInstance:
     - target: {fileID: 2415264195927105397, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 2415264195927105402, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1181,15 +1181,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520838, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520838, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_Color.g
-      value: 0.023376942
+      value: 0.061214987
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520838, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.7830189
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520838, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_SortingOrder
@@ -1223,6 +1223,10 @@ PrefabInstance:
     - target: {fileID: 151325964, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
       propertyPath: lengthInSec
       value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 151325964, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4779500709626953709, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
       propertyPath: rotationDuration
@@ -1287,6 +1291,10 @@ PrefabInstance:
     - target: {fileID: 6628256698602021380, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
       propertyPath: lengthInSec
       value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628256698602021380, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
