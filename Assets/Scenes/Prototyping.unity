@@ -1216,6 +1216,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 151325964, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151325964, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: lengthInSec
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779500709626953709, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: rotationDuration
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779500709709105600, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: rotationDuration
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6628256698096666244, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
       propertyPath: m_Name
       value: Indoctrinate
@@ -1263,6 +1279,14 @@ PrefabInstance:
     - target: {fileID: 6628256698096666251, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628256698602021380, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628256698602021380, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: lengthInSec
+      value: 1.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
