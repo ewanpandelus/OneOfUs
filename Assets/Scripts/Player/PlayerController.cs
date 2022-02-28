@@ -5,8 +5,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] DialogueUI dialogueUI;
     [SerializeField] private float movementSpeed;
-    [SerializeField] float interactionRadius;
     Vector3 movement = new Vector3 (0,0,0);
+    private EvaluateEnvironment evaluateEnvironment;
+    private void Awake()
+    {
+        evaluateEnvironment = GetComponent<EvaluateEnvironment>();
+    }
 
     void Update()
     {
@@ -23,53 +27,15 @@ public class PlayerController : MonoBehaviour
     }
     private void EvaluateInteraction()
     {
-        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E))
         {
-            NPC closestNPC = ClosestNPC();
-            if (FacingCharacter(closestNPC))
+            NPC closestNPC = evaluateEnvironment.ClosestNPC();
+            if (closestNPC != null)
             {
                 if(!dialogueUI.GetShowingText()) closestNPC.RunDialogue();
             }
         }
     }
-    public bool FacingCharacter(NPC _closestNPC)  // Placeholder code, will be updated later 
-    {
-        if (_closestNPC == null) return false;
-        _closestNPC = ClosestNPC();
-        Vector3 dir = (_closestNPC.transform.position - transform.position).normalized;
-        float dot = Vector3.Dot(dir, transform.forward);
-        if (dot < 0.5f)
-        {
-            return true;
-        }
-        return false;
-    }
-    private NPC ClosestNPC()
-    {
-        Collider2D[] surroundingColliders = Physics2D.OverlapCircleAll(transform.position, interactionRadius);
-        List<GameObject> surroundingGameObjects = new List<GameObject>();
-        if (surroundingColliders.Length > 0)
-        {
-            foreach (Collider2D col2D in surroundingColliders) surroundingGameObjects.Add(col2D.gameObject);
-           
-            List<GameObject> surroundingNPCS = new List<GameObject>();
-            surroundingNPCS = surroundingGameObjects.Where(x => x.GetComponent<NPC>() != null).ToList();
-            if (surroundingNPCS.Count > 0) { return ClosestObj(surroundingNPCS).GetComponent<NPC>(); }
-        }
-        return null;
-    }
-    private GameObject ClosestObj(List<GameObject> _objects)
-    {
-        float min = float.MaxValue;
-        GameObject closestObj = null;
-        for(int i = 0; i < _objects.Count; i++)
-        {
-            if (Vector2.Distance(transform.position, _objects[i].transform.position) < min)
-            {
-                min = Vector2.Distance(transform.position, _objects[i].transform.position);
-                closestObj = _objects[i];
-            }
-        }
-        return closestObj;
-    }
+
+  
 }
