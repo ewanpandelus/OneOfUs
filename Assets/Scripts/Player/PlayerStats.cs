@@ -5,21 +5,36 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     private StatsUI statsUI;
-    private float influence = 0;
+    private float averageInfluence = 0;
+    private List<NPC> NPCS = new List<NPC>();
     private void Start()
     {
         statsUI = GetComponent<StatsUI>();
+        PopulateNPCList();
+        CalculateInfluence();
     }
-    public void SetInfluence(float _influence) {
-        influence  =Mathf.Clamp(influence + _influence, 0,100 );
-        statsUI.UpdateInfluence(influence);
-    }
-    private void CalculateInfluence()
+    private void PopulateNPCList()
     {
-        //NPC avg happiness
+        GameObject[] NPCGameObjects = GameObject.FindGameObjectsWithTag("NPC");
+        foreach (var NPC in NPCGameObjects)
+        {
+            NPCS.Add(NPC.GetComponent<NPC>());
+        }
+    }
+ 
+    public void CalculateInfluence()
+    {
+        float avgNPCInfluence = 0;
+        foreach(var NPC in NPCS)
+        {
+            avgNPCInfluence += NPC.GetInfluenceLevel();
+        }
+ 
+        averageInfluence = (avgNPCInfluence /= NPCS.Count);
+        UpdateInfluenceBar();
     }
     private void UpdateInfluenceBar()
     {
-        //Feed influence to UI 
+        statsUI.UpdateInfluence(Mathf.RoundToInt(averageInfluence));
     }
 }

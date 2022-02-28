@@ -7,12 +7,13 @@ public class NPC : MonoBehaviour
     [SerializeField] private ResponseHandler responseHandler;
     [SerializeField] private DialogueTreeObject dialogueTreeObject;
     [SerializeField] private DialogueUI dialogueUI;
+    private float influenceLevel = 50;
     private PlayerStats player;
-
+    public float GetInfluenceLevel() => influenceLevel;
     public void Awake()
     {
         PopulateDialogueNodes();
-        player = GameObject.Find("Player").GetComponent<PlayerStats>();
+        player = GameObject.FindObjectOfType<PlayerStats>();
     }
     private void PopulateDialogueNodes()
     {
@@ -41,7 +42,7 @@ public class NPC : MonoBehaviour
         }
         do
         {
-            player.SetInfluence(dialogueTreeObject.GetCurrentNode().GetHappinessEffect());
+            UpdateInfluencelevel(dialogueTreeObject.GetCurrentNode().GetHappinessEffect());
             responseHandler.SetResponseChosen(false);
             dialogueUI.ShowDialogue(dialogueTreeObject.GetCurrentNode().GetDialogueObject());
             yield return new WaitUntil(() => responseHandler.GetResponseChosen() == true);
@@ -52,5 +53,10 @@ public class NPC : MonoBehaviour
     public void MakeDecision(int _direction)
     {
         dialogueTreeObject.Traverse(_direction);
+    }
+    private void UpdateInfluencelevel(float _influenceChange)
+    {
+        influenceLevel = Mathf.Clamp(influenceLevel + _influenceChange, 0, 100);
+        player.CalculateInfluence();
     }
 }

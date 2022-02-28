@@ -32,7 +32,6 @@ public class DialogueUI : MonoBehaviour
             dialogueBox.SetActive(_on);
             showingText = _on;
         }
-     
     }
     public void ShowDialogue(DialogueNode _dialogueObject)
     {
@@ -63,8 +62,10 @@ public class DialogueUI : MonoBehaviour
     }
     private bool AnyValidContinueKey()
     {
-        return Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return);
-}
+        return Input.GetMouseButtonDown(0) 
+        || Input.GetKeyDown(KeyCode.Space) 
+        || Input.GetKeyDown(KeyCode.Return);
+    }
 
 }
 

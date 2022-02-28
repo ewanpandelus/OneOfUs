@@ -73,7 +73,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Time: 0
-    - _Transparency: -0.00023376942
+    - _Transparency: -0.001085639
     - _UVSec: 0
     - _WaveAmp: 0
     - _ZWrite: 1
