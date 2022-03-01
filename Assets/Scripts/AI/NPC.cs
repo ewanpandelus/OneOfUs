@@ -58,12 +58,13 @@ public class NPC : MonoBehaviour
         int rand = Random.Range(0, 100);
         if (rand <= dialogueTreeObject.GetCurrentInfluenceChance())
         {
-            influenceLevel += dialogueTreeObject.GetNPCInfluenceChange();
-            Instantiate(indoctrinationPrefab); 
+            influenceLevel = Mathf.Clamp(influenceLevel + dialogueTreeObject.GetNPCInfluenceChange(), 0, 100);
+            Instantiate(indoctrinationPrefab, gameObject.transform.position+new Vector3(0,-0.25f,0), gameObject.transform.rotation);
+           
         }
         else
         {
-            influenceLevel -= dialogueTreeObject.GetNPCInfluenceChange();
+            influenceLevel = Mathf.Clamp(influenceLevel -  dialogueTreeObject.GetNPCInfluenceChange(), 0,100);
         }
         player.CalculateInfluence();
     }

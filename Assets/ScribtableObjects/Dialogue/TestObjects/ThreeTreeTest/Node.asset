@@ -16,9 +16,13 @@ MonoBehaviour:
   leftChild: {fileID: 11400000, guid: a7325608729493846bc36abdd947556b, type: 2}
   middleChild: {fileID: 11400000, guid: bc31039a91b36414b9a5ba581fdcf068, type: 2}
   rightChild: {fileID: 11400000, guid: f3c2778f032847c419aefee0d00c1bc8, type: 2}
-  happinessEffect: 0
+  chanceEffect: 0
   dialogue:
-  - Hey!
+  - 'Hey!
+
+    Hello!
+
+    How are ya?'
   - What's your name?
   response:
   - Ewan

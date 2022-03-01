@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
   m_Name: NPCThreeTree
   m_EditorClassIdentifier: 
-  NPCInfluenceChange: 50
+  NPCInfluenceChange: 5
   originalInfluenceChance: 50
   dialogueTree:
   - {fileID: 11400000, guid: b4fcb65df917fe04088834398badf6b8, type: 2}
