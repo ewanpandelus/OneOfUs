@@ -1114,11 +1114,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 25
+  orthographic size: 17
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 3e01f1081cdf34c4ba28ae71f1738593, type: 2}
   m_TargetDisplay: 0
@@ -1181,6 +1181,10 @@ PrefabInstance:
     - target: {fileID: 5593751250768021476, guid: 17a6ed78adbd6984089bb842cc504bb4, type: 3}
       propertyPath: m_Name
       value: House 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593751250768021476, guid: 17a6ed78adbd6984089bb842cc504bb4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5593751250768021478, guid: 17a6ed78adbd6984089bb842cc504bb4, type: 3}
       propertyPath: m_RootOrder
@@ -1247,7 +1251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1358884618}
   - component: {fileID: 1358884617}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Level Layout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1334,6 +1338,10 @@ PrefabInstance:
     - target: {fileID: 5593751250768021476, guid: 17a6ed78adbd6984089bb842cc504bb4, type: 3}
       propertyPath: m_Name
       value: House 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593751250768021476, guid: 17a6ed78adbd6984089bb842cc504bb4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5593751250768021478, guid: 17a6ed78adbd6984089bb842cc504bb4, type: 3}
       propertyPath: m_RootOrder
@@ -1649,6 +1657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5593751250768021476, guid: f3d66683b3f19be41b35f0cd86951b1b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5593751250768021478, guid: f3d66683b3f19be41b35f0cd86951b1b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1714,6 +1726,10 @@ PrefabInstance:
     - target: {fileID: 5593751250768021476, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
       propertyPath: m_Name
       value: House (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593751250768021476, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5593751250768021478, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
       propertyPath: m_RootOrder
@@ -2067,6 +2083,10 @@ PrefabInstance:
     - target: {fileID: 5593751250768021476, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
       propertyPath: m_Name
       value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593751250768021476, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5593751250768021478, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
       propertyPath: m_RootOrder
