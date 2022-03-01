@@ -35,7 +35,7 @@ public class NPC : MonoBehaviour
     }
     public IEnumerator RunThroughDialogueTree()
     {
-        if (dialogueTreeObject.GetCurrentNode() == null) 
+        if (dialogueTreeObject.GetCurrentNode() == null||dialogueTreeObject.GetCurrentNode().AllChildrenNull()) 
         { 
             dialogueTreeObject.Reset(); 
             yield return null; 

@@ -36,7 +36,7 @@ public class DialogueNode : ScriptableObject
     public bool MiddleChildNull() => middleChild == null;
     public bool RightChildNull() => rightChild == null;
 
-
+    public bool AllChildrenNull() => LeftChildNull() && MiddleChildNull() && RightChildNull();
     public DialogueNode GetLeftChild() => leftChild;
     public DialogueNode GetMiddleChild() => middleChild;
     public DialogueNode GetRightChild() => rightChild;
