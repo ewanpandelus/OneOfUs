@@ -39,16 +39,16 @@ public class DialogueUI : MonoBehaviour
         StartCoroutine(RunThroughDialogue(_dialogueObject));
     }
     
-    public IEnumerator RunThroughDialogue(DialogueNode _dialogueObject) //Shows individual dialogue section for NPC
+    public IEnumerator RunThroughDialogue(DialogueNode _dialogueNode) //Shows individual dialogue section for NPC
     {
         yield return new WaitForSeconds(0.2f);
         reponseHandler.SetResponseChosen(false);
-        for (int i = 0; i < _dialogueObject.GetDialogue.Length; i++)
+        for (int i = 0; i < _dialogueNode.GetDialogue().Length; i++)
         {
-            yield return textEffects.Run(_dialogueObject.GetDialogue[i]);
-            if (i == _dialogueObject.GetDialogue.Length - 1) 
+            yield return textEffects.Run(_dialogueNode.GetDialogue()[i]);
+            if (i == _dialogueNode.GetDialogue().Length - 1&&_dialogueNode.ResponsesExist()) 
             {
-                reponseHandler.ShowReponses(_dialogueObject);
+                reponseHandler.SetupResponses(_dialogueNode);
                 yield return new WaitUntil(() => reponseHandler.GetResponseChosen() == true);
             }
             else

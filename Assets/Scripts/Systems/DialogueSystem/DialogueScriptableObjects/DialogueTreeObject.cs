@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DialogueTreeObject : ScriptableObject
 {
-    public int currentID = 1;
+    private int currentID = 1;
+    [SerializeField] private float initialInfluenceChance;
     public void Reset()
     {
         currentID = 1;
@@ -24,5 +25,9 @@ public class DialogueTreeObject : ScriptableObject
 
     
     public List<DialogueNode> GetAllNodes() => dialogueTree;
+    public void UpdateTotalInfluenceChance()
+    {
+
+    }
 }
 

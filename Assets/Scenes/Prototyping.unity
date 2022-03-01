@@ -1264,18 +1264,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5593751250768021473, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
-      propertyPath: m_Size.y
-      value: 1.8781009
-      objectReference: {fileID: 0}
-    - target: {fileID: 5593751250768021473, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.029825687
-      objectReference: {fileID: 0}
-    - target: {fileID: 5593751250768021473, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
-      propertyPath: m_Offset.y
-      value: -1.4639509
-      objectReference: {fileID: 0}
     - target: {fileID: 5593751250768021476, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
       propertyPath: m_Name
       value: House
@@ -1324,10 +1312,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5593751250768021479, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97a8642ad63c9ea4797517720987546e, type: 3}
 --- !u!1001 &6628256696969505075
@@ -1350,13 +1334,29 @@ PrefabInstance:
       value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4779500709626953709, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: _mat
+      value: 
+      objectReference: {fileID: 2100000, guid: bd445feaa7e84d743b947ffe9c663bb4, type: 2}
+    - target: {fileID: 4779500709626953709, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
       propertyPath: rotationDuration
       value: 1.7
       objectReference: {fileID: 0}
+    - target: {fileID: 4779500709626953715, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd445feaa7e84d743b947ffe9c663bb4, type: 2}
+    - target: {fileID: 4779500709709105600, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: _mat
+      value: 
+      objectReference: {fileID: 2100000, guid: bd445feaa7e84d743b947ffe9c663bb4, type: 2}
     - target: {fileID: 4779500709709105600, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
       propertyPath: rotationDuration
       value: 1.7
       objectReference: {fileID: 0}
+    - target: {fileID: 4779500709709105630, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd445feaa7e84d743b947ffe9c663bb4, type: 2}
     - target: {fileID: 6628256698096666244, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
       propertyPath: m_Name
       value: Indoctrinate

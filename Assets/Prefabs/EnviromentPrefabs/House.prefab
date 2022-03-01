@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5593751250768021478}
   - component: {fileID: 5593751250768021479}
   - component: {fileID: 5593751250768021473}
-  - component: {fileID: 5593751250768021472}
+  - component: {fileID: 381674190}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.029825568, y: -1.5488974}
+  m_Offset: {x: 0.029825687, y: -1.4639509}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,9 +108,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.8374834, y: 2.047994}
+  m_Size: {x: 4.8374834, y: 1.8781009}
   m_EdgeRadius: 0
---- !u!114 &5593751250768021472
+--- !u!114 &381674190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5593751250768021476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e647e5466fe43f47a7f92cd23cba316, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c668f8f4994b3d44af1a77c9b2f4482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Yoffset: -1.4

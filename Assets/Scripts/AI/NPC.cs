@@ -42,7 +42,7 @@ public class NPC : MonoBehaviour
         }
         do
         {
-            UpdateInfluencelevel(dialogueTreeObject.GetCurrentNode().GetHappinessEffect());
+            UpdateInfluencelevel(dialogueTreeObject.GetCurrentNode().GetChanceEffect());
             responseHandler.SetResponseChosen(false);
             dialogueUI.ShowDialogue(dialogueTreeObject.GetCurrentNode().GetDialogueObject());
             yield return new WaitUntil(() => responseHandler.GetResponseChosen() == true);

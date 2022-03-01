@@ -4,15 +4,17 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(SpriteRenderer))]
-public class IsometricStationarySpriteRenderer : MonoBehaviour   
+public class IsometricSpriteRenderer : MonoBehaviour   
 {
     private SpriteRenderer renderer;
     [SerializeField] private float Yoffset;
     private void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
-        renderer.sortingOrder = (int)((transform.position.y + Yoffset) * -10);
     }
 
-  
+    private void Update()
+    {
+        renderer.sortingOrder = (int)((transform.position.y+Yoffset) * -10);
+    }
 }

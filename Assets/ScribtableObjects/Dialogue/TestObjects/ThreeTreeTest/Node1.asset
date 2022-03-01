@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Node1
   m_EditorClassIdentifier: 
   id: 2
-  leftChild: {fileID: 0}
+  leftChild: {fileID: 11400000, guid: 227ea13e33f82f4448cd97f23cb554d9, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  happinessEffect: 10
+  chanceEffect: 0
   dialogue:
   - Hey Ewan!
   response:

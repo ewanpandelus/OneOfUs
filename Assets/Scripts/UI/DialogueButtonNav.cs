@@ -19,6 +19,7 @@ public class DialogueButtonNav : MonoBehaviour
     }
     public void AddNavigationToButtons(List<GameObject> _buttons)
     {
+        if (_buttons.Count == 0) return;
 
         for(int elem = 0; elem<_buttons.Count; elem++)
         {
