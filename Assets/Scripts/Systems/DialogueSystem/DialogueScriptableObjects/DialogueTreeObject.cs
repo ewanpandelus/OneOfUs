@@ -5,10 +5,14 @@ using UnityEngine;
 public class DialogueTreeObject : ScriptableObject
 {
     private int currentID = 1;
-    [SerializeField] private float initialInfluenceChance;
+    private float currentInfluenceChance;
+    [SerializeField] private float NPCInfluenceChange;
+    [SerializeField] private float originalInfluenceChance;
+   
     public void Reset()
     {
         currentID = 1;
+        currentInfluenceChance = originalInfluenceChance;
     }
     public virtual void Traverse(int _direction)  //Moves through the tree pertaining to player's decisions
     {
@@ -25,9 +29,11 @@ public class DialogueTreeObject : ScriptableObject
 
     
     public List<DialogueNode> GetAllNodes() => dialogueTree;
-    public void UpdateTotalInfluenceChance()
+    public float GetNPCInfluenceChange() => NPCInfluenceChange;
+    public float GetCurrentInfluenceChance() => currentInfluenceChance;
+    public void UpdateTotalInfluenceChance(float _chanceEffect)
     {
-
+        currentInfluenceChance = Mathf.Clamp(currentInfluenceChance + _chanceEffect, 0, 100);
     }
 }
 

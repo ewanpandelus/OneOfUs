@@ -16,7 +16,7 @@ MonoBehaviour:
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 11400000, guid: 6f762d1a1b653114d982648adf935499, type: 2}
-  chanceEffect: 0
+  chanceEffect: -10
   dialogue:
   - Hey Duncan!
   response:

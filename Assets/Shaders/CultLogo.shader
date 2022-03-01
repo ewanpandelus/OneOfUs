@@ -6,7 +6,7 @@ Shader "Unlit/CultLogo"
         [HDR] _ColourA("Colour A", Color) = (0,1,0,1)
         [HDR] _Tint("Tint", Color) = (0, 0, 0, 1)
         _MainTex("Texture", 2D) = "white" {}
- 
+         _ManualTime("Float", Range(0.0, 4)) = 0
          _Transparency("Float with range", Range(0.0, 1.0)) = 0
         _ColourStart("Colour Start" , Range(0,1)) = 0
         _ColourEnd("Colour End" , Range(0,1)) = 1
@@ -35,6 +35,7 @@ Shader "Unlit/CultLogo"
             float4 _ColourA;
             float4 _MainTex_ST;
             fixed4 _Color;
+            float _ManualTime;
             sampler2D _MainTex;
             float _Transparency;
           
@@ -44,7 +45,7 @@ Shader "Unlit/CultLogo"
             float GetWave(float2 uv) {
                 float2 uvsCentred = uv * 2 - 1;
                 float radialDistance = length(uvsCentred);
-                float wave = cos((radialDistance - _Time.y * 0.1f) * TAU * 10);
+                float wave = cos((radialDistance - _Time.y * 0.01f) * TAU * 10);
 
 
                 // float4 waves = t * (abs(i.normal.y) < 0.99);
@@ -78,12 +79,13 @@ Shader "Unlit/CultLogo"
 
             float4 frag(Interpolators i) : SV_Target
             {
+    
 
                 float2 uvsCentred = i.uv * 2 - 1;
                 float radialDistance = length(uvsCentred);
                 float xOffset = sin(cos(i.uv.y * TAU)) * 0.02f;
                 float yOffset = sin(cos(i.uv.x * TAU)) * 0.02f;
-                float waves = (cos(((radialDistance - 1) + _Time.y)) * 3+ 0.5);
+                float waves = (cos((radialDistance - 1) + _ManualTime) * 3+ 0.5);
            
 
                 fixed4 col = tex2D(_MainTex, i.uv);

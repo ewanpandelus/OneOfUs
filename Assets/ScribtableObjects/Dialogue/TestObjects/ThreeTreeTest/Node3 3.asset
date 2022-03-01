@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
   m_Name: Node3 3
   m_EditorClassIdentifier: 
-  id: 7
+  id: 8
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 10
+  chanceEffect: 5
   dialogue:
   - I am the right option
   response: []

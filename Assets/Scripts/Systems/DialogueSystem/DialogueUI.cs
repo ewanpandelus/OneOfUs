@@ -57,6 +57,7 @@ public class DialogueUI : MonoBehaviour
             }
      
         }
+        _dialogueNode.GetAssociatedNPC().EvaluatePersausionChance();
         ShowText(string.Empty);
         ShowDialogueBox(false);
     }

@@ -7,11 +7,13 @@ public class RotateCultLogo : MonoBehaviour
     [SerializeField] Material _mat;
     [SerializeField] float rotationDuration = 0.2f;
     private float intervalMultiplier = 1f;
-
+    [SerializeField] private bool updatesShader;
+    private float elapsedTime = 0;
 
 
     void Start()
     {
+        _mat.SetFloat("_Transparency", 0);
         StartCoroutine(RotateZ(rotationDuration, 1));
     }
     IEnumerator RotateZ(float duration, int direction)
@@ -25,6 +27,7 @@ public class RotateCultLogo : MonoBehaviour
             if (t < duration)
             {
                 t += Time.deltaTime;
+                elapsedTime += Time.deltaTime;
                 float zRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360.0f;
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, zRotation);
                 SetShaderTransparency(t / duration, direction);
@@ -42,12 +45,18 @@ public class RotateCultLogo : MonoBehaviour
     }
     private void SetShaderTransparency(float percentage, int direction)
     {
-        if (direction == 1) _mat.SetFloat("_Transparency", percentage);
-        else _mat.SetFloat("_Transparency", (percentage*=-1)+1);
+        if (updatesShader)
+        {
+            if (direction == 1) {
+                _mat.SetFloat("_Transparency", percentage);        
+            }
+
+            else _mat.SetFloat("_Transparency", (percentage *= -1) + 1);
+            _mat.SetFloat("_ManualTime", elapsedTime);
+
+        }
+    
     }
 
-    void Update()
-    {
-        
-    }
+  
 }

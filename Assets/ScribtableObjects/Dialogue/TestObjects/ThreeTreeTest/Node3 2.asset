@@ -16,7 +16,7 @@ MonoBehaviour:
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 10
+  chanceEffect: 5
   dialogue:
   - I am the middle option
   response: []

@@ -33,8 +33,12 @@ public class PlayerStats : MonoBehaviour
         averageInfluence = (avgNPCInfluence /= NPCS.Count);
         UpdateInfluenceBar();
     }
-    private void UpdateInfluenceBar()
+    public void UpdateInfluenceBar()
     {
         statsUI.UpdateInfluence(Mathf.RoundToInt(averageInfluence));
+    }
+    public void UpdateInfluenceChanceBar(float _influenceChance)
+    {
+        statsUI.UpdateInfluenceChanceText(Mathf.RoundToInt(_influenceChance));
     }
 }
