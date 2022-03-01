@@ -73,7 +73,11 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Time: 0
+<<<<<<< Updated upstream
     - _Transparency: -0.0010375977
+=======
+    - _Transparency: -0.0015569925
+>>>>>>> Stashed changes
     - _UVSec: 0
     - _WaveAmp: 0
     - _ZWrite: 1
