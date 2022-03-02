@@ -49,18 +49,13 @@ public class RotateCultLogo : MonoBehaviour
     }
     private void SetShaderTransparency(float percentage, int direction)
     {
-        if (updatesShader)
+        if (!updatesShader) 
         {
-            if (direction == 1) {
-                _mat.SetFloat("_Transparency", percentage);        
-            }
-
-            else _mat.SetFloat("_Transparency", (percentage *= -1) + 1);
-    
-
+            return;
         }
-    
+        if (direction == 1) {
+            _mat.SetFloat("_Transparency", percentage);        
+        }
+        else _mat.SetFloat("_Transparency", (percentage *= -1) + 1);
     }
-
-  
 }

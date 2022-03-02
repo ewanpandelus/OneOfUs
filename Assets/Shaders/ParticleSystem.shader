@@ -1,3 +1,4 @@
+
 Shader "Unlit/Particles/Additive" {
     Properties{
 
@@ -10,8 +11,8 @@ Shader "Unlit/Particles/Additive" {
             Tags { "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" "PreviewType" = "Plane" }
             Blend SrcAlpha One
             ColorMask RGB
-            Cull Off Lighting Off ZWrite On
-       
+            Cull Off Lighting Off ZWrite Off
+
 
             SubShader {
                 Pass {
