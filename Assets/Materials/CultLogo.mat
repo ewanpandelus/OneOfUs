@@ -39,8 +39,8 @@ Material:
     - _ColourEnd: 1
     - _ColourStart: 0
     - _EnableExternalAlpha: 0
-    - _ManualTime: 3.0027428
-    - _Transparency: 0.8903811
+    - _ManualTime: 0
+    - _Transparency: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColourA: {r: 0, g: 1, b: 0, a: 1}

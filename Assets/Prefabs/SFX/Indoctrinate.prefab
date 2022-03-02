@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6628256698096666251}
   - component: {fileID: 8356537911292441613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Indoctrinate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082075753123b284da48eef5a2a226d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointLight: {fileID: 0}
 --- !u!1001 &91431744431254685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,6 +65,10 @@ PrefabInstance:
     - target: {fileID: 6524705468218273868, guid: b24d516d7507ef24f8fba1971e05516d, type: 3}
       propertyPath: m_Name
       value: Particle System (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524705468218273868, guid: b24d516d7507ef24f8fba1971e05516d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6524705468218273870, guid: b24d516d7507ef24f8fba1971e05516d, type: 3}
       propertyPath: m_SortingOrder
@@ -153,6 +156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particle System (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6524705468218273868, guid: b24d516d7507ef24f8fba1971e05516d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6524705468218273870, guid: b24d516d7507ef24f8fba1971e05516d, type: 3}
       propertyPath: m_SortingOrder
       value: 10000
@@ -238,6 +245,10 @@ PrefabInstance:
     - target: {fileID: 1848867059540884509, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_Name
       value: IndoctrinateEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848867059540884509, guid: 6b6f8654da224d849a385402720374a6, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884509, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_IsActive
@@ -355,9 +366,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: IndoctrinateEffect (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1848867059540884509, guid: 6b6f8654da224d849a385402720374a6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884510, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884510, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_Materials.Array.data[0]
