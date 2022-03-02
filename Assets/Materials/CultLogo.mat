@@ -39,17 +39,12 @@ Material:
     - _ColourEnd: 1
     - _ColourStart: 0
     - _EnableExternalAlpha: 0
-<<<<<<< Updated upstream
-    - _ManualTime: 4.9993896
-    - _Transparency: -0.010028601
-=======
-    - _ManualTime: 2.9971833
-    - _Transparency: 0.8919062
->>>>>>> Stashed changes
+    - _ManualTime: 3.0027428
+    - _Transparency: 0.8903811
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColourA: {r: 0, g: 0.041807104, b: 0.050765768, a: 1}
+    - _ColourA: {r: 0, g: 1, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Tint: {r: 0, g: 1.248639, b: 4.867144, a: 1}
+    - _Tint: {r: 0, g: 0.72210264, b: 1, a: 1}
   m_BuildTextureStacks: []

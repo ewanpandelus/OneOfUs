@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  id: 1
+  leftChild: {fileID: 11400000, guid: a960cef77b949de4ab811252909c873f, type: 2}
+  middleChild: {fileID: 11400000, guid: 5087742792cc3dd48b5699888c9d1b62, type: 2}
+  rightChild: {fileID: 11400000, guid: d9ceec44595d45f4a9f028adaa8fcc4e, type: 2}
+  chanceEffect: 0
+  dialogue:
+  - Hey
+  - What's your name?
+  responses:
+  - Ewan
+  - Ben
+  - Iona

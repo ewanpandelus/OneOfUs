@@ -16,11 +16,11 @@ public class DialogueNode : ScriptableObject
     [SerializeField] private float chanceEffect;
     private NPC associatedNPC;
     [SerializeField] [TextArea] private string[] dialogue;
-    [SerializeField] [TextArea] private string[] response = new string[2]; //2 defines the max number of reponses - can be increased later
+    [SerializeField] [TextArea] private string[] responses; //2 defines the max number of reponses - can be increased later
     private UnityEvent funcToRun;
     public string[] GetDialogue() => dialogue;
-    public string[] GetResponses() => response;
-    public bool ResponsesExist() => response.Length != 0;
+    public string[] GetResponses() => responses;
+    public bool ResponsesExist() => responses.Length != 0;
     public void SetAssociatedNPC(NPC _NPC)
     {
         associatedNPC = _NPC;

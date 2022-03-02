@@ -43,7 +43,10 @@ public class ResponseHandler : MonoBehaviour
             repsonseBox.sizeDelta = new Vector2(repsonseBox.sizeDelta.x, responseBoxHeight);
             repsonseBox.gameObject.SetActive(true);
         }
-        dialogueButtonNav.AddNavigationToButtons(responseButtons);
+        if (availableResponses)
+        {
+            dialogueButtonNav.AddNavigationToButtons(responseButtons);
+        }
     }
     private void AssignAvailableResponses(DialogueNode _dialogueNode)
     {
