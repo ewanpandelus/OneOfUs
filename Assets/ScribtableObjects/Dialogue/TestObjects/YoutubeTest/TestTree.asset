@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
   m_Name: TestTree
   m_EditorClassIdentifier: 
-  NPCInfluenceChange: 0
-  originalInfluenceChance: 0
+  NPCInfluenceChange: 1
+  originalInfluenceChance: 100
   dialogueTree:
   - {fileID: 11400000, guid: 5a39a8b427e4c724c8fb512d99fecbee, type: 2}
   - {fileID: 11400000, guid: a960cef77b949de4ab811252909c873f, type: 2}

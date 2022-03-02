@@ -14,6 +14,7 @@ public class RotateCultLogo : MonoBehaviour
     void Start()
     {
         _mat.SetFloat("_Transparency", 0);
+        _mat.SetFloat("_ManualTime", 0);
         StartCoroutine(RotateZ(rotationDuration, 1));
     }
     private void Update()
@@ -57,5 +58,10 @@ public class RotateCultLogo : MonoBehaviour
             _mat.SetFloat("_Transparency", percentage);        
         }
         else _mat.SetFloat("_Transparency", (percentage *= -1) + 1);
+    }
+    private void OnDestroy()
+    {
+        _mat.SetFloat("_Transparency", 0);
+        _mat.SetFloat("_ManualTime", 0);
     }
 }
