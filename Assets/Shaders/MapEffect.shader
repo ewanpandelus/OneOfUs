@@ -1,4 +1,4 @@
-Shader "Unlit/PostProcessEffect"
+Shader "Unlit/MapEffect"
 {
     Properties
     {
@@ -10,13 +10,12 @@ Shader "Unlit/PostProcessEffect"
     }
         SubShader
         {
-            Tags { "RenderType" = "Transparent" "Queue" = "Transparent"}
+            Tags { "RenderType" = "Opaque"}
             LOD 100
 
             Pass
             {
                 ZWrite Off
-                Blend One One
                 Cull Off
                 CGPROGRAM
                 #pragma vertex vert
@@ -63,7 +62,6 @@ Shader "Unlit/PostProcessEffect"
             float4 frag(Interpolators i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-                col = 1 - col;
                 return col;
 
             

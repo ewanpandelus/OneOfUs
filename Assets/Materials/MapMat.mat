@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CultLogo
-  m_Shader: {fileID: 4800000, guid: 4d215502a09bfd74bbddef7d504d8957, type: 3}
+  m_Name: MapMat
+  m_Shader: {fileID: 4800000, guid: ad3bf533fc143fd4d8a773032f547392, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b8ccd2525531a9f47a02f2ae0e2cae10, type: 3}
+        m_Texture: {fileID: 2800000, guid: cb12a6e0a49048940913b96a6905b5ed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -39,11 +39,11 @@ Material:
     - _ColourEnd: 1
     - _ColourStart: 0
     - _EnableExternalAlpha: 0
-    - _ManualTime: 4.9971704
-    - _Transparency: -0.00081026554
+    - _ManualTime: 4.5302134
+    - _Transparency: 0.038921714
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColourA: {r: 0, g: 0.041807104, b: 0.050765768, a: 1}
+    - _ColourA: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _Tint: {r: 0.56681997, g: 0, b: 1.3508326, a: 1}
