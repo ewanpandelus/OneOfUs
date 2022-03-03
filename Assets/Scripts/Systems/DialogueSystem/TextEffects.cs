@@ -7,7 +7,6 @@ public class TextEffects : MonoBehaviour
     private DialogueUI dialogueUI;
     [SerializeField] float timeBetweenCharacters = 0;
     private float _waitTime = 0;
-    private bool prevCharWasPunctuation;
     private List<Punctation> punctations = new List<Punctation>()
     {
         new Punctation(new HashSet<char>(){'.','!','?'}, 0.6f),
@@ -26,7 +25,6 @@ public class TextEffects : MonoBehaviour
 
     private IEnumerator TypingText(string _textToType) //Typewriter effect
     {
-        prevCharWasPunctuation = false;
         string currentText = "";
         for(int i = 0; i<_textToType.Length; i++)
         {
