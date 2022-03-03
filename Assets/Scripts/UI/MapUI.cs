@@ -6,9 +6,15 @@ public class MapUI : MonoBehaviour
 {
     bool showing = false;
     [SerializeField] GameObject map;
+    [SerializeField] MapPan mapCam;
+    private Vector3 mapCentredPos;
+    private float mapOriginalOrthoSize;
 
     private void Start()
     {
+        mapCentredPos = mapCam.transform.position;
+        mapOriginalOrthoSize = mapCam.GetComponent<Camera>().orthographicSize;
+
         map.SetActive(false);
     }
     void Update()
@@ -17,6 +23,7 @@ public class MapUI : MonoBehaviour
         {
             showing = !showing;
             map.SetActive(showing);
+            mapCam.SetPosition(mapCentredPos, mapOriginalOrthoSize);
         }
     }
 }
