@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EvaluateEnvironment
 {
-    [SerializeField] float interactionRadius = 0.0f;
+    [SerializeField] float interactionRadius = 1.4f;
     private Transform transform;
 
     public EvaluateEnvironment(Transform _transform)

@@ -49,12 +49,12 @@ public class PlayerAnimator
             animator.SetInteger("MovementStatus", 1); //Left
             return;
         }
-        if (movement.x > 0)
+        if (movement.y > 0)
         {
             animator.SetInteger("MovementStatus", 2); //Back
             return;
         }
-        if (movement.y > 0)
+        if (movement.x > 0)
         {
             animator.SetInteger("MovementStatus", 3); //Right
         }
