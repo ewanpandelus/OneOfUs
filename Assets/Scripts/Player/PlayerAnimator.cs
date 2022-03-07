@@ -3,22 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimator : MonoBehaviour
+public class PlayerAnimator
 {
     private Animator animator;
     Vector3 movement = new Vector3(0, 0, 0);
     [SerializeField] float timeUntilIdleAnim = 0.3f;
     private float elapsedTime = 0;
-    private void Start()
+    private bool shouldAutoAnimate = true;
+    public PlayerAnimator(Animator _animator)
     {
-        animator = GetComponent<Animator>();
+        animator = _animator;
     }
     public void UpdateMovement(Vector3 _movement)
     {
         movement = _movement;
     }
-    private void Update()
+    public void UpdateAnimation()
     {
+        if (!shouldAutoAnimate)
+        {
+            return;
+        }
         AssessMovement();
         if (movement == Vector3.zero && animator.GetInteger("MovementStatus") == 0)
         {
@@ -37,7 +42,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         if (movement.y < 0)
         {
-            animator.SetInteger("MovementStatus", 0); //Back
+            animator.SetInteger("MovementStatus", 0); //Front
         }
         if (movement.x < 0)
         {
@@ -46,12 +51,20 @@ public class PlayerAnimator : MonoBehaviour
         }
         if (movement.x > 0)
         {
-            animator.SetInteger("MovementStatus", 2); //Right
+            animator.SetInteger("MovementStatus", 2); //Back
             return;
         }
         if (movement.y > 0)
         {
-            animator.SetInteger("MovementStatus", 3); //Back
+            animator.SetInteger("MovementStatus", 3); //Right
         }
+    }
+    public void SetShouldAutoAnimate(bool _shouldAutoAnimate)
+    {
+        shouldAutoAnimate = _shouldAutoAnimate;
+    }
+    public void ManuallySetAnimator(int _animationCode)
+    {
+        animator.SetInteger("MovementStatus", _animationCode);
     }
 }

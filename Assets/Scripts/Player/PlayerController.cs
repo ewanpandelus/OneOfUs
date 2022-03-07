@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     private PlayerAnimator playerAnim;
     private void Awake()
     {
-        evaluateEnvironment = GetComponent<EvaluateEnvironment>();
-        playerAnim = GetComponent<PlayerAnimator>();
+        evaluateEnvironment = new EvaluateEnvironment(transform);
+        playerAnim = new PlayerAnimator(GetComponent<Animator>());
     }
 
     void Update()
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
         if (dialogueUI.GetShowingText()) return;
         EvaluateInput();
         playerAnim.UpdateMovement(movement);
+        playerAnim.UpdateAnimation();
         transform.position += movement * Time.deltaTime;
     }
     private void EvaluateInput()
@@ -38,5 +39,9 @@ public class PlayerController : MonoBehaviour
                 if(!dialogueUI.GetShowingText()) closestNPC.RunDialogue();
             }
         }
+    }
+    public PlayerAnimator GetPlayerAnimator()
+    {
+        return playerAnim;
     }
 }

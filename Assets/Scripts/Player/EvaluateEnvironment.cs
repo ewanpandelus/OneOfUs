@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EvaluateEnvironment : MonoBehaviour
+public class EvaluateEnvironment
 {
     [SerializeField] float interactionRadius = 0.0f;
-    
+    private Transform transform;
+
+    public EvaluateEnvironment(Transform _transform)
+    {
+        transform = _transform;
+    }
     
 
     public NPC ClosestNPC()
