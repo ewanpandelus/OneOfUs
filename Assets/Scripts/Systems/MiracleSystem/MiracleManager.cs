@@ -16,7 +16,8 @@ public class MiracleManager : MonoBehaviour
  
     void Start()
     {
-        miracleEffects = new MiracleEffects(player.GetPlayerAnimator(), fireEffectPrefab, player);
+        miracleEffects = GetComponent<MiracleEffects>();
+        miracleEffects.SetupMiracleEffects(player.GetPlayerAnimator(), fireEffectPrefab, player);
         StartCoroutine(miracleEffects.FireEffect());
     }
 }

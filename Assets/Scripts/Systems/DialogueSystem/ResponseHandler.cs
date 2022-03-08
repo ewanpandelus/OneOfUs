@@ -78,6 +78,7 @@ public class ResponseHandler : MonoBehaviour
             Destroy(response);
         }
         repsonseBox.gameObject.SetActive(false);
+        dialogueButtonNav.NullButtons();
     }
    
 }

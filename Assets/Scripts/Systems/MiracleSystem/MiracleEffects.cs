@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiracleEffects 
+public class MiracleEffects  :MonoBehaviour
 {
     private PlayerAnimator playerAnimator;
     private PlayerController playerController;
     private GameObject fireEffectPrefab;
-    private float rotateCount = 128f;
+    private float rotateCount = 100f;
     private float waitTime = 0.5f;
-    public MiracleEffects(PlayerAnimator _playerAnimator, GameObject _fireEffectPrefab,PlayerController _playerController)
+    public  void SetupMiracleEffects(PlayerAnimator _playerAnimator, GameObject _fireEffectPrefab,PlayerController _playerController)
     {
         playerAnimator = _playerAnimator;
         fireEffectPrefab = _fireEffectPrefab;
@@ -36,7 +36,20 @@ public class MiracleEffects
             playerAnimator.ManuallySetAnimator(i % 4);
         }
         playerAnimator.SetShouldAutoAnimate(true);
+        StartCoroutine(FireEffect2());
         yield return new WaitForSeconds(5f);
         GameObject.Destroy(fireObj);
+    }
+    public IEnumerator FireEffect2()
+    {
+        playerAnimator.SetShouldAutoAnimate(false);
+
+        for (int i = 0; i <= 20; i++)
+        {
+            yield return new WaitForSeconds(waitTime);
+            if (waitTime < 0.2f) { waitTime += 0.008f; }
+            playerAnimator.ManuallySetAnimator(i % 4);
+        }
+        playerAnimator.SetShouldAutoAnimate(true);
     }
 }

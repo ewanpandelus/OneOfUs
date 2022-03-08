@@ -20,6 +20,10 @@ MonoBehaviour:
   dialogue:
   - Hey Ewan!
   response:
-  - Yello
+  - 'Hey
+
+    Hey
+
+    Hey'
   - 'Hello '
   - Goodbye
