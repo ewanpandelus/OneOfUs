@@ -8,8 +8,10 @@ public class NPC : MonoBehaviour
     [SerializeField] private DialogueTreeObject dialogueTreeObject;
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private GameObject indoctrinationPrefab;
+    [SerializeField] private string name;
     private float influenceLevel = 50;
     private PlayerStats player;
+    private bool currentlyTalking = false;
     public float GetInfluenceLevel() => influenceLevel;
     public void Awake()
     {
@@ -33,6 +35,9 @@ public class NPC : MonoBehaviour
     public void RunDialogue()
     {
         StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC   
+        dialogueTreeObject.SetOriginalInfluenceChance(player.GetInfluence());
+        player.UpdateInfluenceChanceBar(player.GetInfluence());
+        currentlyTalking = true;
 
     }
     public IEnumerator RunThroughDialogueTree()
@@ -51,7 +56,7 @@ public class NPC : MonoBehaviour
             dialogueUI.ShowDialogue(dialogueTreeObject.GetCurrentNode().GetDialogueObject());
             yield return new WaitUntil(() => responseHandler.GetResponseChosen() == true);
         }
-        while (dialogueTreeObject.GetCurrentNode() != null);
+        while (dialogueTreeObject.GetCurrentNode() != null&&currentlyTalking);
     }
     public void EvaluatePersausionChance()
     {
@@ -66,6 +71,7 @@ public class NPC : MonoBehaviour
         {
             influenceLevel = Mathf.Clamp(influenceLevel -  dialogueTreeObject.GetNPCInfluenceChange(), 0,100);
         }
+        currentlyTalking = false;
         player.CalculateInfluence();
     }
     public void MakeDecision(int _direction)

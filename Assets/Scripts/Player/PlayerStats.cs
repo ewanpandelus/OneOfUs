@@ -41,4 +41,8 @@ public class PlayerStats : MonoBehaviour
     {
         statsUI.UpdateInfluenceChanceText(Mathf.RoundToInt(_influenceChance));
     }
+    public float GetInfluence()
+    {
+        return averageInfluence;
+    }
 }

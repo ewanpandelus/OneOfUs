@@ -9,8 +9,8 @@ public class TextEffects : MonoBehaviour
     private float _waitTime = 0;
     private List<Punctation> punctations = new List<Punctation>()
     {
-        new Punctation(new HashSet<char>(){'.','!','?'}, 0.6f),
-        new Punctation(new HashSet<char>(){',',':',';'}, 0.3f),
+        new Punctation(new HashSet<char>(){'.','!','?'}, 0.5f),
+        new Punctation(new HashSet<char>(){',',':',';'}, 0.25f),
     };
     private void Awake()
     {
