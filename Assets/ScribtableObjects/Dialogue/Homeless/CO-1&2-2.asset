@@ -10,21 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: Node
+  m_Name: CO-1&2-2
   m_EditorClassIdentifier: 
-  id: 1
-  leftChild: {fileID: 11400000, guid: a7325608729493846bc36abdd947556b, type: 2}
-  middleChild: {fileID: 11400000, guid: bc31039a91b36414b9a5ba581fdcf068, type: 2}
-  rightChild: {fileID: 11400000, guid: f3c2778f032847c419aefee0d00c1bc8, type: 2}
-  chanceEffect: 0
+  id: 6
+  leftChild: {fileID: 0}
+  middleChild: {fileID: 0}
+  rightChild: {fileID: 0}
+  chanceEffect: 5
   dialogue:
-  - 'Hey!
-
-    Hello!
-
-    How are ya?'
-  - What's your name?
+  - Yeah? Well, I haven't slept in a warm bed in months.
   response:
-  - Ewan
-  - 'Stuart '
-  - Duncan
+  - Let me help you. I can find you shelter.
