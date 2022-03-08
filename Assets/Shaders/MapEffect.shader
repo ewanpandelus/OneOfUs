@@ -58,13 +58,16 @@ Shader "Unlit/MapEffect"
                 o.uv = v.uv;
                 return o;
             }
-
+       
             float4 frag(Interpolators i) : SV_Target
             {
+                float4 texColor;
                 fixed4 col = tex2D(_MainTex, i.uv);
-                return col;
+                float average = (col.x + col.y + col.z) / 3.0;
 
-            
+                // Check if it's closer to white or black
+                texColor = float4(average, average, average, 1);
+                return texColor*float4(0.74, 0.72549, 0.55, 1);
             }
             ENDCG
         }
