@@ -16,7 +16,7 @@ MonoBehaviour:
   leftChild: {fileID: 11400000, guid: efd3b52e0cbb5a34baf6827169dc5f73, type: 2}
   middleChild: {fileID: 11400000, guid: efd3b52e0cbb5a34baf6827169dc5f73, type: 2}
   rightChild: {fileID: 0}
-  chanceEffect: 1
+  chanceEffect: 8
   dialogue:
   - Why would you care?
   response:

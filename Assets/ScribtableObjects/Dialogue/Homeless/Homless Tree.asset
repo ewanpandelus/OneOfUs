@@ -17,7 +17,5 @@ MonoBehaviour:
   dialogueTree:
   - {fileID: 11400000, guid: 11fca985830c8c84dba4dcf799ef688c, type: 2}
   - {fileID: 11400000, guid: dc63d45ef555ba2448f9ffa40fc28391, type: 2}
-  - {fileID: 11400000, guid: c5012916f4bc58649a8d5ce9403c74cb, type: 2}
-  - {fileID: 11400000, guid: 53890d510f1acff4da06ca7ff5d0b04b, type: 2}
   - {fileID: 11400000, guid: efd3b52e0cbb5a34baf6827169dc5f73, type: 2}
   - {fileID: 11400000, guid: d38690fbe515d3349812b70f60c4d0db, type: 2}
