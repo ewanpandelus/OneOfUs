@@ -36,7 +36,7 @@ public class NoteManager : MonoBehaviour
     public IEnumerator PlayRhythm()
     {
         List<(NoteType, float)> notes = new List<(NoteType, float)>();
-        notes = LevelCreator(10, 0.4f, 0.6f);
+        notes = LevelCreator(10, 0.5f, 0.9f);
         foreach((NoteType, float) note in notes)
         {
             yield return new WaitForSeconds(note.Item2);
@@ -75,9 +75,9 @@ public class NoteManager : MonoBehaviour
     {
         noteProperties = new List<NoteProperties>() 
          {  new NoteProperties(NoteType.Down, downNote, KeyCode.DownArrow,downButton.transform.position.x, 0 ),
-            new NoteProperties(NoteType.Left, leftNote, KeyCode.LeftArrow,leftButton.transform.position.x, 270 ),
-            new NoteProperties(NoteType.Right, rightNote, KeyCode.RightArrow ,rightButton.transform.position.x, 90 ),
-            new NoteProperties(NoteType.Up, upNote, KeyCode.UpArrow,upButton.transform.position.x, 180 )
+            new NoteProperties(NoteType.Left, leftNote, KeyCode.LeftArrow,leftButton.transform.position.x, 0 ),
+            new NoteProperties(NoteType.Right, rightNote, KeyCode.RightArrow ,rightButton.transform.position.x, 0 ),
+            new NoteProperties(NoteType.Up, upNote, KeyCode.UpArrow,upButton.transform.position.x, 0 )
          };
     
         startY = (2000 / 2);//Just over half screen size

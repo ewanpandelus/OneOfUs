@@ -1623,10 +1623,10 @@ MonoBehaviour:
   rightButton: {fileID: 1315371011}
   upButton: {fileID: 205180784}
   downButton: {fileID: 449916897}
-  leftNote: {r: 0.5568628, g: 0, b: 0.6431373, a: 1}
-  rightNote: {r: 0.27450982, g: 0.25882354, b: 1, a: 1}
-  upNote: {r: 0, g: 0.8000001, b: 0.23137257, a: 1}
-  downNote: {r: 0.95294124, g: 0, b: 0.23137257, a: 1}
+  leftNote: {r: 1, g: 1, b: 1, a: 0.7529412}
+  rightNote: {r: 1, g: 1, b: 1, a: 0.7529412}
+  upNote: {r: 1, g: 1, b: 1, a: 0.7529412}
+  downNote: {r: 1, g: 1, b: 1, a: 0.7529412}
 --- !u!4 &2080080624
 Transform:
   m_ObjectHideFlags: 0
