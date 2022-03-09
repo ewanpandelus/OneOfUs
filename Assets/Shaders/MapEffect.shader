@@ -3,23 +3,29 @@ Shader "Unlit/MapEffect"
     Properties
     {
 
-        [HDR] _ColourA("Colour A", Color) = (0,1,0,1)
-        _MainTex("MainTex", 2D) = "white" {}
+        [HDR] _Colour("Colour", Color) = (0,1,0,1)
+          _MainTex("Color (RGB) Alpha (A)", 2D) = "white"
         
 
     }
         SubShader
         {
-            Tags { "RenderType" = "Opaque"}
+    
+            Tags {"Queue" = "Transparent" "RenderType" = "Transparent" }
             LOD 100
+
+            
+
 
             Pass
             {
                 ZWrite Off
+                Blend SrcAlpha OneMinusSrcAlpha
                 Cull Off
                 CGPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag
+              
             //#pragma surface surf Standard fullforwardshadows vertex:vert
 
             #define TAU 6.283185
@@ -29,7 +35,7 @@ Shader "Unlit/MapEffect"
  
             float4 _MainTex_ST;
             sampler2D _MainTex;
-
+            float4 _Colour;
           
 
 
@@ -63,11 +69,10 @@ Shader "Unlit/MapEffect"
             {
                 float4 texColor;
                 fixed4 col = tex2D(_MainTex, i.uv);
+          
                 float average = (col.x + col.y + col.z) / 3.0;
-
-                // Check if it's closer to white or black
                 texColor = float4(average, average, average, 1);
-                return texColor*float4(0.74, 0.72549, 0.55, 1);
+                return texColor*_Colour;
             }
             ENDCG
         }
