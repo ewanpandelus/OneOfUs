@@ -86,10 +86,10 @@ public class RhythmManager : MonoBehaviour
     private void InitialiseNoteProperties()
     {
         noteProperties = new List<NoteProperties>() 
-         {  new NoteProperties(NoteType.Down, downNote, KeyCode.DownArrow,downButton.transform.position.x, 0 , downMat),
-            new NoteProperties(NoteType.Left, leftNote, KeyCode.LeftArrow,leftButton.transform.position.x, 0 , leftMat),
-            new NoteProperties(NoteType.Right, rightNote, KeyCode.RightArrow ,rightButton.transform.position.x, 0 , rightMat),
-            new NoteProperties(NoteType.Up, upNote, KeyCode.UpArrow,upButton.transform.position.x, 0 ,upMat )
+         {  new NoteProperties(NoteType.Down, downNote, KeyCode.DownArrow,downButton.GetComponent<RectTransform>().anchoredPosition.x, 0 , downMat),
+            new NoteProperties(NoteType.Left, leftNote, KeyCode.LeftArrow,leftButton.GetComponent<RectTransform>().anchoredPosition.x, 0 , leftMat),
+            new NoteProperties(NoteType.Right, rightNote, KeyCode.RightArrow ,rightButton.GetComponent<RectTransform>().anchoredPosition.x, 0 , rightMat),
+            new NoteProperties(NoteType.Up, upNote, KeyCode.UpArrow,upButton.GetComponent<RectTransform>().anchoredPosition.x, 0 ,upMat )
          };
 
         startY = (Screen.height / 2) + 10;//Just over half screen size
@@ -109,7 +109,7 @@ public class RhythmManager : MonoBehaviour
             noteType = _noteType;
             color = _color;
             key = _key;
-            xPos = _xPos - Screen.width / 2;
+            xPos = _xPos;//- Screen.width / 2;
             zRot = _zRot;
             mat = _mat;
         }

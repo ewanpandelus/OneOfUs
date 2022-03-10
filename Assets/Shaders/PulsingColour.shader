@@ -69,7 +69,7 @@
                  fixed4 col = tex2D(_MainTex, i.uv);
                  col *= _ColourA;
           
-                 float flashEffect = cos(_Time.y * 5) * 0.7;
+                 float flashEffect = cos(_Time.y * 5) * 0.5;
 
                  return float4(col*(flashEffect+0.8));
 
