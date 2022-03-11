@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class RhythmManager : MonoBehaviour
     [SerializeField] Material leftMat, rightMat, upMat, downMat;
     [SerializeField] float minSeperationTime, maxSeperationTime;
     [SerializeField] int noteCount;
-    private GameObject stage;
+    [SerializeField] private GameObject stage;
     private float startY = 0;
     private List<NoteProperties> noteProperties;
     private NoteManager noteManager;
@@ -29,18 +30,15 @@ public class RhythmManager : MonoBehaviour
     }
     private void Start()
     {
+        noteManager = GetComponent<NoteManager>();
         InitialiseNoteProperties();
         StartCoroutine(PlayRhythm());
-        noteManager = GetComponent<NoteManager>();
-        stage = GameObject.FindGameObjectWithTag("Stage");
-
-
-
     }
     public IEnumerator PlayRhythm()
     {
         List<(NoteType, float)> notes = new List<(NoteType, float)>();
         notes = LevelCreator(noteCount, minSeperationTime, maxSeperationTime);
+        noteManager.SetTotalNoteCount(noteCount);
         foreach((NoteType, float) note in notes)
         {
             yield return new WaitForSeconds(note.Item2);
@@ -56,7 +54,7 @@ public class RhythmManager : MonoBehaviour
         _note.transform.position = new Vector3(noteInfo.xPos, startY, 0);
         _note.transform.SetParent(stage.transform, false);
         _note.GetComponent<Image>().color = noteInfo.color;
-        _note.transform.SetAsLastSibling();
+        _note.transform.SetAsFirstSibling();
         _note.gameObject.GetComponent<Image>().material = noteInfo.mat;
         _note.SetKey(noteInfo.key);
         _note.SetNoteManager(noteManager);

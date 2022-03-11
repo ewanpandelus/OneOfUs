@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NoteManager : MonoBehaviour
 {
-    Queue<Note> noteQueue = new Queue<Note>();
     [SerializeField] float fallSpeed;
+    [SerializeField] GameObject buttonBurst;
+    [SerializeField] Color leftColour, rightColour, upColour, downColour;
+    [SerializeField] TMP_Text percentageText;
+    Queue<Note> noteQueue = new Queue<Note>();
+    private int totalHitCount = 0;
+    private int totalNoteCount = 0;
     void Update()
     {
         MoveNotes();
@@ -23,38 +29,41 @@ public class NoteManager : MonoBehaviour
         {
             if(releventKey == KeyCode.DownArrow)
             {
-                closestNote.SetAlreadyExited(true);
-                Destroy(noteQueue.Dequeue().gameObject);
+                RemoveNote(closestNote, downColour);
             }
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             if (releventKey == KeyCode.UpArrow)
             {
-                closestNote.SetAlreadyExited(true);
-                Destroy(noteQueue.Dequeue().gameObject);
-
+                RemoveNote(closestNote, upColour);
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             if (releventKey == KeyCode.LeftArrow)
             {
-                closestNote.SetAlreadyExited(true);
-                Destroy(noteQueue.Dequeue().gameObject);
-
+                RemoveNote(closestNote, leftColour);
             }
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             if (releventKey == KeyCode.RightArrow)
             {
-                closestNote.SetAlreadyExited(true);
-                Destroy(noteQueue.Dequeue().gameObject);
-
+                RemoveNote(closestNote ,rightColour);
             }
         }
-
+    }
+    private void RemoveNote(Note _closestNote, Color _colour)
+    {
+        var tmp = Instantiate(buttonBurst, transform);
+        tmp.transform.position = _closestNote.transform.position;
+        tmp.GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor",_colour);
+        Destroy(tmp, 1f);
+        _closestNote.SetAlreadyExited(true);    
+        Destroy(noteQueue.Dequeue().gameObject);
+        UpdatePercentageText(true);
+    
     }
     private void MoveNotes()
     {
@@ -70,7 +79,22 @@ public class NoteManager : MonoBehaviour
     public void DequeueNote()
     {
         noteQueue.Dequeue();
+        UpdatePercentageText(false);
+    }
+ 
+    public void UpdatePercentageText(bool _hit)
+    {
+        if (_hit) 
+        {
+            totalHitCount++;
+        }
+        percentageText.text = totalHitCount.ToString() + "/" + totalNoteCount;
 
+    }
+    public void SetTotalNoteCount(int _noteCount)
+    {
+        totalNoteCount = _noteCount;
+        UpdatePercentageText(false);
     }
    
 }

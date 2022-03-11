@@ -2426,6 +2426,14 @@ PrefabInstance:
       propertyPath: dialogueTreeObject
       value: 
       objectReference: {fileID: 11400000, guid: 597e6af3909149747bafe00e4947ac01, type: 2}
+    - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: dialogueTrees.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: dialogueTrees.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 597e6af3909149747bafe00e4947ac01, type: 2}
     - target: {fileID: 4813121354312520837, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -27541,6 +27549,14 @@ PrefabInstance:
       propertyPath: responseHandler
       value: 
       objectReference: {fileID: 1058706763}
+    - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: dialogueTrees.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: dialogueTrees.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ea623db1257b9234bb2019cd1ebc2036, type: 2}
     - target: {fileID: 4813121354312520837, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_RootOrder
       value: 3

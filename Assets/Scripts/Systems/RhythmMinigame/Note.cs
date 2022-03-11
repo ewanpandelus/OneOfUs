@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Note : MonoBehaviour
 {
-    [SerializeField] private float fallSpeed = 200f;
+    [SerializeField] GameObject buttonBurst;
     private bool canBePressed;
     private KeyCode key;
     private NoteManager noteManager;
     private bool alreadyExited = false;
+
  
-    void Update()
-    {
-        transform.position -= (Vector3.up * Time.deltaTime*fallSpeed);
-    }
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         canBePressed = true;
@@ -30,6 +28,7 @@ public class Note : MonoBehaviour
         alreadyExited = true;
 
     }
+
     public void SetKey(KeyCode _key) => key = _key;
 
     public void SetNoteManager(NoteManager _noteManager) => noteManager = _noteManager;
