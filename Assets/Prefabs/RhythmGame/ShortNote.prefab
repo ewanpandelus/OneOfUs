@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 788252487669590305}
   - component: {fileID: 788252487669590304}
   - component: {fileID: 788252487669590307}
-  - component: {fileID: 5456716788127603195}
   - component: {fileID: 3289623676313613265}
+  - component: {fileID: 5428574730935627247}
   m_Layer: 5
-  m_Name: Note
+  m_Name: ShortNote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,20 +104,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 99.36859, y: 100.851456}
   m_EdgeRadius: 0
---- !u!114 &5456716788127603195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788252487669590333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5e25f0e7aaafdc4887f01d621e39b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallSpeed: 2.5
-  buttonBurst: {fileID: 2452912259312066229, guid: 2a53222c6749a714f903b749d8ef18d8, type: 3}
 --- !u!50 &3289623676313613265
 Rigidbody2D:
   serializedVersion: 4
@@ -139,3 +125,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5428574730935627247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788252487669590333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d978248ecb28f5947b2ab6a0dba17a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

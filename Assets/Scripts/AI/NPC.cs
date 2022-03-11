@@ -26,14 +26,13 @@ public class NPC : MonoBehaviour
         if (dialogueTrees[currentConversation])
         {
             dialogueTree = dialogueTrees[currentConversation];
+            dialogueTree.Reset();
             allNodes = dialogueTree.GetAllNodes();
         }
-
         foreach (var _node in allNodes)
         {
             _node.GetDialogueObject().SetAssociatedNPC(this);
         }
-        dialogueTrees[currentConversation].Reset();
     }
     public void RunDialogue()
     {
@@ -47,8 +46,7 @@ public class NPC : MonoBehaviour
     {
         if (dialogueTree.GetCurrentNode() == null|| dialogueTree.GetCurrentNode().AllChildrenNull()) 
         {
-            dialogueTrees[currentConversation].Reset();
-
+            dialogueTree.Reset(); //Possibly add catch phrase here
             yield return null; 
         }
         do
@@ -80,6 +78,10 @@ public class NPC : MonoBehaviour
     public void MakeDecision(int _direction)
     {
         dialogueTree.Traverse(_direction);
+    }
+    public void IncrementConversation()
+    {
+        currentConversation++;
     }
  
 }

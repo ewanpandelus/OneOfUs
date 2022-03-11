@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 public class RhythmManager : MonoBehaviour
 {
-    [SerializeField] GameObject noteObj;
+    [SerializeField] GameObject shortNote, longNote;
     [SerializeField] GameObject leftButton, rightButton, upButton, downButton;
-    [SerializeField] Color leftNote, rightNote, upNote, downNote;
     [SerializeField] Material leftMat, rightMat, upMat, downMat;
+    [SerializeField] Color leftColour, rightColour, upColour, downColour;
     [SerializeField] float minSeperationTime, maxSeperationTime;
     [SerializeField] int noteCount;
     [SerializeField] private GameObject stage;
@@ -49,19 +49,27 @@ public class RhythmManager : MonoBehaviour
     }
     private void SetupNote(NoteProperties noteInfo)
     {
-        Note _note = Instantiate(noteObj).GetComponent<Note>();
+        BaseNote _note = Instantiate(SpawnNoteWithPercentageWeight(0,1)).GetComponent<BaseNote>();
         _note.transform.eulerAngles = new Vector3(0, 0, noteInfo.zRot);
         _note.transform.position = new Vector3(noteInfo.xPos, startY, 0);
         _note.transform.SetParent(stage.transform, false);
         _note.GetComponent<Image>().color = noteInfo.color;
         _note.transform.SetAsFirstSibling();
-        _note.gameObject.GetComponent<Image>().material = noteInfo.mat;
-        _note.SetKey(noteInfo.key);
+        _note.gameObject.GetComponent<Image>().material = noteInfo.noteMaterial;
+        _note.SetKeys(noteInfo.keys.Item1, noteInfo.keys.Item2);
+        _note.SetColour(noteInfo.color);
         _note.SetNoteManager(noteManager);
         noteManager.EnqueueNote(_note);
-
     }
-  
+    GameObject SpawnNoteWithPercentageWeight(int _note1Weight, int _note2Weight)
+    {
+        int randomNum = UnityEngine.Random.Range(0, 10);
+        if (randomNum < 7)
+        {
+            return shortNote;
+        }
+        return longNote;
+    }
     private List<(NoteType, float)> LevelCreator(int noteCount, float minWait, float maxWait)
     {
         List<(NoteType, float)> notes = new List<(NoteType, float)>();
@@ -84,10 +92,17 @@ public class RhythmManager : MonoBehaviour
     private void InitialiseNoteProperties()
     {
         noteProperties = new List<NoteProperties>() 
-         {  new NoteProperties(NoteType.Down, downNote, KeyCode.DownArrow,downButton.GetComponent<RectTransform>().anchoredPosition.x, 0 , downMat),
-            new NoteProperties(NoteType.Left, leftNote, KeyCode.LeftArrow,leftButton.GetComponent<RectTransform>().anchoredPosition.x, 0 , leftMat),
-            new NoteProperties(NoteType.Right, rightNote, KeyCode.RightArrow ,rightButton.GetComponent<RectTransform>().anchoredPosition.x, 0 , rightMat),
-            new NoteProperties(NoteType.Up, upNote, KeyCode.UpArrow,upButton.GetComponent<RectTransform>().anchoredPosition.x, 0 ,upMat )
+         {  new NoteProperties(NoteType.Down, downMat, downColour, (KeyCode.DownArrow, KeyCode.S),
+            downButton.GetComponent<RectTransform>().anchoredPosition.x, 0),
+
+            new NoteProperties(NoteType.Left, leftMat, leftColour, (KeyCode.LeftArrow, KeyCode.A)
+            ,leftButton.GetComponent<RectTransform>().anchoredPosition.x, 0),
+
+            new NoteProperties(NoteType.Right, rightMat, rightColour, (KeyCode.RightArrow, KeyCode.D)
+            ,rightButton.GetComponent<RectTransform>().anchoredPosition.x, 0),
+
+            new NoteProperties(NoteType.Up, upMat, upColour, (KeyCode.UpArrow, KeyCode.W)
+            ,upButton.GetComponent<RectTransform>().anchoredPosition.x, 0)
          };
 
         startY = (Screen.height / 2) + 10;//Just over half screen size
@@ -95,21 +110,25 @@ public class RhythmManager : MonoBehaviour
 
     public readonly struct NoteProperties
     {
-        public readonly NoteType noteType;
         public readonly Color color;
-        public readonly KeyCode key;
+        public readonly Material noteMaterial;
+        public readonly NoteType noteType;
+        public readonly (KeyCode,KeyCode) keys;
         public readonly float xPos;
         public readonly float zRot;
-        public readonly Material mat;
+    
+ 
 
-        public NoteProperties(NoteType _noteType , Color _color, KeyCode _key, float _xPos, float _zRot, Material _mat)
+        public NoteProperties(NoteType _noteType, Material _noteMaterial, Color _color ,(KeyCode, KeyCode) _keys, float _xPos, float _zRot)
         {
-            noteType = _noteType;
             color = _color;
-            key = _key;
+            noteMaterial = _noteMaterial;
+            noteType = _noteType;
+            keys = _keys;
             xPos = _xPos;//- Screen.width / 2;
             zRot = _zRot;
-            mat = _mat;
+    
+        
         }
     }
 }

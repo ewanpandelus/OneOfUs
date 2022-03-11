@@ -6,10 +6,10 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     [SerializeField] float fallSpeed;
-    [SerializeField] GameObject buttonBurst;
-    [SerializeField] Color leftColour, rightColour, upColour, downColour;
+    [SerializeField] GameObject instantBurst, longBurst;
+    [SerializeField] GameObject leftButton, rightButton, upButton, downButton;
     [SerializeField] TMP_Text percentageText;
-    Queue<Note> noteQueue = new Queue<Note>();
+    Queue<BaseNote> noteQueue = new Queue<BaseNote>();
     private int totalHitCount = 0;
     private int totalNoteCount = 0;
     void Update()
@@ -19,60 +19,45 @@ public class NoteManager : MonoBehaviour
         {
             return;
         }
-        Note closestNote = noteQueue.Peek();
-        KeyCode releventKey = closestNote.GetKey();
-        if (!closestNote.GetCanBePressed())
-        {
-            return;
-        }
-        if(Input.GetKeyDown(KeyCode.DownArrow)|| Input.GetKeyDown(KeyCode.S))
-        {
-            if(releventKey == KeyCode.DownArrow)
-            {
-                RemoveNote(closestNote, downColour);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-        {
-            if (releventKey == KeyCode.UpArrow)
-            {
-                RemoveNote(closestNote, upColour);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-        {
-            if (releventKey == KeyCode.LeftArrow)
-            {
-                RemoveNote(closestNote, leftColour);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            if (releventKey == KeyCode.RightArrow)
-            {
-                RemoveNote(closestNote ,rightColour);
-            }
-        }
     }
-    private void RemoveNote(Note _closestNote, Color _colour)
+    public void RemoveNote(BaseNote _closestNote, Color _colour, KeyCode _associatedKey, bool _pop)
     {
-        var tmp = Instantiate(buttonBurst, transform);
-        tmp.transform.position = _closestNote.transform.position;
-        tmp.GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor",_colour);
-        Destroy(tmp, 1f);
+        if (_pop)
+        {
+            SetupParticles(instantBurst, _colour, _associatedKey);
+        }
         _closestNote.SetAlreadyExited(true);    
         Destroy(noteQueue.Dequeue().gameObject);
         UpdatePercentageText(true);
-    
+    }
+    public ParticleSystem LongBurst(Color _colour, KeyCode _associatedKey)
+    {
+        var tmp = SetupParticles(longBurst, _colour, _associatedKey);
+        return tmp.GetComponent<ParticleSystem>();
+    }
+    GameObject SetupParticles(GameObject particlePrefab, Color _colour, KeyCode _associatedKey)
+    {
+        var tmp = Instantiate(particlePrefab, transform);
+        tmp.transform.position = DecideParticlePosition(_associatedKey);
+        tmp.GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", _colour);
+        Destroy(tmp, 1f);
+        return tmp;
+    }
+    private Vector3 DecideParticlePosition(KeyCode _key)
+    {
+        if (_key == KeyCode.LeftArrow) return leftButton.transform.position;
+        if (_key == KeyCode.RightArrow) return rightButton.transform.position;
+        if (_key == KeyCode.UpArrow) return upButton.transform.position;
+        return downButton.transform.position;
     }
     private void MoveNotes()
     {
-        foreach (Note note in noteQueue)
+        foreach (BaseNote note in noteQueue)
         {
             note.gameObject.transform.position -= (Vector3.up * Time.deltaTime * fallSpeed);
         }
     }
-    public void EnqueueNote(Note _note)
+    public void EnqueueNote(BaseNote _note)
     {
         noteQueue.Enqueue(_note);
     }
