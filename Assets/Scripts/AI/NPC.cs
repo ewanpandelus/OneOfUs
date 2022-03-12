@@ -47,6 +47,7 @@ public class NPC : MonoBehaviour
         if (dialogueTree.GetCurrentNode() == null|| dialogueTree.GetCurrentNode().AllChildrenNull()) 
         {
             dialogueTree.Reset(); //Possibly add catch phrase here
+      
             yield return null; 
         }
         do
@@ -66,7 +67,6 @@ public class NPC : MonoBehaviour
         {
             influenceLevel = Mathf.Clamp(influenceLevel + dialogueTree.GetNPCInfluenceChange(), 0, 100);
             Instantiate(indoctrinationPrefab, gameObject.transform.position+new Vector3(0,-0.25f,0), gameObject.transform.rotation);
-           
         }
         else
         {
@@ -74,14 +74,16 @@ public class NPC : MonoBehaviour
         }
         currentlyTalking = false;
         player.CalculateInfluence();
+        dialogueTree.IncrementConversationAffectedNPC();
     }
-    public void MakeDecision(int _direction)
+    public void MakeDecision(int _direction) => dialogueTree.Traverse(_direction);
+    public void IncrementConversation()     
     {
-        dialogueTree.Traverse(_direction);
-    }
-    public void IncrementConversation()
-    {
+        if (currentConversation == dialogueTrees.Count) { return; }
         currentConversation++;
+        PopulateDialogueNodes();
     }
+    public string GetName() => name;
+    
  
 }

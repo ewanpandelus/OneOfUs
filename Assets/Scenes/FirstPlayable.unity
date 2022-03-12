@@ -27539,7 +27539,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: name
-      value: OOO
+      value: Test
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueUI
@@ -27551,12 +27551,12 @@ PrefabInstance:
       objectReference: {fileID: 1058706763}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueTrees.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueTrees.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: ea623db1257b9234bb2019cd1ebc2036, type: 2}
+      objectReference: {fileID: 11400000, guid: 02faaae97103b024795c4c56d8723b47, type: 2}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueTrees.Array.data[1]
       value: 
@@ -27611,7 +27611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520839, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
