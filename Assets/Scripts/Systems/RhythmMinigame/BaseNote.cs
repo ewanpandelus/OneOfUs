@@ -43,7 +43,7 @@ public abstract class BaseNote : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(key1) || Input.GetKeyDown(key2))
+        if (Input.GetKeyDown(key1) || Input.GetKeyDown(key2) ||Input.GetKeyUp(key1)||Input.GetKeyUp(key2))
         {
             noteManager.RemoveNote(this, colour ,key1, true);
         }

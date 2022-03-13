@@ -546,6 +546,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 91ddb754ffa0ca74ca995de1e0a0abd7, type: 2}
     - target: {fileID: 2080080623, guid: 9ef38e8623641574ba5e9fe6934f846d, type: 3}
+      propertyPath: noteCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080080623, guid: 9ef38e8623641574ba5e9fe6934f846d, type: 3}
       propertyPath: shortNote
       value: 
       objectReference: {fileID: 788252487669590333, guid: 1edacd6a3d821d5498bba55bc9d75f10, type: 3}
@@ -611,11 +615,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2080080623, guid: 9ef38e8623641574ba5e9fe6934f846d, type: 3}
       propertyPath: maxSeperationTime
-      value: 1.2
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 2080080623, guid: 9ef38e8623641574ba5e9fe6934f846d, type: 3}
       propertyPath: minSeperationTime
-      value: 0.8
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2080080625, guid: 9ef38e8623641574ba5e9fe6934f846d, type: 3}
       propertyPath: upButton
