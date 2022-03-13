@@ -9,9 +9,16 @@ public abstract class BaseNote : MonoBehaviour
     protected NoteManager noteManager;
     protected bool alreadyExited = false;
     protected Color colour;
+    protected Transform _transform;
+    [SerializeField] protected float fallSpeed;
+    private void Awake()
+    {
+        _transform = transform;
+    }
     private void Update()
     {
         HandleHits();
+        _transform.position -= (Time.deltaTime * fallSpeed* Vector3.up);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

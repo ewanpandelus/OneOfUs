@@ -7,13 +7,9 @@ public class LongNote : BaseNote
     private float _elapsedTime = 0f;
     ParticleSystem particleSystem;
     bool assignedParticleSystem = false;
-    Transform _transform;
     Vector3 reduceY = new Vector3(0, -0.01f, 0);
 
-    private void Start()
-    {
-        _transform = transform;
-    }
+  
     protected override void HandleHits()
     {
         if (!canBePressed)
