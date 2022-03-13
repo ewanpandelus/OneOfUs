@@ -19,14 +19,14 @@ public class NoteManager : MonoBehaviour
         {
             return;
         }
+        SetButtonPressUI();
+    }
+    private void SetButtonPressUI()
+    {
         leftButtonPress.SetActive(CheckKeysPressed(KeyCode.LeftArrow, KeyCode.A));
         rightButtonPress.SetActive(CheckKeysPressed(KeyCode.RightArrow, KeyCode.D));
         upButtonPress.SetActive(CheckKeysPressed(KeyCode.UpArrow, KeyCode.W));
         downButtonPress.SetActive(CheckKeysPressed(KeyCode.DownArrow, KeyCode.S));
-    }
-    private void SetButtonPressUI()
-    {
-
     }
     public void RemoveNote(BaseNote _closestNote, Color _colour, KeyCode _associatedKey, bool _pop)
     {
