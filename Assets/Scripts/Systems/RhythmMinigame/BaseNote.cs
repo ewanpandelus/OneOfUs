@@ -11,6 +11,7 @@ public abstract class BaseNote : MonoBehaviour
     protected Color colour;
     protected Transform _transform;
     [SerializeField] protected float fallSpeed;
+    protected bool shouldShrink;
     private void Awake()
     {
         _transform = transform;
@@ -19,6 +20,7 @@ public abstract class BaseNote : MonoBehaviour
     {
         HandleHits();
         _transform.position -= (Time.deltaTime * fallSpeed* Vector3.up);
+       
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,19 +28,27 @@ public abstract class BaseNote : MonoBehaviour
         {
             canBePressed = true;
         }
-     
     }
     private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Button"&&!alreadyExited)
+        {
+            RemoveNote();
+        }
+    }
+
+
+    protected virtual void RemoveNote()
     {
         canBePressed = false;
         if (!alreadyExited)
         {
+            alreadyExited = true;
             noteManager.DequeueNote();
             Destroy(gameObject);
         }
-        alreadyExited = true;
+      
     }
-
     public void SetKeys(KeyCode _key1, KeyCode _key2)
     {
         key1 = _key1;

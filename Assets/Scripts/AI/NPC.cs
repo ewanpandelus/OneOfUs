@@ -79,7 +79,7 @@ public class NPC : MonoBehaviour
     public void MakeDecision(int _direction) => dialogueTree.Traverse(_direction);
     public void IncrementConversation()     
     {
-        if (currentConversation == dialogueTrees.Count) { return; }
+        if (currentConversation == dialogueTrees.Count-1) { return; }
         currentConversation++;
         PopulateDialogueNodes();
     }
