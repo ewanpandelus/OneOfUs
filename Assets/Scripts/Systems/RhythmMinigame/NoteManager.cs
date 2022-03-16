@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using DG.Tweening;
 public class NoteManager : MonoBehaviour
 {
     [SerializeField] GameObject instantBurst, longBurst;
     [SerializeField] GameObject leftButton, rightButton, upButton, downButton;
     [SerializeField] GameObject leftButtonPress, rightButtonPress, upButtonPress, downButtonPress;
-    [SerializeField] TMP_Text percentageText;
+    [SerializeField] TMP_Text percentageText, feedbackText;
     Queue<BaseNote> noteQueue = new Queue<BaseNote>();
     private int totalHitCount = 0;
     private int totalNoteCount = 0;
- 
+    bool canTween = true;
+  
     void Update()
     {
         if (noteQueue.Count == 0)
@@ -58,7 +59,17 @@ public class NoteManager : MonoBehaviour
         if (_key == KeyCode.UpArrow) return upButton.transform.position;
         return downButton.transform.position;
     }
-    
+
+    IEnumerator ScaleText(TMP_Text _text, Color _colour)
+    {
+        yield return new WaitUntil(()=>canTween);
+        canTween = false;
+        var textObjTransform = _text.gameObject.transform;
+        textObjTransform.localScale = Vector3.zero;
+        _text.DOColor(_colour, 0.25f);
+        textObjTransform.DOScale(1f, 0.25f).SetEase(Ease.InOutElastic).OnComplete(() =>
+        _text.DOColor(new Color(0, 0, 0, 0), 0.2f)).OnComplete(()=>canTween = true);
+    }
     public void EnqueueNote(BaseNote _note)
     {
         noteQueue.Enqueue(_note);
@@ -76,7 +87,16 @@ public class NoteManager : MonoBehaviour
             totalHitCount++;
         }
         percentageText.text = totalHitCount.ToString() + "/" + totalNoteCount;
-
+    }
+    public void UpdateFeedbackText(bool _hit, Color _colour)
+    {
+        StartCoroutine(ScaleText(feedbackText, _colour));
+        if (_hit)
+        {
+            feedbackText.text = "+1";
+            return;
+        }
+        feedbackText.text = "Ouch!";
     }
     public void SetTotalNoteCount(int _noteCount)
     {

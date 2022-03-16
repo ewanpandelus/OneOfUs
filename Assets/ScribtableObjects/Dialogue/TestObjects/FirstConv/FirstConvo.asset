@@ -18,6 +18,7 @@ MonoBehaviour:
   rightChild: {fileID: 0}
   chanceEffect: 0
   dialogue:
-  - I am just a test...
+  - My conversation will remain this way until you talk to the red blob on the right
+    -> :)
   - 
   response: []

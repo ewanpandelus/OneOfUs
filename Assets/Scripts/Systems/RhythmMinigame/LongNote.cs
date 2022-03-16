@@ -38,6 +38,7 @@ public class LongNote : BaseNote
             if (_elapsedTime > (initialYScale /(fallSpeed*2.4f))) //need to make formula based on speed + ySize
             {
                 noteManager.RemoveNote(this, colour, key1, false);
+                noteManager.UpdateFeedbackText(true, colour);
                 canBePressed = false;
                 alreadyExited = true;
             }

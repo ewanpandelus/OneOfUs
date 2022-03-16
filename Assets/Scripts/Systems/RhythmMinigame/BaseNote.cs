@@ -34,6 +34,7 @@ public abstract class BaseNote : MonoBehaviour
         if (collision.tag == "Button"&&!alreadyExited)
         {
             RemoveNote();
+            noteManager.UpdateFeedbackText(false, colour);
         }
     }
 
@@ -63,6 +64,7 @@ public abstract class BaseNote : MonoBehaviour
         if (Input.GetKeyDown(key1) || Input.GetKeyDown(key2) ||Input.GetKeyUp(key1)||Input.GetKeyUp(key2))
         {
             noteManager.RemoveNote(this, colour ,key1, true);
+            noteManager.UpdateFeedbackText(true, colour);
         }
     }
 
