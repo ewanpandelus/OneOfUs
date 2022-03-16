@@ -35,7 +35,7 @@ public class LongNote : BaseNote
                 particleSystem = noteManager.LongBurst(colour, key1);
                 assignedParticleSystem = true;
             }
-            if (_elapsedTime > (initialYScale /(fallSpeed*2.4f))) //need to make formula based on speed + ySize
+            if (_elapsedTime > (initialYScale /(fallSpeed*2.7f))) //need to make formula based on speed + ySize
             {
                 noteManager.RemoveNote(this, colour, key1, false);
                 noteManager.UpdateFeedbackText(true, colour);

@@ -12,13 +12,13 @@ public class RhythmManager : MonoBehaviour
     [SerializeField] GameObject leftButton, rightButton, upButton, downButton;
     [SerializeField] Material leftMat, rightMat, upMat, downMat;
     [SerializeField] Color leftColour, rightColour, upColour, downColour;
-    [SerializeField] float minSeperationTime, maxSeperationTime;
     [SerializeField] int noteCount;
     [SerializeField] private GameObject stage;
+    [SerializeField] private MiracleManager miracleManager;
     private float startY = 0;
     private List<NoteProperties> noteProperties;
     private NoteManager noteManager;
-   
+    
        
     
     public enum NoteType
@@ -28,13 +28,13 @@ public class RhythmManager : MonoBehaviour
         Down,
         Up
     }
-    private void Start()
+    private void Awake()
     {
         noteManager = GetComponent<NoteManager>();
         InitialiseNoteProperties();
-        StartCoroutine(PlayRhythm());
+   
     }
-    public IEnumerator PlayRhythm()
+    public IEnumerator PlayRhythm(float minSeperationTime, float maxSeperationTime)
     {
         List<(NoteType, float)> notes = new List<(NoteType, float)>();
         notes = LevelCreator(noteCount, minSeperationTime, maxSeperationTime);
@@ -44,8 +44,14 @@ public class RhythmManager : MonoBehaviour
             yield return new WaitForSeconds(note.Item2);
             NoteProperties noteInfo = noteProperties.Find(x => x.noteType == note.Item1);
             SetupNote(noteInfo);
-      
         }
+        yield return new WaitUntil(() => noteManager.CheckNoNotesLeft());
+        yield return new WaitForSeconds(1f);
+        miracleManager.SetAchievedMiracle(EvaluateResult());
+    }
+    private bool EvaluateResult()
+    {
+        return (((float)noteManager.GetTotalHitCount() / (float)noteCount) >= 0.5f);
     }
     private void SetupNote(NoteProperties noteInfo)
     {
@@ -127,8 +133,6 @@ public class RhythmManager : MonoBehaviour
             keys = _keys;
             xPos = _xPos;//- Screen.width / 2;
             zRot = _zRot;
-    
-        
         }
     }
 }

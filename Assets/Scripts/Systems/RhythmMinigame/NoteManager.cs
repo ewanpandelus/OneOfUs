@@ -9,11 +9,13 @@ public class NoteManager : MonoBehaviour
     [SerializeField] GameObject leftButton, rightButton, upButton, downButton;
     [SerializeField] GameObject leftButtonPress, rightButtonPress, upButtonPress, downButtonPress;
     [SerializeField] TMP_Text percentageText, feedbackText;
+
+
     Queue<BaseNote> noteQueue = new Queue<BaseNote>();
     private int totalHitCount = 0;
     private int totalNoteCount = 0;
     bool canTween = true;
-  
+    
     void Update()
     {
         if (noteQueue.Count == 0)
@@ -106,5 +108,14 @@ public class NoteManager : MonoBehaviour
     public bool CheckKeysPressed(KeyCode key1, KeyCode key2)
     {
         return (Input.GetKeyDown(key1) || Input.GetKeyDown(key2) || Input.GetKey(key1) || Input.GetKey(key2));
+    }
+        
+    public bool CheckNoNotesLeft()
+    {
+        return noteQueue.Count == 0;
+    }
+    public int GetTotalHitCount()
+    {
+        return totalHitCount;
     }
 }
