@@ -7,6 +7,7 @@ public class MapUI : MonoBehaviour
     bool showing = false;
     [SerializeField] GameObject map;
     [SerializeField] MapPan mapCam;
+    [SerializeField] UIManager UIManager;
     private Vector3 mapCentredPos;
     private float mapOriginalOrthoSize;
 
@@ -25,5 +26,9 @@ public class MapUI : MonoBehaviour
             map.SetActive(showing);
             mapCam.SetPosition(mapCentredPos, mapOriginalOrthoSize);
         }
+    }
+    public bool GetMapOpen()
+    {
+        return map.activeInHierarchy;
     }
 }

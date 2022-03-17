@@ -54,4 +54,9 @@ public class MiracleManager : MonoBehaviour
         gameOver = true;
         achievedMiracle = _achievedMiracale;
     }
+
+    public bool GetRhythmGameActive()
+    {
+        return rhythmManager.transform.parent.gameObject.activeInHierarchy;
+    }
 }

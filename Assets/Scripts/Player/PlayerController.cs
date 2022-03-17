@@ -3,8 +3,8 @@ using System.Linq;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] DialogueUI dialogueUI;
     [SerializeField] private float movementSpeed;
+    [SerializeField] UIManager UIManager;
     Vector3 movement = new Vector3 (0,0,0);
     private EvaluateEnvironment evaluateEnvironment;
     private PlayerAnimator playerAnim;
@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (dialogueUI.GetShowingText()) return;
+        if (UIManager.GetStaticUIShowing()) return;
         EvaluateInput();
         playerAnim.UpdateMovement(movement);
         playerAnim.UpdateAnimation();
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
             NPC closestNPC = evaluateEnvironment.ClosestNPC();
             if (closestNPC != null)
             {
-                if(!dialogueUI.GetShowingText()) closestNPC.RunDialogue();
+                if(!UIManager.GetStaticUIShowing()) closestNPC.RunDialogue();
             }
         }
     }

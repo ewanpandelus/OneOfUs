@@ -6,7 +6,9 @@ using DG.Tweening;
 public class UIAnimations : MonoBehaviour
 {
     [SerializeField] private  RectTransform miracleToolBar;
+    [SerializeField] UIManager UIManager;
     private Vector3 toolBarStartPos, toolBarEndPos;
+    private bool toolBarShowing = false;
 
     private void Start()
     {
@@ -19,12 +21,14 @@ public class UIAnimations : MonoBehaviour
 
     void Update()
     {
-        if (CheckToolBarShow(Input.mousePosition) && miracleToolBar.transform.position != toolBarEndPos)
+        toolBarShowing = true;
+        if (CheckToolBarShow(Input.mousePosition) && miracleToolBar.transform.position != toolBarEndPos&&!UIManager.GetStaticUIShowing())
         {
             TweenPosition(toolBarEndPos, 0.75f, miracleToolBar);
         }
         else if (miracleToolBar.transform.position!= toolBarStartPos)
         {
+            toolBarShowing = false;
             TweenPosition(toolBarStartPos, 0.75f, miracleToolBar);
         }
     }
@@ -38,5 +42,9 @@ public class UIAnimations : MonoBehaviour
     private void TweenPosition(Vector3 _endPos, float _duration, RectTransform _transform)
     {
         _transform.DOLocalMove(_endPos, _duration);
+    }
+    public bool GetToolBarShowing()
+    {
+        return toolBarShowing;
     }
 }

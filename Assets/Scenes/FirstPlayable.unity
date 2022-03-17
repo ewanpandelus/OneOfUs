@@ -1274,6 +1274,7 @@ GameObject:
   - component: {fileID: 791546481}
   - component: {fileID: 791546480}
   - component: {fileID: 791546482}
+  - component: {fileID: 791546483}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -1295,6 +1296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: {fileID: 1493317869}
   mapCam: {fileID: 974572033}
+  UIManager: {fileID: 791546483}
 --- !u!4 &791546481
 Transform:
   m_ObjectHideFlags: 0
@@ -1322,6 +1324,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miracleToolBar: {fileID: 1417430261}
+  UIManager: {fileID: 791546483}
+--- !u!114 &791546483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791546479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d91149ef8225d4f956b0a94de9f159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 1058706761}
+  mapUI: {fileID: 791546480}
+  miracleManager: {fileID: 667299554}
+  UIAnimations: {fileID: 791546482}
 --- !u!1 &793663869
 GameObject:
   m_ObjectHideFlags: 0
@@ -27962,6 +27981,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 290665229}
     - target: {fileID: 2415264195927105396, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
+      propertyPath: UIManager
+      value: 
+      objectReference: {fileID: 791546483}
+    - target: {fileID: 2415264195927105396, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
       propertyPath: dialogueUI
       value: 
       objectReference: {fileID: 1058706761}
@@ -28164,7 +28187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3622945612320500519, guid: 068c91c8e58452848aa78a5c319ffde0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3622945612320500520, guid: 068c91c8e58452848aa78a5c319ffde0, type: 3}
       propertyPath: m_Pivot.x

@@ -11,6 +11,7 @@ public class DialogueUI : MonoBehaviour
     private TextEffects textEffects;
     private GameObject dialogueBox;
     private bool showingText = false;
+   
     public bool GetShowingText() => showingText;
 
     private void Awake()
@@ -75,6 +76,9 @@ public class DialogueUI : MonoBehaviour
         || Input.GetKeyDown(KeyCode.Space) 
         || Input.GetKeyDown(KeyCode.Return);
     }
-
+    public bool GetDialogueBoxShowing()
+    {
+        return dialogueBox.activeInHierarchy;
+    }
 }
 
