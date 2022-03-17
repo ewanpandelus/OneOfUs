@@ -5,10 +5,12 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     [SerializeField] private ResponseHandler responseHandler;
-    [SerializeField] private DialogueTreeObject dialogueTreeObject;
+    [SerializeField] private List<DialogueTreeObject> dialogueTrees = new List<DialogueTreeObject>();
+    DialogueTreeObject dialogueTree;
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private GameObject indoctrinationPrefab;
     [SerializeField] private string name;
+    private int currentConversation = 0;
     private float influenceLevel = 50;
     private PlayerStats player;
     private bool currentlyTalking = false;
@@ -21,65 +23,67 @@ public class NPC : MonoBehaviour
     private void PopulateDialogueNodes()
     {
         List<DialogueNode> allNodes = new List<DialogueNode>();
-        if (dialogueTreeObject)
+        if (dialogueTrees[currentConversation])
         {
-            allNodes = dialogueTreeObject.GetAllNodes();
+            dialogueTree = dialogueTrees[currentConversation];
+            dialogueTree.Reset();
+            allNodes = dialogueTree.GetAllNodes();
         }
-
         foreach (var _node in allNodes)
         {
             _node.GetDialogueObject().SetAssociatedNPC(this);
         }
-        dialogueTreeObject.Reset();
     }
     public void RunDialogue()
     {
         StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC   
-        dialogueTreeObject.SetOriginalInfluenceChance(player.GetInfluence());
+        dialogueTree.SetOriginalInfluenceChance(player.GetInfluence());
         player.UpdateInfluenceChanceBar(player.GetInfluence());
         currentlyTalking = true;
 
     }
     public IEnumerator RunThroughDialogueTree()
     {
-        if (dialogueTreeObject.GetCurrentNode() == null||dialogueTreeObject.GetCurrentNode().AllChildrenNull()) 
-        { 
-            dialogueTreeObject.Reset();
-
+        if (dialogueTree.GetCurrentNode() == null|| dialogueTree.GetCurrentNode().AllChildrenNull()) 
+        {
+            dialogueTree.Reset(); //Possibly add catch phrase here
+      
             yield return null; 
         }
         do
         {
-            dialogueTreeObject.UpdateTotalInfluenceChance(dialogueTreeObject.GetCurrentNode().GetChanceEffect());
-            player.UpdateInfluenceChanceBar(dialogueTreeObject.GetCurrentInfluenceChance());
+            dialogueTree.UpdateTotalInfluenceChance(dialogueTree.GetCurrentNode().GetChanceEffect());
+            player.UpdateInfluenceChanceBar(dialogueTree.GetCurrentInfluenceChance());
             responseHandler.SetResponseChosen(false);
-            dialogueUI.ShowDialogue(dialogueTreeObject.GetCurrentNode().GetDialogueObject());
+            dialogueUI.ShowDialogue(dialogueTree.GetCurrentNode().GetDialogueObject());
             yield return new WaitUntil(() => responseHandler.GetResponseChosen() == true);
         }
-        while (dialogueTreeObject.GetCurrentNode() != null&&currentlyTalking);
+        while (dialogueTree.GetCurrentNode() != null&&currentlyTalking);
     }
     public void EvaluatePersausionChance()
     {
-        int rand = Random.Range(0, 100);
-        if (rand <= dialogueTreeObject.GetCurrentInfluenceChance())
+        int rand = Random.Range(0, 101);
+        if (rand <= dialogueTree.GetCurrentInfluenceChance())
         {
-            influenceLevel = Mathf.Clamp(influenceLevel + dialogueTreeObject.GetNPCInfluenceChange(), 0, 100);
+            influenceLevel = Mathf.Clamp(influenceLevel + dialogueTree.GetNPCInfluenceChange(), 0, 100);
             Instantiate(indoctrinationPrefab, gameObject.transform.position+new Vector3(0,-0.25f,0), gameObject.transform.rotation);
-           
         }
         else
         {
-            influenceLevel = Mathf.Clamp(influenceLevel -  dialogueTreeObject.GetNPCInfluenceChange(), 0,100);
+            influenceLevel = Mathf.Clamp(influenceLevel - dialogueTree.GetNPCInfluenceChange(), 0,100);
         }
         currentlyTalking = false;
         player.CalculateInfluence();
+        dialogueTree.IncrementConversationAffectedNPC();
     }
-    public void MakeDecision(int _direction)
+    public void MakeDecision(int _direction) => dialogueTree.Traverse(_direction);
+    public void IncrementConversation()     
     {
-        dialogueTreeObject.Traverse(_direction);
+        if (currentConversation == dialogueTrees.Count-1) { return; }
+        currentConversation++;
+        PopulateDialogueNodes();
     }
-    public void UpdateInfluencelevel(float _influenceChange)
-    {
-        influenceLevel = Mathf.Clamp(influenceLevel + _influenceChange, 0, 100);
-    }
+    public string GetName() => name;
+    
+ 
 }

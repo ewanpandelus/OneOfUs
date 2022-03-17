@@ -6,7 +6,6 @@ public class RotateCultLogo : MonoBehaviour
 {
     [SerializeField] Material _mat;
     [SerializeField] float rotationDuration = 0.2f;
-    private float intervalMultiplier = 1f;
     [SerializeField] private bool updatesShader;
     private float elapsedTime = 0;
 

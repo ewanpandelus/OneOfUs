@@ -1,103 +1,121 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
+using DG.Tweening;
 public class NoteManager : MonoBehaviour
 {
-    [SerializeField] GameObject noteObj;
+    [SerializeField] GameObject instantBurst, longBurst;
     [SerializeField] GameObject leftButton, rightButton, upButton, downButton;
-    [SerializeField] Color leftNote, rightNote, upNote, downNote;
-    private GameObject stage;
-    private float startY = 0;
-    private List<NoteProperties> noteProperties;
+    [SerializeField] GameObject leftButtonPress, rightButtonPress, upButtonPress, downButtonPress;
+    [SerializeField] TMP_Text percentageText, feedbackText;
+
+
+    Queue<BaseNote> noteQueue = new Queue<BaseNote>();
+    private int totalHitCount = 0;
+    private int totalNoteCount = 0;
+    bool canTween = true;
     
-   
-       
-    
-    public enum NoteType
+    void Update()
     {
-        Left,
-        Right,
-        Down,
-        Up
-    }
-    private void Start()
-    {
-        InitialiseNoteProperties();
-        StartCoroutine(PlayRhythm());
-        stage = GameObject.FindGameObjectWithTag("Stage");
-
-
-
-    }
-    public IEnumerator PlayRhythm()
-    {
-        List<(NoteType, float)> notes = new List<(NoteType, float)>();
-        notes = LevelCreator(10, 0.5f, 0.9f);
-        foreach((NoteType, float) note in notes)
+        if (noteQueue.Count == 0)
         {
-            yield return new WaitForSeconds(note.Item2);
-            NoteProperties noteInfo = noteProperties.Find(x => x.noteType == note.Item1);
-            Note _note = Instantiate(noteObj).GetComponent<Note>();
-            _note.transform.eulerAngles = new Vector3(0, 0, noteInfo.zRot);
-            _note.transform.position = new Vector3(noteInfo.xPos, startY, 0);
-            _note.transform.SetParent(stage.transform, false);
-            _note.GetComponent<Image>().color = noteInfo.color;
-            _note.transform.SetAsLastSibling();
-
+            return;
         }
+        SetButtonPressUI();
     }
-    
-  
-    private List<(NoteType, float)> LevelCreator(int noteCount, float minWait, float maxWait)
+    private void SetButtonPressUI()
     {
-        List<(NoteType, float)> notes = new List<(NoteType, float)>();
-        float waitTime = 0;
-        for(int i = 0; i < noteCount; i++)
+        leftButtonPress.SetActive(CheckKeysPressed(KeyCode.LeftArrow, KeyCode.A));
+        rightButtonPress.SetActive(CheckKeysPressed(KeyCode.RightArrow, KeyCode.D));
+        upButtonPress.SetActive(CheckKeysPressed(KeyCode.UpArrow, KeyCode.W));
+        downButtonPress.SetActive(CheckKeysPressed(KeyCode.DownArrow, KeyCode.S));
+    }
+    public void RemoveNote(BaseNote _closestNote, Color _colour, KeyCode _associatedKey, bool _pop)
+    {
+        if (_pop)
         {
-            waitTime = UnityEngine.Random.Range(minWait, maxWait);
-            notes.Add((GenerateRandomNote(), waitTime));
+            SetupParticles(instantBurst, _colour, _associatedKey);
         }
-        return notes;
+        _closestNote.SetAlreadyExited(true);    
+        Destroy(noteQueue.Dequeue().gameObject);
+        UpdatePercentageText(true);
     }
-    private NoteType GenerateRandomNote()
+    public ParticleSystem LongBurst(Color _colour, KeyCode _associatedKey)
     {
-        int noteNum = UnityEngine.Random.Range(0, 4);
-        if (noteNum == 0) return NoteType.Left;
-        if (noteNum == 1) return NoteType.Right;
-        if (noteNum == 2) return NoteType.Down;
-        return NoteType.Up;
+        var tmp = SetupParticles(longBurst, _colour, _associatedKey);
+        return tmp.GetComponent<ParticleSystem>();
     }
-    private void InitialiseNoteProperties()
+    GameObject SetupParticles(GameObject particlePrefab, Color _colour, KeyCode _associatedKey)
     {
-        noteProperties = new List<NoteProperties>() 
-         {  new NoteProperties(NoteType.Down, downNote, KeyCode.DownArrow,downButton.transform.position.x, 0 ),
-            new NoteProperties(NoteType.Left, leftNote, KeyCode.LeftArrow,leftButton.transform.position.x, 0 ),
-            new NoteProperties(NoteType.Right, rightNote, KeyCode.RightArrow ,rightButton.transform.position.x, 0 ),
-            new NoteProperties(NoteType.Up, upNote, KeyCode.UpArrow,upButton.transform.position.x, 0 )
-         };
-    
-        startY = (2000 / 2);//Just over half screen size
+        var tmp = Instantiate(particlePrefab, transform);
+        tmp.transform.position = DecideParticlePosition(_associatedKey);
+        tmp.GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", _colour);
+        Destroy(tmp, 1f);
+        return tmp;
+    }
+    private Vector3 DecideParticlePosition(KeyCode _key)
+    {
+        if (_key == KeyCode.LeftArrow) return leftButton.transform.position;
+        if (_key == KeyCode.RightArrow) return rightButton.transform.position;
+        if (_key == KeyCode.UpArrow) return upButton.transform.position;
+        return downButton.transform.position;
     }
 
-    public readonly struct NoteProperties
+    IEnumerator ScaleText(TMP_Text _text, Color _colour)
     {
-        public readonly NoteType noteType;
-        public readonly Color color;
-        public readonly KeyCode key;
-        public readonly float xPos;
-        public readonly float zRot;
-
-        public NoteProperties(NoteType _noteType , Color _color, KeyCode _key, float _xPos, float _zRot)
+        yield return new WaitUntil(()=>canTween);
+        canTween = false;
+        var textObjTransform = _text.gameObject.transform;
+        textObjTransform.localScale = Vector3.zero;
+        _text.DOColor(_colour, 0.25f);
+        textObjTransform.DOScale(1f, 0.25f).SetEase(Ease.InOutElastic).OnComplete(() =>
+        _text.DOColor(new Color(0, 0, 0, 0), 0.2f)).OnComplete(()=>canTween = true);
+    }
+    public void EnqueueNote(BaseNote _note)
+    {
+        noteQueue.Enqueue(_note);
+    }
+    public void DequeueNote()
+    {
+        noteQueue.Dequeue();
+        UpdatePercentageText(false);
+    }
+ 
+    public void UpdatePercentageText(bool _hit)
+    {
+        if (_hit) 
         {
-            noteType = _noteType;
-            color = _color;//new Color(1-_color.r, 1-_color.g, 1- _color.b,1);
-            key = _key;
-            xPos = _xPos - Screen.width / 2;
-            zRot = _zRot;
+            totalHitCount++;
         }
+        percentageText.text = totalHitCount.ToString() + "/" + totalNoteCount;
+    }
+    public void UpdateFeedbackText(bool _hit, Color _colour)
+    {
+        StartCoroutine(ScaleText(feedbackText, _colour));
+        if (_hit)
+        {
+            feedbackText.text = "+1";
+            return;
+        }
+        feedbackText.text = "Ouch!";
+    }
+    public void SetTotalNoteCount(int _noteCount)
+    {
+        totalNoteCount = _noteCount;
+        UpdatePercentageText(false);
+    }
+    public bool CheckKeysPressed(KeyCode key1, KeyCode key2)
+    {
+        return (Input.GetKeyDown(key1) || Input.GetKeyDown(key2) || Input.GetKey(key1) || Input.GetKey(key2));
+    }
+        
+    public bool CheckNoNotesLeft()
+    {
+        return noteQueue.Count == 0;
+    }
+    public int GetTotalHitCount()
+    {
+        return totalHitCount;
     }
 }

@@ -20,6 +20,7 @@
             #pragma vertex vert
             #pragma fragment frag
             float _Influence;
+        
 
             #include "UnityCG.cginc"
 
@@ -35,7 +36,7 @@
                 float4 vertex : SV_POSITION;
             };
             
-            sampler2D _MainTex;
+
             float _Health;
             float InverseLerp(float a, float b, float v) {
                 return (v - a) / (b - a);

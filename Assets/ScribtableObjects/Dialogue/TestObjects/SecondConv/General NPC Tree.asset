@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: General NPC Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 5
-  originalInfluenceChance: 50
+  AffectedNPCName: 
   dialogueTree:
   - {fileID: 11400000, guid: b4fcb65df917fe04088834398badf6b8, type: 2}
-  - {fileID: 11400000, guid: a7325608729493846bc36abdd947556b, type: 2}
-  - {fileID: 11400000, guid: bc31039a91b36414b9a5ba581fdcf068, type: 2}
-  - {fileID: 11400000, guid: f3c2778f032847c419aefee0d00c1bc8, type: 2}
-  - {fileID: 11400000, guid: 227ea13e33f82f4448cd97f23cb554d9, type: 2}
-  - {fileID: 11400000, guid: eb021bd494ae99f4aa82df94975d4473, type: 2}
-  - {fileID: 11400000, guid: 6f762d1a1b653114d982648adf935499, type: 2}
