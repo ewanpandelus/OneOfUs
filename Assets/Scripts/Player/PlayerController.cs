@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     Vector3 movement = new Vector3 (0,0,0);
     private EvaluateEnvironment evaluateEnvironment;
     private PlayerAnimator playerAnim;
+    private Transform _transform;
     private void Awake()
     {
         evaluateEnvironment = new EvaluateEnvironment(transform);
         playerAnim = new PlayerAnimator(GetComponent<Animator>());
+        _transform = transform;
     }
 
     void Update()
@@ -20,7 +22,7 @@ public class PlayerController : MonoBehaviour
         EvaluateInput();
         playerAnim.UpdateMovement(movement);
         playerAnim.UpdateAnimation();
-        transform.position += movement * Time.deltaTime;
+        _transform.position += movement * Time.deltaTime;
     }
     private void EvaluateInput()
     {
@@ -44,4 +46,5 @@ public class PlayerController : MonoBehaviour
     {
         return playerAnim;
     }
+   
 }

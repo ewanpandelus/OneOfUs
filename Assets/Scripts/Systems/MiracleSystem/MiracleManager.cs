@@ -36,6 +36,7 @@ public class MiracleManager : MonoBehaviour
     {
         mainCanvas.GetComponent<Canvas>().enabled = false;
         rhythmManager.transform.parent.gameObject.SetActive(true);
+        GameManager.instance.SetGameState(GameManager.GameState.Rhythm);
         StartCoroutine(rhythmManager.PlayRhythm(0.8f, 1.4f));
         yield return new WaitUntil(() => gameOver == true);
         if (achievedMiracle)
@@ -50,6 +51,7 @@ public class MiracleManager : MonoBehaviour
         gameOver = false;
         achievedMiracle = false;
         rhythmManager.transform.parent.gameObject.SetActive(false);
+        GameManager.instance.SetGameState(GameManager.GameState.Standard);
         mainCanvas.GetComponent<Canvas>().enabled = true;
     }
 
