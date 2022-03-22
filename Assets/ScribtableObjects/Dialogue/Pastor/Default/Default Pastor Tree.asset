@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
-  m_Name: NPCTreeTest
+  m_Name: Default Pastor Tree
   m_EditorClassIdentifier: 
-  NPCInfluenceChange: 5
+  NPCInfluenceChange: 0
   AffectedNPCName: 
   dialogueTree:
   - {fileID: 11400000, guid: 107fcec5950bbae4a95dfb94412a2483, type: 2}

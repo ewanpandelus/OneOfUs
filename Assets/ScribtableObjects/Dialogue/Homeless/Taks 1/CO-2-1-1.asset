@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: CO-2-1-1
+  m_EditorClassIdentifier: 
+  id: 5
+  leftChild: {fileID: 11400000, guid: b29b31cdeb0c5634893b72cc2c6fb53c, type: 2}
+  middleChild: {fileID: 11400000, guid: b29b31cdeb0c5634893b72cc2c6fb53c, type: 2}
+  rightChild: {fileID: 0}
+  chanceEffect: 15
+  dialogue:
+  - I was only having a laugh...
+  response:
+  - Oh, then... ha, ha.
+  - I see, then the only appropriate response would be a a pleasant physical reaction
+    using audible contractions of ones diaphragm.

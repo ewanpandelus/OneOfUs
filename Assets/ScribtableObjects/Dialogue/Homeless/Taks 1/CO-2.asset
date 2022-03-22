@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: CO-1&2-2
+  m_Name: CO-2
   m_EditorClassIdentifier: 
-  id: 6
-  leftChild: {fileID: 0}
-  middleChild: {fileID: 0}
+  id: 10
+  leftChild: {fileID: 11400000, guid: fd9cccaac7d96a6408af1bca9e0db0a3, type: 2}
+  middleChild: {fileID: 11400000, guid: 6d588fa1fc502c34a8558a4d4fb0d498, type: 2}
   rightChild: {fileID: 0}
-  chanceEffect: 15
+  chanceEffect: 8
   dialogue:
-  - Yeah? Well, I haven't slept in a warm bed in months.
+  - Who the hell is Saviour?
   response:
-  - Let me help you. I can find you shelter.
+  - He is the divine, the light, the way forward my friend.
+  - The Saviour will help in ways you cannot fathom.
+  - Sorry I troubled you. (Walk away.)

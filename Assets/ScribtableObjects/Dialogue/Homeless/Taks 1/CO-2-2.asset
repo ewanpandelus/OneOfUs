@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: CO-1&2-1
+  m_Name: CO-2-2
   m_EditorClassIdentifier: 
-  id: 5
-  leftChild: {fileID: 11400000, guid: d38690fbe515d3349812b70f60c4d0db, type: 2}
+  id: 9
+  leftChild: {fileID: 11400000, guid: 410b7d5b80c488a47888ea6e68845121, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
   chanceEffect: 10
   dialogue:
-  - Yeah, well we don't get very many strange folks around these parts - 'specially
-    ones wearing their mum's nightgown.
-  - Why are you here? Not much to do in Clochard's Hole.
+  - Why don't you do me a "saviour" and clear off!
   response:
-  - I'm here to help.
+  - We often use humour in difficult situations... allow me to help you.

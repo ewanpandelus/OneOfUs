@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: CO-1
+  m_EditorClassIdentifier: 
+  id: 4
+  leftChild: {fileID: 11400000, guid: efd3b52e0cbb5a34baf6827169dc5f73, type: 2}
+  middleChild: {fileID: 11400000, guid: efd3b52e0cbb5a34baf6827169dc5f73, type: 2}
+  rightChild: {fileID: 0}
+  chanceEffect: 8
+  dialogue:
+  - Why would you care?
+  response:
+  - You look like you could use some help?
+  - "That\u2019s an impolite way to welcome a stranger to your town."
+  - Sorry I troubled you. (Walk away.)
