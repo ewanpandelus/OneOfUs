@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private Dictionary<Item, float> inventory = new Dictionary<Item, float>();
+    private Dictionary<BaseItem, int> inventory = new Dictionary<BaseItem, int>();
 }

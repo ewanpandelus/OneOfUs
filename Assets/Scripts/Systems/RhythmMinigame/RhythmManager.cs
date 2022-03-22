@@ -56,7 +56,6 @@ public class RhythmManager : MonoBehaviour
     private void SetupNote(NoteProperties noteInfo)
     {
         BaseNote _note = Instantiate(SpawnNoteWithPercentageWeight(0,1)).GetComponent<BaseNote>();
-        _note.transform.eulerAngles = new Vector3(0, 0, noteInfo.zRot);
         _note.transform.position = new Vector3(noteInfo.xPos, startY, 0);
         _note.transform.SetParent(stage.transform, false);
         _note.GetComponent<Image>().color = noteInfo.color;
@@ -97,18 +96,18 @@ public class RhythmManager : MonoBehaviour
     }
     private void InitialiseNoteProperties()
     {
-        noteProperties = new List<NoteProperties>() 
-         {  new NoteProperties(NoteType.Down, downMat, downColour, (KeyCode.DownArrow, KeyCode.S),
-            downButton.GetComponent<RectTransform>().anchoredPosition.x, 0),
-
-            new NoteProperties(NoteType.Left, leftMat, leftColour, (KeyCode.LeftArrow, KeyCode.A)
+        noteProperties = new List<NoteProperties>()
+         {  new NoteProperties(NoteType.Left, leftMat, leftColour, (KeyCode.LeftArrow, KeyCode.A)
             ,leftButton.GetComponent<RectTransform>().anchoredPosition.x, 0),
 
-            new NoteProperties(NoteType.Right, rightMat, rightColour, (KeyCode.RightArrow, KeyCode.D)
-            ,rightButton.GetComponent<RectTransform>().anchoredPosition.x, 0),
+                 new NoteProperties(NoteType.Up, upMat, upColour, (KeyCode.UpArrow, KeyCode.W)
+            ,upButton.GetComponent<RectTransform>().anchoredPosition.x, 1),
 
-            new NoteProperties(NoteType.Up, upMat, upColour, (KeyCode.UpArrow, KeyCode.W)
-            ,upButton.GetComponent<RectTransform>().anchoredPosition.x, 0)
+            new NoteProperties(NoteType.Down, downMat, downColour, (KeyCode.DownArrow, KeyCode.S),
+            downButton.GetComponent<RectTransform>().anchoredPosition.x, 2),
+
+            new NoteProperties(NoteType.Right, rightMat, rightColour, (KeyCode.RightArrow, KeyCode.D)
+            ,rightButton.GetComponent<RectTransform>().anchoredPosition.x, 3)
          };
 
         startY = (Screen.height / 2) + 10;//Just over half screen size
@@ -121,18 +120,18 @@ public class RhythmManager : MonoBehaviour
         public readonly NoteType noteType;
         public readonly (KeyCode,KeyCode) keys;
         public readonly float xPos;
-        public readonly float zRot;
+        public readonly int posIndex;
     
  
 
-        public NoteProperties(NoteType _noteType, Material _noteMaterial, Color _color ,(KeyCode, KeyCode) _keys, float _xPos, float _zRot)
+        public NoteProperties(NoteType _noteType, Material _noteMaterial, Color _color ,(KeyCode, KeyCode) _keys, float _xPos, int _posIndex)
         {
             color = _color;
             noteMaterial = _noteMaterial;
             noteType = _noteType;
             keys = _keys;
+            posIndex = _posIndex;
             xPos = _xPos;//- Screen.width / 2;
-            zRot = _zRot;
         }
     }
 }

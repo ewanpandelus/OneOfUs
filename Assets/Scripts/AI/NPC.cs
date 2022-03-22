@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
@@ -10,6 +11,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private GameObject indoctrinationPrefab;
     [SerializeField] private string name;
+    [SerializeField] TMP_Text nameText;
     private int currentConversation = 0;
     private float influenceLevel = 50;
     private PlayerStats player;
@@ -40,6 +42,7 @@ public class NPC : MonoBehaviour
         dialogueTree.SetOriginalInfluenceChance(player.GetInfluence());
         player.UpdateInfluenceChanceBar(player.GetInfluence());
         currentlyTalking = true;
+        nameText.text = name;
 
     }
     public IEnumerator RunThroughDialogueTree()
@@ -73,6 +76,7 @@ public class NPC : MonoBehaviour
             influenceLevel = Mathf.Clamp(influenceLevel - dialogueTree.GetNPCInfluenceChange(), 0,100);
         }
         currentlyTalking = false;
+        nameText.text = "";
         player.CalculateInfluence();
         dialogueTree.IncrementConversationAffectedNPC();
     }

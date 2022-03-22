@@ -9,13 +9,18 @@ public class NoteManager : MonoBehaviour
     [SerializeField] GameObject leftButton, rightButton, upButton, downButton;
     [SerializeField] GameObject leftButtonPress, rightButtonPress, upButtonPress, downButtonPress;
     [SerializeField] TMP_Text percentageText, feedbackText;
-
-
     Queue<BaseNote> noteQueue = new Queue<BaseNote>();
+    private List<NotePositions> notePositions;
     private int totalHitCount = 0;
     private int totalNoteCount = 0;
     bool canTween = true;
-    
+    int accumulator = 0;
+
+    private void Start()
+    {
+        PopulatePositions();
+    }
+
     void Update()
     {
         if (noteQueue.Count == 0)
@@ -75,7 +80,12 @@ public class NoteManager : MonoBehaviour
     public void EnqueueNote(BaseNote _note)
     {
         noteQueue.Enqueue(_note);
+        if (_note.EvaluateShouldSwap())
+        {
+           
+        }
     }
+    
     public void DequeueNote()
     {
         noteQueue.Dequeue();
@@ -92,13 +102,37 @@ public class NoteManager : MonoBehaviour
     }
     public void UpdateFeedbackText(bool _hit, Color _colour)
     {
+        
         StartCoroutine(ScaleText(feedbackText, _colour));
+        accumulator = (_hit) ? accumulator + 1 : 0;
         if (_hit)
         {
-            feedbackText.text = "+1";
+            feedbackText.text = "+" + accumulator.ToString();
+            IncreaseFontSizeIfRally(accumulator);
             return;
         }
         feedbackText.text = "Ouch!";
+        feedbackText.fontSize = 60;
+
+     
+    }
+    private void IncreaseFontSizeIfRally(int _acc)
+    {
+        feedbackText.fontSize = 60 + (_acc*1.5f);
+    }
+    private IEnumerator SwapNotePosition(BaseNote _note, int _notePos)
+    {
+        var waitTime = UnityEngine.Random.Range(0.2f, 1f);
+        yield return null;
+    }
+    private void PopulatePositions()
+    {
+        notePositions = new List<NotePositions>()
+         {  new NotePositions(0,leftButton.transform.position.x,new int[] {1}),
+            new NotePositions(1,upButton.transform.position.x, new int[] {0,2}),
+            new NotePositions(2,downButton.transform.position.x,new int[] {1,3}),
+            new NotePositions(3,rightButton.transform.position.x,new int[] {2}),
+         };
     }
     public void SetTotalNoteCount(int _noteCount)
     {
@@ -117,5 +151,18 @@ public class NoteManager : MonoBehaviour
     public int GetTotalHitCount()
     {
         return totalHitCount;
+    }
+    
+    public readonly struct NotePositions
+    {
+        readonly int posIndex;
+        readonly float xPos;
+        readonly int[] potentialSwaps;
+        public NotePositions(int _posIndex, float _xpos, int[] _potentialSwaps)
+        {
+            posIndex = _posIndex;
+            xPos = _xpos;
+            potentialSwaps = _potentialSwaps;
+        }
     }
 }

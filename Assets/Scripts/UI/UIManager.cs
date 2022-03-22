@@ -16,4 +16,8 @@ public class UIManager : MonoBehaviour
    {
         return UIAnimations.GetToolBarShowing();
    }
+   public bool CheckMiracleToolBarAllWayOut()
+    {
+        return UIAnimations.CheckMiracleBarAllWayOut();
+    }
 }   

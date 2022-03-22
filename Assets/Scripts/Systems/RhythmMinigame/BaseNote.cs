@@ -9,9 +9,10 @@ public abstract class BaseNote : MonoBehaviour
     protected NoteManager noteManager;
     protected bool alreadyExited = false;
     protected Color colour;
+    protected int posIndex = 5;
     protected Transform _transform;
     [SerializeField] protected float fallSpeed;
-    protected bool shouldShrink;
+    [SerializeField] protected int swapChance = 50;
     private void Awake()
     {
         _transform = transform;
@@ -29,7 +30,7 @@ public abstract class BaseNote : MonoBehaviour
             canBePressed = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Button"&&!alreadyExited)
         {
@@ -67,12 +68,17 @@ public abstract class BaseNote : MonoBehaviour
             noteManager.UpdateFeedbackText(true, colour);
         }
     }
+    public bool EvaluateShouldSwap()
+    {
+        int randNum = UnityEngine.Random.Range(0, 101);
+        return randNum <= swapChance;
+    }
 
     public void SetNoteManager(NoteManager _noteManager) => noteManager = _noteManager;
-    public KeyCode GetKey() => key1;
-    public bool GetCanBePressed() => canBePressed;
     public void SetAlreadyExited(bool _alreadyExited) => alreadyExited = _alreadyExited;
     public void SetColour(Color _colour) => colour = _colour; 
-
-
+    public void SetPosIndex(int _posIndex)
+    {
+        posIndex = _posIndex;
+    }
 }

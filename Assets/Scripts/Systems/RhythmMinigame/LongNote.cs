@@ -8,7 +8,7 @@ public class LongNote : BaseNote
     private float _elapsedTime = 0f;
     private ParticleSystem particleSystem;
     bool assignedParticleSystem = false;
-    private Vector3 reduceY  = new Vector3(0, -5f, 0);
+    private Vector3 reduceY  = new Vector3(0, -8.5f, 0);
     float initialYScale;
 
     private void Start()
@@ -29,21 +29,33 @@ public class LongNote : BaseNote
             {
                 _transform.localScale += (reduceY * (initialYScale / fallSpeed)) * Time.deltaTime; //need to make formula based on speed + ySize
             }
-         
             if(!assignedParticleSystem)
             {
                 particleSystem = noteManager.LongBurst(colour, key1);
                 assignedParticleSystem = true;
             }
-            if (_elapsedTime > (initialYScale /(fallSpeed*2.7f))) //need to make formula based on speed + ySize
+           
+
+        }
+    }
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Button" && !alreadyExited)
+        {
+            if (_elapsedTime > (initialYScale / (fallSpeed * 2.7f))) //need to make formula based on speed + ySize
             {
                 noteManager.RemoveNote(this, colour, key1, false);
                 noteManager.UpdateFeedbackText(true, colour);
                 canBePressed = false;
                 alreadyExited = true;
             }
-            return;
+            else
+            {
+                RemoveNote();
+                noteManager.UpdateFeedbackText(false, colour);
+            }
+           
         }
     }
- 
+
 }

@@ -51,7 +51,9 @@ Shader "Unlit/CultLogo"
                 // float4 waves = t * (abs(i.normal.y) < 0.99);
                 return wave *= 1 - radialDistance;
                 //return abs(wave);
+
             }
+            
             struct MeshData
             {
                 float4 vertex : POSITION;
@@ -96,8 +98,7 @@ Shader "Unlit/CultLogo"
                 
                 float amount = sin(_Time.y *2) * 0.5 + 0.5;
                 float3 color = saturate(lerp(float3(0, 0, 0), colOutput, _Transparency));
-             
-                return float4(color, 0);
+                return float4(color, 1);
 
                 //return float4(i.normal,0);
                 //return

@@ -42,11 +42,15 @@ public class MiracleManager : MonoBehaviour
         {
             StartCoroutine(miracleEffects.FireEffect());
         }
+        ResetAfterMiracle();
+
+    }
+    private void ResetAfterMiracle()
+    {
         gameOver = false;
         achievedMiracle = false;
         rhythmManager.transform.parent.gameObject.SetActive(false);
         mainCanvas.GetComponent<Canvas>().enabled = true;
-
     }
 
     public void SetAchievedMiracle(bool _achievedMiracale)
