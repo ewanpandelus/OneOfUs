@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Pastor Task 1 P1 Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 5
+  AffectedNPCNames:
+  - Homeless
+  - Pastor
+  - Merchant 01
+  dialogueTree:
+  - {fileID: 11400000, guid: b4fcb65df917fe04088834398badf6b8, type: 2}
+  - {fileID: 11400000, guid: 227ea13e33f82f4448cd97f23cb554d9, type: 2}
+  - {fileID: 11400000, guid: b47e3b21b0f3ece46bcfff630feaffb7, type: 2}
+  - {fileID: 11400000, guid: 849f66ce2a7918842867fcbee97df6e9, type: 2}
+  - {fileID: 11400000, guid: f222d4c0115736c468286ff62961d9f0, type: 2}

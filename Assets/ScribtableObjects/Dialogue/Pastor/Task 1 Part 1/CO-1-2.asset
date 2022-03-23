@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: CO-1-2
+  m_EditorClassIdentifier: 
+  id: 4
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: f222d4c0115736c468286ff62961d9f0, type: 2}
+  middleChild: {fileID: 11400000, guid: f222d4c0115736c468286ff62961d9f0, type: 2}
+  rightChild: {fileID: 0}
+  chanceEffect: 1
+  dialogue:
+  - 'A spare room? '
+  - Well I do, however there is no lighting in the room.
+  - You wouldn't be able to go and get me some candles, would you?
+  - If you do, I'll be able to house the man you spoke of.
+  response:
+  - Alright, I'll find you some candles.
+  - Where would I find candles here?

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Merchant 01 Task 1 P1 Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  AffectedNPCNames: []
+  AffectedNPCNames:
+  - Pastor
+  - Farmer 01
   dialogueTree:
   - {fileID: 11400000, guid: faa9bb220516c5b40aa0ade90aa3b08f, type: 2}
   - {fileID: 11400000, guid: fb2f3c20d5531e245adf819d51fc6db6, type: 2}

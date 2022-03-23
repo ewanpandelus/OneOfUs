@@ -13,16 +13,14 @@ MonoBehaviour:
   m_Name: CO-1-2
   m_EditorClassIdentifier: 
   id: 4
-  correctChoice: 1
-  leftChild: {fileID: 0}
-  middleChild: {fileID: 11400000, guid: f222d4c0115736c468286ff62961d9f0, type: 2}
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: 336192199663a564aa9d05790e641104, type: 2}
+  middleChild: {fileID: 11400000, guid: fac3de21eb3031c44b64a37e24cc5d72, type: 2}
   rightChild: {fileID: 0}
-  chanceEffect: 1
+  chanceEffect: 0
   dialogue:
-  - 'A spare room? '
-  - Well I do, however there is no lighting in the room.
-  - You wouldn't be able to go and get me some candles, would you?
-  - If you do, I'll be able to house the man you spoke of.
+  - I've been too busy tending to the animals that I haven't had a chance to even
+    think about my crops.
   response:
-  - Alright, I'll find you some candles.
-  - Where would I find candles here?
+  - If you want, my friend, I could do the harvesting for you.
+  - If your THAT busy then how about I harvest it myself...

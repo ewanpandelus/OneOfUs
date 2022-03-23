@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: CO-1-2-1
+  m_Name: CO-2
   m_EditorClassIdentifier: 
   id: 7
   correctChoice: 1
-  leftChild: {fileID: 0}
+  leftChild: {fileID: 11400000, guid: 95a006b7fa08dee4e91f2a6f41c85498, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 5
+  chanceEffect: 0
   dialogue:
-  - Farmer Sable was due to deliver me a bag of wheat about two hours ago. Why dont
-    you go to her farm in the North-East and see what the hold up is.
+  - That's a strange thing to say...
   response:
-  - (Walk away.)
+  - Do you know where I could get some wheat from?
+  - Sorry I troubled you. (Walk away.)
