@@ -20,13 +20,13 @@ public class DialogueTreeObject : ScriptableObject
                 npc.IncrementConversation();
 
             }
-
         }
+        AffectedNPCs.Clear();
     }
     public void Initialise()
     {
         correctPathChosen = false;
-        AffectedNPCs.Clear();
+
     }
     public void Reset()
     {
