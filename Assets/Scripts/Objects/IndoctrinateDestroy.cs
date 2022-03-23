@@ -17,7 +17,7 @@ public class IndoctrinateDestroy : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
         ChangeLighting();
-        if (elapsedTime > 6f)
+        if (elapsedTime > 4f)
         {
 
             Destroy(gameObject);
