@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: 2nd Reply
+  m_Name: Default Merchant 01 Convo Start
   m_EditorClassIdentifier: 
-  id: 6
+  id: 1
+  correctChoice: 0
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 5
+  chanceEffect: 0
   dialogue:
-  - I am the middle option
-  response: []
+  - Can't you see that I'm busy?
+  response:
+  - (Walk away.)

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: CO-2-1-2
+  m_Name: CO-1-2-1
   m_EditorClassIdentifier: 
-  id: 8
+  id: 5
   correctChoice: 1
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 15
+  chanceEffect: 1
   dialogue:
-  - You seem like a right bundle of laughs... anyway, if this slaviour character
-    can find me a warm bed then I guess he could be alright.
+  - Hmm, the merchant might have some. He sells all sorts of things, so I would start
+    there.
   response:
-  - You have a deal my friend. I can find you shelter.
+  - Alright, I'll find you some candles.

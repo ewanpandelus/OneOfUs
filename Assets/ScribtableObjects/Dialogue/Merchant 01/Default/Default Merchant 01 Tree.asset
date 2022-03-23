@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: 1st Reply
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Default Merchant 01 Tree
   m_EditorClassIdentifier: 
-  id: 5
-  leftChild: {fileID: 0}
-  middleChild: {fileID: 0}
-  rightChild: {fileID: 0}
-  chanceEffect: 5
-  dialogue:
-  - I am the left option
-  response: []
+  NPCInfluenceChange: 0
+  AffectedNPCNames: []
+  dialogueTree:
+  - {fileID: 11400000, guid: 0fc88962cc750034fb32f80f0c710b3f, type: 2}

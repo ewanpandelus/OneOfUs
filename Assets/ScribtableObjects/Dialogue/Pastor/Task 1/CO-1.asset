@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: 2nd Response
+  m_Name: CO-1
   m_EditorClassIdentifier: 
-  id: 3
-  leftChild: {fileID: 0}
-  middleChild: {fileID: 11400000, guid: eb021bd494ae99f4aa82df94975d4473, type: 2}
+  id: 2
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: b47e3b21b0f3ece46bcfff630feaffb7, type: 2}
+  middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 5
+  chanceEffect: 1
   dialogue:
-  - Hey Stuart!
+  - ...
   response:
-  - Yello
-  - 'Hello '
-  - Goodbye
+  - I'm trying to help Neville to find a bed for the night.

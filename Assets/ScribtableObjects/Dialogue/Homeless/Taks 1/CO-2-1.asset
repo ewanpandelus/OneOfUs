@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
   m_Name: CO-2-1
   m_EditorClassIdentifier: 
-  id: 7
+  id: 6
   correctChoice: 0
   leftChild: {fileID: 11400000, guid: 41da8cd8e37543d44abcbe665612658a, type: 2}
   middleChild: {fileID: 11400000, guid: 410b7d5b80c488a47888ea6e68845121, type: 2}
