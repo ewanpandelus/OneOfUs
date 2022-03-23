@@ -818,7 +818,7 @@ MonoBehaviour:
   m_text: 'Current Influence Chance:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
-  m_sharedMaterial: {fileID: 3495730704136687823, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
+  m_sharedMaterial: {fileID: 3921830206433899193, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_text: 'Influence: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
-  m_sharedMaterial: {fileID: 3495730704136687823, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
+  m_sharedMaterial: {fileID: 3921830206433899193, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4171,7 +4171,7 @@ PrefabInstance:
       objectReference: {fileID: 1058706763}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueTrees.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueTrees.Array.data[1]
@@ -29095,7 +29095,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
-  m_sharedMaterial: {fileID: 3495730704136687823, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
+  m_sharedMaterial: {fileID: 3921830206433899193, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
