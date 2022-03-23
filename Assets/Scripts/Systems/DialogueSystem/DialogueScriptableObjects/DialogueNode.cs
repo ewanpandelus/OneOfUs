@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class DialogueNode : ScriptableObject
 {
     [SerializeField] private int id;
-
+    [SerializeField] private bool correctChoice = false;
    // [SerializeField] private DialogueObject dialogueObject;
     [SerializeField] private DialogueNode leftChild;
     [SerializeField] private DialogueNode middleChild;
@@ -41,6 +41,7 @@ public class DialogueNode : ScriptableObject
     public DialogueNode GetMiddleChild() => middleChild;
     public DialogueNode GetRightChild() => rightChild;
     public float GetChanceEffect() => chanceEffect;
+    public bool GetCorrectChoice() => correctChoice;
 
 
 

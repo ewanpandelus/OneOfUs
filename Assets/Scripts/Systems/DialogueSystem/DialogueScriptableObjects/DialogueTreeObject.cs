@@ -7,16 +7,21 @@ public class DialogueTreeObject : ScriptableObject
 {
     private int currentID = 1;
     private float currentInfluenceChance;
+    private bool correctPathChosen = false;
     [SerializeField] private float NPCInfluenceChange;
     [SerializeField] private string AffectedNPCName;
     private NPC AffectedNPC;
     public void IncrementConversationAffectedNPC()
     {
-        if (AffectedNPC)
+        if (AffectedNPC&&correctPathChosen)
         {
             AffectedNPC.IncrementConversation();
             
         }
+    }
+    public void Initialise()
+    {
+        correctPathChosen = false;
     }
     public void Reset()
     {
@@ -35,6 +40,14 @@ public class DialogueTreeObject : ScriptableObject
         {
             currentID = int.MaxValue;
         }
+    }
+    public void AssessRightPath()
+    {
+        if (GetCurrentNode() != null)
+        {
+            correctPathChosen = GetCurrentNode().GetCorrectChoice();
+        }
+  
     }
     public List<DialogueNode> dialogueTree = new List<DialogueNode>();
     public DialogueNode GetCurrentNode() => dialogueTree.Find(x => x.GetID() == currentID);

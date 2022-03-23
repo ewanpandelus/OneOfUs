@@ -28,6 +28,7 @@ public class NPC : MonoBehaviour
         if (dialogueTrees[currentConversation])
         {
             dialogueTree = dialogueTrees[currentConversation];
+            dialogueTree.Initialise();
             dialogueTree.Reset();
             allNodes = dialogueTree.GetAllNodes();
         }
@@ -80,7 +81,12 @@ public class NPC : MonoBehaviour
         player.CalculateInfluence();
         dialogueTree.IncrementConversationAffectedNPC();
     }
-    public void MakeDecision(int _direction) => dialogueTree.Traverse(_direction);
+    public void MakeDecision(int _direction)
+    {   
+        dialogueTree.Traverse(_direction);
+        dialogueTree.AssessRightPath();
+    }
+
     public void IncrementConversation()     
     {
         if (currentConversation == dialogueTrees.Count-1) { return; }

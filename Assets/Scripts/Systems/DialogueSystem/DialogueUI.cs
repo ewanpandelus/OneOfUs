@@ -42,10 +42,10 @@ public class DialogueUI : MonoBehaviour
             showingText = _on;
         }
     }
-    public void ShowDialogue(DialogueNode _dialogueObject)
+    public void ShowDialogue(DialogueNode _dialogueNode)
     {
         ShowDialogueBox(true);
-        StartCoroutine(RunThroughDialogue(_dialogueObject));
+        StartCoroutine(RunThroughDialogue(_dialogueNode));
     }
     
     public IEnumerator RunThroughDialogue(DialogueNode _dialogueNode) //Shows individual dialogue section for NPC
