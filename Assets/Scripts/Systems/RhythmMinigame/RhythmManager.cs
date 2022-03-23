@@ -9,9 +9,10 @@ using UnityEngine.UI;
 public class RhythmManager : MonoBehaviour
 {
     [SerializeField] GameObject shortNote, longNote;
-    [SerializeField] GameObject leftButton, rightButton, upButton, downButton;
-    [SerializeField] Material leftMat, rightMat, upMat, downMat;
-    [SerializeField] Color leftColour, rightColour, upColour, downColour;
+    [SerializeField] List<GameObject> buttons;// leftButton, rightButton, upButton, downButton;
+    [SerializeField] List<Material> matList = new List<Material>();
+    [SerializeField] List<Color> colours = new List<Color>();
+    [SerializeField] List<AudioSource> sounds;
     [SerializeField] int noteCount;
     [SerializeField] private GameObject stage;
     [SerializeField] private MiracleManager miracleManager;
@@ -31,6 +32,7 @@ public class RhythmManager : MonoBehaviour
     private void Awake()
     {
         noteManager = GetComponent<NoteManager>();
+        noteManager.PopulatePositions(matList);
         InitialiseNoteProperties();
    
     }
@@ -64,6 +66,8 @@ public class RhythmManager : MonoBehaviour
         _note.SetKeys(noteInfo.keys.Item1, noteInfo.keys.Item2);
         _note.SetColour(noteInfo.color);
         _note.SetNoteManager(noteManager);
+        _note.SetPosIndex(noteInfo.posIndex);
+        _note.SetNoteSound(noteInfo.noteSound);
         noteManager.EnqueueNote(_note);
     }
     GameObject SpawnNoteWithPercentageWeight(int _note1Weight, int _note2Weight)
@@ -97,17 +101,17 @@ public class RhythmManager : MonoBehaviour
     private void InitialiseNoteProperties()
     {
         noteProperties = new List<NoteProperties>()
-         {  new NoteProperties(NoteType.Left, leftMat, leftColour, (KeyCode.LeftArrow, KeyCode.A)
-            ,leftButton.GetComponent<RectTransform>().anchoredPosition.x, 0),
+         {  new NoteProperties(NoteType.Left, matList[0], colours[0], (KeyCode.LeftArrow, KeyCode.A)
+            ,buttons[0].GetComponent<RectTransform>().anchoredPosition.x, 0, sounds[0]),
 
-                 new NoteProperties(NoteType.Up, upMat, upColour, (KeyCode.UpArrow, KeyCode.W)
-            ,upButton.GetComponent<RectTransform>().anchoredPosition.x, 1),
+             new NoteProperties(NoteType.Up, matList[1], colours[1], (KeyCode.UpArrow, KeyCode.W)
+            ,buttons[1].GetComponent<RectTransform>().anchoredPosition.x, 1, sounds[1]),
 
-            new NoteProperties(NoteType.Down, downMat, downColour, (KeyCode.DownArrow, KeyCode.S),
-            downButton.GetComponent<RectTransform>().anchoredPosition.x, 2),
+            new NoteProperties(NoteType.Down, matList[2], colours[2], (KeyCode.DownArrow, KeyCode.S),
+           buttons[2].GetComponent<RectTransform>().anchoredPosition.x, 2, sounds[2]),
 
-            new NoteProperties(NoteType.Right, rightMat, rightColour, (KeyCode.RightArrow, KeyCode.D)
-            ,rightButton.GetComponent<RectTransform>().anchoredPosition.x, 3)
+            new NoteProperties(NoteType.Right, matList[3], colours[3], (KeyCode.RightArrow, KeyCode.D)
+           ,buttons[3].GetComponent<RectTransform>().anchoredPosition.x, 3,sounds[3])
          };
 
         startY = (Screen.height / 2) + 10;//Just over half screen size
@@ -115,6 +119,7 @@ public class RhythmManager : MonoBehaviour
 
     public readonly struct NoteProperties
     {
+        public readonly AudioSource noteSound;
         public readonly Color color;
         public readonly Material noteMaterial;
         public readonly NoteType noteType;
@@ -124,14 +129,17 @@ public class RhythmManager : MonoBehaviour
     
  
 
-        public NoteProperties(NoteType _noteType, Material _noteMaterial, Color _color ,(KeyCode, KeyCode) _keys, float _xPos, int _posIndex)
+        public NoteProperties(NoteType _noteType, Material _noteMaterial, Color _color ,
+            (KeyCode, KeyCode) _keys, float _xPos, int _posIndex, AudioSource _noteSound)
         {
             color = _color;
             noteMaterial = _noteMaterial;
+            noteSound = _noteSound;
             noteType = _noteType;
             keys = _keys;
             posIndex = _posIndex;
             xPos = _xPos;//- Screen.width / 2;
+
         }
     }
 }

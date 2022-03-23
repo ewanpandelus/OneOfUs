@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+
+[System.Serializable]
 public class NoteManager : MonoBehaviour
 {
     [SerializeField] GameObject instantBurst, longBurst;
@@ -10,16 +13,13 @@ public class NoteManager : MonoBehaviour
     [SerializeField] GameObject leftButtonPress, rightButtonPress, upButtonPress, downButtonPress;
     [SerializeField] TMP_Text percentageText, feedbackText;
     Queue<BaseNote> noteQueue = new Queue<BaseNote>();
-    private List<NotePositions> notePositions;
+    private List<NotePosition> notePositions;
     private int totalHitCount = 0;
     private int totalNoteCount = 0;
     bool canTween = true;
     int accumulator = 0;
 
-    private void Start()
-    {
-        PopulatePositions();
-    }
+  
 
     void Update()
     {
@@ -82,7 +82,7 @@ public class NoteManager : MonoBehaviour
         noteQueue.Enqueue(_note);
         if (_note.EvaluateShouldSwap())
         {
-           
+            StartCoroutine(SwapNoteAfterWait(_note, _note.GetPosIndex()));
         }
     }
     
@@ -120,18 +120,53 @@ public class NoteManager : MonoBehaviour
     {
         feedbackText.fontSize = 60 + (_acc*1.5f);
     }
-    private IEnumerator SwapNotePosition(BaseNote _note, int _notePos)
+    private IEnumerator SwapNoteAfterWait(BaseNote _note, int _notePos)
     {
-        var waitTime = UnityEngine.Random.Range(0.2f, 1f);
+        var waitTime = UnityEngine.Random.Range(0.8f, 1.8f);
+        yield return new WaitForSeconds(waitTime);
+        StartCoroutine(SwapNotePos(FindPotentialNotePositions(_notePos, _note), _note.transform.position.x, _note));
         yield return null;
     }
-    private void PopulatePositions()
+    private IEnumerator SwapNotePos(float _finishPos, float _startPos, BaseNote _note)
     {
-        notePositions = new List<NotePositions>()
-         {  new NotePositions(0,leftButton.transform.position.x,new int[] {1}),
-            new NotePositions(1,upButton.transform.position.x, new int[] {0,2}),
-            new NotePositions(2,downButton.transform.position.x,new int[] {1,3}),
-            new NotePositions(3,rightButton.transform.position.x,new int[] {2}),
+        float x = 0f;
+        var t = 0f;
+        while (t < 1)
+        {
+            t += Time.deltaTime*3;
+            x = Mathf.Lerp(_startPos, _finishPos, t);
+            _note.gameObject.transform.position = new Vector3(x, _note.transform.position.y, 0);
+            yield return null;
+        }
+        _note.gameObject.GetComponent<Image>().material = _note.GetChangeMat();
+
+    }
+    private float FindPotentialNotePositions(int _pos, BaseNote _note)
+    {
+        int[] potentialPos = notePositions.Find(x => _pos == x.posIndex).potentialSwaps;
+        if(potentialPos.Length == 1)
+        {
+            NotePosition noteAtPosition = notePositions.Find(x => x.posIndex == potentialPos[0]);
+            _note.SetKeys(noteAtPosition.key1, noteAtPosition.key2);
+            _note.SetChangeMat(noteAtPosition.mat);
+            return noteAtPosition.xPos;
+        }
+        else
+        {
+            int rand = UnityEngine.Random.Range(0, 2);
+            NotePosition noteAtPosition = notePositions.Find(x => x.posIndex == potentialPos[rand]);
+            _note.SetKeys(noteAtPosition.key1, noteAtPosition.key2);
+            _note.SetChangeMat(noteAtPosition.mat);
+            return noteAtPosition.xPos;
+        }
+    }
+    public void PopulatePositions(List<Material> _materials)
+    {
+        notePositions = new List<NotePosition>()
+         {  new NotePosition(0,leftButton.transform.position.x,new int[] {1},_materials[0],KeyCode.LeftArrow, KeyCode.A),
+            new NotePosition(1,upButton.transform.position.x, new int[] {0,2},_materials[1],KeyCode.UpArrow, KeyCode.W),
+            new NotePosition(2,downButton.transform.position.x,new int[] {1,3},_materials[2],KeyCode.DownArrow, KeyCode.S),
+            new NotePosition(3,rightButton.transform.position.x,new int[] {2},_materials[3],KeyCode.RightArrow, KeyCode.D),
          };
     }
     public void SetTotalNoteCount(int _noteCount)
@@ -153,16 +188,24 @@ public class NoteManager : MonoBehaviour
         return totalHitCount;
     }
     
-    public readonly struct NotePositions
+    public readonly struct NotePosition
     {
-        readonly int posIndex;
-        readonly float xPos;
-        readonly int[] potentialSwaps;
-        public NotePositions(int _posIndex, float _xpos, int[] _potentialSwaps)
+
+        public readonly Material mat;
+        public readonly KeyCode key1;
+        public readonly KeyCode key2;
+        public readonly int posIndex;
+        public readonly float xPos;
+        public readonly int[] potentialSwaps;
+        public NotePosition(int _posIndex, float _xpos, int[] _potentialSwaps, Material _mat, KeyCode _key1, KeyCode _key2)
         {
+            mat = _mat;
+            key1 = _key1;
+            key2 = _key2;
             posIndex = _posIndex;
             xPos = _xpos;
             potentialSwaps = _potentialSwaps;
         }
+          
     }
 }

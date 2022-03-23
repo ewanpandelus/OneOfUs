@@ -32,9 +32,12 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Standard:
                 PostProcessManager.instance.StandardPostProcess();
+               // SoundManager.instance.MainThemeSounds();
+
                 break;
             case GameState.Rhythm:
                 PostProcessManager.instance.RhythmPostProcess();
+                SoundManager.instance.RhythmGameSounds();
                 break;
 
         }

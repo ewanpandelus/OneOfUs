@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        Play("Calmer");
+        MainThemeSounds();
     }
     public void Play(string name)
     {
@@ -56,6 +56,24 @@ public class SoundManager : MonoBehaviour
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;
         }
+        if (targetVolume == 0)
+        {
+            audioSource.Stop();
+        }
+      
+
         yield break;
+    }
+    public void RhythmGameSounds()
+    {
+        StartCoroutine(StartFade("Calmest", 1f, 0f));
+        Play("Minigame");
+        StartCoroutine(StartFade("Minigame", 5f, 1f));
+    }
+    public void MainThemeSounds()
+    {
+        StartCoroutine(StartFade("Minigame", 1f, 0f));
+        Play("Calmest");
+        StartCoroutine(StartFade("Calmest", 2f, 1f));
     }
 }

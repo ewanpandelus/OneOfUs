@@ -48,6 +48,7 @@ public class LongNote : BaseNote
                 noteManager.UpdateFeedbackText(true, colour);
                 canBePressed = false;
                 alreadyExited = true;
+                noteSound.PlayOneShot(noteSound.clip);
             }
             else
             {

@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Audio;
 public abstract class BaseNote : MonoBehaviour
 {
     protected bool canBePressed;
     protected KeyCode key1, key2;
+    protected AudioSource noteSound;
     protected NoteManager noteManager;
     protected bool alreadyExited = false;
     protected Color colour;
     protected int posIndex = 5;
     protected Transform _transform;
     [SerializeField] protected float fallSpeed;
-    [SerializeField] protected int swapChance = 50;
+    [SerializeField] protected int swapChance = 2;
+    private Material changeMat;
     private void Awake()
     {
         _transform = transform;
@@ -66,6 +68,8 @@ public abstract class BaseNote : MonoBehaviour
         {
             noteManager.RemoveNote(this, colour ,key1, true);
             noteManager.UpdateFeedbackText(true, colour);
+            noteSound.PlayOneShot(noteSound.clip);
+    
         }
     }
     public bool EvaluateShouldSwap()
@@ -77,8 +81,10 @@ public abstract class BaseNote : MonoBehaviour
     public void SetNoteManager(NoteManager _noteManager) => noteManager = _noteManager;
     public void SetAlreadyExited(bool _alreadyExited) => alreadyExited = _alreadyExited;
     public void SetColour(Color _colour) => colour = _colour; 
-    public void SetPosIndex(int _posIndex)
-    {
-        posIndex = _posIndex;
-    }
+    public void SetPosIndex(int _posIndex)=> posIndex = _posIndex;
+    public int GetPosIndex() =>  posIndex;
+    public void SetChangeMat(Material _changeMat) => changeMat = _changeMat;
+    public Material GetChangeMat() => changeMat;
+    public void SetNoteSound(AudioSource _noteSound) => noteSound = _noteSound;
+    
 }
