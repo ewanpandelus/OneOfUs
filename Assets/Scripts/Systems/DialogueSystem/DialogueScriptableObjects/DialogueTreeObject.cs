@@ -1,24 +1,33 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-[CreateAssetMenu(menuName = "Dialogue/ThreeOptions/DialogueTreeObject")]
 
+[CreateAssetMenu(menuName = "Dialogue/ThreeOptions/DialogueTreeObject")]
+[System.Serializable]
 public class DialogueTreeObject : ScriptableObject
 {
     private int currentID = 1;
     private float currentInfluenceChance;
     private bool correctPathChosen = false;
     [SerializeField] private float NPCInfluenceChange;
-    [SerializeField] private List<string> AffectedNPCNames;
     private List<NPC> AffectedNPCs;
+    [SerializeField] private List<AffectedNPCS> triggerableNPCS;
     public void IncrementConversationAffectedNPC()
     {
         if (AffectedNPCs.Count>0 &&correctPathChosen)
         {
+            int i = 0;
             foreach(NPC npc in AffectedNPCs)
             {
-                npc.IncrementConversation();
-
+                if (triggerableNPCS[i].triggeredTree != null)
+                {
+                    npc.SetDialogueTree(triggerableNPCS[i].triggeredTree);
+                }
+                else
+                {
+                    npc.IncrementConversation();
+                }
             }
         }
         AffectedNPCs.Clear();
@@ -31,11 +40,12 @@ public class DialogueTreeObject : ScriptableObject
     public void Reset()
     {
         currentID = 1;
-        if (AffectedNPCNames.Count!=0)
+        if (triggerableNPCS.Count!=0)
         {
-            foreach (string name in AffectedNPCNames)
+
+            foreach (AffectedNPCS npcToTrigger in triggerableNPCS)
             {
-                AffectedNPCs.Add(GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == name).GetComponent<NPC>());
+                AffectedNPCs.Add(GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == npcToTrigger.name).GetComponent<NPC>());
             }
         }
     }
@@ -73,5 +83,11 @@ public class DialogueTreeObject : ScriptableObject
         currentInfluenceChance = _influence;
     }
 
+}
+[System.Serializable]
+public struct AffectedNPCS
+{
+    public string name;
+    public DialogueTreeObject triggeredTree;
 }
 

@@ -86,7 +86,7 @@ public class NPC : MonoBehaviour
         dialogueTree.Traverse(_direction);
         dialogueTree.AssessRightPath();
     }
-
+    public void SetDialogueTree(DialogueTreeObject _dialogueTree) => dialogueTree = _dialogueTree;
     public void IncrementConversation()     
     {
         if (currentConversation == dialogueTrees.Count-1) { return; }
