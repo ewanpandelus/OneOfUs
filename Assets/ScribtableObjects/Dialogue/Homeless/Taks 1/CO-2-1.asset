@@ -17,7 +17,7 @@ MonoBehaviour:
   leftChild: {fileID: 11400000, guid: 41da8cd8e37543d44abcbe665612658a, type: 2}
   middleChild: {fileID: 11400000, guid: 410b7d5b80c488a47888ea6e68845121, type: 2}
   rightChild: {fileID: 0}
-  chanceEffect: 10
+  chanceEffect: 5
   dialogue:
   - Really? Ha. Sounds like a scam.
   response:

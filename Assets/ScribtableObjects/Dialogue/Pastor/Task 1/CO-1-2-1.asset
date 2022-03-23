@@ -17,7 +17,7 @@ MonoBehaviour:
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 1
+  chanceEffect: 3
   dialogue:
   - Hmm, the merchant might have some. He sells all sorts of things, so I would start
     there.

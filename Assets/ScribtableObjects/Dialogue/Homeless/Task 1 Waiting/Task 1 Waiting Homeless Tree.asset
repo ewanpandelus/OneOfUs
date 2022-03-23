@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
-  m_Name: Default Homeless Tree
+  m_Name: Task 1 Waiting Homeless Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
   AffectedNPCName: Homeless

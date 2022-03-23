@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: Default Homless Convo Start
+  m_Name: CO-1-2
   m_EditorClassIdentifier: 
-  id: 1
+  id: 6
   correctChoice: 0
-  leftChild: {fileID: 0}
+  leftChild: {fileID: 11400000, guid: cf41dce35db126848b2e919323507ac0, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 0
+  chanceEffect: 3
   dialogue:
-  - I really hope that I can sleep somewhere warm tonight...
+  - Well, I tell you what. I'm not giving you the candles for free, but you can do
+    something for me.
   response:
-  - (Walk away.)
+  - Why of course.

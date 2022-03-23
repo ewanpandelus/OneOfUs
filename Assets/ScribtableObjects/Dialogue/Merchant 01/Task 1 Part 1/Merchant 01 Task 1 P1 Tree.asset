@@ -16,3 +16,9 @@ MonoBehaviour:
   AffectedNPCNames: []
   dialogueTree:
   - {fileID: 11400000, guid: faa9bb220516c5b40aa0ade90aa3b08f, type: 2}
+  - {fileID: 11400000, guid: fb2f3c20d5531e245adf819d51fc6db6, type: 2}
+  - {fileID: 11400000, guid: bf0a8a9e12ff4d345a6048ace52319bf, type: 2}
+  - {fileID: 11400000, guid: 8db33bbe94d50924fac5999c713c2674, type: 2}
+  - {fileID: 11400000, guid: 8fef1a4152a6b5e48acf57f30020c7ad, type: 2}
+  - {fileID: 11400000, guid: b785f2713f24ed042b8c5b6c4bbf3f2f, type: 2}
+  - {fileID: 11400000, guid: cf41dce35db126848b2e919323507ac0, type: 2}

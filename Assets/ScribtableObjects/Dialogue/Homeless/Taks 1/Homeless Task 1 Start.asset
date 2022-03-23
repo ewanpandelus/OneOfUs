@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Homeless Task 1 Start
   m_EditorClassIdentifier: 
   id: 1
+  correctChoice: 0
   leftChild: {fileID: 11400000, guid: dc63d45ef555ba2448f9ffa40fc28391, type: 2}
   middleChild: {fileID: 11400000, guid: 498cae761577f6e4fadb9b56f7b0dc17, type: 2}
   rightChild: {fileID: 0}
-  chanceEffect: 4
+  chanceEffect: 0
   dialogue:
   - What do you want?
   response:

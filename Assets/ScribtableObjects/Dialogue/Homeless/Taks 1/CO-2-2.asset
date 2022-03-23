@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: CO-2-2
   m_EditorClassIdentifier: 
   id: 9
+  correctChoice: 0
   leftChild: {fileID: 11400000, guid: 410b7d5b80c488a47888ea6e68845121, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 10
+  chanceEffect: 5
   dialogue:
   - Why don't you do me a "saviour" and clear off!
   response:

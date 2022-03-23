@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   correctChoice: 0
-  leftChild: {fileID: 0}
-  middleChild: {fileID: 0}
+  leftChild: {fileID: 11400000, guid: fb2f3c20d5531e245adf819d51fc6db6, type: 2}
+  middleChild: {fileID: 11400000, guid: bf0a8a9e12ff4d345a6048ace52319bf, type: 2}
   rightChild: {fileID: 0}
   chanceEffect: 0
   dialogue:

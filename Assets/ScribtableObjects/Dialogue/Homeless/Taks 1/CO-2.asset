@@ -17,7 +17,7 @@ MonoBehaviour:
   leftChild: {fileID: 11400000, guid: fd9cccaac7d96a6408af1bca9e0db0a3, type: 2}
   middleChild: {fileID: 11400000, guid: 6d588fa1fc502c34a8558a4d4fb0d498, type: 2}
   rightChild: {fileID: 0}
-  chanceEffect: 8
+  chanceEffect: 3
   dialogue:
   - Who the hell is Saviour?
   response:

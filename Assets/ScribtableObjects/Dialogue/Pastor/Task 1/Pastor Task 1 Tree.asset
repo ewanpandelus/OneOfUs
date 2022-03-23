@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 5
   AffectedNPCNames:
+  - Pastor
   - Merchant 01
   dialogueTree:
   - {fileID: 11400000, guid: b4fcb65df917fe04088834398badf6b8, type: 2}

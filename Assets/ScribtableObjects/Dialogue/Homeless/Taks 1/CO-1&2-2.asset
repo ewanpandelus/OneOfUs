@@ -17,7 +17,7 @@ MonoBehaviour:
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 15
+  chanceEffect: 8
   dialogue:
   - Yeah? Well, I haven't slept in a warm bed in months.
   response:

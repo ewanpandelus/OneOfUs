@@ -17,7 +17,7 @@ MonoBehaviour:
   leftChild: {fileID: 11400000, guid: d38690fbe515d3349812b70f60c4d0db, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 10
+  chanceEffect: 5
   dialogue:
   - Yeah, well we don't get very many strange folks around these parts - 'specially
     ones wearing their mum's nightgown.

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: CO-2-1-2
+  m_Name: CO-1-1
   m_EditorClassIdentifier: 
-  id: 8
-  correctChoice: 1
-  leftChild: {fileID: 0}
-  middleChild: {fileID: 0}
+  id: 4
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: 8fef1a4152a6b5e48acf57f30020c7ad, type: 2}
+  middleChild: {fileID: 11400000, guid: b785f2713f24ed042b8c5b6c4bbf3f2f, type: 2}
   rightChild: {fileID: 0}
-  chanceEffect: 8
+  chanceEffect: 1
   dialogue:
-  - You seem like a right bundle of laughs... anyway, if this slaviour character
-    can find me a warm bed then I guess he could be alright.
+  - Coming right up. That'll be 30 coin...
   response:
-  - You have a deal my friend. I can find you shelter.
+  - Ah yes, the age old exchange coin for goods.
+  - Hmm, I have no coin my friend... How about I do something for you?

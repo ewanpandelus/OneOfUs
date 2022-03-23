@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: CO-2-1-2
+  m_Name: CO-1
   m_EditorClassIdentifier: 
-  id: 8
-  correctChoice: 1
-  leftChild: {fileID: 0}
+  id: 2
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: 8db33bbe94d50924fac5999c713c2674, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 8
+  chanceEffect: 1
   dialogue:
-  - You seem like a right bundle of laughs... anyway, if this slaviour character
-    can find me a warm bed then I guess he could be alright.
+  - Well, you've come to the right place! Goodheart's has everything you'll need,
+    but we're fresh out of long mystical robes...
   response:
-  - You have a deal my friend. I can find you shelter.
+  - It's candles I'm looking for.
+  - This is the uniform bestowed upon me by the Saviour. You will have yours, one
+    day.
