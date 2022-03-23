@@ -28,8 +28,8 @@ public class NPC : MonoBehaviour
         if (dialogueTrees[currentConversation])
         {
             dialogueTree = dialogueTrees[currentConversation];
-            dialogueTree.Initialise();
             dialogueTree.Reset();
+            dialogueTree.Initialise();
             allNodes = dialogueTree.GetAllNodes();
         }
         foreach (var _node in allNodes)

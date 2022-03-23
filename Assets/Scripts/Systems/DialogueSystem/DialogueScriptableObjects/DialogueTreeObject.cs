@@ -9,26 +9,34 @@ public class DialogueTreeObject : ScriptableObject
     private float currentInfluenceChance;
     private bool correctPathChosen = false;
     [SerializeField] private float NPCInfluenceChange;
-    [SerializeField] private string AffectedNPCName;
-    private NPC AffectedNPC;
+    [SerializeField] private List<string> AffectedNPCNames;
+    private List<NPC> AffectedNPCs;
     public void IncrementConversationAffectedNPC()
     {
-        if (AffectedNPC&&correctPathChosen)
+        if (AffectedNPCs.Count>0 &&correctPathChosen)
         {
-            AffectedNPC.IncrementConversation();
-            
+            foreach(NPC npc in AffectedNPCs)
+            {
+                npc.IncrementConversation();
+
+            }
+
         }
     }
     public void Initialise()
     {
         correctPathChosen = false;
+        AffectedNPCs.Clear();
     }
     public void Reset()
     {
         currentID = 1;
-        if (AffectedNPCName != string.Empty)
+        if (AffectedNPCNames.Count!=0)
         {
-            AffectedNPC = GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == AffectedNPCName).GetComponent<NPC>();
+            foreach (string name in AffectedNPCNames)
+            {
+                AffectedNPCs.Add(GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == name).GetComponent<NPC>());
+            }
         }
     }
     public virtual void Traverse(int _direction)  //Moves through the tree based on player's decisions
