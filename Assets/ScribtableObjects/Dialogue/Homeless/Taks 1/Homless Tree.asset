@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Homless Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 5
-  AffectedNPCNames:
-  - Pastor
-  - Homeless
+  AffectedNPCName: Homeless
   dialogueTree:
   - {fileID: 11400000, guid: 11fca985830c8c84dba4dcf799ef688c, type: 2}
   - {fileID: 11400000, guid: dc63d45ef555ba2448f9ffa40fc28391, type: 2}

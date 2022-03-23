@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Default Homless Convo Start
   m_EditorClassIdentifier: 
   id: 1
+  correctChoice: 0
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
