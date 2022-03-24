@@ -17,9 +17,8 @@ MonoBehaviour:
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 10
+  chanceEffect: 0
   dialogue:
-  - Pastor Mary already told me the great news! Your saviour must be amazing. Please
-    tell me more about him!
+  - Pastor Mary already told me the great news!
   response:
-  - (Recruit Neville.)
+  - Did she already?

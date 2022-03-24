@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Homeless Task 1 End Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  AffectedNPCNames: []
+  triggerableNPCS: []
   dialogueTree:
   - {fileID: 11400000, guid: 58118669d9a131645bc2f75bba529e65, type: 2}
+  - {fileID: 11400000, guid: a7239183f3a43944f90ec61965f4605d, type: 2}

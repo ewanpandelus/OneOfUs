@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Pastor Task 1 Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 5
-  AffectedNPCNames:
-  - Homeless
-  - Pastor
-  - Merchant 01
+  triggerableNPCS:
+  - name: Pastor
+    triggeredTree: {fileID: 11400000, guid: 9f89409096496e24cb63dc9c98f08a95, type: 2}
+  - name: Merchant 01
+    triggeredTree: {fileID: 11400000, guid: bebef8b71a701e54d9abdbec7586ef57, type: 2}
   dialogueTree:
   - {fileID: 11400000, guid: b4fcb65df917fe04088834398badf6b8, type: 2}
   - {fileID: 11400000, guid: 227ea13e33f82f4448cd97f23cb554d9, type: 2}
