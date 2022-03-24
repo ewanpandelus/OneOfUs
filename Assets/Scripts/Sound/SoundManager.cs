@@ -38,6 +38,14 @@ public class SoundManager : MonoBehaviour
             s.GetSource().Play();
         }
     }
+    public void PlayOneShot(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.GetName() == name);
+        if (s != null)
+        { 
+            s.GetSource().PlayOneShot(s.GetSource().clip);
+        }
+    }
 
     private AudioSource FindAudioSource(string name)
     {

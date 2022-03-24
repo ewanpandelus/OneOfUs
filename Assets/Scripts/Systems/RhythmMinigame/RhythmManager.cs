@@ -16,6 +16,7 @@ public class RhythmManager : MonoBehaviour
     [SerializeField] int noteCount;
     [SerializeField] private GameObject stage;
     [SerializeField] private MiracleManager miracleManager;
+    
     private float startY = 0;
     private List<NoteProperties> noteProperties;
     private NoteManager noteManager;
