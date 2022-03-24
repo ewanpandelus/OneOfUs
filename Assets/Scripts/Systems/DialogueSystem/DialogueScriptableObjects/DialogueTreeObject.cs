@@ -28,6 +28,7 @@ public class DialogueTreeObject : ScriptableObject
                 {
                     npc.IncrementConversation();
                 }
+                i++;
             }
         }
         AffectedNPCs.Clear();
