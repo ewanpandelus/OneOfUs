@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: Farmer 01 Task 1 Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  triggerableNPCS:
-  - name: Farmer 01
-    triggeredTree: {fileID: 0}
-  - name: Farmer 02
-    triggeredTree: {fileID: 0}
+  triggerableNPCS: []
   dialogueTree:
   - {fileID: 11400000, guid: 82635de4b479e7f43bdded510758fbfc, type: 2}
   - {fileID: 11400000, guid: e500646fe7dc97c4094a021f4927e9e9, type: 2}

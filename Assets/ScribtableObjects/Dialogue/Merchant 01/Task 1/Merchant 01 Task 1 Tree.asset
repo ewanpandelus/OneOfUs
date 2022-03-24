@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
-  m_Name: Merchant 01 Task 1 P1 Tree
+  m_Name: Merchant 01 Task 1 Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
   AffectedNPCNames:

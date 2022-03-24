@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: Homeless Task 1 End End
+  m_Name: Merchant 01 Task 1 End Conversation
   m_EditorClassIdentifier: 
   id: 1
-  correctChoice: 0
+  correctChoice: 1
   leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
   chanceEffect: 10
   dialogue:
-  - Pastor Mary already told me the great news! Your saviour must be amazing. Please
-    tell me more about him!
+  - I see you come bearing the wheat. Thank you and true to my word here are the
+    candles.
   response:
-  - (Recruit Neville.)
+  - (Walk away with the candles.)

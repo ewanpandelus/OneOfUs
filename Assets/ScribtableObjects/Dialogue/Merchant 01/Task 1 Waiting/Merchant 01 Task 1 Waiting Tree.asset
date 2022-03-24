@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
-  m_Name: Pastor Task 1 P2 Tree
+  m_Name: Merchant 01 Task 1 Waiting Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  AffectedNPCNames:
-  - Homeless
+  triggerableNPCS: []
   dialogueTree:
-  - {fileID: 11400000, guid: 68e1a47f9de27a84799835e6fb4b31d8, type: 2}
+  - {fileID: 11400000, guid: 85c0ad0c075b53e47a47f478196ea72c, type: 2}
