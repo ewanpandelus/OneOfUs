@@ -19,15 +19,29 @@ public class NPC : MonoBehaviour
     public float GetInfluenceLevel() => influenceLevel;
     public void Awake()
     {
-        PopulateDialogueNodes();
+        PopulateDialogueNodesLinear();
         player = GameObject.FindObjectOfType<PlayerStats>();
     }
-    private void PopulateDialogueNodes()
+    private void PopulateDialogueNodesLinear()
     {
         List<DialogueNode> allNodes = new List<DialogueNode>();
         if (dialogueTrees[currentConversation])
         {
             dialogueTree = dialogueTrees[currentConversation];
+            dialogueTree.Reset();
+            dialogueTree.Initialise();
+            allNodes = dialogueTree.GetAllNodes();
+        }
+        foreach (var _node in allNodes)
+        {
+            _node.GetDialogueObject().SetAssociatedNPC(this);
+        }
+    }
+    private void PopulateDialogueNodesTriggered()
+    {
+        List<DialogueNode> allNodes = new List<DialogueNode>();
+        if (dialogueTree)
+        {
             dialogueTree.Reset();
             dialogueTree.Initialise();
             allNodes = dialogueTree.GetAllNodes();
@@ -86,12 +100,16 @@ public class NPC : MonoBehaviour
         dialogueTree.Traverse(_direction);
         dialogueTree.AssessRightPath();
     }
-    public void SetDialogueTree(DialogueTreeObject _dialogueTree) => dialogueTree = _dialogueTree;
+    public void SetDialogueTree(DialogueTreeObject _dialogueTree) 
+    {
+        dialogueTree = _dialogueTree;
+        PopulateDialogueNodesTriggered();
+    }
     public void IncrementConversation()     
     {
         if (currentConversation == dialogueTrees.Count-1) { return; }
         currentConversation++;
-        PopulateDialogueNodes();
+        PopulateDialogueNodesLinear();
     }
     public string GetName() => name;
     
