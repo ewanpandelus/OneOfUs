@@ -39,9 +39,9 @@ public abstract class BaseNote : MonoBehaviour
         {
             if (pressed)
             {
-                noteManager.RemoveNote(this, colour, key1, true);
                 noteManager.UpdateFeedbackText(true, colour);
                 SoundManager.instance.PlayOneShot(soundName);
+                noteManager.RemoveNote(this);
             }
             else
             {
@@ -78,6 +78,8 @@ public abstract class BaseNote : MonoBehaviour
         if (Input.GetKeyDown(key1) || Input.GetKeyDown(key2) ||Input.GetKeyUp(key1)||Input.GetKeyUp(key2))
         {
             pressed = true;
+            noteManager.PlayParticleEffect(true, colour, key1);
+            canBePressed = false;
         }
     }
     public bool EvaluateShouldSwap()

@@ -74,7 +74,7 @@ public class SoundManager : MonoBehaviour
     }
     public void StartMiniGame()
     {
-        StartCoroutine(StartFade("Calmest", 3f, 0f));
+        StartCoroutine(StartFade("Calmest", 1f, 0f));
     }
     public void StartMiniGameSong()
     {

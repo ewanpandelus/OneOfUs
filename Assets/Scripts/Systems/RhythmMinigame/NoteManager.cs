@@ -40,18 +40,22 @@ public class NoteManager : MonoBehaviour
         upButtonPress.SetActive(CheckKeysPressed(KeyCode.UpArrow, KeyCode.W));
         downButtonPress.SetActive(CheckKeysPressed(KeyCode.DownArrow, KeyCode.S));
     }
-    public void RemoveNote(BaseNote _closestNote, Color _colour, KeyCode _associatedKey, bool _pop)
+    public void RemoveNote(BaseNote _closestNote)
+    {
+      
+        _closestNote.SetAlreadyExited(true);    
+        Destroy(noteQueue.Dequeue().gameObject);
+        UpdatePercentageText(true);
+        PlaySongOnFirstNote();
+    }
+    public void PlayParticleEffect(bool _pop, Color _colour, KeyCode _associatedKey)
     {
         if (_pop)
         {
             SetupParticles(instantBurst, _colour, _associatedKey);
         }
-        _closestNote.SetAlreadyExited(true);    
-        Destroy(noteQueue.Dequeue().gameObject);
-        UpdatePercentageText(true);
-        PlaySongOnFirstPress();
     }
-    private void PlaySongOnFirstPress()
+    private void PlaySongOnFirstNote()
     {
         if (firstPress)
         {
@@ -101,6 +105,7 @@ public class NoteManager : MonoBehaviour
     
     public void DequeueNote()
     {
+        PlaySongOnFirstNote();
         noteQueue.Dequeue();
         UpdatePercentageText(false);
     }
