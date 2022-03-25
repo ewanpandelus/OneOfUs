@@ -2924,11 +2924,11 @@ MonoBehaviour:
     volume: 0
     pitch: 1
     loop: 1
-  - clip: {fileID: 8300000, guid: f6bf5f48082ab9745b5fe359cc56514e, type: 3}
+  - clip: {fileID: 8300000, guid: 52ed150904c88ac4ca72133a0f8abf7f, type: 3}
     name: Minigame
-    volume: 0
+    volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
   - clip: {fileID: 8300000, guid: e6c1c3e34c542ed4c9c45db7a540412f, type: 3}
     name: 1st
     volume: 1
@@ -2936,17 +2936,17 @@ MonoBehaviour:
     loop: 0
   - clip: {fileID: 8300000, guid: a1f7e37b09f66f941985d5944084a9a9, type: 3}
     name: 2nd
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
   - clip: {fileID: 8300000, guid: 970e0969478bfd04eac86012a53dea83, type: 3}
     name: 3rd
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
   - clip: {fileID: 8300000, guid: 29c5b2411848a5545b07d8472f2c25f8, type: 3}
     name: 4th
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
   - clip: {fileID: 8300000, guid: 1c2db95dfd7915249966da75d329985a, type: 3}
@@ -2956,22 +2956,22 @@ MonoBehaviour:
     loop: 0
   - clip: {fileID: 8300000, guid: 10b88a83e39866f429fd5bac8f0bfe51, type: 3}
     name: 6thL
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
   - clip: {fileID: 8300000, guid: a1cdd13901ed1c249a50536675bc913e, type: 3}
     name: 7th
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
   - clip: {fileID: 8300000, guid: 95a77355383643746a23f7d22bb1c33f, type: 3}
     name: 8th
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
   - clip: {fileID: 8300000, guid: fdd534d1f82f80b4488fca42c3daf817, type: 3}
     name: 9th
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
   - clip: {fileID: 8300000, guid: ef7523eb8b51b2d409ec2fde93ea097f, type: 3}
@@ -2982,6 +2982,46 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 0af197fdb844ea14f81d0c82207e0077, type: 3}
     name: 11th
     volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: b8e0b901c534f9e4496d68935a02986a, type: 3}
+    name: 12th
+    volume: 0.6
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 1f760efbcc200c84e8eddd483c722890, type: 3}
+    name: 13th
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 1f760efbcc200c84e8eddd483c722890, type: 3}
+    name: 13th
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 8c75012f32ebf9f4b82f7bf40e6bf8bb, type: 3}
+    name: 14th
+    volume: 0.6
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 90674db7cf9764e40838036caced02e7, type: 3}
+    name: 15th
+    volume: 0.6
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 631041340401d0d4191d9c3b38570824, type: 3}
+    name: 16th
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 3660f6e2469b1f04aa8f3c81903d9d80, type: 3}
+    name: 17th
+    volume: 0.6
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 57014efd8b1517c47a9730aa51798c78, type: 3}
+    name: 18th
+    volume: 0.6
     pitch: 1
     loop: 0
 --- !u!1 &1462851260
@@ -4186,6 +4226,107 @@ Transform:
   m_Father: {fileID: 793663870}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1768513484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9109983868650284921, guid: 9ef38e8623641574ba5e9fe6934f846d, type: 3}
+  m_PrefabInstance: {fileID: 171321656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1768513489
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768513484}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1799327092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1695338808218638394, guid: 0362a2c2c613a4042a1518180fe1da67, type: 3}
@@ -4281,40 +4422,88 @@ MonoBehaviour:
   level1:
   - noteName: 1st
     timeToWait: 0
+    isLong: 0
   - noteName: 2nd
     timeToWait: 0.9
+    isLong: 0
   - noteName: 1st
     timeToWait: 2.5
+    isLong: 0
   - noteName: 2nd
     timeToWait: 3.4
+    isLong: 0
   - noteName: 3rd
     timeToWait: 6.3
+    isLong: 0
   - noteName: 4th
     timeToWait: 6.93
+    isLong: 0
   - noteName: 5th
     timeToWait: 7.57
+    isLong: 0
   - noteName: 6thL
     timeToWait: 8.2
+    isLong: 1
   - noteName: 7th
     timeToWait: 9.757
+    isLong: 0
   - noteName: 7th
     timeToWait: 10.4
+    isLong: 0
   - noteName: 7th
     timeToWait: 10.7
+    isLong: 0
   - noteName: 7th
     timeToWait: 11.36
+    isLong: 0
   - noteName: 8th
     timeToWait: 12.31
+    isLong: 0
   - noteName: 9th
     timeToWait: 12.928
+    isLong: 0
   - noteName: 8th
     timeToWait: 13.264
+    isLong: 0
   - noteName: 5th
     timeToWait: 13.88
+    isLong: 0
   - noteName: 10th
     timeToWait: 14.53
+    isLong: 1
   - noteName: 11th
-    timeToWait: 15.15
+    timeToWait: 15.14
+    isLong: 1
+  - noteName: 12th
+    timeToWait: 17.033
+    isLong: 1
+  - noteName: 13th
+    timeToWait: 18.954
+    isLong: 1
+  - noteName: 2nd
+    timeToWait: 20.521
+    isLong: 0
+  - noteName: 1st
+    timeToWait: 22.107
+    isLong: 0
+  - noteName: 2nd
+    timeToWait: 23.04
+    isLong: 0
+  - noteName: 14th
+    timeToWait: 24.61
+    isLong: 0
+  - noteName: 15th
+    timeToWait: 25.88
+    isLong: 0
+  - noteName: 16th
+    timeToWait: 27.163
+    isLong: 1
+  - noteName: 17th
+    timeToWait: 28.562
+    isLong: 1
+  - noteName: 18th
+    timeToWait: 29.028
+    isLong: 1
 --- !u!1001 &1884106658
 PrefabInstance:
   m_ObjectHideFlags: 0

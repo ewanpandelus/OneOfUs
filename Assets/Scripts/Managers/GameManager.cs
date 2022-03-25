@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Rhythm:
                 PostProcessManager.instance.RhythmPostProcess();
-                SoundManager.instance.RhythmGameSounds();
+                SoundManager.instance.StartMiniGame();
                 break;
 
         }

@@ -72,11 +72,14 @@ public class SoundManager : MonoBehaviour
 
         yield break;
     }
-    public void RhythmGameSounds()
+    public void StartMiniGame()
     {
-        StartCoroutine(StartFade("Calmest", 1f, 0f));
-        //Play("Minigame");
-       // StartCoroutine(StartFade("Minigame", 5f, 0.25f));
+        StartCoroutine(StartFade("Calmest", 3f, 0f));
+    }
+    public void StartMiniGameSong()
+    {
+        Play("Minigame");
+        StartCoroutine(StartFade("Minigame", 1f, 1f));
     }
     public void MainThemeSounds()
     {

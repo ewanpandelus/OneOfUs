@@ -6,7 +6,6 @@ public abstract class BaseNote : MonoBehaviour
 {
     protected bool canBePressed;
     protected KeyCode key1, key2;
-    protected AudioSource noteSound;
     protected NoteManager noteManager;
     protected bool alreadyExited = false;
     protected Color colour;
@@ -97,6 +96,6 @@ public abstract class BaseNote : MonoBehaviour
     public int GetPosIndex() =>  posIndex;
     public void SetChangeMat(Material _changeMat) => changeMat = _changeMat;
     public Material GetChangeMat() => changeMat;
-    public void SetNoteSound(AudioSource _noteSound) => noteSound = _noteSound;
+
     
 }

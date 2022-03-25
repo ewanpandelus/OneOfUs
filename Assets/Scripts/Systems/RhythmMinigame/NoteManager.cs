@@ -16,10 +16,14 @@ public class NoteManager : MonoBehaviour
     private List<NotePosition> notePositions;
     private int totalHitCount = 0;
     private int totalNoteCount = 0;
-    bool canTween = true;
-    int accumulator = 0;
+    private bool canTween = true;
+    private int accumulator = 0;
+    private bool firstPress = true;
 
-  
+    public void Initialise()
+    {
+        firstPress = true;
+    }
 
     void Update()
     {
@@ -45,6 +49,15 @@ public class NoteManager : MonoBehaviour
         _closestNote.SetAlreadyExited(true);    
         Destroy(noteQueue.Dequeue().gameObject);
         UpdatePercentageText(true);
+        PlaySongOnFirstPress();
+    }
+    private void PlaySongOnFirstPress()
+    {
+        if (firstPress)
+        {
+            SoundManager.instance.StartMiniGameSong();
+            firstPress = false;
+        }
     }
     public ParticleSystem LongBurst(Color _colour, KeyCode _associatedKey)
     {

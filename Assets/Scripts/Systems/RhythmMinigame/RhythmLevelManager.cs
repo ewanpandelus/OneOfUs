@@ -13,4 +13,5 @@ public struct RhythmLevel
 {
     public string noteName;
     public float timeToWait;
+    public bool isLong;
 }
