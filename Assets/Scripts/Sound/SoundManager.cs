@@ -75,8 +75,8 @@ public class SoundManager : MonoBehaviour
     public void RhythmGameSounds()
     {
         StartCoroutine(StartFade("Calmest", 1f, 0f));
-        Play("Minigame");
-        StartCoroutine(StartFade("Minigame", 5f, 0.25f));
+        //Play("Minigame");
+       // StartCoroutine(StartFade("Minigame", 5f, 0.25f));
     }
     public void MainThemeSounds()
     {

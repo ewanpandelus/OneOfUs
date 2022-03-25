@@ -20,6 +20,7 @@ public class RhythmManager : MonoBehaviour
     private float startY = 0;
     private List<NoteProperties> noteProperties;
     private NoteManager noteManager;
+    private RhythmLevelManager rhythmLevelManager;
     
        
     
@@ -34,19 +35,41 @@ public class RhythmManager : MonoBehaviour
     {
         noteManager = GetComponent<NoteManager>();
         noteManager.PopulatePositions(matList);
+        rhythmLevelManager = GetComponent<RhythmLevelManager>();
         InitialiseNoteProperties();
    
     }
     public IEnumerator PlayRhythm(float minSeperationTime, float maxSeperationTime)
     {
         List<(NoteType, float)> notes = new List<(NoteType, float)>();
-        notes = LevelCreator(noteCount, minSeperationTime, maxSeperationTime);
+        notes = RandomLevelCreator(noteCount, minSeperationTime, maxSeperationTime);
         noteManager.SetTotalNoteCount(noteCount);
         foreach((NoteType, float) note in notes)
         {
             yield return new WaitForSeconds(note.Item2);
             NoteProperties noteInfo = noteProperties.Find(x => x.noteType == note.Item1);
-            SetupNote(noteInfo);
+            SetupNote(noteInfo,"");
+        }
+        yield return new WaitUntil(() => noteManager.CheckNoNotesLeft());
+        yield return new WaitForSeconds(1f);
+        miracleManager.SetAchievedMiracle(EvaluateResult());
+    }
+    public IEnumerator PlayRhythmSet()
+    {
+        List<(NoteType, float)> notes = new List<(NoteType, float)>();
+        notes = SetLevelCreator();
+        List<RhythmLevel> levelList = rhythmLevelManager.GetLevel1();
+        noteManager.SetTotalNoteCount(levelList.Count);
+        int counter = 0;
+        foreach ((NoteType, float) note in notes)
+        {
+            if (counter > 0)
+            {
+                yield return new WaitForSeconds(note.Item2 - levelList[counter - 1].timeToWait);
+            }
+            NoteProperties noteInfo = noteProperties.Find(x => x.noteType == note.Item1);
+            SetupNote(noteInfo,levelList[counter].noteName);
+            counter++;
         }
         yield return new WaitUntil(() => noteManager.CheckNoNotesLeft());
         yield return new WaitForSeconds(1f);
@@ -56,7 +79,7 @@ public class RhythmManager : MonoBehaviour
     {
         return (((float)noteManager.GetTotalHitCount() / (float)noteCount) >= 0.5f);
     }
-    private void SetupNote(NoteProperties noteInfo)
+    private void SetupNote(NoteProperties noteInfo, string soundName)
     {
         BaseNote _note = Instantiate(SpawnNoteWithPercentageWeight(0,1)).GetComponent<BaseNote>();
         _note.transform.position = new Vector3(noteInfo.xPos, startY, 0);
@@ -69,6 +92,7 @@ public class RhythmManager : MonoBehaviour
         _note.SetNoteManager(noteManager);
         _note.SetPosIndex(noteInfo.posIndex);
         _note.SetNoteSound(noteInfo.noteSound);
+        _note.SetSoundName(soundName);
         noteManager.EnqueueNote(_note);
     }
     GameObject SpawnNoteWithPercentageWeight(int _note1Weight, int _note2Weight)
@@ -80,7 +104,7 @@ public class RhythmManager : MonoBehaviour
         }
         return longNote;
     }
-    private List<(NoteType, float)> LevelCreator(int noteCount, float minWait, float maxWait)
+    private List<(NoteType, float)> RandomLevelCreator(int noteCount, float minWait, float maxWait)
     {
         List<(NoteType, float)> notes = new List<(NoteType, float)>();
         float waitTime = 0;
@@ -88,6 +112,15 @@ public class RhythmManager : MonoBehaviour
         {
             waitTime = UnityEngine.Random.Range(minWait, maxWait);
             notes.Add((GenerateRandomNote(), waitTime));
+        }
+        return notes;
+    }
+    private List<(NoteType, float)> SetLevelCreator()
+    {
+        List<(NoteType, float)> notes = new List<(NoteType, float)>();
+        List<RhythmLevel> levelList = rhythmLevelManager.GetLevel1();
+        for (int i = 0; i < levelList.Count; i++) { 
+            notes.Add((GenerateRandomNote(), levelList[i].timeToWait));
         }
         return notes;
     }

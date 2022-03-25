@@ -15,23 +15,18 @@ public class DialogueTreeObject : ScriptableObject
     [SerializeField] private List<AffectedNPCS> triggerableNPCS;
     public void IncrementConversationAffectedNPC()
     {
-        if (AffectedNPCs.Count>0 &&correctPathChosen)
+        if (AffectedNPCs.Count > 0 && correctPathChosen)
         {
             int i = 0;
-            foreach(NPC npc in AffectedNPCs)
+            foreach (NPC npc in AffectedNPCs)
             {
                 if (triggerableNPCS[i].triggeredTree != null)
                 {
                     npc.SetDialogueTree(triggerableNPCS[i].triggeredTree);
                 }
-                else
-                {
-                    npc.IncrementConversation();
-                }
-                i++;
             }
+            AffectedNPCs.Clear();
         }
-        AffectedNPCs.Clear();
     }
     public void Initialise()
     {

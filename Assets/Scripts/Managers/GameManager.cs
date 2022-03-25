@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         gameState = GameState.Standard;
-        Time.timeScale = 1.5f;
+        Time.timeScale = 1f;
     }
 
     public void SetGameState(GameState _gameState)

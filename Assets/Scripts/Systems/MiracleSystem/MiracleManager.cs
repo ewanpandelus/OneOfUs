@@ -37,7 +37,8 @@ public class MiracleManager : MonoBehaviour
         mainCanvas.GetComponent<Canvas>().enabled = false;
         rhythmManager.transform.parent.gameObject.SetActive(true);
         GameManager.instance.SetGameState(GameManager.GameState.Rhythm);
-        StartCoroutine(rhythmManager.PlayRhythm(0.8f, 1.4f));
+        //StartCoroutine(rhythmManager.PlayRhythm(0.8f, 1.4f));
+        StartCoroutine(rhythmManager.PlayRhythmSet());
         yield return new WaitUntil(() => gameOver == true);
         if (achievedMiracle)
         {

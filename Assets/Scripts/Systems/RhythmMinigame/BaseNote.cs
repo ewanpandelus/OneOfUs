@@ -15,6 +15,8 @@ public abstract class BaseNote : MonoBehaviour
     [SerializeField] protected float fallSpeed;
     [SerializeField] protected int swapChance = 2;
     private Material changeMat;
+    protected string soundName = "";
+    private bool pressed = false;
     private void Awake()
     {
         _transform = transform;
@@ -36,8 +38,18 @@ public abstract class BaseNote : MonoBehaviour
     {
         if (collision.tag == "Button"&&!alreadyExited)
         {
-            RemoveNote();
-            noteManager.UpdateFeedbackText(false, colour);
+            if (pressed)
+            {
+                noteManager.RemoveNote(this, colour, key1, true);
+                noteManager.UpdateFeedbackText(true, colour);
+                SoundManager.instance.PlayOneShot(soundName);
+            }
+            else
+            {
+                RemoveNote();
+                noteManager.UpdateFeedbackText(false, colour);
+            }
+      
         }
     }
 
@@ -66,10 +78,7 @@ public abstract class BaseNote : MonoBehaviour
         }
         if (Input.GetKeyDown(key1) || Input.GetKeyDown(key2) ||Input.GetKeyUp(key1)||Input.GetKeyUp(key2))
         {
-            noteManager.RemoveNote(this, colour ,key1, true);
-            noteManager.UpdateFeedbackText(true, colour);
-            noteSound.PlayOneShot(noteSound.clip);
-    
+            pressed = true;
         }
     }
     public bool EvaluateShouldSwap()
@@ -77,7 +86,10 @@ public abstract class BaseNote : MonoBehaviour
         int randNum = UnityEngine.Random.Range(0, 101);
         return randNum <= swapChance;
     }
-
+    public void SetSoundName(string _soundName)
+    {
+        soundName = _soundName;
+    }
     public void SetNoteManager(NoteManager _noteManager) => noteManager = _noteManager;
     public void SetAlreadyExited(bool _alreadyExited) => alreadyExited = _alreadyExited;
     public void SetColour(Color _colour) => colour = _colour; 
