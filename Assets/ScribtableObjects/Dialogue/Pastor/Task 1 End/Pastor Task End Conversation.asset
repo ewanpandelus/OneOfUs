@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   correctChoice: 0
-  leftChild: {fileID: 0}
+  leftChild: {fileID: 11400000, guid: 261d56b477787544ebd44d11510fdc9d, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 10
+  chanceEffect: 0
   dialogue:
-  - So as I can see, you have the candles I have asked for. Tell Neville that he
-    can sleep in the church tonight.
+  - So as I can see, you have the candles I have asked for.
   response:
-  - (Walk away with the good news.)
+  - (Give the candles to her.)

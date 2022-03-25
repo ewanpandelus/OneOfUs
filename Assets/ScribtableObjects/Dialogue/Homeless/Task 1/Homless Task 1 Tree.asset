@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 5
   triggerableNPCS:
+  - name: Homeless
+    triggeredTree: {fileID: 11400000, guid: fd8f685d7a5810c489136c537858707b, type: 2}
   - name: Pastor
     triggeredTree: {fileID: 11400000, guid: ea623db1257b9234bb2019cd1ebc2036, type: 2}
   dialogueTree:

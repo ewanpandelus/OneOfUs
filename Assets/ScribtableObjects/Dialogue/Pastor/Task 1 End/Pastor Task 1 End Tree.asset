@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Pastor Task 1 End Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  AffectedNPCNames:
-  - Homeless
+  triggerableNPCS:
+  - name: Homeless
+    triggeredTree: {fileID: 11400000, guid: 9d7d888b928c10140bf165394da09176, type: 2}
   dialogueTree:
   - {fileID: 11400000, guid: 68e1a47f9de27a84799835e6fb4b31d8, type: 2}
+  - {fileID: 11400000, guid: 261d56b477787544ebd44d11510fdc9d, type: 2}
