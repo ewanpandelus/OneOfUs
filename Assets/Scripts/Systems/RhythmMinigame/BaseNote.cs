@@ -12,7 +12,7 @@ public abstract class BaseNote : MonoBehaviour
     protected int posIndex = 5;
     protected Transform _transform;
     [SerializeField] protected float fallSpeed;
-    [SerializeField] protected int swapChance = 2;
+    [SerializeField] protected int swapChance = 100;
     private Material changeMat;
     protected string soundName = "";
     private bool pressed = false;

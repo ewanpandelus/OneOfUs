@@ -18,4 +18,8 @@ public class Inventory : MonoBehaviour
             inventory.Add(_item, 1);
         }
     }
+    public bool CheckInventoryContainsAmountOfItem(string _item, float _threshold)
+    {
+        return inventory[_item] >= _threshold;
+    }
 }
