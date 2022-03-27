@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4475961466154504609}
   - component: {fileID: 4475961466154504611}
   - component: {fileID: 4475961466154504610}
+  - component: {fileID: 399769931706852269}
   m_Layer: 0
   m_Name: Fire_add
   m_TagString: Untagged
@@ -4807,6 +4808,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &399769931706852269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4475961466154504608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb166ef30c0de6499549b37f9a715ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Yoffset: 0
 --- !u!1 &4475961466268798857
 GameObject:
   m_ObjectHideFlags: 0
@@ -4818,6 +4832,7 @@ GameObject:
   - component: {fileID: 4475961466268798858}
   - component: {fileID: 4475961466268798852}
   - component: {fileID: 4475961466268798859}
+  - component: {fileID: 8553559491623458433}
   m_Layer: 0
   m_Name: Fire_blended
   m_TagString: Untagged
@@ -9614,6 +9629,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &8553559491623458433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4475961466268798857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb166ef30c0de6499549b37f9a715ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Yoffset: 0
 --- !u!1 &4475961467073952351
 GameObject:
   m_ObjectHideFlags: 0

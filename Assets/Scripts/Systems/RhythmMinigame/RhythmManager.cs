@@ -59,6 +59,7 @@ public class RhythmManager : MonoBehaviour
         yield return new WaitUntil(() => noteManager.CheckNoNotesLeft());
         yield return new WaitForSeconds(2f);
         miracleManager.SetAchievedMiracle(EvaluateResult());
+        noteManager.ResetGame();
     }
     private bool EvaluateResult()
     {

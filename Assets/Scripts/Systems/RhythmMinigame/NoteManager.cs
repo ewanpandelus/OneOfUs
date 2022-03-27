@@ -27,11 +27,18 @@ public class NoteManager : MonoBehaviour
 
     void Update()
     {
-        if (noteQueue.Count == 0)
-        {
+        if (noteQueue.Count == 0) 
+        { 
             return;
         }
         SetButtonPressUI();
+    }
+    public void ResetGame() 
+    {
+        totalHitCount = 0;
+        firstPress = true;
+        feedbackText.text = "";
+        accumulator = 0;
     }
     private void SetButtonPressUI()
     {

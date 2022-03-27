@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     public Sound[] sounds;
     private float volume;
+    public delegate void AudioDelegate(AudioSource audioSource);
     private void Awake()
     {
         if (!instance)
@@ -60,7 +61,7 @@ public class SoundManager : MonoBehaviour
         return s.GetSource();
     }
 
-    public IEnumerator StartFade(string name, float duration, float targetVolume)
+    public IEnumerator StartFade(string name, float duration, float targetVolume, AudioDelegate audioDelegate)
     {
         AudioSource audioSource = FindAudioSource(name);
         float currentTime = 0;
@@ -73,25 +74,37 @@ public class SoundManager : MonoBehaviour
         }
         if (targetVolume == 0)
         {
-            audioSource.Pause();
+            audioDelegate(audioSource);
         }
       
-
         yield break;
     }
     public void StartMiniGame()
     {
-        StartCoroutine(StartFade("Calmest", 1f, 0f));
+        StartCoroutine(StartFade("Calmest", 1f, 0f, PauseSound));
     }
     public void StartMiniGameSong()
     {
         Play("Minigame");
-        StartCoroutine(StartFade("Minigame", 1f, 1f));
+        StartCoroutine(StartFade("Minigame", 1f, 1f, NoEffect));
     }
     public void MainThemeSounds()
     {
-        StartCoroutine(StartFade("Minigame", 1f, 0f));
+        StartCoroutine(StartFade("Minigame", 1f, 0f, StopSound));
         Play("Calmest");
-        StartCoroutine(StartFade("Calmest", 5f, 0.25f));
+        StartCoroutine(StartFade("Calmest", 5f, 0.25f, NoEffect));
+    }
+
+    void StopSound(AudioSource audioSource)
+    {
+        audioSource.Stop();
+    }
+    void PauseSound(AudioSource audioSource)
+    {
+        audioSource.Pause();
+    }
+    void NoEffect(AudioSource audioSource)
+    {
+        return;
     }
 }
