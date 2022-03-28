@@ -1908,6 +1908,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1058706763}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: initialDialogueTree
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d37b2f15956bca47803955932bb4e20, type: 2}
+    - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueTrees.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -2131,6 +2135,10 @@ PrefabInstance:
       propertyPath: responseHandler
       value: 
       objectReference: {fileID: 1058706763}
+    - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: initialDialogueTree
+      value: 
+      objectReference: {fileID: 11400000, guid: 3639e52a535a21e47a97e81ae8d0b958, type: 2}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueTrees.Array.size
       value: 3
@@ -4715,6 +4723,10 @@ PrefabInstance:
       propertyPath: responseHandler
       value: 
       objectReference: {fileID: 1058706763}
+    - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: initialDialogueTree
+      value: 
+      objectReference: {fileID: 11400000, guid: 597e6af3909149747bafe00e4947ac01, type: 2}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueTrees.Array.size
       value: 3
@@ -30145,6 +30157,10 @@ PrefabInstance:
       propertyPath: responseHandler
       value: 
       objectReference: {fileID: 1058706763}
+    - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: initialDialogueTree
+      value: 
+      objectReference: {fileID: 11400000, guid: 02faaae97103b024795c4c56d8723b47, type: 2}
     - target: {fileID: 4813121354312520836, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: dialogueTrees.Array.size
       value: 4
