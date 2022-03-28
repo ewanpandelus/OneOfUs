@@ -20,11 +20,6 @@ public class NoteManager : MonoBehaviour
     private int accumulator = 0;
     private bool firstPress = true;
 
-    public void Initialise()
-    {
-        firstPress = true;
-    }
-
     void Update()
     {
         if (noteQueue.Count == 0) 

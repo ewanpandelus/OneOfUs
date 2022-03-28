@@ -17,6 +17,7 @@ public class RhythmManager : MonoBehaviour
     [SerializeField] private MiracleManager miracleManager;
     
     private float startY = 0;
+    private bool populated = false;
     private List<NoteProperties> noteProperties;
     private NoteManager noteManager;
     private RhythmLevelManager rhythmLevelManager;
@@ -33,7 +34,12 @@ public class RhythmManager : MonoBehaviour
     private void Awake()
     {
         noteManager = GetComponent<NoteManager>();
-        noteManager.PopulatePositions(matList);
+        if (!populated)
+        {
+            noteManager.PopulatePositions(matList);
+            populated = true;
+        }
+
         rhythmLevelManager = GetComponent<RhythmLevelManager>();
         InitialiseNoteProperties();
    

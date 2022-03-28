@@ -24,6 +24,7 @@ public class DialogueTreeObject : ScriptableObject
                 {
                     npc.SetDialogueTree(triggerableNPCS[i].triggeredTree);
                 }
+                i++;
             }
             AffectedNPCs.Clear();
         }
