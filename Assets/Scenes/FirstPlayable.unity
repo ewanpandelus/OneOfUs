@@ -4646,7 +4646,7 @@ MonoBehaviour:
     timeToWait: 28.562
     isLong: 1
   - noteName: 18th
-    timeToWait: 29.028
+    timeToWait: 29.068
     isLong: 1
 --- !u!1001 &1884106658
 PrefabInstance:
