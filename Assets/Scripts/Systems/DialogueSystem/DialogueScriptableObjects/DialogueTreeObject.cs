@@ -36,7 +36,7 @@ public class DialogueTreeObject : ScriptableObject
     public void Reset()
     {
         currentID = 1;
-                   
+        AffectedNPCs.Clear();
         if (triggerableNPCS.Count!=0)
         {
 
