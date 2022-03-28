@@ -307,7 +307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 14, y: -33.289}
+  m_AnchoredPosition: {x: 14, y: -33.289062}
   m_SizeDelta: {x: -817.1536, y: -136.1923}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48459744
@@ -3155,6 +3155,16 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 57014efd8b1517c47a9730aa51798c78, type: 3}
     name: 18th
     volume: 0.8
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: f36484f8f763b6547a9b512060865197, type: 3}
+    name: MissNote
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: dc3567cd76a05d1489dfa8a5c2f1bc7e, type: 3}
+    name: LoseStreak
+    volume: 1
     pitch: 1
     loop: 0
 --- !u!1 &1462851260

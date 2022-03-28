@@ -22,13 +22,13 @@ public class NoteManager : MonoBehaviour
 
     void Update()
     {
-        if (noteQueue.Count == 0) 
-        { 
+        if (noteQueue.Count == 0)
+        {
             return;
         }
         SetButtonPressUI();
     }
-    public void ResetGame() 
+    public void ResetGame()
     {
         totalHitCount = 0;
         firstPress = true;
@@ -44,8 +44,8 @@ public class NoteManager : MonoBehaviour
     }
     public void RemoveNote(BaseNote _closestNote)
     {
-      
-        _closestNote.SetAlreadyExited(true);    
+
+        _closestNote.SetAlreadyExited(true);
         Destroy(noteQueue.Dequeue().gameObject);
         UpdatePercentageText(true);
         PlaySongOnFirstNote();
@@ -88,13 +88,13 @@ public class NoteManager : MonoBehaviour
 
     IEnumerator ScaleText(TMP_Text _text, Color _colour)
     {
-        yield return new WaitUntil(()=>canTween);
+        yield return new WaitUntil(() => canTween);
         canTween = false;
         var textObjTransform = _text.gameObject.transform;
         textObjTransform.localScale = Vector3.zero;
         _text.DOColor(_colour, 0.25f);
         textObjTransform.DOScale(1f, 0.25f).SetEase(Ease.InOutElastic).OnComplete(() =>
-        _text.DOColor(new Color(0, 0, 0, 0), 0.2f)).OnComplete(()=>canTween = true);
+        _text.DOColor(new Color(0, 0, 0, 0), 0.2f)).OnComplete(() => canTween = true);
     }
     public void EnqueueNote(BaseNote _note)
     {
@@ -104,14 +104,25 @@ public class NoteManager : MonoBehaviour
             StartCoroutine(SwapNoteAfterWait(_note, _note.GetPosIndex()));
         }
     }
-    
+
     public void DequeueNote()
     {
         PlaySongOnFirstNote();
         noteQueue.Dequeue();
+        PlayMissNoteSound();
         UpdatePercentageText(false);
     }
- 
+    private void PlayMissNoteSound()
+    {
+        if (accumulator > 4)
+        {
+            SoundManager.instance.Play("LoseStreak");
+        }
+        else
+        {
+            SoundManager.instance.Play("MissNote");
+        }
+    }
     public void UpdatePercentageText(bool _hit)
     {
         if (_hit) 
