@@ -19,13 +19,13 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         gameState = GameState.Standard;
+        Time.timeScale = 3f;
     }
 
     public void SetGameState(GameState _gameState)
     {
         gameState = _gameState;
         EvaluateGameState();
-        Time.timeScale = 3f;
     }
     private void EvaluateGameState()
     {
