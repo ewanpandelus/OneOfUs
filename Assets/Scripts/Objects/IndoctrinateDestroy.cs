@@ -7,7 +7,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class IndoctrinateDestroy : MonoBehaviour
 {
     private float elapsedTime = 0;
-    Light2D globalLight;
+    private Light2D globalLight;
     private void Start()
     {
         globalLight = GameObject.Find("Global Light 2D").GetComponent<Light2D>();

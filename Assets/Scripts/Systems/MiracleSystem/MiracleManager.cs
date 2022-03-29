@@ -13,6 +13,7 @@ public class MiracleManager : MonoBehaviour
     [SerializeField] private RhythmManager rhythmManager;
     [SerializeField] private GameObject mainCanvas;
     [SerializeField] EventSystem eventSystem;
+    [SerializeField] GameObject chiefLightEffect;
     private MiracleEffects miracleEffects;
     bool achievedMiracle = false;
     private bool gameOver = false;
@@ -26,8 +27,12 @@ public class MiracleManager : MonoBehaviour
     void Start()
     {
         miracleEffects = GetComponent<MiracleEffects>();
-        miracleEffects.SetupMiracleEffects(player.GetPlayerAnimator(), fireEffectPrefab, player);
+        miracleEffects.SetupMiracleEffects(player.GetPlayerAnimator(), fireEffectPrefab, player, chiefLightEffect);
+    }
 
+    public void StartMiracle()
+    {
+        miracleEffects.BeamLightEffect();
     }
     public void InvokeEffect(Button button)
     {
@@ -40,7 +45,6 @@ public class MiracleManager : MonoBehaviour
         mainCanvas.GetComponent<Canvas>().enabled = false;
         rhythmManager.transform.parent.gameObject.SetActive(true);
         GameManager.instance.SetGameState(GameManager.GameState.Rhythm);
-        //StartCoroutine(rhythmManager.PlayRhythm(0.8f, 1.4f));
         StartCoroutine(rhythmManager.PlayRhythmSet());
         yield return new WaitUntil(() => gameOver == true);
         if (achievedMiracle)

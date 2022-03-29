@@ -15,9 +15,9 @@ public class DialogueTreeObject : ScriptableObject
     [SerializeField] private float NPCInfluenceChange;
     [SerializeField] private List<AffectedNPCS> triggerableNPCS;
     [SerializeField] private bool taskComplete = false;
-    [SerializeField] public delegate void MiracleDelegate();
-    [SerializeField] public event MiracleDelegate miracleEvent;
+    [SerializeField] private bool invokesMiracle = false;
 
+   
     public void IncrementConversationAffectedNPC()
     {
         SetupAffectedNPCs();
@@ -29,12 +29,20 @@ public class DialogueTreeObject : ScriptableObject
                 if (triggerableNPCS[i].triggeredTree != null)
                 {
                     npc.SetDialogueTree(triggerableNPCS[i].triggeredTree);
+                    triggerableNPCS[i].triggeredTree.Initialise();
                 }
                 i++;
             }
         }
-        AffectedNPCs.Clear(); 
-        miracleEvent?.Invoke();
+        AffectedNPCs.Clear();
+        InvokeMiracle();
+    }
+    private void InvokeMiracle()
+    {
+        if (invokesMiracle)
+        {
+            GameObject.FindGameObjectWithTag("MiracleManager").GetComponent<MiracleManager>().StartMiracle();
+        }
     }
     private void SetupAffectedNPCs()
     {
@@ -79,6 +87,8 @@ public class DialogueTreeObject : ScriptableObject
     public float GetCurrentInfluenceChance() => currentInfluenceChance;
     public void UpdateTotalInfluenceChance(float _chanceEffect)=> currentInfluenceChance = Mathf.Clamp(currentInfluenceChance + _chanceEffect, 0, 100);
     public void SetOriginalInfluenceChance(float _influence) => currentInfluenceChance = _influence;
+    public void SetCorrectPathChosen(bool _correctPathChosen) => correctPathChosen = _correctPathChosen;
+    public void ResetTaskComplete() => taskComplete = false;
     public void SetTaskComplete(bool _taskComplete) 
     {
         taskComplete = _taskComplete;
@@ -87,11 +97,9 @@ public class DialogueTreeObject : ScriptableObject
             IncrementConversationAffectedNPC();
         }
     }
-    public void ResetTaskComplete()
-    {
-        taskComplete = false;
-        correctPathChosen = false;
-    }
+  
+    
+ 
 
 }
 [System.Serializable]
@@ -100,4 +108,7 @@ public struct AffectedNPCS
     public string name;
     public DialogueTreeObject triggeredTree;
 }
+    
+
+
 

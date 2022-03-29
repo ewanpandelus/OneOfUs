@@ -12,6 +12,10 @@ public class TaskManager : MonoBehaviour
     private List<Func<bool>> taskChecks = new List<Func<bool>>();
     private void Start()
     {
+        foreach(DialogueTreeObject tree in treesRelatedToTasks)
+        {
+            tree.SetCorrectPathChosen(false);
+        }
         inventory.collectedWheatEvent += Task1Complete;
     }
     private void PopulateTaskListRequirements()

@@ -1377,7 +1377,7 @@ GameObject:
   - component: {fileID: 667299555}
   m_Layer: 0
   m_Name: MiracleManager
-  m_TagString: Untagged
+  m_TagString: MiracleManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1413,6 +1413,7 @@ MonoBehaviour:
   rhythmManager: {fileID: 848095381}
   mainCanvas: {fileID: 1742257814}
   eventSystem: {fileID: 1448966705}
+  chiefLightEffect: {fileID: 9104162585517877697, guid: 1e50b1d3c261a4f42bdaca425b7cdf08, type: 3}
 --- !u!114 &667299555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1702,7 +1703,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679898076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 457.14117, y: -4.2971687, z: 0}
+  m_LocalPosition: {x: 457.24118, y: -4.0271688, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 87636776}
@@ -30274,6 +30275,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2415264195927105397, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
+      propertyPath: m_SortingOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415264195927105397, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -30283,11 +30288,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2415264195927105402, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.074
+      value: 4.77
       objectReference: {fileID: 0}
     - target: {fileID: 2415264195927105402, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.88
+      value: -3.86
       objectReference: {fileID: 0}
     - target: {fileID: 2415264195927105402, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
       propertyPath: m_LocalPosition.z
