@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Dock Worker 01 Task 3 Waiting Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 0
+  triggerableNPCS:
+  - name: Mr Destiny
+    triggeredTree: {fileID: 11400000, guid: db507d26ba7be98459b6520a9fa8c647, type: 2}
+  taskComplete: 1
+  dialogueTree:
+  - {fileID: 11400000, guid: 8cb0783a2cafa7a4fab2874a2a50b329, type: 2}

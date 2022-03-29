@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Dock Worker 01 Task 3 Start Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 0
+  triggerableNPCS:
+  - name: Dock Worker 01
+    triggeredTree: {fileID: 11400000, guid: 3b1e81e1b47b6a844b4464ad0c55222f, type: 2}
+  taskComplete: 1
+  dialogueTree:
+  - {fileID: 11400000, guid: e35a2be9fbf849043b41e6946d000ffa, type: 2}
+  - {fileID: 11400000, guid: 94beb80234e31344d9478d49d7c74e97, type: 2}
+  - {fileID: 11400000, guid: ea4d9a8ea988ab241997bf95530bbee8, type: 2}
+  - {fileID: 11400000, guid: d6f56098c88a5f64ca4533686c0d05e5, type: 2}
+  - {fileID: 11400000, guid: 5876df43f8cd2f2488d82751a7294b98, type: 2}
+  - {fileID: 11400000, guid: a8db49ea294a4b74c8192b41e1e8ea5b, type: 2}
+  - {fileID: 11400000, guid: a64b495889d39d148a1512c06ae7f363, type: 2}
