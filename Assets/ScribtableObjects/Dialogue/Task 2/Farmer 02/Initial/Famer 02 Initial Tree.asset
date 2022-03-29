@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
   triggerableNPCS: []
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: 2cc8541936bb33e4d91f21339d18a718, type: 2}

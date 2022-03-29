@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Merchant 01 Task 1 Waiting Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  triggerableNPCS:
-  - name: Merchant 01
-    triggeredTree: {fileID: 11400000, guid: caa047295df9b5a48a6b8dc57baf9f28, type: 2}
-  taskComplete: 0
+  triggerableNPCS: []
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: 85c0ad0c075b53e47a47f478196ea72c, type: 2}

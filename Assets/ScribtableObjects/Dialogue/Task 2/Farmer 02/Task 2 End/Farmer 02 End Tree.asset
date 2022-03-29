@@ -16,6 +16,7 @@ MonoBehaviour:
   triggerableNPCS:
   - name: Farmer 02
     triggeredTree: {fileID: 11400000, guid: 11f64122eead935419fd0af2fdf1a7ca, type: 2}
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: fea220213ec717040bf4f05022c20770, type: 2}
   - {fileID: 11400000, guid: 9d4cd7d8ea18871458fd24e6d6d34375, type: 2}
