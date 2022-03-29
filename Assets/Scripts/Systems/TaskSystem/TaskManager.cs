@@ -40,4 +40,8 @@ public class TaskManager : MonoBehaviour
         public string title;
         public string description;
     }
+    public void OnApplicationQuit()
+    {
+        treesRelatedToTasks[0].SetTaskComplete(false);
+    }
 }
