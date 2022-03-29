@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
     }
     private void CheckInventoryForKeyItems()
     {
-        if(CheckInventoryContainsAmountOfItem("Wheat", 10))
+        if(CheckInventoryContainsAmountOfItem("Wheat", 2))
         {
             collectedWheatEvent?.Invoke();
         }

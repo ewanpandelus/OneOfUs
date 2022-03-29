@@ -19,8 +19,7 @@ public class TaskManager : MonoBehaviour
         taskChecks.Add(()=>inventory.CheckInventoryContainsAmountOfItem("Wheat", 6)); //Task1
                                                                                       //  taskChecks.Add(() => CheckCandlesLit(); //Task2
                                                                                       //taskChecks.Add(() => inventory.CheckInventoryContainsAmountOfItem("Money", 30)); //Task3
-                                                                                      //taskChecks.Add(() => SheepNPC.happy = true; //Task4
-
+                                                                                      //taskChecks.Add(() => SheepNPC.happy = true; //
     }
     private void Task1Complete()
     {
