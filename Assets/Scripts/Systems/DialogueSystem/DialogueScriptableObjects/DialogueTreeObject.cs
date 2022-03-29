@@ -74,7 +74,6 @@ public class DialogueTreeObject : ScriptableObject
     public void SetTaskComplete(bool _taskComplete) 
     {
         taskComplete = _taskComplete;
-        AssessRightPath();
     }
 
 
