@@ -44,7 +44,6 @@ public class NoteManager : MonoBehaviour
     }
     public void RemoveNote(BaseNote _closestNote)
     {
-
         _closestNote.SetAlreadyExited(true);
         Destroy(noteQueue.Dequeue().gameObject);
         UpdatePercentageText(true);

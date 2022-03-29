@@ -17,7 +17,7 @@ public class NPC : MonoBehaviour
     private PlayerStats player;
     private bool currentlyTalking = false;
     public float GetInfluenceLevel() => influenceLevel;
-    public void Awake()
+    public void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStats>();
         currentDialogueTree = initialDialogueTree;

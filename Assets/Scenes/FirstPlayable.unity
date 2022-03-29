@@ -1410,6 +1410,7 @@ MonoBehaviour:
   player: {fileID: 1565283964}
   rhythmManager: {fileID: 848095381}
   mainCanvas: {fileID: 1742257814}
+  eventSystem: {fileID: 1448966705}
 --- !u!114 &667299555
 MonoBehaviour:
   m_ObjectHideFlags: 0

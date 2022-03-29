@@ -10,12 +10,13 @@ public class DialogueTreeObject : ScriptableObject
     private int currentID = 1;
     private float currentInfluenceChance;
     private bool correctPathChosen = false;
+    private List<NPC> AffectedNPCs = new List<NPC>();
     [SerializeField] private float NPCInfluenceChange;
-    private List<NPC> AffectedNPCs;
     [SerializeField] private List<AffectedNPCS> triggerableNPCS;
+    [SerializeField] private bool taskComplete;
     public void IncrementConversationAffectedNPC()
     {
-        if (AffectedNPCs.Count > 0 && correctPathChosen)
+        if (AffectedNPCs.Count > 0 && correctPathChosen&& taskComplete)
         {
             int i = 0;
             foreach (NPC npc in AffectedNPCs)
@@ -39,7 +40,6 @@ public class DialogueTreeObject : ScriptableObject
         AffectedNPCs.Clear();
         if (triggerableNPCS.Count!=0)
         {
-
             foreach (AffectedNPCS npcToTrigger in triggerableNPCS)
             {
                 AffectedNPCs.Add(GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == npcToTrigger.name).GetComponent<NPC>());
@@ -66,19 +66,12 @@ public class DialogueTreeObject : ScriptableObject
     }
     public List<DialogueNode> dialogueTree = new List<DialogueNode>();
     public DialogueNode GetCurrentNode() => dialogueTree.Find(x => x.GetID() == currentID);
-
-
     public List<DialogueNode> GetAllNodes() => dialogueTree;
     public float GetNPCInfluenceChange() => NPCInfluenceChange;
     public float GetCurrentInfluenceChance() => currentInfluenceChance;
-    public void UpdateTotalInfluenceChance(float _chanceEffect)
-    {
-        currentInfluenceChance = Mathf.Clamp(currentInfluenceChance + _chanceEffect, 0, 100);
-    }
-    public void SetOriginalInfluenceChance(float _influence)
-    {
-        currentInfluenceChance = _influence;
-    }
+    public void UpdateTotalInfluenceChance(float _chanceEffect)=> currentInfluenceChance = Mathf.Clamp(currentInfluenceChance + _chanceEffect, 0, 100);
+    public void SetOriginalInfluenceChance(float _influence) => currentInfluenceChance = _influence;
+    public void SetTaskComplete(bool _taskComplete) => taskComplete = _taskComplete;
 
 }
 [System.Serializable]

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-   
+
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
+    public delegate void CollectedWheatDelegate();
+    public event CollectedWheatDelegate collectedWheatEvent;
+
 
     public void AddItem(string _item)
     {
@@ -17,9 +20,17 @@ public class Inventory : MonoBehaviour
         {
             inventory.Add(_item, 1);
         }
+        CheckInventoryForKeyItems();
     }
     public bool CheckInventoryContainsAmountOfItem(string _item, float _threshold)
     {
         return inventory[_item] >= _threshold;
+    }
+    private void CheckInventoryForKeyItems()
+    {
+        if(CheckInventoryContainsAmountOfItem("Wheat", 10))
+        {
+            collectedWheatEvent?.Invoke();
+        }
     }
 }
