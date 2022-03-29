@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: CO-1
+  m_EditorClassIdentifier: 
+  id: 2
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: 2186adb4f30cac64684d1b4000a4bdf2, type: 2}
+  middleChild: {fileID: 11400000, guid: 1a6a8e8ed9761e044b0789d37319c051, type: 2}
+  rightChild: {fileID: 0}
+  chanceEffect: 0
+  dialogue:
+  - Eh, yeah. I suppose he has.
+  response:
+  - You seem distracted. Whats troubles you?
+  - I just love sheep. Have you named them?

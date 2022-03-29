@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: Farmer 02 Task 2 Start Conversation
+  m_EditorClassIdentifier: 
+  id: 1
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: 68aab287ae6e51d48b8012848a617004, type: 2}
+  middleChild: {fileID: 11400000, guid: 4c1db67c30ab4754cb227a60ae671e32, type: 2}
+  rightChild: {fileID: 0}
+  chanceEffect: 0
+  dialogue:
+  - Hello there, my friend. Cracking day for it!
+  response:
+  - Cracking indeed. Saviour has truly blessed us.
+  - The only thing cracking was your knees when you got up, old man!

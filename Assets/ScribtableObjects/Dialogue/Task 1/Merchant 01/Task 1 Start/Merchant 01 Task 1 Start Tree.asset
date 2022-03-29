@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Merchant 01 Task 1 Start Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 0
+  triggerableNPCS:
+  - name: Merchant 01
+    triggeredTree: {fileID: 11400000, guid: 1cebd1f0702aebc40ad21c490b08f09e, type: 2}
+  - name: Farmer 01
+    triggeredTree: {fileID: 11400000, guid: 44c071ee5c297fd43be50f59462b38e2, type: 2}
+  dialogueTree:
+  - {fileID: 11400000, guid: faa9bb220516c5b40aa0ade90aa3b08f, type: 2}
+  - {fileID: 11400000, guid: fb2f3c20d5531e245adf819d51fc6db6, type: 2}
+  - {fileID: 11400000, guid: bf0a8a9e12ff4d345a6048ace52319bf, type: 2}
+  - {fileID: 11400000, guid: 8db33bbe94d50924fac5999c713c2674, type: 2}
+  - {fileID: 11400000, guid: 8fef1a4152a6b5e48acf57f30020c7ad, type: 2}
+  - {fileID: 11400000, guid: b785f2713f24ed042b8c5b6c4bbf3f2f, type: 2}
+  - {fileID: 11400000, guid: cf41dce35db126848b2e919323507ac0, type: 2}

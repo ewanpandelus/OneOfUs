@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: Merchant 01 Task 1 Start Conversation
+  m_EditorClassIdentifier: 
+  id: 1
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: fb2f3c20d5531e245adf819d51fc6db6, type: 2}
+  middleChild: {fileID: 11400000, guid: bf0a8a9e12ff4d345a6048ace52319bf, type: 2}
+  rightChild: {fileID: 0}
+  chanceEffect: 0
+  dialogue:
+  - Good evening, young sire! Welcome to Goodheart's Good's. What can I do you for?
+  response:
+  - I'm looking for something specific.
+  - It is more of what I can do for you.
+  - Sorry I troubled you. (Walk away.)

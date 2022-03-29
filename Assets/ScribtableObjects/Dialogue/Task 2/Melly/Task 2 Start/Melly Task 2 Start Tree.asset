@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Melly Task 2 Start Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 0
+  triggerableNPCS:
+  - name: Sheep
+    triggeredTree: {fileID: 11400000, guid: 3257edc78d3bedb4fa2d429d4ff87c22, type: 2}
+  - name: Farmer 02
+    triggeredTree: {fileID: 11400000, guid: 6b92bcf634fc6554d92f3b546460fe65, type: 2}
+  dialogueTree:
+  - {fileID: 11400000, guid: 00c5398f2ba40554badaf092b7cedf4e, type: 2}
+  - {fileID: 11400000, guid: 1c7aa120739ff2540ad6c06f270f32eb, type: 2}
+  - {fileID: 11400000, guid: bad4f3dc80c74ea40afdd144f7074817, type: 2}
+  - {fileID: 11400000, guid: 98272d62add135e40b0b9d65b6781065, type: 2}
+  - {fileID: 11400000, guid: 26e7284b52c0eba4da5d9427ba56db6e, type: 2}
+  - {fileID: 11400000, guid: 43f0f3f641fb3594fa35237c60bbc542, type: 2}

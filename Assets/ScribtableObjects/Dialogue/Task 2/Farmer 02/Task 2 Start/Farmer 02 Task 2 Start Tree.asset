@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Farmer 02 Task 2 Start Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 0
+  triggerableNPCS:
+  - name: Farmer 02
+    triggeredTree: {fileID: 11400000, guid: c4751653c361b4f44b82e8183946c0a2, type: 2}
+  - name: High Chief
+    triggeredTree: {fileID: 11400000, guid: bcd8f393cc93e5646bd4fef992fb20f4, type: 2}
+  dialogueTree:
+  - {fileID: 11400000, guid: 8b0dceba5832f5c439225530b8bc0f5b, type: 2}
+  - {fileID: 11400000, guid: 68aab287ae6e51d48b8012848a617004, type: 2}
+  - {fileID: 11400000, guid: 2186adb4f30cac64684d1b4000a4bdf2, type: 2}
+  - {fileID: 11400000, guid: dc1977b2cd8b9884287bc3cc44779c9f, type: 2}
+  - {fileID: 11400000, guid: 61fca8a9db22f95448eb2d02465d0ecb, type: 2}
+  - {fileID: 11400000, guid: 94488fba652d25042b42a9855c45ee11, type: 2}
+  - {fileID: 11400000, guid: 1a6a8e8ed9761e044b0789d37319c051, type: 2}
+  - {fileID: 11400000, guid: b7177202316dfce4eab506584b1b3905, type: 2}
+  - {fileID: 11400000, guid: 23f7a94f532b67c49aa7d5931e8e9654, type: 2}
+  - {fileID: 11400000, guid: 1d08721e5821bc24092b571412da5826, type: 2}
+  - {fileID: 11400000, guid: 91daaa2219cbf8d4d82807f847d07470, type: 2}
+  - {fileID: 11400000, guid: 4c1db67c30ab4754cb227a60ae671e32, type: 2}
+  - {fileID: 11400000, guid: d0a88fd6a323a2e4c8d4767705ed46fe, type: 2}
+  - {fileID: 11400000, guid: 3464c0a38f4bae3409308d5f73e3eece, type: 2}
+  - {fileID: 11400000, guid: 5d444bebbc4d07f4aabdc0a1732407b5, type: 2}
+  - {fileID: 11400000, guid: 40d2c0b788fa7394083d51037bab2191, type: 2}
+  - {fileID: 11400000, guid: 5d444bebbc4d07f4aabdc0a1732407b5, type: 2}
+  - {fileID: 11400000, guid: a8cbd77cfa5f369458eafb4e95b2539a, type: 2}
+  - {fileID: 11400000, guid: 3396fb2b7e913e3489d271bef3ab408b, type: 2}

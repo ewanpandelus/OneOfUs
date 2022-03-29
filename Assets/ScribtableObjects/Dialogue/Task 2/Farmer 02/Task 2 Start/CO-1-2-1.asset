@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: CO-1-2-1
+  m_EditorClassIdentifier: 
+  id: 8
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: 23f7a94f532b67c49aa7d5931e8e9654, type: 2}
+  middleChild: {fileID: 11400000, guid: 1d08721e5821bc24092b571412da5826, type: 2}
+  rightChild: {fileID: 0}
+  chanceEffect: 1
+  dialogue:
+  - Excuse me! These aren't for eatin! These are for woolin.
+  response:
+  - Apologies, I didnt mean to offend.
+  - Shame, I'm quite partial to nice bit of roasted lamb.
