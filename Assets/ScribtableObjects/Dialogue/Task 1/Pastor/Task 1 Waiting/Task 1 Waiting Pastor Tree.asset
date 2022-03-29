@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Task 1 Waiting Pastor Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  AffectedNPCNames: []
+  triggerableNPCS: []
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: e74494218d6932749b8fbf85edab767d, type: 2}

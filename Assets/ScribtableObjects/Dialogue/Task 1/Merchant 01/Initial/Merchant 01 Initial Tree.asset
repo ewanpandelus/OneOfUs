@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Merchant 01 Initial Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  AffectedNPCNames: []
+  triggerableNPCS: []
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: 0fc88962cc750034fb32f80f0c710b3f, type: 2}

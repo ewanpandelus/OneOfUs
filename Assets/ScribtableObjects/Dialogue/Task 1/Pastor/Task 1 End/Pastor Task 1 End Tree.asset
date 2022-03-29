@@ -18,6 +18,7 @@ MonoBehaviour:
     triggeredTree: {fileID: 11400000, guid: b0a928c8cc49de74b94e7b1631fcf5ae, type: 2}
   - name: Homeless
     triggeredTree: {fileID: 11400000, guid: 9d7d888b928c10140bf165394da09176, type: 2}
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: 68e1a47f9de27a84799835e6fb4b31d8, type: 2}
   - {fileID: 11400000, guid: 261d56b477787544ebd44d11510fdc9d, type: 2}

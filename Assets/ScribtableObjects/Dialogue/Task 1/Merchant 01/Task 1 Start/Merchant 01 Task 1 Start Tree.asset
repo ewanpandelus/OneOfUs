@@ -18,6 +18,7 @@ MonoBehaviour:
     triggeredTree: {fileID: 11400000, guid: 1cebd1f0702aebc40ad21c490b08f09e, type: 2}
   - name: Farmer 01
     triggeredTree: {fileID: 11400000, guid: 44c071ee5c297fd43be50f59462b38e2, type: 2}
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: faa9bb220516c5b40aa0ade90aa3b08f, type: 2}
   - {fileID: 11400000, guid: fb2f3c20d5531e245adf819d51fc6db6, type: 2}

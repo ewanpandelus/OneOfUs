@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Homeless Task 1 Waiting Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  AffectedNPCName: Homeless
+  triggerableNPCS: []
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: 1015343caffaf4043ae7e2a37737ea6b, type: 2}

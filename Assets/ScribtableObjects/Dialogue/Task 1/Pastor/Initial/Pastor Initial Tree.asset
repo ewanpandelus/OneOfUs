@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pastor Initial Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  AffectedNPCName: 
+  triggerableNPCS: []
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: 107fcec5950bbae4a95dfb94412a2483, type: 2}

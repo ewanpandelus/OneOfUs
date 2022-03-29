@@ -16,5 +16,6 @@ MonoBehaviour:
   triggerableNPCS:
   - name: Mr Destiny
     triggeredTree: {fileID: 11400000, guid: db507d26ba7be98459b6520a9fa8c647, type: 2}
+  taskComplete: 1
   dialogueTree:
   - {fileID: 11400000, guid: 60dffdfda28ea5c4080b649f12472532, type: 2}
