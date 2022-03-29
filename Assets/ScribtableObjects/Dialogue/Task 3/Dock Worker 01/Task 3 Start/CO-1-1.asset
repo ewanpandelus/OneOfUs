@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: CO-1-1
+  m_EditorClassIdentifier: 
+  id: 3
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: d6f56098c88a5f64ca4533686c0d05e5, type: 2}
+  middleChild: {fileID: 11400000, guid: 5876df43f8cd2f2488d82751a7294b98, type: 2}
+  rightChild: {fileID: 0}
+  chanceEffect: -1
+  dialogue:
+  - You don't know the full story. I don't have to.
+  - In the contract he gave me for the loan repayments it said nothing about when
+    I have to pay him by.
+  - So I don't care if he want's his money back, I don't have to give it to him.
+  response:
+  - That's a real shame, guess I'll have to beat the money out of you.
+  - What if I told you that you were wrong about the contract?

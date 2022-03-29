@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
+  m_Name: CO-1-1-1
+  m_EditorClassIdentifier: 
+  id: 4
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: fd48e5cd09392c043b686cc98e0721e4, type: 2}
+  middleChild: {fileID: 0}
+  rightChild: {fileID: 0}
+  chanceEffect: 1
+  dialogue:
+  - Well there's no need to be rude. Though if you can get me my money back, I'll
+    have to believe you about your Saviour.
+  response:
+  - Why? Does Clyde not want to pay or something?

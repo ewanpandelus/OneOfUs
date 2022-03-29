@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Merchant 01 Task 3 Start Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 0
+  triggerableNPCS:
+  - name: Merchant 01
+    triggeredTree: {fileID: 11400000, guid: e0300002e908eb343b4dcbc3e7b66c23, type: 2}
+  - name: Dock Worker 01
+    triggeredTree: {fileID: 11400000, guid: 3f3dda1dbb0119e4cba3f14e27e460bb, type: 2}
+  taskComplete: 1
+  dialogueTree:
+  - {fileID: 11400000, guid: 1d0b13ce8db3c0f4cb204d7d8c50cb63, type: 2}
+  - {fileID: 11400000, guid: 3f7ee08f11db6e64e9c7a78da7ee9640, type: 2}
+  - {fileID: 11400000, guid: 3cfae26fe3cd17541b82b73569c1946a, type: 2}
+  - {fileID: 11400000, guid: e67d338ebdedf4e49be24c8cd4bcc503, type: 2}
+  - {fileID: 11400000, guid: fd48e5cd09392c043b686cc98e0721e4, type: 2}
