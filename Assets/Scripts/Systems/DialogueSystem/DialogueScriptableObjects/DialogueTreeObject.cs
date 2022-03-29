@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Dialogue/ThreeOptions/DialogueTreeObject")]
 [System.Serializable]
@@ -13,10 +14,14 @@ public class DialogueTreeObject : ScriptableObject
     private List<NPC> AffectedNPCs = new List<NPC>();
     [SerializeField] private float NPCInfluenceChange;
     [SerializeField] private List<AffectedNPCS> triggerableNPCS;
-    [SerializeField] private bool taskComplete;
+    [SerializeField] private bool taskComplete = false;
+    [SerializeField] public delegate void MiracleDelegate();
+    [SerializeField] public event MiracleDelegate miracleEvent;
+
     public void IncrementConversationAffectedNPC()
     {
-        if (AffectedNPCs.Count > 0 && correctPathChosen&& taskComplete)
+        SetupAffectedNPCs();
+        if (AffectedNPCs.Count > 0 && correctPathChosen && taskComplete)
         {
             int i = 0;
             foreach (NPC npc in AffectedNPCs)
@@ -28,7 +33,18 @@ public class DialogueTreeObject : ScriptableObject
                 i++;
             }
         }
-        AffectedNPCs.Clear();
+        AffectedNPCs.Clear(); 
+        miracleEvent?.Invoke();
+    }
+    private void SetupAffectedNPCs()
+    {
+        if (triggerableNPCS.Count != 0)
+        {
+            foreach (AffectedNPCS npcToTrigger in triggerableNPCS)
+            {
+                AffectedNPCs.Add(GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == npcToTrigger.name).GetComponent<NPC>());
+            }
+        }
     }
     public void Initialise()
     {
@@ -37,14 +53,6 @@ public class DialogueTreeObject : ScriptableObject
     public void Reset()
     {
         currentID = 1;
-        AffectedNPCs.Clear();
-        if (triggerableNPCS.Count!=0)
-        {
-            foreach (AffectedNPCS npcToTrigger in triggerableNPCS)
-            {
-                AffectedNPCs.Add(GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == npcToTrigger.name).GetComponent<NPC>());
-            }
-        }
     }
     public virtual void Traverse(int _direction)  //Moves through the tree based on player's decisions
     {
@@ -74,8 +82,16 @@ public class DialogueTreeObject : ScriptableObject
     public void SetTaskComplete(bool _taskComplete) 
     {
         taskComplete = _taskComplete;
+        if (correctPathChosen)
+        {
+            IncrementConversationAffectedNPC();
+        }
     }
-
+    public void ResetTaskComplete()
+    {
+        taskComplete = false;
+        correctPathChosen = false;
+    }
 
 }
 [System.Serializable]

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         gameState = GameState.Standard;
-        Time.timeScale = 3f;
+        Time.timeScale = 4f;
     }
 
     public void SetGameState(GameState _gameState)
@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
                 PostProcessManager.instance.RhythmPostProcess();
                 SoundManager.instance.StartMiniGame();
                 break;
-
         }
     }
 }

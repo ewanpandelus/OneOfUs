@@ -161,7 +161,7 @@ public class NoteManager : MonoBehaviour
     {
         float x = 0f;
         var t = 0f;
-        while (t < 1)
+        while (t < 1&&_note.gameObject.transform.position.x!=_finishPos)
         {
             t += Time.deltaTime*3;
             x = Mathf.Lerp(_startPos, _finishPos, t);

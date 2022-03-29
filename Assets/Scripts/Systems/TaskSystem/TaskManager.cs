@@ -42,6 +42,6 @@ public class TaskManager : MonoBehaviour
     }
     public void OnApplicationQuit()
     {
-        treesRelatedToTasks[0].SetTaskComplete(false);
+        treesRelatedToTasks[0].ResetTaskComplete();
     }
 }

@@ -40,7 +40,7 @@ public class NPC : MonoBehaviour
 
     public void RunDialogue()
     {
-        StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC   
+        StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC
         currentDialogueTree.SetOriginalInfluenceChance(player.GetInfluence());
         player.UpdateInfluenceChanceBar(player.GetInfluence());
         currentlyTalking = true;
