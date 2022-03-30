@@ -34,6 +34,7 @@ public class DialogueUI : MonoBehaviour
         ShowDialogueBox(true);
         textLabel.text = _text;
     }
+    public void SetFontStyle(FontStyles _fontstyle) => textLabel.fontStyle = _fontstyle;
     public void ShowDialogueBox(bool _on)
     {
         if (dialogueBox)

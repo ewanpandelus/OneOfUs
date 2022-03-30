@@ -16,6 +16,7 @@ public class MiracleManager : MonoBehaviour
     [SerializeField] private GameObject mainCanvas;
     [SerializeField] EventSystem eventSystem;
     [SerializeField] GameObject chiefLightEffect;
+    [SerializeField] DialogueUI dialogueUI;
     public delegate void MiracleEventDelegate();
     public event MiracleEventDelegate miracleEvent;
     private MiracleEffects miracleEffects;
@@ -44,6 +45,7 @@ public class MiracleManager : MonoBehaviour
         miracleEffects.BeamLightEffect();
         yield return new WaitForSeconds(1.5f);
         highChief.RunDialogue();
+        dialogueUI.SetFontStyle(TMPro.FontStyles.Italic);
         yield return new WaitUntil(() => !highChief.GetCurrentlyTalking());
         UIManager.ShowMiracleBar(true);
     }
@@ -64,6 +66,7 @@ public class MiracleManager : MonoBehaviour
         if (achievedMiracle)
         {
             MiracleAchieved();
+            dialogueUI.SetFontStyle(TMPro.FontStyles.Normal);
         }
         else
         {
