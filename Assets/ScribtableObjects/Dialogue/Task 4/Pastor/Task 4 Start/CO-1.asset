@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: Merchant 01 Task 3 End Conversation
+  m_Name: CO-1
   m_EditorClassIdentifier: 
-  id: 1
-  correctChoice: 1
-  leftChild: {fileID: 11400000, guid: 1dcef5ff98db52e41a22e9ca055980dc, type: 2}
+  id: 2
+  correctChoice: 0
+  leftChild: {fileID: 11400000, guid: e78f2513629bdac44a8024153851d5e5, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
   chanceEffect: 0
   dialogue:
-  - Well?
+  - For me? My child, I have everything I need under the house of God.
   response:
-  - Here's your money.
+  - God, huh? What has this God ever done for you?
+  - Ok then, sorry to trouble you.

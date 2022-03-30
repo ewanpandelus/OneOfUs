@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37142ec170c382c4d9a6df39e5ef6959, type: 3}
-  m_Name: Merchant 01 Task 3 End Conversation
+  m_Name: CO-1-1-1-1-1
   m_EditorClassIdentifier: 
-  id: 1
+  id: 6
   correctChoice: 1
-  leftChild: {fileID: 11400000, guid: 1dcef5ff98db52e41a22e9ca055980dc, type: 2}
+  leftChild: {fileID: 0}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}
-  chanceEffect: 0
+  chanceEffect: 3
   dialogue:
-  - Well?
+  - Well, I find that hard to believe. No one is more powerful than God.
+  - But, if your so called Saviour has granted you the power to light torches, then
+    you are more than welcome to prove me wrong.
   response:
-  - Here's your money.
+  - (Walk away and perform a Miracle.)
