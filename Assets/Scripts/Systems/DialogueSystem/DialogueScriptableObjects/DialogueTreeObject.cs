@@ -41,7 +41,7 @@ public class DialogueTreeObject : ScriptableObject
     {
         if (invokesMiracle)
         {
-            GameObject.FindGameObjectWithTag("MiracleManager").GetComponent<MiracleManager>().StartMiracle();
+            GameObject.FindGameObjectWithTag("MiracleManager").GetComponent<MiracleManager>().StartCoroutine("StartMiracle");
         }
     }
     private void SetupAffectedNPCs()

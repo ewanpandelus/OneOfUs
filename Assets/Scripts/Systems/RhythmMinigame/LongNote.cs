@@ -14,6 +14,7 @@ public class LongNote : BaseNote
     private void Start()
     {
         initialYScale = _transform.localScale.y;
+        _transform.position -= Vector3.up * (initialYScale / 2);
     }
 
     protected override void HandleHits()

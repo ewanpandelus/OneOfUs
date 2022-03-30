@@ -46,8 +46,10 @@ public class TextEffects : MonoBehaviour
             if (punctuationType.punctations.Contains(_character))
             {
                 _waitTime = punctuationType.waitTime;
-           
-                return;
+            }
+            else
+            {
+                _waitTime = 0.01f;
             }
         }
       

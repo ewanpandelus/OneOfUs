@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private EvaluateEnvironment evaluateEnvironment;
     private PlayerAnimator playerAnim;
     private Transform _transform;
+    private bool canMove = true;
     private void Awake()
     {
         evaluateEnvironment = new EvaluateEnvironment(transform);
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (UIManager.GetStaticUIShowing()) return;
+        if (!canMove || UIManager.GetStaticUIShowing()) return;
         EvaluateInput();
         playerAnim.UpdateMovement(movement);
         playerAnim.UpdateAnimation();
@@ -46,5 +47,5 @@ public class PlayerController : MonoBehaviour
     {
         return playerAnim;
     }
-   
+    public void SetCanMove(bool _canMove) => canMove = _canMove;
 }

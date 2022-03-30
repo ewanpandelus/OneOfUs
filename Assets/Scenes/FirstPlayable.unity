@@ -572,11 +572,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520837, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.25
+      value: -0.85
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520837, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.85
+      value: 60.26
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520837, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -611,8 +611,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520838, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813121354312520838, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_SortingOrder
-      value: -87
+      value: -581
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520839, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_Name
@@ -1411,6 +1415,7 @@ MonoBehaviour:
   fireEffectPrefab: {fileID: 4475961467073952351, guid: 2c96d7a3611d66e44a8716dc76d38572, type: 3}
   player: {fileID: 1565283964}
   rhythmManager: {fileID: 848095381}
+  UIManager: {fileID: 791546483}
   mainCanvas: {fileID: 1742257814}
   eventSystem: {fileID: 1448966705}
   chiefLightEffect: {fileID: 9104162585517877697, guid: 1e50b1d3c261a4f42bdaca425b7cdf08, type: 3}
@@ -1500,7 +1505,7 @@ GameObject:
   - component: {fileID: 678452179}
   - component: {fileID: 678452180}
   - component: {fileID: 678452181}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Church
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3573,6 +3578,11 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+  - clip: {fileID: 8300000, guid: e780bd2bc53b00a44b23019eecff74af, type: 3}
+    name: Thunder
+    volume: 1
+    pitch: 1
+    loop: 0
 --- !u!1 &1462851260
 GameObject:
   m_ObjectHideFlags: 0
@@ -5032,7 +5042,7 @@ MonoBehaviour:
     timeToWait: 14.53
     isLong: 1
   - noteName: 11th
-    timeToWait: 15.14
+    timeToWait: 15.12
     isLong: 1
   - noteName: 12th
     timeToWait: 17.033
@@ -30107,7 +30117,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -30783,6 +30793,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6806748516826548432, guid: 425ff996e68eb6a43a88b41223022fb7, type: 3}
+      propertyPath: mapUI
+      value: 
+      objectReference: {fileID: 791546480}
     - target: {fileID: 6806748516826548433, guid: 425ff996e68eb6a43a88b41223022fb7, type: 3}
       propertyPath: m_RootOrder
       value: 5

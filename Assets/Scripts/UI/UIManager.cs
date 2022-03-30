@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] MapUI mapUI;
     [SerializeField] MiracleManager miracleManager;
     [SerializeField] UIAnimations UIAnimations;
+    
    public bool GetStaticUIShowing()
    {
         return (dialogueUI.GetDialogueBoxShowing() || mapUI.GetMapOpen() || miracleManager.GetRhythmGameActive());
@@ -17,7 +18,11 @@ public class UIManager : MonoBehaviour
         return UIAnimations.GetToolBarShowing();
    }
    public bool CheckMiracleToolBarAllWayOut()
-    {
+   {
         return UIAnimations.CheckMiracleBarAllWayOut();
+   }
+   public void ShowMiracleBar(bool _show)
+    {
+        UIAnimations.ShowMiracleBar(_show);
     }
 }   

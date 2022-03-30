@@ -92,8 +92,7 @@ public class NPC : MonoBehaviour
         currentDialogueTree = _dialogueTree;
         PopulateDialogueNodes();
     }
-    
-    public string GetName() => name;
-    
+
+    public bool GetCurrentlyTalking() => currentlyTalking;
  
 }

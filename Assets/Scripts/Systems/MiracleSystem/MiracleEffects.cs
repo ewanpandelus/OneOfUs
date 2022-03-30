@@ -7,8 +7,11 @@ public class MiracleEffects  :MonoBehaviour
     private PlayerAnimator playerAnimator;
     private PlayerController playerController;
     private GameObject fireEffectPrefab;
-    private GameObject chiefLightEffect;
+    private GameObject chiefLightEffectPrefab;
+    private GameObject chiefLightEffectObj;
     private Light2D globalLight;
+    private Light2D beamOfLight;
+    private float savedBeamOfLightIntensity;
 
     private float rotateCount = 100f;
     private float waitTime = 0.5f;
@@ -18,7 +21,7 @@ public class MiracleEffects  :MonoBehaviour
         playerAnimator = _playerAnimator;
         fireEffectPrefab = _fireEffectPrefab;
         playerController = _playerController;
-        chiefLightEffect = _chiefLightEffect;
+        chiefLightEffectPrefab = _chiefLightEffect;
         globalLight = GameObject.Find("Global Light 2D").GetComponent<Light2D>();
     }
 
@@ -59,25 +62,70 @@ public class MiracleEffects  :MonoBehaviour
     }
     public void BeamLightEffect()
     {
-        GameObject chiefEffect = Instantiate(chiefLightEffect);
-        chiefEffect.transform.position = playerController.transform.position + new Vector3(0.44f, 3.05f, 0);
-        Light2D light1 = chiefEffect.transform.GetChild(0).GetComponent<Light2D>();
-        light1.intensity = 0f;
-        StartCoroutine(FadeInLight(light1));
-
+        chiefLightEffectObj = Instantiate(chiefLightEffectPrefab);
+        chiefLightEffectObj.transform.position = playerController.transform.position + new Vector3(0.55f, 3.05f, 0);
+        beamOfLight = chiefLightEffectObj.transform.GetChild(0).GetComponent<Light2D>();
+        beamOfLight.intensity = 0f;
+        StartCoroutine(FadeInLight(beamOfLight));
     }
-    private IEnumerator FadeInLight(Light2D light1)
+
+    private IEnumerator FadeInLight(Light2D beamOfLight)
     {
         float x = 0f;
-        var t = 0f;
-
+        float t = 0f;
+        float startIntensity = globalLight.intensity;
         while (t < 1 )
         {
-            t += Time.deltaTime/5;
+            t += Time.deltaTime/3;
             x = Mathf.Lerp(0, 0.9f, t);
-            globalLight.intensity = 1 - x/1.5f;
-            light1.intensity = 1 - globalLight.intensity;
+            globalLight.intensity = startIntensity - x/1.2f;
+            beamOfLight.intensity = 1 - globalLight.intensity-(1-startIntensity);
             yield return null;
         }
+    }
+    
+    public void SetBeamOfLightIntensity(float _intensity)
+    {
+        if (beamOfLight)
+        {
+            savedBeamOfLightIntensity = beamOfLight.intensity;
+            beamOfLight.intensity = _intensity;
+        }
+       
+    }
+    public IEnumerator FlashOfLight()
+    {
+        Destroy(chiefLightEffectObj);
+        float x = 0f;
+        float t = 0f;
+        float slowMult = 1f;
+        for(int i = 0; i < 3; i++)
+        {
+            slowMult -= 0.3f;
+            yield return new WaitForSeconds(0.8f);
+            
+            SoundManager.instance.PlayOneShot("Thunder");
+            while (t < 1)
+            {
+                t += Time.deltaTime*4*slowMult;
+                x = Mathf.Lerp(globalLight.intensity, 2f, t);
+                globalLight.intensity = x;
+                yield return null;
+            }
+            t = 0;
+            while (t < 1)
+            {
+                t += Time.deltaTime*4*slowMult;
+                x = Mathf.Lerp(2, 1f, t);
+                globalLight.intensity = x;
+                yield return null;
+            }
+        }
+    }
+    public float GetSavedBeamOfLightIntensity() => savedBeamOfLightIntensity;
+    public void SetGlobalLightIntensity(float _intensity) => globalLight.intensity = _intensity;
+    public void DestroyBeam()
+    {
+        if (chiefLightEffectObj) Destroy(chiefLightEffectObj);
     }
 }

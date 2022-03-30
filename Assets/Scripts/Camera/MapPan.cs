@@ -5,7 +5,8 @@ using UnityEngine;
 public class MapPan : MonoBehaviour
 {
     private float mouseX, mouseY;
-  
+
+    [SerializeField] private MapUI mapUI;
     [SerializeField] private float panSensitivity = 0.2f;
     [SerializeField] private float scrollSensitivity = 10;
     [SerializeField] private float smoothSpeed;
@@ -22,6 +23,7 @@ public class MapPan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!mapUI.GetMapOpen()) return;
 
         CalcNewCameraScrollPosition();
         if (Input.GetMouseButton(0))

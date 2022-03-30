@@ -14,6 +14,7 @@ public class UIAnimations : MonoBehaviour
     {
         toolBarStartPos = miracleToolBar.transform.localPosition;
         toolBarEndPos = miracleToolBar.transform.localPosition += new Vector3(0, 200, 0);
+        ShowMiracleBar(false);
     }
 
 
@@ -21,8 +22,9 @@ public class UIAnimations : MonoBehaviour
 
     void Update()
     {
-        toolBarShowing = true;
-        if (CheckToolBarShow(Input.mousePosition) && miracleToolBar.transform.localPosition != toolBarEndPos&&!UIManager.GetStaticUIShowing())
+        return;
+       // toolBarShowing = true;
+        /*if (CheckToolBarShow(Input.mousePosition) && miracleToolBar.transform.localPosition != toolBarEndPos&&!UIManager.GetStaticUIShowing())
         {
             TweenPosition(toolBarEndPos, 0.75f, miracleToolBar);
         }
@@ -30,9 +32,13 @@ public class UIAnimations : MonoBehaviour
         {
             toolBarShowing = false;
             TweenPosition(toolBarStartPos, 0.75f, miracleToolBar);
-        }
+        }*/
     }
-           
+    public void ShowMiracleBar(bool _show)
+    {
+        if(_show) TweenPosition(toolBarEndPos, 0.75f, miracleToolBar);
+        else TweenPosition(toolBarStartPos, 0.75f, miracleToolBar);
+    }  
 
     private bool CheckToolBarShow(Vector3 _mousePos)
     {
