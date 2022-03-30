@@ -17,7 +17,7 @@ MonoBehaviour:
   - name: Pastor
     triggeredTree: {fileID: 11400000, guid: 617b8c6645a098448b638c276af7c26d, type: 2}
   taskComplete: 1
-  invokesMiracle: 0
+  invokesMiracle: 1
   dialogueTree:
   - {fileID: 11400000, guid: 11bae445569761b46b60ac4fcec5f1b4, type: 2}
   - {fileID: 11400000, guid: 75b93e97d307c4641836156316bf64f3, type: 2}
