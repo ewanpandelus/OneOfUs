@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Pastor Task 4 Start Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 0
+  triggerableNPCS:
+  - name: Pastor
+    triggeredTree: {fileID: 11400000, guid: 617b8c6645a098448b638c276af7c26d, type: 2}
+  taskComplete: 1
+  invokesMiracle: 0
+  dialogueTree:
+  - {fileID: 11400000, guid: 11bae445569761b46b60ac4fcec5f1b4, type: 2}
+  - {fileID: 11400000, guid: 75b93e97d307c4641836156316bf64f3, type: 2}
+  - {fileID: 11400000, guid: e78f2513629bdac44a8024153851d5e5, type: 2}
+  - {fileID: 11400000, guid: 4eef0016791766548835925ccbd8d77c, type: 2}
+  - {fileID: 11400000, guid: 93c27bcb95bd523498a89e16988e6a90, type: 2}
+  - {fileID: 11400000, guid: 35e628fb74bb42f42a032de5683a7cbd, type: 2}
