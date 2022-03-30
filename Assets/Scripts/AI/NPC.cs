@@ -42,7 +42,6 @@ public class NPC : MonoBehaviour
     {
         StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC
         currentDialogueTree.SetOriginalInfluenceChance(player.GetInfluence());
-        player.UpdateInfluenceChanceBar(player.GetInfluence());
         currentlyTalking = true;
         nameText.text = name;
 
@@ -58,14 +57,13 @@ public class NPC : MonoBehaviour
         do
         {
             currentDialogueTree.UpdateTotalInfluenceChance(currentDialogueTree.GetCurrentNode().GetChanceEffect());
-            player.UpdateInfluenceChanceBar(currentDialogueTree.GetCurrentInfluenceChance());
             responseHandler.SetResponseChosen(false);
             dialogueUI.ShowDialogue(currentDialogueTree.GetCurrentNode().GetDialogueObject());
             yield return new WaitUntil(() => responseHandler.GetResponseChosen() == true);
         }
         while (currentDialogueTree.GetCurrentNode() != null&&currentlyTalking);
     }
-    public void EvaluatePersausionChance()
+    /*public void EvaluatePersausionChance()
     {
         int rand = Random.Range(0, 101);
         if (rand <= currentDialogueTree.GetCurrentInfluenceChance())
@@ -76,6 +74,22 @@ public class NPC : MonoBehaviour
         else
         {
             influenceLevel = Mathf.Clamp(influenceLevel - currentDialogueTree.GetNPCInfluenceChange(), 0,100);
+        }
+        currentlyTalking = false;
+        nameText.text = "";
+        player.CalculateInfluence();
+        currentDialogueTree.IncrementConversationAffectedNPC();
+    }*/
+    public void CheckCorrectRouteTaken()
+    {
+        if (currentDialogueTree.GetCorrectPathChosen())
+        {
+            influenceLevel = Mathf.Clamp(influenceLevel + currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
+            Instantiate(indoctrinationPrefab, gameObject.transform.position + new Vector3(0, -0.25f, 0), gameObject.transform.rotation);
+        }
+        else
+        {
+            influenceLevel = Mathf.Clamp(influenceLevel - currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
         }
         currentlyTalking = false;
         nameText.text = "";

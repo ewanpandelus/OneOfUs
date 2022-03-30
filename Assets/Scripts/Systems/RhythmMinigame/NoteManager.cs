@@ -152,7 +152,7 @@ public class NoteManager : MonoBehaviour
     }
     private IEnumerator SwapNoteAfterWait(BaseNote _note, int _notePos)
     {
-        var waitTime = UnityEngine.Random.Range(0.4f, 0.6f);
+        var waitTime = UnityEngine.Random.Range(0.2f, 0.3f);
         yield return new WaitForSeconds(waitTime);
         StartCoroutine(SwapNotePos(FindPotentialNotePositions(_notePos, _note), _note.transform.position.x, _note));
         yield return null;

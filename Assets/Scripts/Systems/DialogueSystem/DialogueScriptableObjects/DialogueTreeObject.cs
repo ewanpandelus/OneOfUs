@@ -88,6 +88,7 @@ public class DialogueTreeObject : ScriptableObject
     public void UpdateTotalInfluenceChance(float _chanceEffect)=> currentInfluenceChance = Mathf.Clamp(currentInfluenceChance + _chanceEffect, 0, 100);
     public void SetOriginalInfluenceChance(float _influence) => currentInfluenceChance = _influence;
     public void SetCorrectPathChosen(bool _correctPathChosen) => correctPathChosen = _correctPathChosen;
+    public bool GetCorrectPathChosen() => correctPathChosen;
     public void ResetTaskComplete() => taskComplete = false;
     public void SetTaskComplete(bool _taskComplete) 
     {

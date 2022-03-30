@@ -16,11 +16,12 @@ public class MiracleManager : MonoBehaviour
     [SerializeField] private GameObject mainCanvas;
     [SerializeField] EventSystem eventSystem;
     [SerializeField] GameObject chiefLightEffect;
+    public delegate void MiracleEventDelegate();
+    public event MiracleEventDelegate miracleEvent;
     private MiracleEffects miracleEffects;
     bool achievedMiracle = false;
     private bool gameOver = false;
     private NPC highChief;
-    private bool miracleEvent = false;
     public enum MiracleType
     {
         Fire,
@@ -78,6 +79,7 @@ public class MiracleManager : MonoBehaviour
         UIManager.ShowMiracleBar(false);
         player.SetCanMove(true);
         StartCoroutine(miracleEffects.FlashOfLight());
+        miracleEvent?.Invoke();
     }
     private void ResetAfterMiracle()
     {

@@ -7,8 +7,10 @@ public class TaskManager : MonoBehaviour
 {
     [SerializeField] private List<Task> tasks = new List<Task>();
     [SerializeField] private List<DialogueTreeObject> treesRelatedToTasks = new List<DialogueTreeObject>();
-
     [SerializeField] Inventory inventory;
+    [SerializeField] MiracleManager miracleManager;
+
+    private int currentTask = 0;
     private List<Func<bool>> taskChecks = new List<Func<bool>>();
     private void Start()
     {
@@ -16,7 +18,8 @@ public class TaskManager : MonoBehaviour
         {
             tree.SetCorrectPathChosen(false);
         }
-        inventory.collectedWheatEvent += Task1Complete;
+        inventory.collectedWheatEvent += ArbitraryTaskComplete;
+        miracleManager.miracleEvent += ArbitraryTaskComplete;
     }
     private void PopulateTaskListRequirements()
     {
@@ -25,10 +28,27 @@ public class TaskManager : MonoBehaviour
                                                                                       //taskChecks.Add(() => inventory.CheckInventoryContainsAmountOfItem("Money", 30)); //Task3
                                                                                       //taskChecks.Add(() => SheepNPC.happy = true; //
     }
+    private void ArbitraryTaskComplete()
+    {
+        switch (currentTask)
+        {
+            case 0:
+                Task1Complete();
+                break;
+            case 1:
+                Task2Complete();
+                break;
+        }
+        currentTask++;
+    }
     private void Task1Complete()
     {
         inventory.collectedWheatEvent -= Task1Complete;
         treesRelatedToTasks[0].SetTaskComplete(true);
+    }
+    private void Task2Complete()
+    {
+        treesRelatedToTasks[1].SetTaskComplete(true);
     }
     public bool CheckLevelComplete(int _task)
     {

@@ -66,7 +66,7 @@ public class DialogueUI : MonoBehaviour
             }
      
         }
-        _dialogueNode.GetAssociatedNPC().EvaluatePersausionChance();
+        _dialogueNode.GetAssociatedNPC().CheckCorrectRouteTaken();
         ShowText(string.Empty);
         ShowDialogueBox(false);
     }

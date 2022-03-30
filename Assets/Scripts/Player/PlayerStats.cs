@@ -37,10 +37,10 @@ public class PlayerStats : MonoBehaviour
     {
         statsUI.UpdateInfluence(Mathf.RoundToInt(averageInfluence));
     }
-    public void UpdateInfluenceChanceBar(float _influenceChance)
+    /*public void UpdateInfluenceChanceBar(float _influenceChance)
     {
         statsUI.UpdateInfluenceChanceText(Mathf.RoundToInt(_influenceChance));
-    }
+    }*/
     public float GetInfluence()
     {
         return averageInfluence;
