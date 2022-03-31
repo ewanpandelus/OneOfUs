@@ -36,8 +36,17 @@ public class UIAnimations : MonoBehaviour
     }
     public void ShowMiracleBar(bool _show)
     {
-        if(_show) TweenPosition(toolBarEndPos, 0.75f, miracleToolBar);
-        else TweenPosition(toolBarStartPos, 0.75f, miracleToolBar);
+        if (_show)
+        {
+            miracleToolBar.gameObject.SetActive(true);
+            TweenPosition(toolBarEndPos, 0.75f, miracleToolBar);
+        }
+        else
+        {
+            miracleToolBar.gameObject.SetActive(false);
+            TweenPosition(toolBarStartPos, 0.75f, miracleToolBar);
+        }
+
     }  
 
     private bool CheckToolBarShow(Vector3 _mousePos)

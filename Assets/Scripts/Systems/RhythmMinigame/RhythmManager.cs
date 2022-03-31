@@ -15,15 +15,18 @@ public class RhythmManager : MonoBehaviour
     [SerializeField] int noteCount;
     [SerializeField] private GameObject stage;
     [SerializeField] private MiracleManager miracleManager;
-    
+    List<RhythmLevel> levelList;
     private float startY = 0;
     private bool populated = false;
     private List<NoteProperties> noteProperties;
     private NoteManager noteManager;
     private RhythmLevelManager rhythmLevelManager;
-    
-       
-    
+    private bool waiting = false;
+    private float elapsedTime = 0;
+    private bool playNote = false;
+    List<(NoteType, float)> notes = new List<(NoteType, float)>();
+    (NoteType, float) currentNote;
+    private int counter = 0;
     public enum NoteType
     {
         Left,
@@ -33,6 +36,7 @@ public class RhythmManager : MonoBehaviour
     }
     private void Awake()
     {
+       
         noteManager = GetComponent<NoteManager>();
         if (!populated)
         {
@@ -44,19 +48,32 @@ public class RhythmManager : MonoBehaviour
         InitialiseNoteProperties();
    
     }
- 
+    private void FixedUpdate()
+    {
+        if (waiting)
+        {
+            elapsedTime += Time.fixedDeltaTime;
+            if(elapsedTime>= currentNote.Item2 - levelList[counter - 1].timeToWait)
+            {
+                waiting = false;
+                elapsedTime = 0;
+            }
+        }
+    }
     public IEnumerator PlayRhythmSet()
     {
-        List<(NoteType, float)> notes = new List<(NoteType, float)>();
         notes = SetLevelCreator();
-        List<RhythmLevel> levelList = rhythmLevelManager.GetLevel1();
+        levelList = rhythmLevelManager.GetLevel1();
         noteManager.SetTotalNoteCount(levelList.Count);
-        int counter = 0;
+        counter = 0;
+        waiting = true;
         foreach ((NoteType, float) note in notes)
         {
+            currentNote = note;
             if (counter > 0)
             {
-                yield return new WaitForSeconds(note.Item2 - levelList[counter - 1].timeToWait);
+                yield return new WaitUntil(() => waiting == false);
+                waiting = true;
             }
             NoteProperties noteInfo = noteProperties.Find(x => x.noteType == note.Item1);
             SetupNote(noteInfo,levelList[counter].noteName, levelList[counter].isLong);
