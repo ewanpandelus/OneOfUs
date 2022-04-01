@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cb12a6e0a49048940913b96a6905b5ed, type: 3}
+        m_Texture: {fileID: 8400000, guid: 3e01f1081cdf34c4ba28ae71f1738593, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -43,9 +43,9 @@ Material:
     - _Transparency: 0.038921714
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Colour: {r: 0.9245283, g: 0.7572409, b: 0.5538448, a: 1}
+    - _Colour: {r: 0.7490196, g: 0.64705884, b: 0.5058824, a: 1}
     - _ColourA: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Tint: {r: 0.56681997, g: 0, b: 1.3508326, a: 1}
+    - _Tint: {r: 1, g: 0, b: 0, a: 0.003921569}
   m_BuildTextureStacks: []

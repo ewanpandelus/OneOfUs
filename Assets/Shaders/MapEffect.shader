@@ -4,6 +4,7 @@ Shader "Unlit/MapEffect"
     {
 
         [HDR] _Colour("Colour", Color) = (0,1,0,1)
+        [HDR] _Tint("Tint", Color) = (0,1,0,1)
           _MainTex("Color (RGB) Alpha (A)", 2D) = "white"
         
 
@@ -36,6 +37,8 @@ Shader "Unlit/MapEffect"
             float4 _MainTex_ST;
             sampler2D _MainTex;
             float4 _Colour;
+            float4 _Tint;
+
           
 
 
@@ -69,10 +72,14 @@ Shader "Unlit/MapEffect"
             {
                 float4 texColor;
                 fixed4 col = tex2D(_MainTex, i.uv);
-          
+                float2 uvsCentred = i.uv * 2 - 1;
+                uvsCentred.x *= 19.2/10.8;
                 float average = (col.x + col.y + col.z) / 3.0;
                 texColor = float4(average, average, average, 1);
-                return texColor*_Colour;
+                _Colour.a = saturate((1.2-(length(uvsCentred))));
+               
+                return texColor * _Colour;
+               
             }
             ENDCG
         }

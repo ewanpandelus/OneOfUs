@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151325961}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6628256698096666251}
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.6
+      scalar: 1.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 4
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4847,9 +4847,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4779500709709105631}
   - {fileID: 4779500709626953714}
   - {fileID: 6628256698602021382}
-  - {fileID: 4779500709709105631}
   - {fileID: 151325962}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -4893,11 +4893,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6628256698602021383}
   m_LocalRotation: {x: -0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6628256698096666251}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
 --- !u!198 &6628256698602021380
 ParticleSystem:
@@ -4982,7 +4982,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.6
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5732,7 +5732,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 3
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9722,7 +9722,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bd445feaa7e84d743b947ffe9c663bb4, type: 2}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalScale.x
@@ -9742,7 +9742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9800,7 +9800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c668f8f4994b3d44af1a77c9b2f4482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Yoffset: 0.72
+  Yoffset: 1.4
 --- !u!1001 &6628256697073448384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9826,7 +9826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884510, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884510, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9834,7 +9834,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bd445feaa7e84d743b947ffe9c663bb4, type: 2}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalScale.x
@@ -9854,7 +9854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.72
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9912,4 +9912,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c668f8f4994b3d44af1a77c9b2f4482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Yoffset: -0.72
+  Yoffset: -1.4

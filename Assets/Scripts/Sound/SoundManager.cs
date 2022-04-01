@@ -86,11 +86,11 @@ public class SoundManager : MonoBehaviour
     public void StartMiniGameSong()
     {
         Play("Minigame");
-        StartCoroutine(StartFade("Minigame", 1f, 1f, NoEffect));
+        StartCoroutine(StartFade("Minigame", 1f, 0.8f, NoEffect));
     }
     public void MainThemeSounds()
     {
-        StartCoroutine(StartFade("Minigame", 1f, 0f, StopSound));
+        StartCoroutine(StartFade("Minigame", 0.8f, 0f, StopSound));
         Play("Calmest");
         StartCoroutine(StartFade("Calmest", 5f, 0.25f, NoEffect));
     }

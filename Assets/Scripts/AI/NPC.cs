@@ -12,6 +12,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private GameObject indoctrinationPrefab;
     [SerializeField] private string name;
     [SerializeField] TMP_Text nameText;
+    [SerializeField] bool showIndoctrinateEffect = true;
     private int currentConversation = 0;
     private float influenceLevel = 50;
     private PlayerStats player;
@@ -44,7 +45,6 @@ public class NPC : MonoBehaviour
         currentDialogueTree.SetOriginalInfluenceChance(player.GetInfluence());
         currentlyTalking = true;
         nameText.text = name;
-
     }
     public IEnumerator RunThroughDialogueTree()
     {
@@ -63,34 +63,23 @@ public class NPC : MonoBehaviour
         }
         while (currentDialogueTree.GetCurrentNode() != null&&currentlyTalking);
     }
-    /*public void EvaluatePersausionChance()
-    {
-        int rand = Random.Range(0, 101);
-        if (rand <= currentDialogueTree.GetCurrentInfluenceChance())
-        {
-            influenceLevel = Mathf.Clamp(influenceLevel + currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
-            Instantiate(indoctrinationPrefab, gameObject.transform.position+new Vector3(0,-0.25f,0), gameObject.transform.rotation);
-        }
-        else
-        {
-            influenceLevel = Mathf.Clamp(influenceLevel - currentDialogueTree.GetNPCInfluenceChange(), 0,100);
-        }
-        currentlyTalking = false;
-        nameText.text = "";
-        player.CalculateInfluence();
-        currentDialogueTree.IncrementConversationAffectedNPC();
-    }*/
+  
     public void CheckCorrectRouteTaken()
     {
         if (currentDialogueTree.GetCorrectPathChosen())
         {
             influenceLevel = Mathf.Clamp(influenceLevel + currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
-            Instantiate(indoctrinationPrefab, gameObject.transform.position + new Vector3(0, -0.25f, 0), gameObject.transform.rotation);
+            if (showIndoctrinateEffect) 
+                Instantiate(indoctrinationPrefab, gameObject.transform.position + new Vector3(0, -0.25f, 0), gameObject.transform.rotation);
         }
         else
         {
             influenceLevel = Mathf.Clamp(influenceLevel - currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
         }
+        PostConversation();
+    }
+    private void PostConversation()
+    {
         currentlyTalking = false;
         nameText.text = "";
         player.CalculateInfluence();
