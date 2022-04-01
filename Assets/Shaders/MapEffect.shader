@@ -76,8 +76,22 @@ Shader "Unlit/MapEffect"
                 uvsCentred.x *= 19.2/10.8;
                 float average = (col.x + col.y + col.z) / 3.0;
                 texColor = float4(average, average, average, 1);
-                _Colour.a = saturate((1.2-(length(uvsCentred))));
                
+                uvsCentred.y *= (1.3);
+                float fadeOut = 1;
+                float initialFade = (length(uvsCentred)<1.2) * lerp(1, 0.85, length(uvsCentred) - 0.2);
+                float secondaryFade = (length(uvsCentred)>= 1.2) * lerp(0.85, 0, length(uvsCentred) - 1.2);
+                if (length(uvsCentred) < 1.2) {
+                    fadeOut = initialFade;
+                }
+                if (length(uvsCentred) >= 1.2) {
+                    fadeOut = secondaryFade;
+                }
+
+                float output = saturate(fadeOut);
+               
+                
+                _Colour.a = output;
                 return texColor * _Colour;
                
             }

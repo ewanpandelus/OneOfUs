@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.018, y: 0.758}
+  m_AnchoredPosition: {x: -0.022, y: 0.841}
   m_SizeDelta: {x: 1.6703, y: 0.7854}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1487889897
@@ -245,8 +245,8 @@ GameObject:
   - component: {fileID: 4813121354312520837}
   - component: {fileID: 4813121354312520838}
   - component: {fileID: 4813121354312520836}
-  - component: {fileID: 4813121354312520843}
   - component: {fileID: 1540645081}
+  - component: {fileID: 625761577}
   m_Layer: 8
   m_Name: NPC
   m_TagString: NPC
@@ -308,8 +308,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: d7e7b0e599d55064abc4ee91c789450e, type: 3}
+  m_SortingOrder: -87
+  m_Sprite: {fileID: 21300000, guid: 4868e81d61d79d24eb983c60224abb8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -333,38 +333,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   responseHandler: {fileID: 0}
-  initialDialogueTree: {fileID: 11400000, guid: 597e6af3909149747bafe00e4947ac01, type: 2}
+  initialDialogueTree: {fileID: 11400000, guid: 7f393ca043dd34547889fa69c9213358, type: 2}
   dialogueUI: {fileID: 0}
   indoctrinationPrefab: {fileID: 6628256698096666244, guid: 44b49e9663a74504c86b87cfd3eef3a1, type: 3}
-  name: Neville
+  name: Phil Akhtar
   nameText: {fileID: 2025622511}
   showIndoctrinateEffect: 1
---- !u!61 &4813121354312520843
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4813121354312520839}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.012013972, y: -0.23399428}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.2695312}
-    newSize: {x: 5.12, y: 6.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.4105898, y: 0.57082564}
-  m_EdgeRadius: 0
 --- !u!114 &1540645081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,3 +352,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Yoffset: 0
+--- !u!58 &625761577
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4813121354312520839}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.004252752, y: -0.3131461}
+  serializedVersion: 2
+  m_Radius: 0.27064767

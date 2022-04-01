@@ -57,21 +57,21 @@ public class MapPan : MonoBehaviour
     }
     private Vector3 AccountForPanBounds(Vector3 _cameraPos)
     {
-        if (_cameraPos.x > rightPanBound)
+        if (_cameraPos.x > rightPanBound*(1/(camera.orthographicSize/rightPanBound)))
         {
-            _cameraPos.x = rightPanBound;
+            _cameraPos.x = rightPanBound * (1 / (camera.orthographicSize / rightPanBound));
         }
-        if (_cameraPos.x < -leftPanBound)
+        if (_cameraPos.x < -leftPanBound * (1 / (camera.orthographicSize / leftPanBound)))
         {
-            _cameraPos.x = -leftPanBound;
+            _cameraPos.x = -leftPanBound*(1 / (camera.orthographicSize / leftPanBound));
         }
-        if (_cameraPos.y > upperPanBound)
+        if (_cameraPos.y > upperPanBound * (1 / (camera.orthographicSize / upperPanBound)))
         {
-            _cameraPos.y = upperPanBound;
+            _cameraPos.y = upperPanBound * (1 / (camera.orthographicSize / upperPanBound));
         }
-        if (_cameraPos.y < -lowerPanBound)
+        if (_cameraPos.y < -lowerPanBound * (1 / (camera.orthographicSize / lowerPanBound)))
         {
-            _cameraPos.y = -lowerPanBound;
+            _cameraPos.y = -lowerPanBound * (1 / (camera.orthographicSize / lowerPanBound));
         }
         return _cameraPos;
     }

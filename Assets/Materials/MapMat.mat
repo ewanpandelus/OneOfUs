@@ -43,7 +43,7 @@ Material:
     - _Transparency: 0.038921714
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Colour: {r: 0.7490196, g: 0.64705884, b: 0.5058824, a: 1}
+    - _Colour: {r: 1, g: 0.86619496, b: 0.6745283, a: 1}
     - _ColourA: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
