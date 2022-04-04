@@ -31,7 +31,7 @@ public class PostProcessManager : MonoBehaviour
     public void RhythmPostProcess()
     {
         darkeningVolume.weight = 0;
-        globalBloom.intensity.value = 2;
+       // globalBloom.intensity.value = 1.5f;
     }
     public void StandardPostProcess()
     {

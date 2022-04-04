@@ -18,6 +18,7 @@
              {
                  ZWrite Off
                  Blend One One
+                 Blend SrcAlpha OneMinusSrcAlpha
                  Cull Off
                  CGPROGRAM
                  #pragma vertex vert
@@ -104,9 +105,8 @@
           
                  float flashEffect = cos(_Time.y * 5) * 0.5;
             
-                 float f = fbm(i.uv + _Time.y + fbm(5 * i.uv + _Time.y, 20), 20);
-                 float3 fbmColor = lerp(_ColourA, _ColourB, 2 * f);
-                 return float4(col * (flashEffect + 0.8));
+         
+                 return float4(col * (flashEffect + 0.9));
 
                  
              }

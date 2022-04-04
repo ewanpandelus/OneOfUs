@@ -93,7 +93,6 @@ public class RhythmManager : MonoBehaviour
         BaseNote _note = Instantiate(SpawnVariedSizedNotes(isLong)).GetComponent<BaseNote>();
         _note.transform.position = new Vector3(noteInfo.xPos, startY, 0);
         _note.transform.SetParent(stage.transform, false);
-        _note.GetComponent<Image>().color = noteInfo.color;
         _note.transform.SetAsFirstSibling();
         _note.gameObject.GetComponent<Image>().material = noteInfo.noteMaterial;
         _note.SetKeys(noteInfo.keys.Item1, noteInfo.keys.Item2);

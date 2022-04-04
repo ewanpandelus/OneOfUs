@@ -3,14 +3,15 @@ Shader "Unlit/FBM"
     Properties
     {
 
-        [HDR] _ColourA("Colour A", Color) = (0,1,0,1)
-          [HDR] _ColourB("Colour A", Color) = (0,1,0,1)
+          [HDR] _ColourA("Colour A", Color) = (0,1,0,1)
+          [HDR] _ColourB("Colour B", Color) = (0,1,0,1)
+
         _MainTex("Texture", 2D) = "white" {}
    
     }
         SubShader
          {
-             Tags { "RenderType" = "Opaque" "Queue" = "Transparent"}
+             Tags { "RenderType" = "Trasparent" "Queue" = "Transparent"}
              LOD 100
 
              Pass
@@ -30,6 +31,7 @@ Shader "Unlit/FBM"
         
              float4 _ColourA;
              float4 _ColourB;
+         
              float4 _MainTex_ST;
              sampler2D _MainTex;
           
@@ -106,10 +108,11 @@ Shader "Unlit/FBM"
 
              float4 frag(Interpolators i) : SV_Target
              {
-             fixed4 col = tex2D(_MainTex, i.uv);
-             float f = fbm(i.uv + _Time.y+ fbm(5 * i.uv + _Time.y, 20), 20);
-             float3 fbmColor = lerp(_ColourA, _ColourB, 2 * f);
-             return float4(fbmColor, 1);
+               
+                 fixed4 col = tex2D(_MainTex, i.uv);
+                 float f = fbm(i.uv + _Time.y+ fbm(5 * i.uv + _Time.y, 20), 20);
+                 float3 fbmColor = lerp(_ColourA, _ColourB, 2 * f);
+                 return col * float4(fbmColor, 1);
 
                  //return float4(i.normal,0);
                  //return

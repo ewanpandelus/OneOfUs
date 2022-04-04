@@ -179,6 +179,7 @@ public class NoteManager : MonoBehaviour
             NotePosition noteAtPosition = notePositions.Find(x => x.posIndex == potentialPos[0]);
             _note.SetKeys(noteAtPosition.key1, noteAtPosition.key2);
             _note.SetChangeMat(noteAtPosition.mat);
+            _note.SetColour(noteAtPosition.colour);
             return noteAtPosition.xPos;
         }
         else
@@ -187,16 +188,24 @@ public class NoteManager : MonoBehaviour
             NotePosition noteAtPosition = notePositions.Find(x => x.posIndex == potentialPos[rand]);
             _note.SetKeys(noteAtPosition.key1, noteAtPosition.key2);
             _note.SetChangeMat(noteAtPosition.mat);
+            _note.SetColour(noteAtPosition.colour);
             return noteAtPosition.xPos;
         }
     }
     public void PopulatePositions(List<Material> _materials)
     {
         notePositions = new List<NotePosition>()
-         {  new NotePosition(0,leftButton.transform.position.x,new int[] {1},_materials[0],KeyCode.LeftArrow, KeyCode.A),
-            new NotePosition(1,upButton.transform.position.x, new int[] {0,2},_materials[1],KeyCode.UpArrow, KeyCode.W),
-            new NotePosition(2,downButton.transform.position.x,new int[] {1,3},_materials[2],KeyCode.DownArrow, KeyCode.S),
-            new NotePosition(3,rightButton.transform.position.x,new int[] {2},_materials[3],KeyCode.RightArrow, KeyCode.D),
+         {  new NotePosition(0,leftButton.transform.position.x,new int[] {1},_materials[0],
+         KeyCode.LeftArrow, KeyCode.A, leftButton.GetComponent<Image>().color),
+
+            new NotePosition(1,upButton.transform.position.x, new int[] {0,2},_materials[1]
+            ,KeyCode.UpArrow, KeyCode.W,upButton.GetComponent<Image>().color),
+
+            new NotePosition(2,downButton.transform.position.x,new int[] {1,3},_materials[2],
+            KeyCode.DownArrow, KeyCode.S,downButton.GetComponent<Image>().color),
+
+            new NotePosition(3,rightButton.transform.position.x,new int[] {2},_materials[3],
+            KeyCode.RightArrow, KeyCode.D,rightButton.GetComponent<Image>().color),
          };
     }
     public void SetTotalNoteCount(int _noteCount)
@@ -220,15 +229,16 @@ public class NoteManager : MonoBehaviour
     
     public readonly struct NotePosition
     {
-
+        public readonly Color colour;
         public readonly Material mat;
         public readonly KeyCode key1;
         public readonly KeyCode key2;
         public readonly int posIndex;
         public readonly float xPos;
         public readonly int[] potentialSwaps;
-        public NotePosition(int _posIndex, float _xpos, int[] _potentialSwaps, Material _mat, KeyCode _key1, KeyCode _key2)
+        public NotePosition(int _posIndex, float _xpos, int[] _potentialSwaps, Material _mat, KeyCode _key1, KeyCode _key2, Color _colour)
         {
+            colour = _colour;
             mat = _mat;
             key1 = _key1;
             key2 = _key2;

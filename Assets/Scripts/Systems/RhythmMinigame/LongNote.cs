@@ -9,14 +9,10 @@ public class LongNote : BaseNote
     private ParticleSystem particleSystem;
     bool assignedParticleSystem = false;
     private Vector3 reduceY  = new Vector3(0, -8.5f, 0);
-    float initialYScale;
 
-    private void Start()
-    {
-        initialYScale = _transform.localScale.y;
-        _transform.position -= Vector3.up * (initialYScale / 2);
-    }
 
+ 
+ 
     protected override void HandleHits()
     {
         if (!canBePressed)

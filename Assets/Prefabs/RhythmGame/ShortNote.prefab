@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 897e2666c78e3574895abb35f5f11199, type: 2}
-  m_Color: {r: 0.995283, g: 1, b: 0.99972254, a: 0.92156863}
+  m_Color: {r: 0.995283, g: 1, b: 0.99972254, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -139,3 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 9
   swapChance: 10
+  clearMat: {fileID: 2100000, guid: 3218bd19c4545754ba673a283fcb90c2, type: 2}

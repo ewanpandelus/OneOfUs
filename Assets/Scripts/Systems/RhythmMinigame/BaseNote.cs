@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+
 public abstract class BaseNote : MonoBehaviour
 {
     protected bool canBePressed;
@@ -13,24 +15,36 @@ public abstract class BaseNote : MonoBehaviour
     protected Transform _transform;
     [SerializeField] protected float fallSpeed;
     [SerializeField] protected int swapChance = 100;
+    [SerializeField] protected Material clearMat; 
     private Material changeMat;
     protected string soundName = "";
     private bool pressed = false;
+    protected Collider2D boundingObj;
+    protected float initialYScale;
+
     private void Awake()
     {
         _transform = transform;
+        initialYScale = _transform.localScale.y;
+        _transform.position -= Vector3.up * (initialYScale / 2);
     }
-    private void Update()
+    void Update()
     {
         HandleHits();
         _transform.position -= (Time.deltaTime * fallSpeed* Vector3.up);
-       
+        if (boundingObj && (boundingObj.bounds.max.y > _transform.position.y + initialYScale / 2))
+        {
+            GetComponent<Image>().material = clearMat;
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Button")
         {
             canBePressed = true;
+            boundingObj = collision;
+  
         }
     }
     protected virtual void OnTriggerExit2D(Collider2D collision)

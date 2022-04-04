@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 788252487669590304}
   - component: {fileID: 788252487669590307}
   - component: {fileID: 3289623676313613265}
-  - component: {fileID: 8751058985767282319}
+  - component: {fileID: 5428574730935627247}
   m_Layer: 5
-  m_Name: LongNote
+  m_Name: ShortNote 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,15 +30,15 @@ RectTransform:
   m_GameObject: {fileID: 788252487669590333}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 43.3835, y: 44.4106}
+  m_SizeDelta: {x: 86.767, y: 88.8215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &788252487669590305
 CanvasRenderer:
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 897e2666c78e3574895abb35f5f11199, type: 2}
+  m_Material: {fileID: 2100000, guid: ef75cacccb9ac9d4980ece839daf4d63, type: 2}
   m_Color: {r: 0.995283, g: 1, b: 0.99972254, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -91,7 +91,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07620239, y: -0.8511009}
+  m_Offset: {x: 0.07620239, y: -2.4733753}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -102,7 +102,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 99.36859, y: 97.60691}
+  m_Size: {x: 99.36859, y: 100.851456}
   m_EdgeRadius: 0
 --- !u!50 &3289623676313613265
 Rigidbody2D:
@@ -125,7 +125,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8751058985767282319
+--- !u!114 &5428574730935627247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 788252487669590333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca4d9ada779e8e4d91223963932a997, type: 3}
+  m_Script: {fileID: 11500000, guid: d978248ecb28f5947b2ab6a0dba17a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 9
