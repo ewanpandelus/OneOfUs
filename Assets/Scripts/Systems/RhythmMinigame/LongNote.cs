@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class LongNote : BaseNote
 {
-    private float _elapsedTime = 0f;
-    private ParticleSystem particleSystem;
-    bool assignedParticleSystem = false;
-    private Vector3 reduceY  = new Vector3(0, -8.5f, 0);
-
+    protected float _elapsedTime = 0f;
+    protected ParticleSystem particleSystem;
+    protected bool assignedParticleSystem = false;
+    protected Vector3 reduceY  = new Vector3(0, -8.5f, 0);
+    protected bool isSpecial = false;
 
  
  
@@ -26,13 +26,16 @@ public class LongNote : BaseNote
             {
                 _transform.localScale += (reduceY * (initialYScale / fallSpeed)) * Time.deltaTime; //need to make formula based on speed + ySize
             }
-            if(!assignedParticleSystem)
-            {
-                particleSystem = noteManager.LongBurst(colour, key1);
-                assignedParticleSystem = true;
-            }
-           
-
+            SpecialParticleEffect(isSpecial);
+        }
+    }
+    protected void SpecialParticleEffect(bool _isSpecial)
+    {
+        if (!assignedParticleSystem)
+        {
+            if(!_isSpecial) particleSystem = noteManager.LongBurst(colour, key1);
+            else particleSystem = noteManager.SpecialBurst(colour, key1);
+            assignedParticleSystem = true;
         }
     }
     protected override void OnTriggerExit2D(Collider2D collision)
@@ -56,5 +59,6 @@ public class LongNote : BaseNote
            
         }
     }
+    
 
 }

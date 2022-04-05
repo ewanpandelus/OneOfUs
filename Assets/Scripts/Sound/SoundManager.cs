@@ -79,6 +79,32 @@ public class SoundManager : MonoBehaviour
       
         yield break;
     }
+    public IEnumerator SlowDownTimeEffect()
+    {
+        StartCoroutine(ChangePitch(0.3f, 1, 0.95f));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(ChangePitch(0.3f, 0.95f, 1.0f));
+        yield return null;
+    }
+    public IEnumerator ChangePitch(float duration,float initialPitch, float targetPitch)
+    {
+        float currentTime = 0;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            Time.timeScale = Mathf.Lerp(initialPitch, targetPitch, currentTime / duration);
+            foreach (Sound s in sounds)
+            {
+                s.SetPitch(Mathf.Lerp(initialPitch, targetPitch, currentTime / duration));
+                s.GetSource().pitch = Mathf.Lerp(initialPitch, targetPitch, currentTime / duration);
+
+
+            }
+            yield return null;
+        }
+        yield break;
+    }
     public void StartMiniGame()
     {
         StartCoroutine(StartFade("Calmest", 1f, 0f, PauseSound));

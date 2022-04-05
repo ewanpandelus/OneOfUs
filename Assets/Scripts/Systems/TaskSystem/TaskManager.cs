@@ -7,6 +7,7 @@ public class TaskManager : MonoBehaviour
 {
     [SerializeField] private List<Task> tasks = new List<Task>();
     [SerializeField] private List<DialogueTreeObject> treesRelatedToTasks = new List<DialogueTreeObject>();
+    [SerializeField] private GameObject taskListUI;
     [SerializeField] Inventory inventory;
     [SerializeField] MiracleManager miracleManager;
 
@@ -20,6 +21,12 @@ public class TaskManager : MonoBehaviour
         }
         inventory.collectedWheatEvent += ArbitraryTaskComplete;
         miracleManager.miracleEvent += ArbitraryTaskComplete;
+
+        for(int i = 0; i < taskListUI.transform.childCount-1; i++)
+        {
+            taskListUI.transform.GetChild(i).transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = tasks[i].title;
+            taskListUI.transform.GetChild(i).transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = tasks[i].description;
+        }
     }
     private void PopulateTaskListRequirements()
     {

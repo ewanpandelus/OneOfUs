@@ -43,7 +43,7 @@ public class MiracleManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         player.SetCanMove(false);
         miracleEffects.BeamLightEffect();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3);
         highChief.RunDialogue();
         dialogueUI.SetFontStyle(TMPro.FontStyles.Italic);
         yield return new WaitUntil(() => !highChief.GetCurrentlyTalking());

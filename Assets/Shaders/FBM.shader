@@ -17,7 +17,7 @@ Shader "Unlit/FBM"
              Pass
              {
                  ZWrite Off
-             
+                 Blend SrcAlpha OneMinusSrcAlpha
                  Cull Off
                  CGPROGRAM
                  #pragma vertex vert
@@ -108,11 +108,21 @@ Shader "Unlit/FBM"
 
              float4 frag(Interpolators i) : SV_Target
              {
-               
-                 fixed4 col = tex2D(_MainTex, i.uv);
-                 float f = fbm(i.uv + _Time.y+ fbm(5 * i.uv + _Time.y, 20), 20);
-                 float3 fbmColor = lerp(_ColourA, _ColourB, 2 * f);
-                 return col * float4(fbmColor, 1);
+                float2 uvsCentred = i.uv * 2 - 1;
+                float radialDistance = length(uvsCentred);
+                float xOffset = sin(cos(i.uv.x * TAU * 8)) * 0.05f;
+         
+                fixed4 col = tex2D(_MainTex, i.uv);
+              
+                float4 crazy =  cos((radialDistance * lerp(_ColourA, _ColourB, radialDistance) - _Time.y * 0.1f) * TAU * 10) * col;
+                
+                float f = fbm(i.uv + _Time.y+ fbm(5 * i.uv + _Time.y, 20), 20);
+                
+                float3 fbmColor = lerp(_ColourA, _ColourB, 2 * f);
+                
+                float4 output = float4(fbmColor, 1);
+            
+                return output;
 
                  //return float4(i.normal,0);
                  //return

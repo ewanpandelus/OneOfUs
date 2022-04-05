@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ParticleMat 1
-  m_Shader: {fileID: 4800000, guid: 5977d6401ef7e93439376af433910d05, type: 3}
+  m_Name: BurstMat
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -79,10 +79,10 @@ Material:
     - _WaveAmp: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.53333336, g: 0, b: 0.61960787, a: 1}
+    - _Color: {r: 0.23529413, g: 0.22352943, b: 0.8588236, a: 1}
     - _ColourA: {r: 0.9622642, g: 0, b: 0, a: 0}
     - _ColourB: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Tint: {r: 2.9960785, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 0, g: 1.8947332, b: 5.494725, a: 1}
+    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

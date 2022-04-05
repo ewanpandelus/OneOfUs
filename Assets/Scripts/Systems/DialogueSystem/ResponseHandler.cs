@@ -5,15 +5,18 @@ using UnityEngine.UI;
 using TMPro;
 public class ResponseHandler : MonoBehaviour
 {
-    [SerializeField] private RectTransform repsonseBox;
+    [SerializeField] private RectTransform responseBox;
     [SerializeField] private RectTransform repsonseButtonTemplate;
     [SerializeField] private RectTransform repsonseContainer;
+    [SerializeField] private RectTransform dialogueBox;
     private bool availableResponses = false;
     private DialogueButtonNav dialogueButtonNav;
+    private Vector3 initialPos = new Vector3();
 
     private void Start()
     {
         dialogueButtonNav = GetComponent<DialogueButtonNav>();
+        initialPos = responseBox.transform.position;
     }
 
     private bool responseChosen = false;
@@ -40,8 +43,11 @@ public class ResponseHandler : MonoBehaviour
             if(index ==2) {responseButton.GetComponent<Button>().onClick.AddListener(() => ChooseResponseRight(_dialogueNode, responseButtons)); }
             index++;
             responseBoxHeight += repsonseButtonTemplate.sizeDelta.y;
-            repsonseBox.sizeDelta = new Vector2(repsonseBox.sizeDelta.x, responseBoxHeight);
-            repsonseBox.gameObject.SetActive(true);
+            responseBox.sizeDelta = new Vector2(responseBox.sizeDelta.x, responseBoxHeight);
+            responseBox.gameObject.SetActive(true);
+            responseBox.transform.position = initialPos - ((Vector3.up * repsonseButtonTemplate.sizeDelta.y*_dialogueNode.GetResponses().Length)
+                - new Vector3(0, repsonseButtonTemplate.sizeDelta.y, 0));
+
         }
         dialogueButtonNav.AddNavigationToButtons(responseButtons);
     }
@@ -53,6 +59,24 @@ public class ResponseHandler : MonoBehaviour
             return;
         }
         availableResponses = true;
+    }
+    public void AdjustPositionBasedOnResponses(int responses)
+    {
+        responseBox.transform.position = initialPos - ((Vector3.up * repsonseButtonTemplate.sizeDelta.y) - new Vector3(0, repsonseButtonTemplate.sizeDelta.y, 0));
+        if(responses == 1)
+        {
+            switch (responses)
+            {
+                case 1:
+                    dialogueBox.transform.position -= 120*Vector3.up;
+                    break;
+                case 2:
+                    dialogueBox.transform.position -= 60 * Vector3.up;
+                    break;
+                 default:
+                    break;
+            }
+        }
     }
     public void ChooseResponseLeft(DialogueNode _dialogueObject, List<GameObject> _responseButtons)
     {
@@ -77,7 +101,7 @@ public class ResponseHandler : MonoBehaviour
         {
             Destroy(response);
         }
-        repsonseBox.gameObject.SetActive(false);
+        responseBox.gameObject.SetActive(false);
         dialogueButtonNav.NullButtons();
     }
    

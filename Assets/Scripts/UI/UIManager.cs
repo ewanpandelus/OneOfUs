@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -8,8 +9,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] MapUI mapUI;
     [SerializeField] MiracleManager miracleManager;
     [SerializeField] UIAnimations UIAnimations;
-    
-   public bool GetStaticUIShowing()
+    [SerializeField] public TMP_Text nameText;
+    public static UIManager instance;
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
+    }
+    public bool GetStaticUIShowing()
    {
         return (dialogueUI.GetDialogueBoxShowing() || mapUI.GetMapOpen() || miracleManager.GetRhythmGameActive());
    }

@@ -58,6 +58,7 @@ public class DialogueUI : MonoBehaviour
             yield return textEffects.Run(_dialogueNode.GetDialogue()[i]);
             if (i == _dialogueNode.GetDialogue().Length - 1&&_dialogueNode.ResponsesExist()) 
             {
+          
                 reponseHandler.SetupResponses(_dialogueNode);
                 yield return new WaitUntil(() => reponseHandler.GetResponseChosen() == true);
             }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class RhythmManager : MonoBehaviour
 {
-    [SerializeField] GameObject shortNote, longNote;
+    [SerializeField] GameObject shortNote, longNote, slowNote;
     [SerializeField] List<GameObject> buttons;// leftButton, rightButton, upButton, downButton;
     [SerializeField] List<Material> matList = new List<Material>();
     [SerializeField] List<Color> colours = new List<Color>();
@@ -63,7 +63,7 @@ public class RhythmManager : MonoBehaviour
     public IEnumerator PlayRhythmSet()
     {
         notes = SetLevelCreator();
-        levelList = rhythmLevelManager.GetLevel1();
+        levelList = rhythmLevelManager.GetCurrentLevel(2);
         noteManager.SetTotalNoteCount(levelList.Count);
         counter = 0;
         waiting = true;
@@ -76,37 +76,55 @@ public class RhythmManager : MonoBehaviour
                 waiting = true;
             }
             NoteProperties noteInfo = noteProperties.Find(x => x.noteType == note.Item1);
-            SetupNote(noteInfo,levelList[counter].noteName, levelList[counter].isLong);
+            SetupNote(noteInfo,levelList[counter].noteName, levelList[counter].isLong, levelList[counter].slowEffect);
             counter++;
         }
         yield return new WaitUntil(() => noteManager.CheckNoNotesLeft());
         yield return new WaitForSeconds(2f);
-        miracleManager.SetAchievedMiracle(EvaluateResult());
+        miracleManager.SetAchievedMiracle(EvaluateResult()) ;
         noteManager.ResetGame();
     }
     private bool EvaluateResult()
     {
         return (((float)noteManager.GetTotalHitCount() / (float)noteCount) >= 0.5f);
     }
-    private void SetupNote(NoteProperties noteInfo, string soundName, bool isLong)
+    private void SetupNote(NoteProperties noteInfo, string soundName, bool isLong, bool slowEffect)
     {
-        BaseNote _note = Instantiate(SpawnVariedSizedNotes(isLong)).GetComponent<BaseNote>();
+        BaseNote _note = Instantiate(SpawnVariedSizedNotes(isLong, slowEffect)).GetComponent<BaseNote>();
         _note.transform.position = new Vector3(noteInfo.xPos, startY, 0);
         _note.transform.SetParent(stage.transform, false);
         _note.transform.SetAsFirstSibling();
         _note.gameObject.GetComponent<Image>().material = noteInfo.noteMaterial;
-        _note.SetKeys(noteInfo.keys.Item1, noteInfo.keys.Item2);
         _note.SetColour(noteInfo.color);
         _note.SetNoteManager(noteManager);
+        _note.SetKeys(noteInfo.keys.Item1, noteInfo.keys.Item2);
         _note.SetPosIndex(noteInfo.posIndex);
         _note.SetSoundName(soundName);
         noteManager.EnqueueNote(_note);
+        if (slowEffect)
+        {
+            SetSlowShader(_note, noteInfo);
+        }
     }
-    GameObject SpawnVariedSizedNotes(bool _isLong)
+    private void SetSlowShader(BaseNote _note, NoteProperties _noteInfo)
+    {
+        _note.gameObject.GetComponent<Image>().material = matList[4];
+        _note.gameObject.GetComponent<Image>().material.SetColor("_ColourA", _noteInfo.color);
+        _note.gameObject.GetComponent<Image>().material.SetColor("_ColourB", 
+            new Color((float)(_noteInfo.color.r - 0.5),
+            (float)(_noteInfo.color.g - 0.5),
+            (float)(_noteInfo.color.b - 0.5), 
+            1));
+    }
+    GameObject SpawnVariedSizedNotes(bool _isLong, bool _isSlow)
     {
         if (_isLong)
         {
             return longNote;
+        }
+        if (_isSlow)
+        {
+            return slowNote;
         }
         return shortNote;
 
@@ -115,7 +133,7 @@ public class RhythmManager : MonoBehaviour
     private List<(NoteType, float)> SetLevelCreator()
     {
         List<(NoteType, float)> notes = new List<(NoteType, float)>();
-        List<RhythmLevel> levelList = rhythmLevelManager.GetLevel1();
+        List<RhythmLevel> levelList = rhythmLevelManager.GetCurrentLevel(2);
         for (int i = 0; i < levelList.Count; i++) { 
             notes.Add((GenerateRandomNote(), levelList[i].timeToWait));
         }

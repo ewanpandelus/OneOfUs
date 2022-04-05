@@ -11,7 +11,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private GameObject indoctrinationPrefab;
     [SerializeField] private string name;
-    [SerializeField] TMP_Text nameText;
+    private TMP_Text nameText;
     [SerializeField] bool showIndoctrinateEffect = true;
     private int currentConversation = 0;
     private float influenceLevel = 50;
@@ -23,6 +23,7 @@ public class NPC : MonoBehaviour
         player = GameObject.FindObjectOfType<PlayerStats>();
         currentDialogueTree = initialDialogueTree;
         PopulateDialogueNodes();
+        nameText = UIManager.instance.nameText;
     }
     private void PopulateDialogueNodes()
     {

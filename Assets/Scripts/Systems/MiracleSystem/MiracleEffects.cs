@@ -29,6 +29,7 @@ public class MiracleEffects  :MonoBehaviour
     public IEnumerator FireEffect()
     {
         GameObject fireObj = null;
+        playerController.SetCanMove(false);
         playerAnimator.SetShouldAutoAnimate(false);
         bool fire = false;
         for (int i = 0; i <= rotateCount; i++)
@@ -51,7 +52,6 @@ public class MiracleEffects  :MonoBehaviour
     public IEnumerator FireEffect2()
     {
         playerAnimator.SetShouldAutoAnimate(false);
-
         for (int i = 0; i <= 20; i++)
         {
             yield return new WaitForSeconds(waitTime);
@@ -59,6 +59,7 @@ public class MiracleEffects  :MonoBehaviour
             playerAnimator.ManuallySetAnimator(i % 4);
         }
         playerAnimator.SetShouldAutoAnimate(true);
+        playerController.SetCanMove(true);
     }
     public void BeamLightEffect()
     {

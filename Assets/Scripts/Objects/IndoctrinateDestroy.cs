@@ -27,16 +27,16 @@ public class IndoctrinateDestroy : MonoBehaviour
     {
         if (elapsedTime < 1.4f)
         {
-            if (globalLight.intensity > 0.8f)
+            if (globalLight.intensity > 0.5f)
             {
-                globalLight.intensity -= Time.deltaTime / 4;
+                globalLight.intensity -= Time.deltaTime / 2;
                 return;
             }
         }
         if (elapsedTime >= 2.5f)
         {
             if (globalLight.intensity < 1f)
-                globalLight.intensity += Time.deltaTime / 4f;
+                globalLight.intensity += Time.deltaTime / 3f;
         }
     }
 }

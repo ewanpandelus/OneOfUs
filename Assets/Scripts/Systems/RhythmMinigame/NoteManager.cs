@@ -8,7 +8,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class NoteManager : MonoBehaviour
 {
-    [SerializeField] GameObject instantBurst, longBurst;
+    [SerializeField] GameObject instantBurst, longBurst, specialBurst;
     [SerializeField] GameObject leftButton, rightButton, upButton, downButton;
     [SerializeField] GameObject leftButtonPress, rightButtonPress, upButtonPress, downButtonPress;
     [SerializeField] TMP_Text percentageText, feedbackText;
@@ -69,12 +69,22 @@ public class NoteManager : MonoBehaviour
         var tmp = SetupParticles(longBurst, _colour, _associatedKey);
         return tmp.GetComponent<ParticleSystem>();
     }
+    public ParticleSystem SpecialBurst(Color _colour, KeyCode _associatedKey)
+    {
+        var tmp = SetupParticles(specialBurst, _colour, _associatedKey);
+        SoundManager.instance.StartCoroutine("SlowDownTimeEffect");
+        return tmp.GetComponent<ParticleSystem>();
+    }
     GameObject SetupParticles(GameObject particlePrefab, Color _colour, KeyCode _associatedKey)
     {
         var tmp = Instantiate(particlePrefab, transform);
         tmp.transform.position = DecideParticlePosition(_associatedKey);
         tmp.GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", _colour);
-        Destroy(tmp, 1f);
+        if (tmp.GetComponent<ParticleSystemRenderer>().trailMaterial != null)
+        {
+            tmp.GetComponent<ParticleSystemRenderer>().trailMaterial.color = _colour;
+        }
+        Destroy(tmp, 1.5f);
         return tmp;
     }
     private Vector3 DecideParticlePosition(KeyCode _key)
