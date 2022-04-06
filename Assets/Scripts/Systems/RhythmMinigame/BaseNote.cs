@@ -113,5 +113,7 @@ public abstract class BaseNote : MonoBehaviour
     public void SetChangeMat(Material _changeMat) => changeMat = _changeMat;
     public Material GetChangeMat() => changeMat;
 
-    
+    public void SetFallSpeed(int _fallSpeed) => fallSpeed = _fallSpeed;
+    public void SetSwapChance(int _swapChance) => swapChance = _swapChance;
+
 }

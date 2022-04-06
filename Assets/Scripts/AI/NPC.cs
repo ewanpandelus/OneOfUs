@@ -70,14 +70,26 @@ public class NPC : MonoBehaviour
         if (currentDialogueTree.GetCorrectPathChosen())
         {
             influenceLevel = Mathf.Clamp(influenceLevel + currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
-            if (showIndoctrinateEffect) 
-                Instantiate(indoctrinationPrefab, gameObject.transform.position + new Vector3(0, -0.25f, 0), gameObject.transform.rotation);
+            ShowIndoctrinateEffect();
+           
         }
         else
         {
             influenceLevel = Mathf.Clamp(influenceLevel - currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
         }
         PostConversation();
+    }
+    private void ShowIndoctrinateEffect()
+    {
+        var effect = Instantiate(indoctrinationPrefab, gameObject.transform.position
+            + new Vector3(0, -0.25f, 0), gameObject.transform.rotation);
+
+        if (!showIndoctrinateEffect) { 
+            effect.transform.GetChild(0).gameObject.SetActive(false);
+            effect.transform.GetChild(1).gameObject.SetActive(false);
+            effect.transform.GetChild(2).gameObject.SetActive(false);
+        }
+
     }
     private void PostConversation()
     {

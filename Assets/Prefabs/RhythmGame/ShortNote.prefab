@@ -137,6 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d978248ecb28f5947b2ab6a0dba17a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 9
-  swapChance: 10
+  fallSpeed: 5
+  swapChance: 15
   clearMat: {fileID: 2100000, guid: 3218bd19c4545754ba673a283fcb90c2, type: 2}

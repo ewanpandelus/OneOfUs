@@ -39,8 +39,8 @@ Material:
     - _EnableExternalAlpha: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColourA: {r: 0.53333336, g: 0, b: 0.61960787, a: 1}
-    - _ColourB: {r: 0.03333336, g: -0.5, b: 0.119607866, a: 1}
+    - _ColourA: {r: 0.96470594, g: 0, b: 0.23137257, a: 1}
+    - _ColourB: {r: 0.46470594, g: -0.5, b: -0.26862743, a: 1}
     - _ColourC: {r: 1, g: 1, b: 1, a: 1}
     - _ColourD: {r: 0, g: 1, b: 0.71847177, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

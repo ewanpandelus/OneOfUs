@@ -81,9 +81,9 @@ public class SoundManager : MonoBehaviour
     }
     public IEnumerator SlowDownTimeEffect()
     {
-        StartCoroutine(ChangePitch(0.3f, 1, 0.95f));
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(ChangePitch(0.3f, 0.95f, 1.0f));
+        StartCoroutine(ChangePitch(0.1f, 1, 0.6f));
+        yield return new WaitForSeconds(1);
+        StartCoroutine(ChangePitch(0.1f, 0.6f, 1f));
         yield return null;
     }
     public IEnumerator ChangePitch(float duration,float initialPitch, float targetPitch)

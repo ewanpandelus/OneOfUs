@@ -27,6 +27,7 @@ public class RhythmManager : MonoBehaviour
     List<(NoteType, float)> notes = new List<(NoteType, float)>();
     (NoteType, float) currentNote;
     private int counter = 0;
+    private int level = 1;
     public enum NoteType
     {
         Left,
@@ -46,6 +47,7 @@ public class RhythmManager : MonoBehaviour
 
         rhythmLevelManager = GetComponent<RhythmLevelManager>();
         InitialiseNoteProperties();
+        IncreaseLevel(2);
    
     }
     private void FixedUpdate()
@@ -146,6 +148,16 @@ public class RhythmManager : MonoBehaviour
         if (noteNum == 1) return NoteType.Right;
         if (noteNum == 2) return NoteType.Down;
         return NoteType.Up;
+    }
+    public void IncreaseLevel(int _level)
+    {
+        level = _level;
+        if (level == 2)
+        {
+            shortNote.GetComponent<BaseNote>().SetSwapChance(15);
+            longNote.GetComponent<BaseNote>().SetSwapChance(15);
+        
+        }
     }
     private void InitialiseNoteProperties()
     {
