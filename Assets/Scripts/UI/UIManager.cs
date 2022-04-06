@@ -19,20 +19,21 @@ public class UIManager : MonoBehaviour
             instance = this;
         }
     }
-    public bool GetStaticUIShowing()
+   public bool GetStaticUIShowing()
    {
         return (dialogueUI.GetDialogueBoxShowing() || mapUI.GetMapOpen() || miracleManager.GetRhythmGameActive());
    }
-   public bool GetDynamicUIShowing()
-   {
-        return UIAnimations.GetToolBarShowing();
-   }
+    
    public bool CheckMiracleToolBarAllWayOut()
    {
         return UIAnimations.CheckMiracleBarAllWayOut();
    }
+    public void ShowTaskList(bool _show)
+    {
+
+    }
    public void ShowMiracleBar(bool _show)
     {
-        UIAnimations.ShowMiracleBar(_show);
+        UIAnimations.ShowHiddenUIElement(_show, UIAnimations.GetToolBar(), UIAnimations.GetToolBarStartPos(), UIAnimations.GetToolBarEndPos());
     }
 }   

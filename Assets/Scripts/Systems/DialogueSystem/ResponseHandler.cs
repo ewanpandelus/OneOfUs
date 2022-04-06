@@ -11,12 +11,12 @@ public class ResponseHandler : MonoBehaviour
     [SerializeField] private RectTransform dialogueBox;
     private bool availableResponses = false;
     private DialogueButtonNav dialogueButtonNav;
-    private Vector3 initialPos = new Vector3();
+    private Vector3 initialPosResponseBox = new Vector3();
 
     private void Start()
     {
         dialogueButtonNav = GetComponent<DialogueButtonNav>();
-        initialPos = responseBox.transform.position;
+        initialPosResponseBox = responseBox.transform.position;
     }
 
     private bool responseChosen = false;
@@ -31,7 +31,6 @@ public class ResponseHandler : MonoBehaviour
         int index = 0;
         AssignAvailableResponses(_dialogueNode);
         List<GameObject> responseButtons = new List<GameObject>();
-
         foreach (string response in _dialogueNode.GetResponses())
         {
             GameObject responseButton = Instantiate(repsonseButtonTemplate.gameObject, repsonseContainer);
@@ -45,7 +44,7 @@ public class ResponseHandler : MonoBehaviour
             responseBoxHeight += repsonseButtonTemplate.sizeDelta.y;
             responseBox.sizeDelta = new Vector2(responseBox.sizeDelta.x, responseBoxHeight);
             responseBox.gameObject.SetActive(true);
-            responseBox.transform.position = initialPos - ((Vector3.up * repsonseButtonTemplate.sizeDelta.y*_dialogueNode.GetResponses().Length)
+            responseBox.transform.position = initialPosResponseBox - ((Vector3.up * repsonseButtonTemplate.sizeDelta.y*_dialogueNode.GetResponses().Length)
                 - new Vector3(0, repsonseButtonTemplate.sizeDelta.y, 0));
 
         }
@@ -62,7 +61,7 @@ public class ResponseHandler : MonoBehaviour
     }
     public void AdjustPositionBasedOnResponses(int responses)
     {
-        responseBox.transform.position = initialPos - ((Vector3.up * repsonseButtonTemplate.sizeDelta.y) - new Vector3(0, repsonseButtonTemplate.sizeDelta.y, 0));
+        responseBox.transform.position = initialPosResponseBox - ((Vector3.up * repsonseButtonTemplate.sizeDelta.y) - new Vector3(0, repsonseButtonTemplate.sizeDelta.y, 0));
         if(responses == 1)
         {
             switch (responses)

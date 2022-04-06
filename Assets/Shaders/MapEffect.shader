@@ -79,19 +79,12 @@ Shader "Unlit/MapEffect"
                 float ratio = 19.2 / 10.8;
                 uvsCentred.y *= (1.3);
                 float fadeOut = 1;
-                float yFade = (abs(uvsCentred.y) > 0.9) * lerp(1, 0, 4*(abs(uvsCentred.y) - 0.9));
-                float xFade = (abs(uvsCentred.x) > 0.5*(ratio)) * lerp(1, 0, 4*(abs(uvsCentred.x) - (0.5*ratio)));
+                float yFade = (abs(uvsCentred.y) > 1.03) * lerp(1, 0, 10*(abs(uvsCentred.y) - 1.03));
+                float xFade = (abs(uvsCentred.x) > 0.6*(ratio)) * lerp(1, 0, 10*(abs(uvsCentred.x) - (0.6*ratio)));
                 if (yFade == 0) { yFade = 1; }
                 if (xFade == 0) { xFade = 1; }
                 if (abs(uvsCentred.x) > 1.17) { xFade = 0; }
-                /*float initialFade = (length(uvsCentred)<1.2) * lerp(1, 0.85, length(uvsCentred) - 0.2);
-                float secondaryFade = (length(uvsCentred)>= 1.2) * lerp(0.85, 0, length(uvsCentred) - 1.2);
-                if (length(uvsCentred) < 1.2) {
-                    fadeOut = initialFade;
-                }
-                if (length(uvsCentred) >= 1.2) {
-                    fadeOut = secondaryFade;
-                }*/
+               
 
                 float output = saturate(fadeOut);
                

@@ -48,7 +48,7 @@ public class DialogueButtonNav : MonoBehaviour
         {
             var _curSelection = eventSystem.currentSelectedGameObject.GetComponent<RectTransform>();
             selectedUI.SetActive(true);
-            selectedUI.GetComponent<RectTransform>().transform.position = _curSelection.transform.position;
+            selectedUI.GetComponent<RectTransform>().transform.position = _curSelection.transform.position - new Vector3(5,0,0);
         }
         else
         {

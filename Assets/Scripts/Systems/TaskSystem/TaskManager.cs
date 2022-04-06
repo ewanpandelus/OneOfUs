@@ -22,7 +22,7 @@ public class TaskManager : MonoBehaviour
         inventory.collectedWheatEvent += ArbitraryTaskComplete;
         miracleManager.miracleEvent += ArbitraryTaskComplete;
 
-        for(int i = 0; i < taskListUI.transform.childCount-1; i++)
+        for(int i = 0; i < taskListUI.transform.childCount; i++)
         {
             taskListUI.transform.GetChild(i).transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = tasks[i].title;
             taskListUI.transform.GetChild(i).transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = tasks[i].description;
