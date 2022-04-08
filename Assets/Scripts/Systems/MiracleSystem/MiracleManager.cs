@@ -23,6 +23,7 @@ public class MiracleManager : MonoBehaviour
     bool achievedMiracle = false;
     private bool gameOver = false;
     private NPC highChief;
+    private List<MiracleButton> miracleButtons = new List<MiracleButton>();
     public enum MiracleType
     {
         Fire,
@@ -34,7 +35,13 @@ public class MiracleManager : MonoBehaviour
     {
         miracleEffects = GetComponent<MiracleEffects>();
         miracleEffects.SetupMiracleEffects(player.GetPlayerAnimator(), fireEffectPrefab, player, chiefLightEffect);
-        highChief =  GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == "High Chief").GetComponent<NPC>();
+        highChief = GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == "High Chief").GetComponent<NPC>();
+        var miracleBarObj = GameObject.FindGameObjectWithTag("MiracleToolBar");
+        for (int i = 0; i < miracleBarObj.transform.childCount; i++)
+        {
+            miracleButtons.Add(miracleBarObj.transform.GetChild(i).GetComponent<MiracleButton>());
+        }
+        miracleButtons[1].SetActive(true);
     }
 
     public IEnumerator StartMiracle()
@@ -51,8 +58,11 @@ public class MiracleManager : MonoBehaviour
     }
     public void InvokeEffect(Button button)
     {
-        StartCoroutine(button.name);
-        eventSystem.SetSelectedGameObject(null);
+        if (button.gameObject.GetComponent<MiracleButton>().GetActive())
+        {
+            StartCoroutine(button.name);
+            eventSystem.SetSelectedGameObject(null);
+        }
     }
   
     public IEnumerator FireEffect()
@@ -63,6 +73,11 @@ public class MiracleManager : MonoBehaviour
         GameManager.instance.SetGameState(GameManager.GameState.Rhythm);
         StartCoroutine(rhythmManager.PlayRhythmSet());
         yield return new WaitUntil(() => gameOver == true);
+        PostMiracleCheck();
+        
+    }
+    private void PostMiracleCheck()
+    {
         if (achievedMiracle)
         {
             MiracleAchieved();
@@ -80,7 +95,6 @@ public class MiracleManager : MonoBehaviour
         miracleEffects.SetGlobalLightIntensity(1f);
         StartCoroutine(miracleEffects.FireEffect());
         UIManager.ShowMiracleBar(false);
-        player.SetCanMove(true);
         StartCoroutine(miracleEffects.FlashOfLight());
         miracleEvent?.Invoke();
     }

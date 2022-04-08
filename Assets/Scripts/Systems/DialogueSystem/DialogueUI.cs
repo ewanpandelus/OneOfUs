@@ -45,6 +45,7 @@ public class DialogueUI : MonoBehaviour
     }
     public void ShowDialogue(DialogueNode _dialogueNode)
     {
+        reponseHandler.DeactivateResponseBox();
         ShowDialogueBox(true);
         StartCoroutine(RunThroughDialogue(_dialogueNode));
     }

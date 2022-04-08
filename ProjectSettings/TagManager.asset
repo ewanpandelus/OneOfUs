@@ -11,6 +11,7 @@ TagManager:
   - ButtonCollider
   - MiracleManager
   - Name
+  - MiracleToolBar
   layers:
   - Default
   - TransparentFX

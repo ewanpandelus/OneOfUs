@@ -9,10 +9,11 @@ public class ResponseHandler : MonoBehaviour
     [SerializeField] private RectTransform repsonseButtonTemplate;
     [SerializeField] private RectTransform repsonseContainer;
     [SerializeField] private RectTransform dialogueBox;
+    [SerializeField] private RectTransform responsePanel;
     private bool availableResponses = false;
     private DialogueButtonNav dialogueButtonNav;
     private Vector3 initialPosResponseBox = new Vector3();
-
+    private List<GameObject> responseButtons;
     private void Start()
     {
         dialogueButtonNav = GetComponent<DialogueButtonNav>();
@@ -30,7 +31,7 @@ public class ResponseHandler : MonoBehaviour
         float responseBoxHeight = 0;
         int index = 0;
         AssignAvailableResponses(_dialogueNode);
-        List<GameObject> responseButtons = new List<GameObject>();
+        responseButtons = new List<GameObject>();
         foreach (string response in _dialogueNode.GetResponses())
         {
             GameObject responseButton = Instantiate(repsonseButtonTemplate.gameObject, repsonseContainer);
@@ -77,6 +78,12 @@ public class ResponseHandler : MonoBehaviour
             }
         }
     }
+    public void DeactivateResponseBox()
+    {
+        responseBox.gameObject.SetActive(false);
+        responsePanel.gameObject.SetActive(false);
+     
+    }
     public void ChooseResponseLeft(DialogueNode _dialogueObject, List<GameObject> _responseButtons)
     {
         _dialogueObject.GetAssociatedNPC().MakeDecision(0);
@@ -95,6 +102,7 @@ public class ResponseHandler : MonoBehaviour
     }
     private void CleanUp(List<GameObject> _responseButtons)
     {
+
         responseChosen = true;
         foreach (GameObject response in _responseButtons)
         {

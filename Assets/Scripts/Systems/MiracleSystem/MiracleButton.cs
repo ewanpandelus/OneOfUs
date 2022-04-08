@@ -9,7 +9,9 @@ public class MiracleButton : MonoBehaviour, IPointerEnterHandler, IPointerClickH
 {
     [SerializeField] private UIManager UIManager;
     [SerializeField] TMP_Text tipText;
+    [SerializeField] string inactiveTip;
     [SerializeField] string tip;
+    private bool active;
     void Start()
     {
         tipText.text = "";
@@ -22,12 +24,18 @@ public class MiracleButton : MonoBehaviour, IPointerEnterHandler, IPointerClickH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(UIManager.CheckMiracleToolBarAllWayOut())
-        tipText.text = tip;
+        if (UIManager.CheckMiracleToolBarAllWayOut())
+        {
+            if (active) tipText.text = tip;
+            else tipText.text = inactiveTip;
+        }
     }
+    
     public void OnPointerExit(PointerEventData eventData)
     {
         tipText.text = "";
-
     }
+    public void SetActive(bool _active) => active = _active;
+
+    public bool GetActive() => active;
 }
