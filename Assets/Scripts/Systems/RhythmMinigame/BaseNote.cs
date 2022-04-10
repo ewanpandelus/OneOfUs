@@ -21,7 +21,7 @@ public abstract class BaseNote : MonoBehaviour
     private bool pressed = false;
     protected Collider2D boundingObj;
     protected float initialYScale;
-
+    private bool swapped = false;
     private void Awake()
     {
         _transform = transform;
@@ -115,5 +115,9 @@ public abstract class BaseNote : MonoBehaviour
 
     public void SetFallSpeed(int _fallSpeed) => fallSpeed = _fallSpeed;
     public void SetSwapChance(int _swapChance) => swapChance = _swapChance;
+    public void SetSwapped(bool _swapped) => swapped = _swapped;
+    public bool GetSwapped() {
+        return swapped;
+    }
 
 }

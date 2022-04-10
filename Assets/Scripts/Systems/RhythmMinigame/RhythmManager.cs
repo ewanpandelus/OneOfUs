@@ -39,14 +39,12 @@ public class RhythmManager : MonoBehaviour
     {
        
         noteManager = GetComponent<NoteManager>();
-        if (!populated)
-        {
-            noteManager.PopulatePositions(matList);
-            populated = true;
-        }
+        noteManager.PopulatePositions(matList);
+        InitialiseNoteProperties();
+        
 
         rhythmLevelManager = GetComponent<RhythmLevelManager>();
-        InitialiseNoteProperties();
+       
         IncreaseLevel(2);
    
     }
@@ -83,7 +81,7 @@ public class RhythmManager : MonoBehaviour
         }
         yield return new WaitUntil(() => noteManager.CheckNoNotesLeft());
         yield return new WaitForSeconds(2f);
-        miracleManager.SetAchievedMiracle(EvaluateResult()) ;
+        miracleManager.SetAchievedMiracle(EvaluateResult());
         noteManager.ResetGame();
     }
     private bool EvaluateResult()

@@ -19,7 +19,7 @@ public class NoteManager : MonoBehaviour
     private bool canTween = true;
     private int accumulator = 0;
     private bool firstPress = true;
-
+    private int level = 0;
     void Update()
     {
         if (noteQueue.Count == 0)
@@ -34,6 +34,7 @@ public class NoteManager : MonoBehaviour
         firstPress = true;
         feedbackText.text = "";
         accumulator = 0;
+
     }
     private void SetButtonPressUI()
     {
@@ -110,7 +111,12 @@ public class NoteManager : MonoBehaviour
         noteQueue.Enqueue(_note);
         if (_note.EvaluateShouldSwap())
         {
-            StartCoroutine(SwapNoteAfterWait(_note, _note.GetPosIndex()));
+            if (!_note.GetSwapped())
+            {
+                StartCoroutine(SwapNoteAfterWait(_note, _note.GetPosIndex()));
+                _note.SetSwapped(true);
+            }
+          
         }
     }
 
@@ -153,68 +159,56 @@ public class NoteManager : MonoBehaviour
         }
         feedbackText.text = "Ouch!";
         feedbackText.fontSize = 60;
+    }
+    public void FeedbackTextVariedOptions()
+    {
 
-     
     }
     private void IncreaseFontSizeIfRally(int _acc)
     {
-        feedbackText.fontSize = 60 + (_acc*1.5f);
+        feedbackText.fontSize = 60 + (_acc*0.75f);
     }
     private IEnumerator SwapNoteAfterWait(BaseNote _note, int _notePos)
     {
         var waitTime = UnityEngine.Random.Range(0.2f, 0.3f);
         yield return new WaitForSeconds(waitTime);
-        StartCoroutine(SwapNotePos(FindPotentialNotePositions(_notePos, _note), _note.transform.position.x, _note));
-        yield return null;
+        _note.GetComponent<RectTransform>().DOAnchorPosX(FindPotentialNotePositions(_notePos, _note), 0.33f).SetEase(Ease.InOutQuint)
+            .OnComplete(() => _note.gameObject.GetComponent<Image>().material = _note.GetChangeMat());
+       
     }
-    private IEnumerator SwapNotePos(float _finishPos, float _startPos, BaseNote _note)
-    {
-        float x = 0f;
-        var t = 0f;
-        while (t < 1&&_note.gameObject.transform.position.x!=_finishPos)
-        {
-            t += Time.deltaTime*3;
-            x = Mathf.Lerp(_startPos, _finishPos, t);
-            _note.gameObject.transform.position = new Vector3(x, _note.transform.position.y, 0);
-            yield return null;
-        }
-        _note.gameObject.GetComponent<Image>().material = _note.GetChangeMat();
 
-    }
     private float FindPotentialNotePositions(int _pos, BaseNote _note)
     {
         int[] potentialPos = notePositions.Find(x => _pos == x.posIndex).potentialSwaps;
-        if(potentialPos.Length == 1)
+        if (potentialPos.Length == 1)
         {
-            NotePosition noteAtPosition = notePositions.Find(x => x.posIndex == potentialPos[0]);
-            _note.SetKeys(noteAtPosition.key1, noteAtPosition.key2);
-            _note.SetChangeMat(noteAtPosition.mat);
-            _note.SetColour(noteAtPosition.colour);
-            return noteAtPosition.xPos;
+            return SetNewPositionProperites(_note, notePositions.Find(x => x.posIndex == potentialPos[0]));
         }
-        else
-        {
-            int rand = UnityEngine.Random.Range(0, 2);
-            NotePosition noteAtPosition = notePositions.Find(x => x.posIndex == potentialPos[rand]);
-            _note.SetKeys(noteAtPosition.key1, noteAtPosition.key2);
-            _note.SetChangeMat(noteAtPosition.mat);
-            _note.SetColour(noteAtPosition.colour);
-            return noteAtPosition.xPos;
-        }
+        int rand = UnityEngine.Random.Range(0, 2);
+        return SetNewPositionProperites(_note, notePositions.Find(x => x.posIndex == potentialPos[rand]));
+    }
+
+    private float SetNewPositionProperites(BaseNote _note, NotePosition _noteAtPosition)
+    {
+        _note.SetKeys(_noteAtPosition.key1, _noteAtPosition.key2);
+        _note.SetChangeMat(_noteAtPosition.mat);
+        _note.SetColour(_noteAtPosition.colour);
+        return _noteAtPosition.xPos;
     }
     public void PopulatePositions(List<Material> _materials)
     {
+       
         notePositions = new List<NotePosition>()
-         {  new NotePosition(0,leftButton.transform.position.x,new int[] {1},_materials[0],
+         {  new NotePosition(0,leftButton.GetComponent<RectTransform>().anchoredPosition.x,new int[] {1},_materials[0],
          KeyCode.LeftArrow, KeyCode.A, leftButton.GetComponent<Image>().color),
 
-            new NotePosition(1,upButton.transform.position.x, new int[] {0,2},_materials[1]
+            new NotePosition(1,upButton.GetComponent<RectTransform>().anchoredPosition.x, new int[] {0,2},_materials[1]
             ,KeyCode.UpArrow, KeyCode.W,upButton.GetComponent<Image>().color),
 
-            new NotePosition(2,downButton.transform.position.x,new int[] {1,3},_materials[2],
+            new NotePosition(2,downButton.GetComponent<RectTransform>().anchoredPosition.x,new int[] {1,3},_materials[2],
             KeyCode.DownArrow, KeyCode.S,downButton.GetComponent<Image>().color),
 
-            new NotePosition(3,rightButton.transform.position.x,new int[] {2},_materials[3],
+            new NotePosition(3,rightButton.GetComponent<RectTransform>().anchoredPosition.x,new int[] {2},_materials[3],
             KeyCode.RightArrow, KeyCode.D,rightButton.GetComponent<Image>().color),
          };
     }
