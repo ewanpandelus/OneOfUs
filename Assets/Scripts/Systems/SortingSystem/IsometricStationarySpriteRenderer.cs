@@ -6,15 +6,15 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class IsometricSpriteRenderer : MonoBehaviour   
 {
-    private SpriteRenderer renderer;
+    private SpriteRenderer rend;
     [SerializeField] private float Yoffset;
     private void Start()
     {
-        renderer = GetComponent<SpriteRenderer>();
+        rend = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        renderer.sortingOrder = (int)((transform.position.y+Yoffset) * -10);
+        rend.sortingOrder = (int)((transform.position.y+Yoffset) * -10);
     }
 }

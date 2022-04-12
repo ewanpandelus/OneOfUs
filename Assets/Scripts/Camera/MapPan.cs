@@ -13,12 +13,12 @@ public class MapPan : MonoBehaviour
     [SerializeField] private float leftPanBound, rightPanBound, upperPanBound, lowerPanBound;
     [SerializeField] private float lowerScrollBound, upperScrollBound;
     private Vector3 cameraPos, smoothPos;
-    private Camera camera;
+    private Camera cam;
    
     private void Start()
     {
         cameraPos = transform.position;
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
     }
     // Update is called once per frame
     void Update()
@@ -40,38 +40,38 @@ public class MapPan : MonoBehaviour
     private void CalcNewCameraScrollPosition()
     {
         float scrollDelta = Input.GetAxis("Mouse ScrollWheel");
-        if (scrollDelta > 0 && camera.orthographicSize > lowerScrollBound)
+        if (scrollDelta > 0 && cam.orthographicSize > lowerScrollBound)
         {
-            camera.orthographicSize -= Time.deltaTime * scrollSensitivity;
+            cam.orthographicSize -= Time.deltaTime * scrollSensitivity;
         }
-        if (scrollDelta < 0 && camera.orthographicSize < upperScrollBound)
+        if (scrollDelta < 0 && cam.orthographicSize < upperScrollBound)
         {
-            camera.orthographicSize += Time.deltaTime * scrollSensitivity;
+            cam.orthographicSize += Time.deltaTime * scrollSensitivity;
         }
     }
     private void CalcNewCameraPanPosition()
     {
-        cameraPos += transform.right * (mouseX * -1) * panSensitivity * camera.orthographicSize;
-        cameraPos += transform.up * (mouseY * -1) * panSensitivity * camera.orthographicSize;
+        cameraPos += transform.right * (mouseX * -1) * panSensitivity * cam.orthographicSize;
+        cameraPos += transform.up * (mouseY * -1) * panSensitivity * cam.orthographicSize;
         cameraPos = AccountForPanBounds(cameraPos);
     }
     private Vector3 AccountForPanBounds(Vector3 _cameraPos)
     {
-        if (_cameraPos.x > rightPanBound*(1/(camera.orthographicSize/rightPanBound)))
+        if (_cameraPos.x > rightPanBound*(1/(cam.orthographicSize/rightPanBound)))
         {
-            _cameraPos.x = rightPanBound * (1 / (camera.orthographicSize / rightPanBound));
+            _cameraPos.x = rightPanBound * (1 / (cam.orthographicSize / rightPanBound));
         }
-        if (_cameraPos.x < -leftPanBound * (1 / (camera.orthographicSize / leftPanBound)))
+        if (_cameraPos.x < -leftPanBound * (1 / (cam.orthographicSize / leftPanBound)))
         {
-            _cameraPos.x = -leftPanBound*(1 / (camera.orthographicSize / leftPanBound));
+            _cameraPos.x = -leftPanBound*(1 / (cam.orthographicSize / leftPanBound));
         }
-        if (_cameraPos.y > upperPanBound * (1 / (camera.orthographicSize / upperPanBound)))
+        if (_cameraPos.y > upperPanBound * (1 / (cam.orthographicSize / upperPanBound)))
         {
-            _cameraPos.y = upperPanBound * (1 / (camera.orthographicSize / upperPanBound));
+            _cameraPos.y = upperPanBound * (1 / (cam.orthographicSize / upperPanBound));
         }
-        if (_cameraPos.y < -lowerPanBound * (1 / (camera.orthographicSize / lowerPanBound)))
+        if (_cameraPos.y < -lowerPanBound * (1 / (cam.orthographicSize / lowerPanBound)))
         {
-            _cameraPos.y = -lowerPanBound * (1 / (camera.orthographicSize / lowerPanBound));
+            _cameraPos.y = -lowerPanBound * (1 / (cam.orthographicSize / lowerPanBound));
         }
         return _cameraPos;
     }
@@ -80,6 +80,6 @@ public class MapPan : MonoBehaviour
     {
         transform.position = _pos;
         cameraPos = _pos;
-        camera.orthographicSize = _orthoSize;
+        cam.orthographicSize = _orthoSize;
     }
 }

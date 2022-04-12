@@ -6,12 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class IsometricStationarySpriteRenderer : MonoBehaviour   
 {
-    private SpriteRenderer renderer;
+    private SpriteRenderer rend;
     [SerializeField] private float Yoffset;
     private void Start()
     {
-        renderer = GetComponent<SpriteRenderer>();
-        renderer.sortingOrder = (int)((transform.position.y + Yoffset) * -10);
+        rend = GetComponent<SpriteRenderer>();
+        rend.sortingOrder = (int)((transform.position.y + Yoffset) * -10);
     }
 
   

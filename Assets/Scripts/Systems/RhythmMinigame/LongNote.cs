@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LongNote : BaseNote
 {
     protected float _elapsedTime = 0f;
-    protected ParticleSystem particleSystem;
+    protected ParticleSystem pSystem;
     protected bool assignedParticleSystem = false;
     protected Vector3 reduceY  = new Vector3(0, -8.5f, 0);
     protected bool isSpecial = false;
@@ -33,8 +33,8 @@ public class LongNote : BaseNote
     {
         if (!assignedParticleSystem)
         {
-            if(!_isSpecial) particleSystem = noteManager.LongBurst(colour, key1);
-            else particleSystem = noteManager.SpecialBurst(colour, key1);
+            if(!_isSpecial) pSystem = noteManager.LongBurst(colour, key1);
+            else pSystem = noteManager.SpecialBurst(colour, key1);
             assignedParticleSystem = true;
         }
     }

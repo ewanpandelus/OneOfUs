@@ -19,13 +19,8 @@ public class NoteManager : MonoBehaviour
     private bool canTween = true;
     private int accumulator = 0;
     private bool firstPress = true;
-    private int level = 0;
     void Update()
     {
-        if (noteQueue.Count == 0)
-        {
-            return;
-        }
         SetButtonPressUI();
     }
     public void ResetGame()
@@ -34,7 +29,6 @@ public class NoteManager : MonoBehaviour
         firstPress = true;
         feedbackText.text = "";
         accumulator = 0;
-
     }
     private void SetButtonPressUI()
     {
@@ -157,12 +151,15 @@ public class NoteManager : MonoBehaviour
             IncreaseFontSizeIfRally(accumulator);
             return;
         }
-        feedbackText.text = "Ouch!";
+        FeedbackTextVariedOptions();
         feedbackText.fontSize = 60;
     }
     public void FeedbackTextVariedOptions()
     {
-
+        int rand = UnityEngine.Random.Range(0, 3);
+        if(rand == 0) feedbackText.text = "Ouch!";
+        if (rand == 1) feedbackText.text = "Whoops!";
+        if (rand == 2) feedbackText.text = "Too slow!";
     }
     private void IncreaseFontSizeIfRally(int _acc)
     {
@@ -172,7 +169,7 @@ public class NoteManager : MonoBehaviour
     {
         var waitTime = UnityEngine.Random.Range(0.2f, 0.3f);
         yield return new WaitForSeconds(waitTime);
-        _note.GetComponent<RectTransform>().DOAnchorPosX(FindPotentialNotePositions(_notePos, _note), 0.33f).SetEase(Ease.InOutQuint)
+        _note.GetComponent<RectTransform>().DOAnchorPosX(FindPotentialNotePositions(_notePos, _note), 0.4f).SetEase(Ease.InOutQuad)
             .OnComplete(() => _note.gameObject.GetComponent<Image>().material = _note.GetChangeMat());
        
     }

@@ -17,13 +17,11 @@ public class RhythmManager : MonoBehaviour
     [SerializeField] private MiracleManager miracleManager;
     List<RhythmLevel> levelList;
     private float startY = 0;
-    private bool populated = false;
     private List<NoteProperties> noteProperties;
     private NoteManager noteManager;
     private RhythmLevelManager rhythmLevelManager;
     private bool waiting = false;
     private float elapsedTime = 0;
-    private bool playNote = false;
     List<(NoteType, float)> notes = new List<(NoteType, float)>();
     (NoteType, float) currentNote;
     private int counter = 0;
@@ -109,12 +107,10 @@ public class RhythmManager : MonoBehaviour
     private void SetSlowShader(BaseNote _note, NoteProperties _noteInfo)
     {
         _note.gameObject.GetComponent<Image>().material = matList[4];
-        _note.gameObject.GetComponent<Image>().material.SetColor("_ColourA", _noteInfo.color);
-        _note.gameObject.GetComponent<Image>().material.SetColor("_ColourB", 
-            new Color((float)(_noteInfo.color.r - 0.5),
-            (float)(_noteInfo.color.g - 0.5),
-            (float)(_noteInfo.color.b - 0.5), 
-            1));
+        _note.gameObject.GetComponent<Image>().material.SetColor("_ColourA",
+            Color.black);
+        _note.gameObject.GetComponent<Image>().material.SetColor("_ColourB", _noteInfo.color);
+        
     }
     GameObject SpawnVariedSizedNotes(bool _isLong, bool _isSlow)
     {

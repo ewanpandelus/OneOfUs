@@ -122,7 +122,7 @@ Shader "Unlit/FBM"
                 
                 float4 output = float4(fbmColor, 1);
             
-                return output;
+                return noise(i.uv+_Time.y);
 
                  //return float4(i.normal,0);
                  //return

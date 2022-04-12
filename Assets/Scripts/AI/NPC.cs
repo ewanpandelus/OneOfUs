@@ -13,7 +13,6 @@ public class NPC : MonoBehaviour
     [SerializeField] private string name;
     private TMP_Text nameText;
     [SerializeField] bool showIndoctrinateEffect = true;
-    private int currentConversation = 0;
     private float influenceLevel = 50;
     private PlayerStats player;
     private bool currentlyTalking = false;

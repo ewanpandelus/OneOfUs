@@ -7,10 +7,10 @@ public class FlickeringLights : MonoBehaviour
 {
     private bool isFlickering = false;
     [SerializeField] private float delay;
-    private Light2D light;
+    private Light2D flickerLight;
     private void Start()
     {
-        light = GetComponent<Light2D>();
+        flickerLight = GetComponent<Light2D>();
     }
     void Update()
     {
@@ -22,10 +22,10 @@ public class FlickeringLights : MonoBehaviour
     private IEnumerator Flicker()
     {
         isFlickering = true;
-        light.enabled = false;
+        flickerLight.enabled = false;
         delay = Random.Range(0.1f, 2f);
         yield return new WaitForSeconds(delay);
-        light.enabled = true;
+        flickerLight.enabled = true;
         delay = Random.Range(0.1f, 2f);
         yield return new WaitForSeconds(delay);
         isFlickering = false;
