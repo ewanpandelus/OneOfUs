@@ -174,7 +174,7 @@ Shader "Unlit/RidgeNoise"
            float2 uvsCentred = i.uv * 2 - 1;
            float radialDistance = length(uvsCentred);
            float xOffset = sin(cos(i.uv.x * TAU * 8)) * 0.05f;
-       
+           float yOffset = sin(cos(i.uv.y * TAU * 8)) * 0.05f;
 
            fixed4 col = tex2D(_MainTex, i.uv);
 
@@ -183,11 +183,16 @@ Shader "Unlit/RidgeNoise"
 
 
            float2 st = i.uv;
+           float flashEffect = cos(_Time.y * 5) * 0.5;
+
+
+     
 
            float3 color = float3(0, 0, 0);
            
-           color += lerp(_ColourA, _ColourB, ridgedMF(st * 3.0 + _Time.y));
-           return float4(color, 1);
+           color += lerp(_ColourA, _ColourB, ridgedMF(st * 3.0 + _Time.y/2));
+           color -= lerp(_ColourA, _ColourB, ridgedMF(st * 6.0 - _Time.y/6));
+           return float4(color, 0.8);
            //return float4(i.normal,0);
            //return
        }

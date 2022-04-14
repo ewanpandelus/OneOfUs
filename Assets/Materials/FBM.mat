@@ -40,7 +40,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColourA: {r: 0, g: 0, b: 0, a: 1}
-    - _ColourB: {r: 0.23529413, g: 0.22352943, b: 0.8588236, a: 1}
+    - _ColourB: {r: 0.96470594, g: 0, b: 0.23137257, a: 1}
     - _ColourC: {r: 1, g: 1, b: 1, a: 1}
     - _ColourD: {r: 0, g: 1, b: 0.71847177, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
