@@ -14195,7 +14195,7 @@ MonoBehaviour:
   - noteName: 1st
     timeToWait: 0
     isLong: 0
-    slowEffect: 0
+    slowEffect: 1
   - noteName: 2nd
     timeToWait: 0.9
     isLong: 0

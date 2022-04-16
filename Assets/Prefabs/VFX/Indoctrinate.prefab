@@ -5534,7 +5534,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 0.1, z: 0.1}
+    m_Scale: {x: 0.8, y: 0.1, z: 0.1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -9713,6 +9713,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884510, guid: 6b6f8654da224d849a385402720374a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7181faf53de4f4d4eaa22d36358df6f7, type: 3}
+    - target: {fileID: 1848867059540884510, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_SortingOrder
       value: -7
       objectReference: {fileID: 0}
@@ -9726,11 +9730,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalScale.z
@@ -9825,6 +9829,10 @@ PrefabInstance:
       value: IndoctrinateEffect (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884510, guid: 6b6f8654da224d849a385402720374a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7181faf53de4f4d4eaa22d36358df6f7, type: 3}
+    - target: {fileID: 1848867059540884510, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
@@ -9838,11 +9846,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1848867059540884511, guid: 6b6f8654da224d849a385402720374a6, type: 3}
       propertyPath: m_LocalScale.z
