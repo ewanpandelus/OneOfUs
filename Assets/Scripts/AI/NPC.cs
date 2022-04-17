@@ -94,7 +94,7 @@ public class NPC : MonoBehaviour
     {
         currentlyTalking = false;
         nameText.text = "";
-        player.CalculateInfluence();
+        //player.CalculateInfluence();
         currentDialogueTree.IncrementConversationAffectedNPC();
     }
     public void MakeDecision(int _direction)

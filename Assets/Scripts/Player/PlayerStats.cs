@@ -11,7 +11,7 @@ public class PlayerStats : MonoBehaviour
     {
         statsUI = GetComponent<StatsUI>();
         PopulateNPCList();
-        CalculateInfluence();
+        //CalculateInfluence();
     }
     private void PopulateNPCList()
     {
@@ -31,7 +31,8 @@ public class PlayerStats : MonoBehaviour
         }
  
         averageInfluence = (avgNPCInfluence /= NPCS.Count);
-        UpdateInfluenceBar();
+        //
+      //  UpdateInfluenceBar();
     }
     public void UpdateInfluenceBar()
     {
