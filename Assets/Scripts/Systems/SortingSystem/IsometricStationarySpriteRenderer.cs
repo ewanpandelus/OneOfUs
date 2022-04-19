@@ -13,7 +13,12 @@ public class IsometricStationarySpriteRenderer : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         rend.sortingOrder = (int)((transform.position.y + Yoffset) * -10);
     }
-  
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Vector3 dir = new Vector3(0, Yoffset, 0);
+        Gizmos.DrawRay(transform.position, dir);
+    }
 
 
 }
