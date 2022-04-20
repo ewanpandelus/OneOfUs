@@ -40,8 +40,8 @@ public class RhythmManager : MonoBehaviour
         noteManager.PopulatePositions(matList);
         InitialiseNoteProperties();
         rhythmLevelManager = GetComponent<RhythmLevelManager>();
-        shortNote.GetComponent<BaseNote>().SetSwapChance(0);
-        longNote.GetComponent<BaseNote>().SetSwapChance(0);
+        shortNote.GetComponent<BaseNote>().SetSwapChance(-1);
+        longNote.GetComponent<BaseNote>().SetSwapChance(-1);
         shortNote.GetComponent<BaseNote>().SetFallSpeed(8);
         longNote.GetComponent<BaseNote>().SetFallSpeed(8);
       

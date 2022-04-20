@@ -67,6 +67,7 @@ public class TaskManager : MonoBehaviour
     {
       
         taskListUI.transform.GetChild(taskComplete).transform.GetChild(2).gameObject.SetActive(true);
+        StartCoroutine(PostProcessManager.instance.IncreaseDarkeningWeight());
     }
 
   

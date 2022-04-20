@@ -7,6 +7,7 @@ public class PostProcessManager : MonoBehaviour
 {
     [SerializeField] private GameObject globalPostProcess;
     [SerializeField] private GameObject darkeningPostProcess;
+    private float darkeningWeight = 0;
     private Volume globalVolume;
     Bloom globalBloom;
     private Volume darkeningVolume;
@@ -31,11 +32,25 @@ public class PostProcessManager : MonoBehaviour
     public void RhythmPostProcess()
     {
         darkeningVolume.weight = 0;
-       // globalBloom.intensity.value = 1.5f;
+        globalBloom.intensity.value = 1.5f;
+ 
     }
     public void StandardPostProcess()
     {
-        darkeningVolume.weight = 1;
         globalBloom.intensity.value = 1;
+        darkeningVolume.weight = darkeningWeight;
+    }
+    public IEnumerator IncreaseDarkeningWeight()
+    {
+        darkeningWeight += 0.25f;
+        float x = 0;
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime;
+            x = Mathf.Lerp(0, darkeningWeight, t);
+            darkeningVolume.weight = x;
+            yield return null;
+        }
     }
 }

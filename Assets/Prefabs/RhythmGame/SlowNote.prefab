@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4af97952830f54887810834ada9d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 9
-  swapChance: 0
+  fallSpeed: 11
+  swapChance: -1
   clearMat: {fileID: 2100000, guid: 3218bd19c4545754ba673a283fcb90c2, type: 2}
 --- !u!114 &8209738881951567163
 MonoBehaviour:
