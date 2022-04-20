@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 [RequireComponent(typeof(SpriteRenderer))]
 public class BaseItem : MonoBehaviour
 {
@@ -26,14 +25,11 @@ public class BaseItem : MonoBehaviour
         if (!canPickup) return;
         if(Vector2.Distance(_transform.position, player.transform.position) < 1)
         {
-             t += Time.deltaTime/20;
+             t += Time.deltaTime/3;
             _transform.position = Vector3.Lerp(_transform.position, player.transform.position, t);
             _transform.localScale = Vector3.Lerp(_transform.localScale, Vector3.zero, t);
-            initiatedPicking = true;
-            return;
         }
-        if (initiatedPicking) { _transform.DOScale(originalScale.x,1).SetEase(Ease.InOutElastic); initiatedPicking = false; }
-        t = 0;
+     
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

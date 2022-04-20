@@ -6,21 +6,28 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour
 {
     [SerializeField] private List<Task> tasks = new List<Task>();
-    [SerializeField] private List<DialogueTreeObject> treesRelatedToTasks = new List<DialogueTreeObject>();
+    [SerializeField] private List<DialogueTreeObject> treesTriggeredBySubTasks = new List<DialogueTreeObject>();
+    [SerializeField] private List<DialogueTreeObject> recruitingTrees = new List<DialogueTreeObject>();
+
     [SerializeField] private GameObject taskListUI;
     [SerializeField] Inventory inventory;
     [SerializeField] MiracleManager miracleManager;
 
     private int currentTask = 0;
-    private List<Func<bool>> taskChecks = new List<Func<bool>>();
+
     private void Start()
     {
-        foreach(DialogueTreeObject tree in treesRelatedToTasks)
+        foreach(DialogueTreeObject tree in recruitingTrees)
+        {
+            tree.finishedTaskEvent += FullTaskComplete;
+        }
+
+        foreach (DialogueTreeObject tree in treesTriggeredBySubTasks)
         {
             tree.SetCorrectPathChosen(false);
         }
-        inventory.collectedWheatEvent += ArbitraryTaskComplete;
-        miracleManager.miracleEvent += ArbitraryTaskComplete;
+        inventory.collectedWheatEvent += SubTaskComplete;
+        miracleManager.miracleEvent += SubTaskComplete;
 
         for(int i = 0; i < taskListUI.transform.childCount; i++)
         {
@@ -28,51 +35,58 @@ public class TaskManager : MonoBehaviour
             taskListUI.transform.GetChild(i).transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = tasks[i].description;
         }
     }
-    private void PopulateTaskListRequirements()
+    private void FullTaskComplete()
     {
-        taskChecks.Add(()=>inventory.CheckInventoryContainsAmountOfItem("Wheat", 6)); //Task1
-                                                                                      //  taskChecks.Add(() => CheckCandlesLit(); //Task2
-                                                                                      //taskChecks.Add(() => inventory.CheckInventoryContainsAmountOfItem("Money", 30)); //Task3
-                                                                                      //taskChecks.Add(() => SheepNPC.happy = true; //
-    }
-    private void ArbitraryTaskComplete()
-    {
+        treesTriggeredBySubTasks[currentTask].finishedTaskEvent -= FullTaskComplete;
         switch (currentTask)
         {
             case 0:
-                Task1Complete();
+                TaskComplete(currentTask);
                 break;
             case 1:
-                Task2Complete();
+                TaskComplete(currentTask);
                 break;
         }
         currentTask++;
     }
-    private void Task1Complete()
+    private void SubTaskComplete()
     {
-        inventory.collectedWheatEvent -= Task1Complete;
-        treesRelatedToTasks[0].SetTaskComplete(true);
+        treesTriggeredBySubTasks[currentTask].SetTaskComplete(true);
+        switch (currentTask)
+        {   
+
+            case 0:
+                inventory.collectedWheatEvent -= SubTaskComplete;
+                break;
+            case 1:
+                miracleManager.miracleEvent -= SubTaskComplete;
+                break;
+        }
     }
-    private void Task2Complete()
+    private void TaskComplete(int taskComplete)
     {
-        treesRelatedToTasks[1].SetTaskComplete(true);
+      
+        taskListUI.transform.GetChild(taskComplete).transform.GetChild(2).gameObject.SetActive(true);
     }
-    public bool CheckLevelComplete(int _task)
-    {
-        return CheckRequirements(taskChecks[_task - 1]);
-    }
-    public bool CheckRequirements(Func<bool> taskCheck)
-    {
-        return taskCheck();
-    }
+
+  
     [System.Serializable]
     public struct Task
     {
         public string title;
         public string description;
+        public bool complete;
+
+        public void SetComplete(bool _complete)
+        {
+            complete = _complete;
+        }
     }
     public void OnApplicationQuit()
     {
-        treesRelatedToTasks[0].ResetTaskComplete();
+        foreach(DialogueTreeObject tree in treesTriggeredBySubTasks)
+        {
+            tree.ResetTaskComplete();
+        }
     }
 }

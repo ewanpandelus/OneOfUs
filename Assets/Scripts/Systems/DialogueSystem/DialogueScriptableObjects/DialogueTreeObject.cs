@@ -11,13 +11,16 @@ public class DialogueTreeObject : ScriptableObject
     private int currentID = 1;
     private float currentInfluenceChance;
     private bool correctPathChosen = false;
+
     private List<NPC> AffectedNPCs = new List<NPC>();
     [SerializeField] private float NPCInfluenceChange;
     [SerializeField] private List<AffectedNPCS> triggerableNPCS;
     [SerializeField] private bool taskComplete = false;
     [SerializeField] private bool invokesMiracle = false;
+    [SerializeField] private bool finishesTask = false;
+    public delegate void FinishedTaskDelegate();
+    public event FinishedTaskDelegate finishedTaskEvent;
 
-   
     public void IncrementConversationAffectedNPC()
     {
         SetupAffectedNPCs();
@@ -34,14 +37,26 @@ public class DialogueTreeObject : ScriptableObject
                 i++;
             }
         }
+        PostConversationEvents();
+    }
+    private void PostConversationEvents()
+    {
         AffectedNPCs.Clear();
         InvokeMiracle();
+        FinishesTask();
     }
     private void InvokeMiracle()
     {
         if (invokesMiracle)
         {
             GameObject.FindGameObjectWithTag("MiracleManager").GetComponent<MiracleManager>().StartCoroutine("StartMiracle");
+        }
+    }
+    private void FinishesTask()
+    {
+        if (finishesTask)
+        {
+            finishedTaskEvent?.Invoke();
         }
     }
     private void SetupAffectedNPCs()
@@ -98,7 +113,7 @@ public class DialogueTreeObject : ScriptableObject
             IncrementConversationAffectedNPC();
         }
     }
-  
+    
     
  
 
