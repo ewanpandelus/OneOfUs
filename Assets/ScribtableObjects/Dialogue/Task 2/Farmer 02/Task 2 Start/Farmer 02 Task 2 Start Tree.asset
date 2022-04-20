@@ -18,8 +18,11 @@ MonoBehaviour:
     triggeredTree: {fileID: 11400000, guid: c4751653c361b4f44b82e8183946c0a2, type: 2}
   - name: High Chief
     triggeredTree: {fileID: 11400000, guid: bcd8f393cc93e5646bd4fef992fb20f4, type: 2}
-  taskComplete: 1
+  - name: Sheep
+    triggeredTree: {fileID: 11400000, guid: 7cd21e1b2a47cc645b8b6c2b3aeb3de9, type: 2}
+  taskComplete: 0
   invokesMiracle: 1
+  finishesTask: 0
   dialogueTree:
   - {fileID: 11400000, guid: 8b0dceba5832f5c439225530b8bc0f5b, type: 2}
   - {fileID: 11400000, guid: 68aab287ae6e51d48b8012848a617004, type: 2}

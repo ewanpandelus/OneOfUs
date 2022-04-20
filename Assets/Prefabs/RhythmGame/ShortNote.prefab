@@ -138,5 +138,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 9
-  swapChance: 10
+  swapChance: 0
   clearMat: {fileID: 2100000, guid: 3218bd19c4545754ba673a283fcb90c2, type: 2}

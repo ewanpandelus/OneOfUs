@@ -39,12 +39,12 @@ public class RhythmManager : MonoBehaviour
         noteManager = GetComponent<NoteManager>();
         noteManager.PopulatePositions(matList);
         InitialiseNoteProperties();
-        
-
         rhythmLevelManager = GetComponent<RhythmLevelManager>();
-       
-        IncreaseLevel(2);
-   
+        shortNote.GetComponent<BaseNote>().SetSwapChance(0);
+        longNote.GetComponent<BaseNote>().SetSwapChance(0);
+        shortNote.GetComponent<BaseNote>().SetFallSpeed(8);
+        longNote.GetComponent<BaseNote>().SetFallSpeed(8);
+      
     }
     private void FixedUpdate()
     {
@@ -61,7 +61,7 @@ public class RhythmManager : MonoBehaviour
     public IEnumerator PlayRhythmSet()
     {
         notes = SetLevelCreator();
-        levelList = rhythmLevelManager.GetCurrentLevel(2);
+        levelList = rhythmLevelManager.GetCurrentLevel(level);
         noteManager.SetTotalNoteCount(levelList.Count);
         counter = 0;
         waiting = true;
@@ -129,7 +129,7 @@ public class RhythmManager : MonoBehaviour
     private List<(NoteType, float)> SetLevelCreator()
     {
         List<(NoteType, float)> notes = new List<(NoteType, float)>();
-        List<RhythmLevel> levelList = rhythmLevelManager.GetCurrentLevel(2);
+        List<RhythmLevel> levelList = rhythmLevelManager.GetCurrentLevel(level);
         for (int i = 0; i < levelList.Count; i++) { 
             notes.Add((GenerateRandomNote(), levelList[i].timeToWait));
         }
@@ -143,14 +143,16 @@ public class RhythmManager : MonoBehaviour
         if (noteNum == 2) return NoteType.Down;
         return NoteType.Up;
     }
-    public void IncreaseLevel(int _level)
+    public void IncreaseLevel()
     {
-        level = _level;
+        level++;
         if (level == 2)
         {
             shortNote.GetComponent<BaseNote>().SetSwapChance(15);
             longNote.GetComponent<BaseNote>().SetSwapChance(15);
-        
+            shortNote.GetComponent<BaseNote>().SetFallSpeed(11);
+            longNote.GetComponent<BaseNote>().SetFallSpeed(11);
+            slowNote.GetComponent<BaseNote>().SetFallSpeed(11);
         }
     }
     private void InitialiseNoteProperties()

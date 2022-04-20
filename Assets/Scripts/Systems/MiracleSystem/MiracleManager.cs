@@ -97,6 +97,7 @@ public class MiracleManager : MonoBehaviour
         UIManager.ShowMiracleBar(false);
         StartCoroutine(miracleEffects.FlashOfLight());
         miracleEvent?.Invoke();
+        rhythmManager.IncreaseLevel();
     }
     private void ResetAfterMiracle()
     {

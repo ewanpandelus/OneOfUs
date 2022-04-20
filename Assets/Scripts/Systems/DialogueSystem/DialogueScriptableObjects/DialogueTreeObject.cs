@@ -18,6 +18,7 @@ public class DialogueTreeObject : ScriptableObject
     [SerializeField] private bool taskComplete = false;
     [SerializeField] private bool invokesMiracle = false;
     [SerializeField] private bool finishesTask = false;
+    private bool miracleInvoked = false;
     public delegate void FinishedTaskDelegate();
     public event FinishedTaskDelegate finishedTaskEvent;
 
@@ -47,8 +48,9 @@ public class DialogueTreeObject : ScriptableObject
     }
     private void InvokeMiracle()
     {
-        if (invokesMiracle)
+        if (invokesMiracle && !miracleInvoked)
         {
+            miracleInvoked = true;
             GameObject.FindGameObjectWithTag("MiracleManager").GetComponent<MiracleManager>().StartCoroutine("StartMiracle");
         }
     }
@@ -72,6 +74,7 @@ public class DialogueTreeObject : ScriptableObject
     public void Initialise()
     {
         correctPathChosen = false;
+        miracleInvoked = false;
     }
     public void Reset()
     {
