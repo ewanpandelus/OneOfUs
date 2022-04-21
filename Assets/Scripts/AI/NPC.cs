@@ -11,6 +11,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private GameObject indoctrinationPrefab;
     [SerializeField] private string name;
+    [SerializeField] private GameObject qMark, qMarkMap;
     private TMP_Text nameText;
     [SerializeField] bool showIndoctrinateEffect = true;
     private float influenceLevel = 50;
@@ -21,6 +22,7 @@ public class NPC : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<PlayerStats>();
         currentDialogueTree = initialDialogueTree;
+        currentDialogueTree.SetNPCAttachedTo(this);
         PopulateDialogueNodes();
         nameText = UIManager.instance.nameText;
     }
@@ -45,6 +47,7 @@ public class NPC : MonoBehaviour
         currentDialogueTree.SetOriginalInfluenceChance(player.GetInfluence());
         currentlyTalking = true;
         nameText.text = name;
+      
     }
     public IEnumerator RunThroughDialogueTree()
     {
@@ -69,6 +72,8 @@ public class NPC : MonoBehaviour
         if (currentDialogueTree.GetCorrectPathChosen())
         {
             influenceLevel = Mathf.Clamp(influenceLevel + currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
+            qMark.SetActive(false);
+            qMarkMap.SetActive(false);
             ShowIndoctrinateEffect();
            
         }
@@ -105,9 +110,15 @@ public class NPC : MonoBehaviour
     public void SetDialogueTree(DialogueTreeObject _dialogueTree) 
     {
         currentDialogueTree = _dialogueTree;
+        _dialogueTree.SetNPCAttachedTo(this);
         PopulateDialogueNodes();
     }
-
+   public IEnumerator SetQuestionMarksActive()
+    {
+        yield return new WaitForSeconds(1f);
+        qMark.SetActive(true);
+        qMarkMap.SetActive(true);
+    }
     public bool GetCurrentlyTalking() => currentlyTalking;
  
 }

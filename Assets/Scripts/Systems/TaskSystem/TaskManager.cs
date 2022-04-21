@@ -37,16 +37,8 @@ public class TaskManager : MonoBehaviour
     }
     private void FullTaskComplete()
     {
-        treesTriggeredBySubTasks[currentTask].finishedTaskEvent -= FullTaskComplete;
-        switch (currentTask)
-        {
-            case 0:
-                TaskComplete(currentTask);
-                break;
-            case 1:
-                TaskComplete(currentTask);
-                break;
-        }
+        recruitingTrees[currentTask].finishedTaskEvent -= FullTaskComplete;
+        TaskComplete(currentTask);
         currentTask++;
     }
     private void SubTaskComplete()

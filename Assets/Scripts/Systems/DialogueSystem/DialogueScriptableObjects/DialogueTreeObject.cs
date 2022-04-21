@@ -11,13 +11,14 @@ public class DialogueTreeObject : ScriptableObject
     private int currentID = 1;
     private float currentInfluenceChance;
     private bool correctPathChosen = false;
-
+    private NPC npcAttachedTo;
     private List<NPC> AffectedNPCs = new List<NPC>();
     [SerializeField] private float NPCInfluenceChange;
     [SerializeField] private List<AffectedNPCS> triggerableNPCS;
     [SerializeField] private bool taskComplete = false;
     [SerializeField] private bool invokesMiracle = false;
     [SerializeField] private bool finishesTask = false;
+    [SerializeField] private bool storyProgressesOnSameCharacter;
     private bool miracleInvoked = false;
     public delegate void FinishedTaskDelegate();
     public event FinishedTaskDelegate finishedTaskEvent;
@@ -33,7 +34,12 @@ public class DialogueTreeObject : ScriptableObject
                 if (triggerableNPCS[i].triggeredTree != null)
                 {
                     npc.SetDialogueTree(triggerableNPCS[i].triggeredTree);
+                    if(npc!= npcAttachedTo||storyProgressesOnSameCharacter)
+                    {
+                        npc.StartCoroutine(npc.SetQuestionMarksActive());
+                    }
                     triggerableNPCS[i].triggeredTree.Initialise();
+              
                 }
                 i++;
             }
@@ -42,6 +48,7 @@ public class DialogueTreeObject : ScriptableObject
     }
     private void PostConversationEvents()
     {
+
         AffectedNPCs.Clear();
         InvokeMiracle();
         FinishesTask();
@@ -63,6 +70,7 @@ public class DialogueTreeObject : ScriptableObject
     }
     private void SetupAffectedNPCs()
     {
+        AffectedNPCs.Clear();
         if (triggerableNPCS.Count != 0)
         {
             foreach (AffectedNPCS npcToTrigger in triggerableNPCS)
@@ -108,6 +116,10 @@ public class DialogueTreeObject : ScriptableObject
     public void SetCorrectPathChosen(bool _correctPathChosen) => correctPathChosen = _correctPathChosen;
     public bool GetCorrectPathChosen() => correctPathChosen;
     public void ResetTaskComplete() => taskComplete = false;
+    public void SetNPCAttachedTo(NPC _npc)
+    {
+        npcAttachedTo = _npc;
+    }
     public void SetTaskComplete(bool _taskComplete) 
     {
         taskComplete = _taskComplete;

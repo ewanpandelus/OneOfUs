@@ -19,6 +19,7 @@ MonoBehaviour:
   taskComplete: 1
   invokesMiracle: 0
   finishesTask: 0
+  storyProgressesOnSameCharacter: 1
   dialogueTree:
   - {fileID: 11400000, guid: e35a2be9fbf849043b41e6946d000ffa, type: 2}
   - {fileID: 11400000, guid: 94beb80234e31344d9478d49d7c74e97, type: 2}
