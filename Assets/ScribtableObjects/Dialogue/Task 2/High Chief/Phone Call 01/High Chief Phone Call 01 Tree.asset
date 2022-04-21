@@ -16,11 +16,10 @@ MonoBehaviour:
   triggerableNPCS:
   - name: Sheep
     triggeredTree: {fileID: 11400000, guid: 7cd21e1b2a47cc645b8b6c2b3aeb3de9, type: 2}
-  - name: High Chief
-    triggeredTree: {fileID: 11400000, guid: a7422f3bb422f244fbd4e2dd20273831, type: 2}
   taskComplete: 1
   invokesMiracle: 0
   finishesTask: 0
+  storyProgressesOnSameCharacter: 0
   dialogueTree:
   - {fileID: 11400000, guid: b5d04e9bcb7d54340bdf80f26df82ca0, type: 2}
   - {fileID: 11400000, guid: 1423e94d2d4f7544b893ae160de3272a, type: 2}

@@ -116,6 +116,7 @@ public class DialogueTreeObject : ScriptableObject
     public void SetCorrectPathChosen(bool _correctPathChosen) => correctPathChosen = _correctPathChosen;
     public bool GetCorrectPathChosen() => correctPathChosen;
     public void ResetTaskComplete() => taskComplete = false;
+    public void SetNPCJoined() => npcAttachedTo.StartCoroutine(npcAttachedTo.SetIndoctrinated());
     public void SetNPCAttachedTo(NPC _npc)
     {
         npcAttachedTo = _npc;

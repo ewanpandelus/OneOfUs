@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,15 +13,15 @@ public class NPC : MonoBehaviour
     [SerializeField] private GameObject indoctrinationPrefab;
     [SerializeField] private string name;
     [SerializeField] private GameObject qMark, qMarkMap;
+    private Animator animator;
     private TMP_Text nameText;
     [SerializeField] bool showIndoctrinateEffect = true;
     private float influenceLevel = 50;
-    private PlayerStats player;
     private bool currentlyTalking = false;
     public float GetInfluenceLevel() => influenceLevel;
     public void Start()
     {
-        player = GameObject.FindObjectOfType<PlayerStats>();
+        animator = GetComponent<Animator>();
         currentDialogueTree = initialDialogueTree;
         currentDialogueTree.SetNPCAttachedTo(this);
         PopulateDialogueNodes();
@@ -44,7 +45,6 @@ public class NPC : MonoBehaviour
     public void RunDialogue()
     {
         StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC
-        currentDialogueTree.SetOriginalInfluenceChance(player.GetInfluence());
         currentlyTalking = true;
         nameText.text = name;
       
@@ -53,7 +53,7 @@ public class NPC : MonoBehaviour
     {
         if (currentDialogueTree.GetCurrentNode() == null|| currentDialogueTree.GetCurrentNode().AllChildrenNull()) 
         {
-            currentDialogueTree.Reset(); //Possibly add catch phrase here
+            currentDialogueTree.Reset(); 
       
             yield return null; 
         }
@@ -99,7 +99,6 @@ public class NPC : MonoBehaviour
     {
         currentlyTalking = false;
         nameText.text = "";
-        //player.CalculateInfluence();
         currentDialogueTree.IncrementConversationAffectedNPC();
     }
     public void MakeDecision(int _direction)
@@ -120,5 +119,16 @@ public class NPC : MonoBehaviour
         qMarkMap.SetActive(true);
     }
     public bool GetCurrentlyTalking() => currentlyTalking;
- 
+    public IEnumerator SetIndoctrinated()
+    {
+        yield return new WaitForSeconds(1f);
+        try
+        {
+            animator.SetTrigger("JoinedCult");
+        }
+        catch(Exception ex)
+        {
+
+        }
+    }
 }

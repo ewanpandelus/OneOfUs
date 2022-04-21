@@ -38,6 +38,7 @@ public class TaskManager : MonoBehaviour
     private void FullTaskComplete()
     {
         recruitingTrees[currentTask].finishedTaskEvent -= FullTaskComplete;
+        recruitingTrees[currentTask].SetNPCJoined();
         TaskComplete(currentTask);
         currentTask++;
     }

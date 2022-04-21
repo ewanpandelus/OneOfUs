@@ -6,11 +6,9 @@ public class BaseItem : MonoBehaviour
 {
 
     [SerializeField] private string name;
-    [SerializeField] private string description;
     [SerializeField] private bool canPickup = false;
     private GameObject player;
     private Transform _transform;
-    private bool initiatedPicking = false;
     private Vector3 originalScale;
     private float t = 0;
     private void Start()

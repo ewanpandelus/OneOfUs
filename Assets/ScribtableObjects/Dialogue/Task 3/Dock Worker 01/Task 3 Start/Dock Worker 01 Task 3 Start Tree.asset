@@ -16,6 +16,8 @@ MonoBehaviour:
   triggerableNPCS:
   - name: Dock Worker 01
     triggeredTree: {fileID: 11400000, guid: 3b1e81e1b47b6a844b4464ad0c55222f, type: 2}
+  - name: High Chief
+    triggeredTree: {fileID: 11400000, guid: a7422f3bb422f244fbd4e2dd20273831, type: 2}
   taskComplete: 1
   invokesMiracle: 0
   finishesTask: 0
