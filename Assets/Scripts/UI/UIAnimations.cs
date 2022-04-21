@@ -51,11 +51,7 @@ public class UIAnimations : MonoBehaviour
 
     }  
 
-    private bool CheckToolBarShow(Vector3 _mousePos)
-    {
-        return(_mousePos.y < (Screen.height / 8) && _mousePos.x > (Screen.width / 2) - Screen.width/4 && _mousePos.x < (Screen.width / 2) +(Screen.width/4));
-       
-    }
+
     private void TweenPosition(Vector3 _endPos, float _duration, RectTransform _transform, bool _show)
     {
         _transform.DOLocalMove(_endPos, _duration).OnComplete(()=>_transform.gameObject.SetActive(_show));

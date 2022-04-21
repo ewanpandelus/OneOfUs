@@ -25,7 +25,7 @@ public class BaseItem : MonoBehaviour
         if (!canPickup) return;
         if(Vector2.Distance(_transform.position, player.transform.position) < 1)
         {
-             t += Time.deltaTime/3;
+             t += Time.deltaTime;
             _transform.position = Vector3.Lerp(_transform.position, player.transform.position, t);
             _transform.localScale = Vector3.Lerp(_transform.localScale, Vector3.zero, t);
         }
