@@ -13,7 +13,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] Inventory inventory;
     [SerializeField] MiracleManager miracleManager;
 
-    private int currentTask = 0;
+    private int currentTask, currentSubTask = 0;
 
     private void Start()
     {
@@ -51,8 +51,8 @@ public class TaskManager : MonoBehaviour
     }
     private void SubTaskComplete()
     {
-        treesTriggeredBySubTasks[currentTask].SetTaskComplete(true);
-        switch (currentTask)
+        treesTriggeredBySubTasks[currentSubTask].SetTaskComplete(true);
+        switch (currentSubTask)
         {   
 
             case 0:
@@ -62,6 +62,7 @@ public class TaskManager : MonoBehaviour
                 miracleManager.miracleEvent -= SubTaskComplete;
                 break;
         }
+        currentSubTask++;
     }
     private void TaskComplete(int taskComplete)
     {
