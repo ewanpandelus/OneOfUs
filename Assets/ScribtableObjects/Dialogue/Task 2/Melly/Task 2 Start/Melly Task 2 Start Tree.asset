@@ -20,7 +20,7 @@ MonoBehaviour:
     triggeredTree: {fileID: 11400000, guid: 6b92bcf634fc6554d92f3b546460fe65, type: 2}
   - name: Merchant 01
     triggeredTree: {fileID: 11400000, guid: 5e540fc82cb147843b26ed291e1dbb3f, type: 2}
-  taskComplete: 0
+  taskComplete: 1
   invokesMiracle: 0
   finishesTask: 1
   dialogueTree:

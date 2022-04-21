@@ -20,6 +20,6 @@ MonoBehaviour:
   chanceEffect: 3
   dialogue:
   - Fine, if you can find the clause in the contract that states I need to pay the
-    money back by a specific date, then I'll give you the money
+    money back by a specific date, then I'll give you the money.
   response:
-  - (Walk away to perform a Miracle.)
+  - (Walk away to read the contract.)

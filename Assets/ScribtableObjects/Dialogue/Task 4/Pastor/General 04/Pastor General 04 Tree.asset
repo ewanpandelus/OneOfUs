@@ -18,5 +18,6 @@ MonoBehaviour:
     triggeredTree: {fileID: 11400000, guid: db507d26ba7be98459b6520a9fa8c647, type: 2}
   taskComplete: 1
   invokesMiracle: 0
+  finishesTask: 1
   dialogueTree:
   - {fileID: 11400000, guid: c35ab6e353b45ed4aafb3412517c228a, type: 2}

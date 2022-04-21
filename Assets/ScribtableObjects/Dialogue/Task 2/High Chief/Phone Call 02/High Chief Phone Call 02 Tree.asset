@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: High Chief Phone Call 02 Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 0
+  triggerableNPCS:
+  - name: Pastor
+    triggeredTree: {fileID: 11400000, guid: 617b8c6645a098448b638c276af7c26d, type: 2}
+  taskComplete: 1
+  invokesMiracle: 0
+  finishesTask: 0
+  dialogueTree:
+  - {fileID: 11400000, guid: dca650f6ab25be6408aa4d4144b900df, type: 2}
+  - {fileID: 11400000, guid: 0ea6dbbb61414eb40942ec41a50d4265, type: 2}
+  - {fileID: 11400000, guid: b323814d40ec26546910a246786209b7, type: 2}
+  - {fileID: 11400000, guid: 1dd38a0c4aa24e448b719ee2a0a8389a, type: 2}

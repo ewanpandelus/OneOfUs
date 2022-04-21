@@ -20,7 +20,7 @@ MonoBehaviour:
   chanceEffect: 0
   dialogue:
   - Ugh, another one of his lackeys, are you?
-  - I'll tell you what I told them, I'm not paying
+  - I'll tell you what I told them, I'm not paying.
   response:
   - Yes, you are.
   - Ok. (Walk away.)
