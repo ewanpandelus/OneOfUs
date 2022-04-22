@@ -24,7 +24,10 @@ public class MiracleEffects  :MonoBehaviour
         chiefLightEffectPrefab = _chiefLightEffect;
         globalLight = GameObject.Find("Global Light 2D").GetComponent<Light2D>();
     }
+    public void SheepEffect()
+    {
 
+    }
  
     public IEnumerator FireEffect()
     {

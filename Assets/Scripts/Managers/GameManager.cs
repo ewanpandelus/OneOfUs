@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
     private GameState gameState;
     public enum GameState
     {
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         gameState = GameState.Standard;
-        //Time.timeScale = 7f;
+       
     }
 
     public void SetGameState(GameState _gameState)

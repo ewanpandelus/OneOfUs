@@ -13,14 +13,15 @@ public class UIAnimations : MonoBehaviour
 
     private void Start()
     {
+
         toolBarStartPos = miracleToolBar.transform.localPosition;
         toolBarEndPos = miracleToolBar.transform.localPosition += new Vector3(0, 200, 0);
 
         taskListStartPos = taskList.transform.localPosition;
         taskListEndPos = taskList.transform.localPosition-= new Vector3(600,0,0);
+        ShowHiddenUIElement(false, miracleToolBar, toolBarStartPos, toolBarEndPos,0.01f);
+        ShowHiddenUIElement(false, taskList, taskListStartPos, taskListEndPos,0.01f);
 
-        ShowHiddenUIElement(false, miracleToolBar, toolBarStartPos , toolBarEndPos);
-        ShowHiddenUIElement(false, taskList, taskListStartPos, taskListEndPos);
     }
 
     private void Update()
@@ -28,7 +29,7 @@ public class UIAnimations : MonoBehaviour
         elapsedTime += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.J)&&elapsedTime>0.75f&&!UIManager.instance.GetStaticUIShowing())
         {
-            ShowHiddenUIElement(!taskBarShowing, taskList, taskListStartPos, taskListEndPos);
+            ShowHiddenUIElement(!taskBarShowing, taskList, taskListStartPos, taskListEndPos,0.75f);
             taskBarShowing = !taskBarShowing;
             elapsedTime = 0;
             return;
@@ -37,16 +38,16 @@ public class UIAnimations : MonoBehaviour
 
 
 
-    public void ShowHiddenUIElement(bool _show, RectTransform UIElement, Vector3 startPos, Vector3 endPos)
+    public void ShowHiddenUIElement(bool _show, RectTransform UIElement, Vector3 startPos, Vector3 endPos, float lerpTime)
     {
         if (_show)
         {
             UIElement.gameObject.SetActive(_show);
-            TweenPosition(endPos, 0.75f, UIElement);
+            TweenPosition(endPos, lerpTime, UIElement);
         }
         else
         {
-            TweenPosition(startPos, 0.75f, UIElement, _show);
+            TweenPosition(startPos, lerpTime, UIElement, _show);
         }
 
     }  

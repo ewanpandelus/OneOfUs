@@ -25,6 +25,7 @@ public class MiracleManager : MonoBehaviour
     private bool gameOver = false;
     private NPC highChief;
     private List<MiracleButton> miracleButtons = new List<MiracleButton>();
+    private Button currentButton;
     public enum MiracleType
     {
         Fire,
@@ -42,7 +43,7 @@ public class MiracleManager : MonoBehaviour
         {
             miracleButtons.Add(miracleBarObj.transform.GetChild(i).GetComponent<MiracleButton>());
         }
-        miracleButtons[1].SetActive(true);
+        miracleButtons[0].SetActive(true);
     }
 
     public IEnumerator StartMiracle()
@@ -59,48 +60,67 @@ public class MiracleManager : MonoBehaviour
     }
     public void InvokeEffect(Button button)
     {
+        currentButton = button;
         if (button.gameObject.GetComponent<MiracleButton>().GetActive())
         {
             StartCoroutine(button.name);
             eventSystem.SetSelectedGameObject(null);
         }
     }
-  
+    public IEnumerator SheepEffect()
+    {
+        PreMiracleSetup();
+        yield return new WaitUntil(() => gameOver == true);
+        PostMiracleCheck(MiracleType.TurnIntoSheep);
+    }
     public IEnumerator FireEffect()
+    {
+        PreMiracleSetup();
+        yield return new WaitUntil(() => gameOver == true);
+        PostMiracleCheck(MiracleType.Fire);
+    }
+    private void PreMiracleSetup()
     {
         mainCanvas.GetComponent<Canvas>().enabled = false;
         miracleEffects.SetBeamOfLightIntensity(0f);
         rhythmManager.transform.parent.gameObject.SetActive(true);
         GameManager.instance.SetGameState(GameManager.GameState.Rhythm);
         StartCoroutine(rhythmManager.PlayRhythmSet());
-        yield return new WaitUntil(() => gameOver == true);
-        PostMiracleCheck();
-        
     }
-    private void PostMiracleCheck()
+    private void PostMiracleCheck(MiracleType miracleType)
     {
         if (achievedMiracle)
         {
-            MiracleAchieved();
+            MiracleAchieved(miracleType);
             dialogueUI.SetFontStyle(TMPro.FontStyles.Normal);
             retryText.SetActive(false);
+            eventSystem.SetSelectedGameObject(null);
         }
         else
         {
             miracleEffects.SetBeamOfLightIntensity(miracleEffects.GetSavedBeamOfLightIntensity());
             retryText.SetActive(true);
+            eventSystem.SetSelectedGameObject(currentButton.gameObject);
         }
         ResetAfterMiracle();
     }
-    private void MiracleAchieved()
+    private void MiracleAchieved(MiracleType miracleType)
     {
         miracleEffects.DestroyBeam();
         miracleEffects.SetGlobalLightIntensity(1f);
-        StartCoroutine(miracleEffects.FireEffect());
+        if(miracleType == MiracleType.Fire)
+        {
+            StartCoroutine(miracleEffects.FireEffect());
+        }
+        if(miracleType == MiracleType.TurnIntoSheep)
+        {
+            miracleEffects.SheepEffect();
+        }
         UIManager.ShowMiracleBar(false);
         StartCoroutine(miracleEffects.FlashOfLight());
         miracleEvent?.Invoke();
         rhythmManager.IncreaseLevel();
+        miracleButtons[1].SetActive(true);
     }
     private void ResetAfterMiracle()
     {

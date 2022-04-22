@@ -9,13 +9,11 @@ public class BaseItem : MonoBehaviour
     [SerializeField] private bool canPickup = false;
     private GameObject player;
     private Transform _transform;
-    private Vector3 originalScale;
     private float t = 0;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         _transform = transform;
-        originalScale = _transform.localScale;
     }
 
     private void Update()
