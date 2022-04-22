@@ -44,6 +44,7 @@ public class NPC : MonoBehaviour
 
     public void RunDialogue()
     {
+        
         StartCoroutine(RunThroughDialogueTree());  //Runs through dialogue tree for specific NPC
         currentlyTalking = true;
         nameText.text = name;

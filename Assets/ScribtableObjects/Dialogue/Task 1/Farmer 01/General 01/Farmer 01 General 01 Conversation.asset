@@ -19,6 +19,6 @@ MonoBehaviour:
   rightChild: {fileID: 0}
   chanceEffect: 0
   dialogue:
-  - Leave me alone. I have enough on my plate already!
+  - Have you harvested the wheat yet?
   response:
-  - (Walk away.)
+  - I'm on it.

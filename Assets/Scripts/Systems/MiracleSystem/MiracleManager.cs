@@ -17,6 +17,7 @@ public class MiracleManager : MonoBehaviour
     [SerializeField] EventSystem eventSystem;
     [SerializeField] GameObject chiefLightEffect;
     [SerializeField] DialogueUI dialogueUI;
+    [SerializeField] GameObject retryText;
     public delegate void MiracleEventDelegate();
     public event MiracleEventDelegate miracleEvent;
     private MiracleEffects miracleEffects;
@@ -82,10 +83,12 @@ public class MiracleManager : MonoBehaviour
         {
             MiracleAchieved();
             dialogueUI.SetFontStyle(TMPro.FontStyles.Normal);
+            retryText.SetActive(false);
         }
         else
         {
             miracleEffects.SetBeamOfLightIntensity(miracleEffects.GetSavedBeamOfLightIntensity());
+            retryText.SetActive(true);
         }
         ResetAfterMiracle();
     }

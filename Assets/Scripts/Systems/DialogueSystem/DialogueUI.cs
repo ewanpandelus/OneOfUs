@@ -16,17 +16,10 @@ public class DialogueUI : MonoBehaviour
 
     private void Awake()
     {
+
         dialogueBox = gameObject;
         textEffects = GetComponent<TextEffects>();
-        if (Application.isEditor)
-        {
-            ShowDialogueBox(false);
-        }
-        else
-        {
-            ShowDialogueBox(true);
-        }
-     
+        ShowDialogueBox(false);
     }
 
     public void ShowText(string _text)
