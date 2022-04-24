@@ -32,20 +32,13 @@ public class UIManager : MonoBehaviour
         StartCoroutine(LerpAlpha());
 
     }
-   public bool GetStaticUIShowing()
-   {
-        return (dialogueUI.GetDialogueBoxShowing() || mapUI.GetMapOpen() || miracleManager.GetRhythmGameActive());
-   }
-    
-   public bool CheckMiracleToolBarAllWayOut()
-   {
-        return UIAnimations.CheckMiracleBarAllWayOut();
-   }
-    public void ShowTaskList(bool _show)
-    {
+   public bool GetStaticUIShowing()=>(dialogueUI.GetDialogueBoxShowing() || mapUI.GetMapOpen() || miracleManager.GetRhythmGameActive());
+   public bool CheckMiracleToolBarAllWayOut()=>  UIAnimations.CheckMiracleBarAllWayOut();
+   
+   public bool DialogueBoxShowing() => dialogueUI.GetDialogueBoxShowing();
 
-    }
-   public void ShowMiracleBar(bool _show)
+    public bool MapShowing() => mapUI.GetMapOpen();
+    public void ShowMiracleBar(bool _show)
    {
         UIAnimations.ShowHiddenUIElement(_show, UIAnimations.GetToolBar(), UIAnimations.GetToolBarStartPos(), UIAnimations.GetToolBarEndPos(), 0.75f);
         eventSystem.SetSelectedGameObject(sheepEffectButton);

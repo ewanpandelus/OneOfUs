@@ -4,12 +4,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
-    [SerializeField] UIManager UIManager;
     Vector3 movement = new Vector3 (0,0,0);
     private EvaluateEnvironment evaluateEnvironment;
     private PlayerAnimator playerAnim;
+
     private Transform _transform;
     private bool canMove = true;
+    private bool firstInteraction = false;
     private void Awake()
     {
         evaluateEnvironment = new EvaluateEnvironment(transform);
@@ -19,8 +20,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!canMove || UIManager.GetStaticUIShowing()) return;
+        if (UIManager.instance.GetStaticUIShowing()||MiracleManager.instance.GetMiracleOccuring()) return;
         EvaluateInput();
+        if (!canMove) return;
         playerAnim.UpdateMovement(movement);
         playerAnim.UpdateAnimation();
         _transform.position += movement * Time.deltaTime;
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour
             NPC closestNPC = evaluateEnvironment.ClosestNPC();
             if (closestNPC != null)
             {
-                if(!UIManager.GetStaticUIShowing()) closestNPC.RunDialogue();
+                closestNPC.RunDialogue();
+                if (!firstInteraction) firstInteraction = true;
             }
         }
     }
@@ -48,4 +51,5 @@ public class PlayerController : MonoBehaviour
         return playerAnim;
     }
     public void SetCanMove(bool _canMove) => canMove = _canMove;
+    public bool GetFirstInteraction() => firstInteraction;
 }

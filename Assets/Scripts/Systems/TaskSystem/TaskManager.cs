@@ -41,6 +41,7 @@ public class TaskManager : MonoBehaviour
         recruitingTrees[currentTask].SetNPCJoined();
         TaskComplete(currentTask);
         currentTask++;
+        if (currentTask == 2) miracleManager.TurnBackIntoHuman();
     }
     private void SubTaskComplete()
     {
@@ -59,9 +60,9 @@ public class TaskManager : MonoBehaviour
     }
     private void TaskComplete(int taskComplete)
     {
-      
         taskListUI.transform.GetChild(taskComplete).transform.GetChild(2).gameObject.SetActive(true);
         StartCoroutine(PostProcessManager.instance.IncreaseDarkeningWeight());
+        
     }
 
   

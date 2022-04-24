@@ -48,7 +48,7 @@ public class PostProcessManager : MonoBehaviour
         while (t < 1)
         {
             t += Time.deltaTime;
-            x = Mathf.Lerp(0, darkeningWeight, t);
+            x = Mathf.Lerp(darkeningWeight-0.25f, darkeningWeight, t);
             darkeningVolume.weight = x;
             yield return null;
         }

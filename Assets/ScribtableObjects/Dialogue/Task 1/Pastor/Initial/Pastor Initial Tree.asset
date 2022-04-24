@@ -15,5 +15,8 @@ MonoBehaviour:
   NPCInfluenceChange: 0
   triggerableNPCS: []
   taskComplete: 1
+  invokesMiracle: 0
+  finishesTask: 0
+  storyProgressesOnSameCharacter: 0
   dialogueTree:
   - {fileID: 11400000, guid: 107fcec5950bbae4a95dfb94412a2483, type: 2}

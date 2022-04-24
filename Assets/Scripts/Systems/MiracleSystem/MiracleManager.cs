@@ -16,12 +16,15 @@ public class MiracleManager : MonoBehaviour
     [SerializeField] private GameObject mainCanvas;
     [SerializeField] EventSystem eventSystem;
     [SerializeField] GameObject chiefLightEffect;
+    [SerializeField] private SheepAnimator sheepAnimator;
     [SerializeField] DialogueUI dialogueUI;
     [SerializeField] GameObject retryText;
+    public static MiracleManager instance;
     public delegate void MiracleEventDelegate();
     public event MiracleEventDelegate miracleEvent;
     private MiracleEffects miracleEffects;
     bool achievedMiracle = false;
+    bool miracleOccuring = false;
     private bool gameOver = false;
     private NPC highChief;
     private List<MiracleButton> miracleButtons = new List<MiracleButton>();
@@ -32,11 +35,20 @@ public class MiracleManager : MonoBehaviour
         UnburnToast,
         TurnIntoSheep
     }
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
 
-    void Start()
+
+    }
+
+    private void Start()
     {
         miracleEffects = GetComponent<MiracleEffects>();
-        miracleEffects.SetupMiracleEffects(player.GetPlayerAnimator(), fireEffectPrefab, player, chiefLightEffect);
+        miracleEffects.SetupMiracleEffects(player.GetPlayerAnimator(), fireEffectPrefab, player, chiefLightEffect, sheepAnimator);
         highChief = GameObject.FindGameObjectsWithTag("NPC").SingleOrDefault(npc => npc.name == "High Chief").GetComponent<NPC>();
         var miracleBarObj = GameObject.FindGameObjectWithTag("MiracleToolBar");
         for (int i = 0; i < miracleBarObj.transform.childCount; i++)
@@ -48,7 +60,7 @@ public class MiracleManager : MonoBehaviour
 
     public IEnumerator StartMiracle()
     {
-        Time.timeScale = 1f;
+        miracleOccuring = true;
         yield return new WaitForSeconds(1f);
         player.SetCanMove(false);
         miracleEffects.BeamLightEffect();
@@ -66,6 +78,10 @@ public class MiracleManager : MonoBehaviour
             StartCoroutine(button.name);
             eventSystem.SetSelectedGameObject(null);
         }
+    }
+    public void TurnBackIntoHuman()
+    {
+        miracleEffects.TurnBackIntoHuman();
     }
     public IEnumerator SheepEffect()
     {
@@ -95,6 +111,7 @@ public class MiracleManager : MonoBehaviour
             dialogueUI.SetFontStyle(TMPro.FontStyles.Normal);
             retryText.SetActive(false);
             eventSystem.SetSelectedGameObject(null);
+            miracleOccuring = false;
         }
         else
         {
@@ -114,12 +131,13 @@ public class MiracleManager : MonoBehaviour
         }
         if(miracleType == MiracleType.TurnIntoSheep)
         {
-            miracleEffects.SheepEffect();
+            StartCoroutine(miracleEffects.SheepEffect());
         }
         UIManager.ShowMiracleBar(false);
         StartCoroutine(miracleEffects.FlashOfLight());
         miracleEvent?.Invoke();
         rhythmManager.IncreaseLevel();
+        miracleButtons[0].SetActive(false);
         miracleButtons[1].SetActive(true);
     }
     private void ResetAfterMiracle()
@@ -129,6 +147,7 @@ public class MiracleManager : MonoBehaviour
         rhythmManager.transform.parent.gameObject.SetActive(false);
         GameManager.instance.SetGameState(GameManager.GameState.Standard);
         mainCanvas.GetComponent<Canvas>().enabled = true;
+   
     }
 
     public void SetAchievedMiracle(bool _achievedMiracale)
@@ -137,8 +156,7 @@ public class MiracleManager : MonoBehaviour
         achievedMiracle = _achievedMiracale;
     }
 
-    public bool GetRhythmGameActive()
-    {
-        return rhythmManager.transform.parent.gameObject.activeInHierarchy;
-    }
+    public bool GetRhythmGameActive()=> rhythmManager.transform.parent.gameObject.activeInHierarchy;
+    
+    public bool GetMiracleOccuring() => miracleOccuring;
 }

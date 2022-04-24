@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using DG.Tweening;
 public class MiracleEffects  :MonoBehaviour
 {
+    [SerializeField] private GameObject playerSheep;
+    [SerializeField] private GameObject player;
+    [SerializeField] private CameraFollow camFollow;
     private PlayerAnimator playerAnimator;
     private PlayerController playerController;
+    private SheepAnimator sheepAnimator;
     private GameObject fireEffectPrefab;
     private GameObject chiefLightEffectPrefab;
     private GameObject chiefLightEffectObj;
@@ -16,17 +21,36 @@ public class MiracleEffects  :MonoBehaviour
     private float rotateCount = 100f;
     private float waitTime = 0.5f;
     public  void SetupMiracleEffects(PlayerAnimator _playerAnimator, GameObject _fireEffectPrefab, PlayerController _playerController, 
-        GameObject _chiefLightEffect)
+        GameObject _chiefLightEffect, SheepAnimator _sheepAnimator)
     {
         playerAnimator = _playerAnimator;
         fireEffectPrefab = _fireEffectPrefab;
         playerController = _playerController;
         chiefLightEffectPrefab = _chiefLightEffect;
         globalLight = GameObject.Find("Global Light 2D").GetComponent<Light2D>();
+        sheepAnimator = _sheepAnimator;
     }
-    public void SheepEffect()
+    public void TurnBackIntoHuman()
     {
-
+        player.transform.position = playerSheep.transform.position;
+        player.GetComponent<SpriteRenderer>().DOColor( new Color(1, 1, 1, 1),0.5f);
+        player.GetComponent<Collider2D>().enabled = true;
+        playerSheep.GetComponent<SpriteRenderer>().DOColor(new Color(1, 1, 1, 0),0.65f);
+        playerSheep.GetComponent<Collider2D>().enabled = false;
+        sheepAnimator.SetActive(false);
+        camFollow.SetTarget(player.transform);
+        playerController.SetCanMove(true);
+    }
+    public IEnumerator SheepEffect()
+    {
+        playerSheep.transform.position = player.transform.position;
+        yield return new WaitForSeconds(3.8f);
+        player.GetComponent<SpriteRenderer>().DOColor(new Color(1, 1, 1, 0), 0.4f);
+        player.GetComponent<Collider2D>().enabled = false;
+        playerSheep.GetComponent<SpriteRenderer>().DOColor(new Color(1, 1, 1, 1), 0.65f);
+        playerSheep.GetComponent<Collider2D>().enabled = true;
+        sheepAnimator.SetActive(true);
+        camFollow.SetTarget(playerSheep.transform);
     }
  
     public IEnumerator FireEffect()
@@ -48,11 +72,11 @@ public class MiracleEffects  :MonoBehaviour
             playerAnimator.ManuallySetAnimator(i % 4);
         }
         playerAnimator.SetShouldAutoAnimate(true);
-        StartCoroutine(FireEffect2());
+        StartCoroutine(SlowDownSpin());
         yield return new WaitForSeconds(5f);
         GameObject.Destroy(fireObj);
     }
-    public IEnumerator FireEffect2()
+    public IEnumerator SlowDownSpin()
     {
         playerAnimator.SetShouldAutoAnimate(false);
         for (int i = 0; i <= 20; i++)

@@ -17,5 +17,9 @@ public class CameraFollow : MonoBehaviour
             transform.position = smoothPost;
         }
     }
+    public void SetTarget(Transform transform)
+    {
+        target = transform;
+    }
   
 }

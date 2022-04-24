@@ -33,6 +33,7 @@ public class PlayerAnimator
         else
         {
             elapsedTime = 0;
+            return;
         }
         if (elapsedTime > timeUntilIdleAnim)
         {
