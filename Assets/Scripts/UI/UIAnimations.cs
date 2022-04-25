@@ -30,6 +30,7 @@ public class UIAnimations : MonoBehaviour
         ShowHiddenUIElement(false, taskList, taskListStartPos, taskListEndPos,0.01f);
         StartCoroutine(TutorialText());
         StartCoroutine(LerpAlphaToNone());
+
     }
 
     private void Update()
@@ -99,8 +100,6 @@ public class UIAnimations : MonoBehaviour
     public void EndEffects()
     {
         StartCoroutine(LerpAlphaToFull());
-
-
     }
     public bool CheckMiracleBarAllWayOut()
     {
@@ -113,7 +112,7 @@ public class UIAnimations : MonoBehaviour
         float t = 0;
         while (t < 1)
         {
-            t += Time.deltaTime/3;
+            t += Time.deltaTime/4;
             startScreen.color = new Color(0, 0, 0, 1 - t);
             yield return null;
         }
@@ -121,14 +120,20 @@ public class UIAnimations : MonoBehaviour
     }
     public IEnumerator LerpAlphaToFull()
     {
-        SoundManager.instance.SetPitch(0f);
+        SoundManager.instance.FadeOutMainTheme();
         float t = 0;
         while (t < 1)
         {
-            t += Time.deltaTime/4;
+            t += Time.deltaTime/5;
             startScreen.color = new Color(0, 0, 0, t);
             yield return null;
         }
+        BackgroundCutScene();
+    }
+    private void BackgroundCutScene()
+    {
+        playerController.GetPlayerAnimator().ManuallySetAnimator(0);
+        SoundManager.instance.FadeInMainTheme();
         SoundManager.instance.SetPitch(0.7f);
         endObj.SetActive(true);
         playerController.transform.position = endObj.transform.GetChild(0).transform.position;
