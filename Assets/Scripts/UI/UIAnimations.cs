@@ -50,9 +50,9 @@ public class UIAnimations : MonoBehaviour
         playerText.DOColor(new Color(0, 0, 0, 1), 1f);
         yield return new WaitUntil(() => playerController.GetFirstInteraction());
         playerText.DOColor(new Color(0, 0, 0, 0), 1f);
+        yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing()&&!UIManager.instance.MapShowing());
         yield return new WaitForSeconds(4f);
         playerText.text = "Press J to bring up your list of tasks";
-        yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing()&&!UIManager.instance.MapShowing());
         playerText.DOColor(new Color(0, 0, 0, 1), 1f);
         yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.J)));
         playerText.DOColor(new Color(0, 0, 0, 0), 1f);

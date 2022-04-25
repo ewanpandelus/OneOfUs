@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
   triggerableNPCS:
+  - name: Farmer 01
+    triggeredTree: {fileID: 11400000, guid: d18f3dc4497ceb9419e36dc6e83fbc02, type: 2}
   - name: Mr Destiny
     triggeredTree: {fileID: 11400000, guid: db507d26ba7be98459b6520a9fa8c647, type: 2}
   taskComplete: 1
+  invokesMiracle: 0
+  finishesTask: 0
+  storyProgressesOnSameCharacter: 0
+  overrideProgression: 0
   dialogueTree:
   - {fileID: 11400000, guid: 1d7469feb72193a459757c46f0276673, type: 2}

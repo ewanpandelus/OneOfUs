@@ -19,6 +19,8 @@ public class DialogueTreeObject : ScriptableObject
     [SerializeField] private bool invokesMiracle = false;
     [SerializeField] private bool finishesTask = false;
     [SerializeField] private bool storyProgressesOnSameCharacter;
+    [SerializeField] private bool overrideProgression;
+    private bool alreadyOverridden;
     private bool miracleInvoked = false;
     public delegate void FinishedTaskDelegate();
     public event FinishedTaskDelegate finishedTaskEvent;
@@ -33,6 +35,7 @@ public class DialogueTreeObject : ScriptableObject
             {
                 if (triggerableNPCS[i].triggeredTree != null)
                 {
+                    if (overrideProgression && i == 0) { i++; continue;}
                     npc.SetDialogueTree(triggerableNPCS[i].triggeredTree);
                     if(npc!= npcAttachedTo||storyProgressesOnSameCharacter)
                     {
@@ -48,10 +51,20 @@ public class DialogueTreeObject : ScriptableObject
     }
     private void PostConversationEvents()
     {
-
-        AffectedNPCs.Clear();
         InvokeMiracle();
         FinishesTask();
+        if (overrideProgression&&!alreadyOverridden) OverrrideConversationProgression();
+        AffectedNPCs.Clear();
+    }
+    private void OverrrideConversationProgression()
+    {
+        if (AffectedNPCs.Count > 0 && triggerableNPCS[0].triggeredTree != null)
+        {
+            AffectedNPCs[0].SetDialogueTree(triggerableNPCS[0].triggeredTree);
+            AffectedNPCs[0].StartCoroutine(AffectedNPCs[0].SetQuestionMarksActive());
+            triggerableNPCS[0].triggeredTree.Initialise();
+            alreadyOverridden = true;
+        }
     }
     private void InvokeMiracle()
     {
@@ -83,6 +96,8 @@ public class DialogueTreeObject : ScriptableObject
     {
         correctPathChosen = false;
         miracleInvoked = false;
+        alreadyOverridden = false;
+        AssessRightPath();
     }
     public void Reset()
     {

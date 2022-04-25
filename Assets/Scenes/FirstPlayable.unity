@@ -319,17 +319,21 @@ MonoBehaviour:
   tasks:
   - title: First Steps
     description: Find Neville a place to stay.
+    complete: 0
   - title: Wooly Friend
     description: Cheer up Melly the sheep  using your powers.
+    complete: 0
   - title: 'Dock Worker '
     description: Use your might to obtain the money owed to the Merchant.
+    complete: 0
   - title: Bring Light in
     description: Light the candles for the Pastor.
+    complete: 0
   - title: Ritual
     description: ...
-  treesRelatedToTasks:
-  - {fileID: 11400000, guid: 44c071ee5c297fd43be50f59462b38e2, type: 2}
-  - {fileID: 11400000, guid: 7cd21e1b2a47cc645b8b6c2b3aeb3de9, type: 2}
+    complete: 0
+  treesTriggeredBySubTasks: []
+  recruitingTrees: []
   taskListUI: {fileID: 1662323927}
   inventory: {fileID: 1356881693}
   miracleManager: {fileID: 667299554}
@@ -1212,7 +1216,9 @@ MonoBehaviour:
   mainCanvas: {fileID: 1742257814}
   eventSystem: {fileID: 1448966705}
   chiefLightEffect: {fileID: 9104162585517877697, guid: 1e50b1d3c261a4f42bdaca425b7cdf08, type: 3}
+  sheepAnimator: {fileID: 0}
   dialogueUI: {fileID: 1058706761}
+  retryText: {fileID: 0}
 --- !u!114 &667299555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,6 +1231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8615c250749d5c24a95c904849a45db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSheep: {fileID: 0}
+  player: {fileID: 0}
+  camFollow: {fileID: 0}
 --- !u!1001 &674643130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1570,17 +1579,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalPostProcess: {fileID: 1470738652}
   darkeningPostProcess: {fileID: 1136367812}
---- !u!114 &732087975 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6317483840376015207, guid: f894f32723a451f4ba29c4994542222d, type: 3}
-  m_PrefabInstance: {fileID: 6317483840986206144}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &774186394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1639,6 +1637,10 @@ PrefabInstance:
     - target: {fileID: 4813121354312520837, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813121354312520838, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
+      propertyPath: m_SortingOrder
+      value: -87
       objectReference: {fileID: 0}
     - target: {fileID: 4813121354312520839, guid: 31be932b4ec9267459872bde5ea5a9e6, type: 3}
       propertyPath: m_Name
@@ -1708,6 +1710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miracleToolBar: {fileID: 1417430261}
   taskList: {fileID: 1662323928}
+  playerText: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &791546483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,6 +1729,14 @@ MonoBehaviour:
   miracleManager: {fileID: 667299554}
   UIAnimations: {fileID: 791546482}
   nameText: {fileID: 708226165}
+  bottomEndScreen: {fileID: 0}
+  topEndScreen: {fileID: 0}
+  endText: {fileID: 0}
+  endButtonText: {fileID: 0}
+  finishColor: {r: 0, g: 0, b: 0, a: 0}
+  eventSystem: {fileID: 0}
+  sheepEffectButton: {fileID: 0}
+  startScreen: {fileID: 0}
 --- !u!1 &793663869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,7 +2585,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1999
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.012000024, y: 0.012000024, z: 0}
+  m_ChunkCullingBounds: {x: 0.020325184, y: 0.020325184, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -37091,7 +37103,7 @@ PrefabInstance:
     - target: {fileID: 1910800838, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
       propertyPath: influenceText
       value: 
-      objectReference: {fileID: 732087975}
+      objectReference: {fileID: 0}
     - target: {fileID: 1910800838, guid: dd5617935dec53f45a97ccddebd29956, type: 3}
       propertyPath: currentInfluenceChanceText
       value: 
@@ -37419,6 +37431,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 398803476, guid: f894f32723a451f4ba29c4994542222d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 899048935, guid: f894f32723a451f4ba29c4994542222d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6317483839119978667, guid: f894f32723a451f4ba29c4994542222d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
