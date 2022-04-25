@@ -19,7 +19,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private GameObject sheepEffectButton;
     [SerializeField] private GameObject endButton;
-
+    [SerializeField] private GameObject volumeSlider;
+    private Slider volSlider;
+    
     public static UIManager instance;
    
     private void Awake()
@@ -28,6 +30,7 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
+        volSlider = volumeSlider.GetComponent<Slider>();
     }
    public bool GetStaticUIShowing()=>(dialogueUI.GetDialogueBoxShowing() || mapUI.GetMapOpen() || miracleManager.GetRhythmGameActive());
    public bool CheckMiracleToolBarAllWayOut()=>  UIAnimations.CheckMiracleBarAllWayOut();
@@ -50,5 +53,12 @@ public class UIManager : MonoBehaviour
         endButton.SetActive(true);
 
     }
-
+    public void ToggleVolumeSlider()
+    {
+        volumeSlider.SetActive(!volumeSlider.activeInHierarchy);
+    }
+    public void ChangeVolume()
+    {
+        SoundManager.instance.ChangeVolume(1-volSlider.value);
+    }
 }   

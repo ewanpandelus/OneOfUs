@@ -29,6 +29,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        volume = 1;
         MainThemeSounds();
     }
     public void Play(string name)
@@ -105,6 +106,15 @@ public class SoundManager : MonoBehaviour
         }
         yield break;
     }
+
+    public void ChangeVolume(float _volume)
+    {
+        volume = _volume;
+        foreach (Sound s in sounds)
+        {
+            s.GetSource().volume = _volume;
+        }
+    }
     public void StartMiniGame()
     {
         StartCoroutine(StartFade("Calmest", 1f, 0f, PauseSound));
@@ -112,13 +122,13 @@ public class SoundManager : MonoBehaviour
     public void StartMiniGameSong()
     {
         Play("Minigame");
-        StartCoroutine(StartFade("Minigame", 1f, 0.8f, NoEffect));
+        StartCoroutine(StartFade("Minigame", 1f, 0.8f * volume, NoEffect));
     }
     public void MainThemeSounds()
     {
-        StartCoroutine(StartFade("Minigame", 0.8f, 0f, StopSound));
+        StartCoroutine(StartFade("Minigame", 0.8f , 0f, StopSound));
         Play("Calmest");
-        StartCoroutine(StartFade("Calmest", 5f, 0.25f, NoEffect));
+        StartCoroutine(StartFade("Calmest", 5f, 0.25f * volume, NoEffect));
     }
 
     void StopSound(AudioSource audioSource)

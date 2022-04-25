@@ -9,8 +9,9 @@ public class DialogueButtonNav : MonoBehaviour
 {
 
     Navigation navSetup = new Navigation();
-    [SerializeField] EventSystem eventSystem;
-    [SerializeField] GameObject selectedUI;
+    [SerializeField] private EventSystem eventSystem;
+    [SerializeField] private GameObject selectedUI;
+    [SerializeField] private GameObject soundIcon, soundSlider;
     List<GameObject> buttons;
 
     public void Start()
@@ -44,7 +45,9 @@ public class DialogueButtonNav : MonoBehaviour
     }
     private void Update()
     {
-        if (eventSystem.currentSelectedGameObject != null)
+        if (eventSystem.currentSelectedGameObject != null &&
+            eventSystem.currentSelectedGameObject !=soundIcon 
+            &&eventSystem.currentSelectedGameObject!=soundSlider)
         {
             var _curSelection = eventSystem.currentSelectedGameObject.GetComponent<RectTransform>();
             selectedUI.SetActive(true);

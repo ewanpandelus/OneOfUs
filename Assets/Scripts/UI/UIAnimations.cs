@@ -29,6 +29,7 @@ public class UIAnimations : MonoBehaviour
         ShowHiddenUIElement(false, miracleToolBar, toolBarStartPos, toolBarEndPos,0.01f);
         ShowHiddenUIElement(false, taskList, taskListStartPos, taskListEndPos,0.01f);
         StartCoroutine(TutorialText());
+        StartCoroutine(LerpAlphaToNone());
     }
 
     private void Update()
@@ -120,7 +121,7 @@ public class UIAnimations : MonoBehaviour
     }
     public IEnumerator LerpAlphaToFull()
     {
-
+        SoundManager.instance.SetPitch(0f);
         float t = 0;
         while (t < 1)
         {
