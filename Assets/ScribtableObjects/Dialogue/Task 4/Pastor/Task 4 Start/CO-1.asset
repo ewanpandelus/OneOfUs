@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CO-1
   m_EditorClassIdentifier: 
   id: 2
-  correctChoice: 0
+  correctChoice: 1
   leftChild: {fileID: 11400000, guid: e78f2513629bdac44a8024153851d5e5, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}

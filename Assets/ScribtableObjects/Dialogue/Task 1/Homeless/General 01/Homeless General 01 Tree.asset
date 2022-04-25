@@ -17,5 +17,10 @@ MonoBehaviour:
   - name: Mr Destiny
     triggeredTree: {fileID: 11400000, guid: db507d26ba7be98459b6520a9fa8c647, type: 2}
   taskComplete: 1
+  invokesMiracle: 0
+  finishesTask: 0
+  storyProgressesOnSameCharacter: 0
+  overrideProgression: 0
+  showsEffect: 0
   dialogueTree:
   - {fileID: 11400000, guid: b9123c21bfcdd6343ae4ce0bbb45fff5, type: 2}

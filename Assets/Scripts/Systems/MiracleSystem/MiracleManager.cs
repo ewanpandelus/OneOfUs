@@ -111,7 +111,7 @@ public class MiracleManager : MonoBehaviour
             dialogueUI.SetFontStyle(TMPro.FontStyles.Normal);
             retryText.SetActive(false);
             eventSystem.SetSelectedGameObject(null);
-            miracleOccuring = false;
+        
         }
         else
         {
@@ -159,4 +159,5 @@ public class MiracleManager : MonoBehaviour
     public bool GetRhythmGameActive()=> rhythmManager.transform.parent.gameObject.activeInHierarchy;
     
     public bool GetMiracleOccuring() => miracleOccuring;
+    public void SetMiracleOccuring(bool _miracleOccuring) => miracleOccuring = _miracleOccuring;
 }

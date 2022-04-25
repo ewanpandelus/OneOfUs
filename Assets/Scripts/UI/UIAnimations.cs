@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIAnimations : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class UIAnimations : MonoBehaviour
     [SerializeField] private RectTransform taskList;
     [SerializeField] private TMP_Text playerText;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private Image startScreen;
+    [SerializeField] private GameObject endObj;
+    [SerializeField] private GameObject pastor;
     private float elapsedTime = 0;
     private Vector3 toolBarStartPos, toolBarEndPos, taskListStartPos, taskListEndPos;
     private bool taskBarShowing = false;
@@ -50,13 +54,17 @@ public class UIAnimations : MonoBehaviour
         playerText.DOColor(new Color(0, 0, 0, 1), 1f);
         yield return new WaitUntil(() => playerController.GetFirstInteraction());
         playerText.DOColor(new Color(0, 0, 0, 0), 1f);
-        yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing()&&!UIManager.instance.MapShowing());
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
+        yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing() && !UIManager.instance.MapShowing());
+        yield return new WaitForSeconds(2f);
+        yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing() && !UIManager.instance.MapShowing());
         playerText.text = "Press J to bring up your list of tasks";
         playerText.DOColor(new Color(0, 0, 0, 1), 1f);
         yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.J)));
         playerText.DOColor(new Color(0, 0, 0, 0), 1f);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing());
+        yield return new WaitForSeconds(2f);
+        yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing() && !UIManager.instance.MapShowing());
         playerText.text = "Press M to bring up a map of the village";
         playerText.DOColor(new Color(0, 0, 0, 1), 1f);
         yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.M)));
@@ -87,11 +95,45 @@ public class UIAnimations : MonoBehaviour
     {
         _transform.DOLocalMove(_endPos, _duration);
     }
+    public void EndEffects()
+    {
+        StartCoroutine(LerpAlphaToFull());
 
+
+    }
     public bool CheckMiracleBarAllWayOut()
     {
         return miracleToolBar.transform.localPosition.y >toolBarEndPos.y-100 &&
             miracleToolBar.transform.localPosition.y < toolBarEndPos.y + 100;
+    }
+    public IEnumerator LerpAlphaToNone()
+    {
+
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime/3;
+            startScreen.color = new Color(0, 0, 0, 1 - t);
+            yield return null;
+        }
+
+    }
+    public IEnumerator LerpAlphaToFull()
+    {
+
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime/4;
+            startScreen.color = new Color(0, 0, 0, t);
+            yield return null;
+        }
+        SoundManager.instance.SetPitch(0.7f);
+        endObj.SetActive(true);
+        playerController.transform.position = endObj.transform.GetChild(0).transform.position;
+        playerController.SetCanMove(false);
+        pastor.SetActive(false);
+        StartCoroutine(LerpAlphaToNone());
     }
     public Vector3 GetToolBarStartPos() => toolBarStartPos;
     public Vector3 GetToolBarEndPos() => toolBarEndPos;

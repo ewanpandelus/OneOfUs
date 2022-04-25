@@ -219,15 +219,11 @@ public class NoteManager : MonoBehaviour
         return (Input.GetKeyDown(key1) || Input.GetKeyDown(key2) || Input.GetKey(key1) || Input.GetKey(key2));
     }
         
-    public bool CheckNoNotesLeft()
-    {
-        return noteQueue.Count == 0;
-    }
-    public int GetTotalHitCount()
-    {
-        return totalHitCount;
-    }
+    public bool CheckNoNotesLeft() => noteQueue.Count == 0;
     
+    public int GetTotalHitCount()=> totalHitCount;
+    
+    public int GetTotalNoteCount() => totalNoteCount;
     public readonly struct NotePosition
     {
         public readonly Color colour;

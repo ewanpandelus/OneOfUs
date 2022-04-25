@@ -23,5 +23,6 @@ MonoBehaviour:
   finishesTask: 0
   storyProgressesOnSameCharacter: 0
   overrideProgression: 0
+  showsEffect: 0
   dialogueTree:
   - {fileID: 11400000, guid: 1d7469feb72193a459757c46f0276673, type: 2}

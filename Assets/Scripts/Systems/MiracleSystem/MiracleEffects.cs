@@ -51,6 +51,7 @@ public class MiracleEffects  :MonoBehaviour
         playerSheep.GetComponent<Collider2D>().enabled = true;
         sheepAnimator.SetActive(true);
         camFollow.SetTarget(playerSheep.transform);
+        MiracleManager.instance.SetMiracleOccuring(false);
     }
  
     public IEnumerator FireEffect()
@@ -87,6 +88,7 @@ public class MiracleEffects  :MonoBehaviour
         }
         playerAnimator.SetShouldAutoAnimate(true);
         playerController.SetCanMove(true);
+        MiracleManager.instance.SetMiracleOccuring(false);
     }
     public void BeamLightEffect()
     {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pastor Task 4 End Conversation
   m_EditorClassIdentifier: 
   id: 1
-  correctChoice: 0
+  correctChoice: 1
   leftChild: {fileID: 11400000, guid: 826bdc45ea1c81440ab63e53f51af42f, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}

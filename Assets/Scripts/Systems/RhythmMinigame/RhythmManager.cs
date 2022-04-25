@@ -12,7 +12,7 @@ public class RhythmManager : MonoBehaviour
     [SerializeField] List<GameObject> buttons;// leftButton, rightButton, upButton, downButton;
     [SerializeField] List<Material> matList = new List<Material>();
     [SerializeField] List<Color> colours = new List<Color>();
-    [SerializeField] int noteCount;
+    int noteCount;
     [SerializeField] private GameObject stage;
     [SerializeField] private MiracleManager miracleManager;
     List<RhythmLevel> levelList;
@@ -84,7 +84,7 @@ public class RhythmManager : MonoBehaviour
     }
     private bool EvaluateResult()
     {
-        return (((float)noteManager.GetTotalHitCount() / (float)noteCount) >= 0.5f);
+        return (((float)noteManager.GetTotalHitCount() / (float)noteManager.GetTotalNoteCount()) >= 0.5f);
     }
     private void SetupNote(NoteProperties noteInfo, string soundName, bool isLong, bool slowEffect)
     {

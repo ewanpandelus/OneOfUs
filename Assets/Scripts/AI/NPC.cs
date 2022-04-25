@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class NPC : MonoBehaviour
 {
@@ -72,15 +73,9 @@ public class NPC : MonoBehaviour
     {
         if (currentDialogueTree.GetCorrectPathChosen())
         {
-            influenceLevel = Mathf.Clamp(influenceLevel + currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
             qMark.SetActive(false);
             qMarkMap.SetActive(false);
-            ShowIndoctrinateEffect();
-           
-        }
-        else
-        {
-            influenceLevel = Mathf.Clamp(influenceLevel - currentDialogueTree.GetNPCInfluenceChange(), 0, 100);
+            if (currentDialogueTree.GetShowsEffect()) { ShowIndoctrinateEffect(); }
         }
         PostConversation();
     }
@@ -123,13 +118,11 @@ public class NPC : MonoBehaviour
     public IEnumerator SetIndoctrinated()
     {
         yield return new WaitForSeconds(1f);
-        try
-        {
-            animator.SetTrigger("JoinedCult");
-        }
-        catch(Exception ex)
-        {
-
-        }
+        SpriteRenderer rend = GetComponent<SpriteRenderer>();
+        rend.DOColor(new Color(1, 1, 1, 0), 0.25f);
+        yield return new WaitForSeconds(0.25f);
+        animator.SetTrigger("JoinedCult");
+        rend.DOColor(Color.white, 0.4f);
+    
     }
 }
