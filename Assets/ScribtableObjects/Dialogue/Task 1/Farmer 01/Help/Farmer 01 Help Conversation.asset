@@ -20,7 +20,7 @@ MonoBehaviour:
   chanceEffect: 0
   dialogue:
   - I'll let you in on a secret...
-  - To get the wheat,  walk over it and you'll harvest it right on up. It's just
-    to the left and up!
+  - To get the wheat,  walk over it and you'll harvest it. It's just to the left
+    and up!
   response:
   - (Walk away.)

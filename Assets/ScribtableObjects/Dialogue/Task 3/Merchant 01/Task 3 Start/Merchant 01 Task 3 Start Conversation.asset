@@ -19,7 +19,7 @@ MonoBehaviour:
   rightChild: {fileID: 0}
   chanceEffect: 0
   dialogue:
-  - Young sir, if you don't mind, I have another favor to ask!
+  - Young sir, if you don't mind, I have another favour to ask!
   response:
   - What is it?
   - I don't care. (Walk away.)

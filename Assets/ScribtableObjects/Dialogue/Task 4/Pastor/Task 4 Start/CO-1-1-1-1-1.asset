@@ -20,7 +20,7 @@ MonoBehaviour:
   chanceEffect: 3
   dialogue:
   - Well, I find that hard to believe. No one is more powerful than God.
-  - But, if your so called Saviour has granted you the power to light torches, then
+  - But, if your so-called Saviour has granted you the power to light torches, then
     you are more than welcome to prove me wrong.
   response:
   - (Walk away and perform a Miracle.)

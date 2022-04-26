@@ -18,7 +18,7 @@ MonoBehaviour:
     triggeredTree: {fileID: 11400000, guid: 11f64122eead935419fd0af2fdf1a7ca, type: 2}
   taskComplete: 1
   invokesMiracle: 0
-  finishesTask: 1
+  finishesTask: 0
   storyProgressesOnSameCharacter: 0
   overrideProgression: 0
   showsEffect: 1

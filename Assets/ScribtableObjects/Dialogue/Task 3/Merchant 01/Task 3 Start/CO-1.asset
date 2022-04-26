@@ -19,7 +19,7 @@ MonoBehaviour:
   rightChild: {fileID: 0}
   chanceEffect: 1
   dialogue:
-  - The dock worker, Clyde. He hasn't payed me back the money he owes me.
+  - The dock worker, Clyde. He hasn't paid me back the money he owes me.
   - You wouldn't be able to go and get me my money back, would you?
   - I'd do it myself but I've been so busy with the shop that I haven't had the chance.
   response:
