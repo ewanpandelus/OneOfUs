@@ -317,16 +317,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tasks:
-  - title: First Steps
+  - title: Help the Homeless
     description: Find Neville a place to stay.
     complete: 0
-  - title: Wooly Friend
-    description: Cheer up Melly the sheep  using your powers.
+  - title: The Loneliest Sheep
+    description: Speak with Farmer Philly and find out how you can help.
     complete: 0
-  - title: 'Dock Worker '
-    description: Use your might to obtain the money owed to the Merchant.
+  - title: The Merchant of Clochard's Hole
+    description: The merchant at one of the stands is having issues with a debt...
     complete: 0
-  - title: Bring Light in
+  - title: 'The Enlightened One: Miracle Performer'
     description: Light the candles for the Pastor.
     complete: 0
   - title: Ritual
@@ -1712,6 +1712,9 @@ MonoBehaviour:
   taskList: {fileID: 1662323928}
   playerText: {fileID: 0}
   playerController: {fileID: 0}
+  startScreen: {fileID: 0}
+  endObj: {fileID: 0}
+  pastor: {fileID: 0}
 --- !u!114 &791546483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,14 +1732,15 @@ MonoBehaviour:
   miracleManager: {fileID: 667299554}
   UIAnimations: {fileID: 791546482}
   nameText: {fileID: 708226165}
-  bottomEndScreen: {fileID: 0}
-  topEndScreen: {fileID: 0}
+  endScreen: {fileID: 0}
+  endLogo: {fileID: 0}
   endText: {fileID: 0}
   endButtonText: {fileID: 0}
   finishColor: {r: 0, g: 0, b: 0, a: 0}
   eventSystem: {fileID: 0}
   sheepEffectButton: {fileID: 0}
-  startScreen: {fileID: 0}
+  endButton: {fileID: 0}
+  volumeSlider: {fileID: 0}
 --- !u!1 &793663869
 GameObject:
   m_ObjectHideFlags: 0
@@ -37438,6 +37442,10 @@ PrefabInstance:
     - target: {fileID: 899048935, guid: f894f32723a451f4ba29c4994542222d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1786820665, guid: f894f32723a451f4ba29c4994542222d, type: 3}
+      propertyPath: m_SortingOrder
+      value: -7200
       objectReference: {fileID: 0}
     - target: {fileID: 6317483839119978667, guid: f894f32723a451f4ba29c4994542222d, type: 3}
       propertyPath: m_AnchorMax.y
