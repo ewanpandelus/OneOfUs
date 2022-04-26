@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: High Chief Phone Call 02 Tree
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  triggerableNPCS:
-  - name: Pastor
-    triggeredTree: {fileID: 11400000, guid: 617b8c6645a098448b638c276af7c26d, type: 2}
-  taskComplete: 1
+  triggerableNPCS: []
+  taskComplete: 0
   invokesMiracle: 0
   finishesTask: 0
+  storyProgressesOnSameCharacter: 0
+  overrideProgression: 0
+  showsEffect: 0
   dialogueTree:
   - {fileID: 11400000, guid: dca650f6ab25be6408aa4d4144b900df, type: 2}
   - {fileID: 11400000, guid: 0ea6dbbb61414eb40942ec41a50d4265, type: 2}

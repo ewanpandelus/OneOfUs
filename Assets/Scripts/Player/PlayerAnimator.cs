@@ -79,4 +79,5 @@ public class PlayerAnimator
     {
         animator.SetInteger("MovementStatus", _animationCode);
     }
+    public void SetMovementStatus(int _movementStatus) => movementStatus = _movementStatus;
 }

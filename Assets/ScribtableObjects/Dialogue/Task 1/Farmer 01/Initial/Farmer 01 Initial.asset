@@ -10,17 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
-  m_Name: Pastor Task 4 End Tree
+  m_Name: Farmer 01 Initial
   m_EditorClassIdentifier: 
   NPCInfluenceChange: 0
-  triggerableNPCS:
-  - name: Pastor
-    triggeredTree: {fileID: 11400000, guid: 74eaef1011f57224f9c69088558ba041, type: 2}
-  taskComplete: 1
+  triggerableNPCS: []
+  taskComplete: 0
   invokesMiracle: 0
-  finishesTask: 1
+  finishesTask: 0
   storyProgressesOnSameCharacter: 0
   overrideProgression: 0
   dialogueTree:
-  - {fileID: 11400000, guid: cb5f89e884acf2c4288f991580be50a3, type: 2}
-  - {fileID: 11400000, guid: 826bdc45ea1c81440ab63e53f51af42f, type: 2}
+  - {fileID: 11400000, guid: 274c63b6c42b6b34cbf2b80c1562d9de, type: 2}

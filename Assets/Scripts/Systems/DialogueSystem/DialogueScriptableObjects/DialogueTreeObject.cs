@@ -20,6 +20,7 @@ public class DialogueTreeObject : ScriptableObject
     [SerializeField] private bool finishesTask = false;
     [SerializeField] private bool storyProgressesOnSameCharacter;
     [SerializeField] private bool overrideProgression;
+    [SerializeField] private bool showsEffect = true;
     private bool alreadyOverridden;
     private bool miracleInvoked = false;
     public delegate void FinishedTaskDelegate();
@@ -132,10 +133,8 @@ public class DialogueTreeObject : ScriptableObject
     public bool GetCorrectPathChosen() => correctPathChosen;
     public void ResetTaskComplete() => taskComplete = false;
     public void SetNPCJoined() => npcAttachedTo.StartCoroutine(npcAttachedTo.SetIndoctrinated());
-    public void SetNPCAttachedTo(NPC _npc)
-    {
-        npcAttachedTo = _npc;
-    }
+    public void SetNPCAttachedTo(NPC _npc)=> npcAttachedTo = _npc;
+    public bool GetShowsEffect() => showsEffect;
     public void SetTaskComplete(bool _taskComplete) 
     {
         taskComplete = _taskComplete;

@@ -8,7 +8,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] private List<Task> tasks = new List<Task>();
     [SerializeField] private List<DialogueTreeObject> treesTriggeredBySubTasks = new List<DialogueTreeObject>();
     [SerializeField] private List<DialogueTreeObject> recruitingTrees = new List<DialogueTreeObject>();
-
+    
     [SerializeField] private GameObject taskListUI;
     [SerializeField] Inventory inventory;
     [SerializeField] MiracleManager miracleManager;
@@ -17,6 +17,7 @@ public class TaskManager : MonoBehaviour
 
     private void Start()
     {
+
         foreach(DialogueTreeObject tree in recruitingTrees)
         {
             tree.finishedTaskEvent += FullTaskComplete;
@@ -42,6 +43,7 @@ public class TaskManager : MonoBehaviour
         TaskComplete(currentTask);
         currentTask++;
         if (currentTask == 2) miracleManager.TurnBackIntoHuman();
+        if(currentTask ==4) StartCoroutine(UIManager.instance.EndScreenFade());
     }
     private void SubTaskComplete()
     {
@@ -52,9 +54,11 @@ public class TaskManager : MonoBehaviour
             case 0:
                 inventory.collectedWheatEvent -= SubTaskComplete;
                 break;
-            case 1:
+            case 2:
                 miracleManager.miracleEvent -= SubTaskComplete;
                 break;
+            
+
         }
         currentSubTask++;
     }

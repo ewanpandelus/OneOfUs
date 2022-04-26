@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Farmer 02 End Conversation
   m_EditorClassIdentifier: 
   id: 1
-  correctChoice: 0
+  correctChoice: 1
   leftChild: {fileID: 11400000, guid: 9d4cd7d8ea18871458fd24e6d6d34375, type: 2}
   middleChild: {fileID: 0}
   rightChild: {fileID: 0}

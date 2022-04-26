@@ -52,4 +52,5 @@ public class PlayerController : MonoBehaviour
     }
     public void SetCanMove(bool _canMove) => canMove = _canMove;
     public bool GetFirstInteraction() => firstInteraction;
+    
 }
