@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
@@ -31,7 +32,14 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         volume = 0.5f;
-        MainThemeSounds();
+      
+
+        if (SceneManager.GetActiveScene().buildIndex!=0)
+        {
+            Play("AmbientTown");
+            MainThemeSounds();
+        }
+  
 
     }
     public void Play(string name)
@@ -39,6 +47,7 @@ public class SoundManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.GetName() == name);
         if (s != null)
         {
+            s.SetVolume(volume * s.GetStartingVolume());
             s.GetSource().Play();
         }
     }
@@ -46,7 +55,8 @@ public class SoundManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.GetName() == name);
         if (s != null)
-        { 
+        {
+            s.SetVolume(volume * s.GetStartingVolume());
             s.GetSource().PlayOneShot(s.GetSource().clip);
         }
     }
@@ -63,14 +73,18 @@ public class SoundManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.GetName() == name);
         return s.GetSource();
     }
-    public void FadeOutMainTheme()
+    private Sound FindSound(string name)
     {
-        StartCoroutine(StartFade("Calmest", 4f, 0f, PauseSound));
+        return Array.Find(sounds, sound => sound.GetName() == name);
+    }
+    public void FadeOutMainTheme(float timeToFade)
+    {
+        StartCoroutine(StartFade("Calmest", timeToFade, 0f, PauseSound));
     }
     public void FadeInMainTheme()
     {
         Play("Calmest");
-        StartCoroutine(StartFade("Calmest", 2f, volume*0.25f, NoEffect));
+        StartCoroutine(StartFade("Calmest", 5f, volume, NoEffect));
     }
     public IEnumerator StartFade(string name, float duration, float targetVolume, AudioDelegate audioDelegate)
     {
@@ -81,7 +95,7 @@ public class SoundManager : MonoBehaviour
         while (currentTime < duration&&volChanged != true)
         {
             currentTime += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            audioSource.volume = Mathf.Lerp(start, targetVolume*volume*FindSound(name).GetStartingVolume(), currentTime / duration);
             yield return null;
         }
         if (targetVolume == 0)
@@ -122,16 +136,8 @@ public class SoundManager : MonoBehaviour
         volume = _volume;
         foreach (Sound s in sounds)
         {
-            if (s.GetName() == "Calmest")
-            {
-                s.GetSource().volume =_volume* 0.25f;
-                continue;
-            }
-            if (s.GetName() == "Minigame"){
-                s.GetSource().volume = _volume* 0.8f;
-                continue;
-            }
-            s.GetSource().volume = _volume;
+      
+            s.GetSource().volume = _volume*s.GetStartingVolume();
             volChanged = true;
         }
     }
@@ -141,14 +147,17 @@ public class SoundManager : MonoBehaviour
     }
     public void StartMiniGameSong()
     {
+   
         Play("Minigame");
-        StartCoroutine(StartFade("Minigame", 1f, 0.8f * volume, NoEffect));
+        FindSound("Minigame").SetVolume(0f);
+        StartCoroutine(StartFade("Minigame", 1f, volume, NoEffect));
     }
     public void MainThemeSounds()
     {
          StartCoroutine(StartFade("Minigame", 0.8f , 0f, StopSound));
          Play("Calmest");
-         StartCoroutine(StartFade("Calmest", 5f, 0.25f * volume, NoEffect));
+         FindSound("Calmest").SetVolume(0f);
+         StartCoroutine(StartFade("Calmest", 5f, volume, NoEffect));
     }
 
     public void StopSound(AudioSource audioSource)

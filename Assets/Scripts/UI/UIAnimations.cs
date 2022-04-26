@@ -29,7 +29,7 @@ public class UIAnimations : MonoBehaviour
         ShowHiddenUIElement(false, miracleToolBar, toolBarStartPos, toolBarEndPos,0.01f);
         ShowHiddenUIElement(false, taskList, taskListStartPos, taskListEndPos,0.01f);
         StartCoroutine(TutorialText());
-        StartCoroutine(LerpAlphaToNone());
+        StartCoroutine(LerpAlphaToNone(3f));
 
     }
 
@@ -62,14 +62,15 @@ public class UIAnimations : MonoBehaviour
         yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing() && !UIManager.instance.MapShowing());
         playerText.text = "Press J to bring up your list of tasks";
         playerText.DOColor(new Color(0, 0, 0, 1), 1f);
-        yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.J)));
+        yield return new WaitUntil(() => taskBarShowing);
         playerText.DOColor(new Color(0, 0, 0, 0), 1f);
         yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing());
         yield return new WaitForSeconds(2f);
         yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing() && !UIManager.instance.MapShowing());
+        yield return new WaitForSeconds(2f);
         playerText.text = "Press M to bring up a map of the village";
         playerText.DOColor(new Color(0, 0, 0, 1), 1f);
-        yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.M)));
+        yield return new WaitUntil(() => UIManager.instance.MapShowing());
         playerText.DOColor(new Color(0, 0, 0, 0), 1f);
 
     }
@@ -106,21 +107,20 @@ public class UIAnimations : MonoBehaviour
         return miracleToolBar.transform.localPosition.y >toolBarEndPos.y-100 &&
             miracleToolBar.transform.localPosition.y < toolBarEndPos.y + 100;
     }
-    public IEnumerator LerpAlphaToNone()
+    public IEnumerator LerpAlphaToNone(float timeTaken)
     {
 
         float t = 0;
         while (t < 1)
         {
-            t += Time.deltaTime/4;
+            t += Time.deltaTime/timeTaken;
             startScreen.color = new Color(0, 0, 0, 1 - t);
             yield return null;
         }
-
     }
     public IEnumerator LerpAlphaToFull()
     {
-        SoundManager.instance.FadeOutMainTheme();
+        SoundManager.instance.FadeOutMainTheme(4f);
         float t = 0;
         while (t < 1)
         {
@@ -139,7 +139,7 @@ public class UIAnimations : MonoBehaviour
         playerController.transform.position = endObj.transform.GetChild(0).transform.position;
         playerController.SetCanMove(false);
         pastor.SetActive(false);
-        StartCoroutine(LerpAlphaToNone());
+        StartCoroutine(LerpAlphaToNone(4f));
     }
     public Vector3 GetToolBarStartPos() => toolBarStartPos;
     public Vector3 GetToolBarEndPos() => toolBarEndPos;

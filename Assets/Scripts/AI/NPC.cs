@@ -81,6 +81,7 @@ public class NPC : MonoBehaviour
     }
     private void ShowIndoctrinateEffect()
     {
+        PlayRandomIndocEffect();
         var effect = Instantiate(indoctrinationPrefab, gameObject.transform.position
             + new Vector3(0, -0.25f, 0), gameObject.transform.rotation);
 
@@ -89,6 +90,16 @@ public class NPC : MonoBehaviour
             effect.transform.GetChild(1).gameObject.SetActive(false);
             effect.transform.GetChild(2).gameObject.SetActive(false);
         }
+
+    }
+    private void PlayRandomIndocEffect()
+    {
+        if (currentDialogueTree.GetFinishesTask()) { SoundManager.instance.Play("RecruitEffect"); return; }
+        int x = UnityEngine.Random.Range(0, 2);
+        if(x==0) SoundManager.instance.Play("IndoctrinateEffect");
+        else if(x==1) SoundManager.instance.Play("IndoctrinateEffect2");
+        else SoundManager.instance.Play("IndoctrinateEffect3");
+
 
     }
     private void PostConversation()
@@ -122,6 +133,7 @@ public class NPC : MonoBehaviour
         rend.DOColor(new Color(1, 1, 1, 0), 0.25f);
         yield return new WaitForSeconds(0.25f);
         animator.SetTrigger("JoinedCult");
+    
         rend.DOColor(Color.white, 0.4f);
     
     }

@@ -13,6 +13,9 @@ public class Sound
     [Range(0f, 1f)]
     private float volume;
     [SerializeField]
+    [Range(0.05f, 1f)]
+    private float startingVolume = 1f;
+    [SerializeField]
     [Range(0.1f, 3f)]
     private float pitch;
     private AudioSource source;
@@ -48,7 +51,10 @@ public class Sound
     {
         return this.volume;
     }
-
+    public float GetStartingVolume()
+    {
+        return this.startingVolume;
+    }
     public void SetVolume(float v)
     {
         this.source.volume = v;

@@ -1,0 +1,328 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2539732024835708105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2539732024835708104}
+  - component: {fileID: 2539732024835708107}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2539732024835708104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2539732024835708105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2539732024835708107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2539732024835708105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fcc060fd37de2d41ae44e1eb206f38f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: bc6fec5fbe7a7fb4397b7c09b978c74e, type: 3}
+    name: Calmer
+    volume: 0
+    startingVolume: 0.5
+    pitch: 1
+    loop: 1
+  - clip: {fileID: 8300000, guid: 6fd0cc0a51118d1428033940667d2660, type: 3}
+    name: Calmest
+    volume: 0
+    startingVolume: 0.5
+    pitch: 1
+    loop: 1
+  - clip: {fileID: 8300000, guid: 52ed150904c88ac4ca72133a0f8abf7f, type: 3}
+    name: Minigame
+    volume: 0.8
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: e6c1c3e34c542ed4c9c45db7a540412f, type: 3}
+    name: 1st
+    volume: 0.85
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: a1f7e37b09f66f941985d5944084a9a9, type: 3}
+    name: 2nd
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 970e0969478bfd04eac86012a53dea83, type: 3}
+    name: 3rd
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 29c5b2411848a5545b07d8472f2c25f8, type: 3}
+    name: 4th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 1c2db95dfd7915249966da75d329985a, type: 3}
+    name: 5th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 10b88a83e39866f429fd5bac8f0bfe51, type: 3}
+    name: 6thL
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: a1cdd13901ed1c249a50536675bc913e, type: 3}
+    name: 7th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 95a77355383643746a23f7d22bb1c33f, type: 3}
+    name: 8th
+    volume: 0.6
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: fdd534d1f82f80b4488fca42c3daf817, type: 3}
+    name: 9th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: ef7523eb8b51b2d409ec2fde93ea097f, type: 3}
+    name: 10th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 0af197fdb844ea14f81d0c82207e0077, type: 3}
+    name: 11th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: b8e0b901c534f9e4496d68935a02986a, type: 3}
+    name: 12th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 1f760efbcc200c84e8eddd483c722890, type: 3}
+    name: 13th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 1f760efbcc200c84e8eddd483c722890, type: 3}
+    name: 13th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 8c75012f32ebf9f4b82f7bf40e6bf8bb, type: 3}
+    name: 14th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 90674db7cf9764e40838036caced02e7, type: 3}
+    name: 15th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 631041340401d0d4191d9c3b38570824, type: 3}
+    name: 16th
+    volume: 0.8
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 3660f6e2469b1f04aa8f3c81903d9d80, type: 3}
+    name: 17th
+    volume: 0.85
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 57014efd8b1517c47a9730aa51798c78, type: 3}
+    name: 18th
+    volume: 0.8
+    startingVolume: 0.75
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: f36484f8f763b6547a9b512060865197, type: 3}
+    name: MissNote
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: dc3567cd76a05d1489dfa8a5c2f1bc7e, type: 3}
+    name: LoseStreak
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: e780bd2bc53b00a44b23019eecff74af, type: 3}
+    name: Thunder
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 5e1c42d10286a66419d438f30f59ac06, type: 3}
+    name: 12.1
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 036d501abf12da647a18f5c9d7b73c19, type: 3}
+    name: 12.2
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: d52dc7711339c474ea671ca035d1ec0a, type: 3}
+    name: 14.1
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 5427e489d6a0c2e4bafac7e02986964d, type: 3}
+    name: 15.1
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 8b91692139920bd498c73d572e5a5445, type: 3}
+    name: 16.1
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 4a0b26bfa6ae1e34ab6b2dd83f359708, type: 3}
+    name: 16.3
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: d62efe90953c9724fa7ced9f56fc1a86, type: 3}
+    name: 16.2
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 029d5b6546d59bc4eadf751287a1643f, type: 3}
+    name: 17.1
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 000c5432f561aa84c85d3a2b9b84093c, type: 3}
+    name: 17.2
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 4ed60398283badd4b881f60658d1c614, type: 3}
+    name: 17.3
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: f8af60a9518a3d34d9ccda7894b9308b, type: 3}
+    name: 18.1
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 59f8f424ec7235f419cc0195a25c437f, type: 3}
+    name: 18.2
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: ca956e0e4d4d8d24b8b379ba39d16c48, type: 3}
+    name: 12.3
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: e2e0e155bfa42a640bacbf27a95972db, type: 3}
+    name: 12.4
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 9adda1689e4ed1a49a6a6adb09738025, type: 3}
+    name: 12.5
+    volume: 1
+    startingVolume: 0.85
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 38145a2f05fdd424daa035dcbdd08675, type: 3}
+    name: IndoctrinateEffect
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 167204de051858941902d04926f4ceaf, type: 3}
+    name: RecruitEffect
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: fafcfe767660b864b8566b0345c6cfe0, type: 3}
+    name: IndoctrinateEffect2
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: d7c7a3c226ab35443aa65babdd1261b8, type: 3}
+    name: IndoctrinateEffect3
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 3e95fa6b77f60ea46b665950a22b25d0, type: 3}
+    name: MenuPress
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 256443a3f655497438f3dcd75cb63730, type: 3}
+    name: MenuPress
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 1c81975fceab99e49889db3a12b1255c, type: 3}
+    name: AmbientTown
+    volume: 1
+    startingVolume: 1
+    pitch: 1
+    loop: 0

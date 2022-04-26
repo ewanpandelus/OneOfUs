@@ -8,6 +8,7 @@ public class MiracleEffects  :MonoBehaviour
     [SerializeField] private GameObject playerSheep;
     [SerializeField] private GameObject player;
     [SerializeField] private CameraFollow camFollow;
+    [SerializeField] private GameObject fire1, fire2;
     private PlayerAnimator playerAnimator;
     private PlayerController playerController;
     private SheepAnimator sheepAnimator;
@@ -79,6 +80,7 @@ public class MiracleEffects  :MonoBehaviour
     }
     public IEnumerator SlowDownSpin()
     {
+        FadeInFire();
         playerAnimator.SetShouldAutoAnimate(false);
         for (int i = 0; i <= 20; i++)
         {
@@ -89,6 +91,12 @@ public class MiracleEffects  :MonoBehaviour
         playerAnimator.SetShouldAutoAnimate(true);
         playerController.SetCanMove(true);
         MiracleManager.instance.SetMiracleOccuring(false);
+    }
+    private void FadeInFire()
+    {
+        fire1.GetComponent<SpriteRenderer>().DOColor(Color.white, 1f);
+        fire2.GetComponent<SpriteRenderer>().DOColor(Color.white, 1f);
+
     }
     public void BeamLightEffect()
     {

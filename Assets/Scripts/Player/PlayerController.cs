@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     Vector3 movement = new Vector3 (0,0,0);
     private EvaluateEnvironment evaluateEnvironment;
     private PlayerAnimator playerAnim;
-
+    private float elapsedTime = 0;
     private Transform _transform;
     private bool canMove = true;
     private bool firstInteraction = false;
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
         if (UIManager.instance.GetStaticUIShowing()||MiracleManager.instance.GetMiracleOccuring()) return;
         EvaluateInput();
         if (!canMove) return;
@@ -31,6 +32,14 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal") * movementSpeed;
         movement.y = Input.GetAxisRaw("Vertical") * movementSpeed;
+        if (movement.magnitude > 0)
+        {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime > 0.4f) {
+                SoundManager.instance.Play("Footsteps");
+                elapsedTime = 0; }        
+        }
+    
         EvaluateInteraction();
       
     }
@@ -45,6 +54,7 @@ public class PlayerController : MonoBehaviour
                 if (!firstInteraction) firstInteraction = true;
             }
         }
+    
     }
     public PlayerAnimator GetPlayerAnimator()
     {

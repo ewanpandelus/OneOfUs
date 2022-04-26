@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour
         gameState = GameState.Standard;
        
     }
-
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
     public void SetGameState(GameState _gameState)
     {
         gameState = _gameState;

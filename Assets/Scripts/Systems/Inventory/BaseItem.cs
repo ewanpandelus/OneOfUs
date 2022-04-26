@@ -32,7 +32,7 @@ public class BaseItem : MonoBehaviour
         if(collision.transform.tag == "Player")
         {
             player.GetComponent<Inventory>().AddItem(name);
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 0.15f);
     
         }
 

@@ -135,6 +135,7 @@ public class DialogueTreeObject : ScriptableObject
     public void SetNPCJoined() => npcAttachedTo.StartCoroutine(npcAttachedTo.SetIndoctrinated());
     public void SetNPCAttachedTo(NPC _npc)=> npcAttachedTo = _npc;
     public bool GetShowsEffect() => showsEffect;
+    public bool GetFinishesTask() => finishesTask;
     public void SetTaskComplete(bool _taskComplete) 
     {
         taskComplete = _taskComplete;
