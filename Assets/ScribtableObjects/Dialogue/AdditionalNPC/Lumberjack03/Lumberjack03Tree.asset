@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2379c1f25ba00847ab71effcd56b58e, type: 3}
+  m_Name: Lumberjack03Tree
+  m_EditorClassIdentifier: 
+  NPCInfluenceChange: 0
+  triggerableNPCS: []
+  taskComplete: 0
+  invokesMiracle: 0
+  finishesTask: 0
+  storyProgressesOnSameCharacter: 0
+  overrideProgression: 0
+  showsEffect: 1
+  dialogueTree:
+  - {fileID: 11400000, guid: 3ca5005ce87a4e04294107f081cfaae1, type: 2}
