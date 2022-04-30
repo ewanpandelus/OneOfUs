@@ -31,7 +31,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        volume = 0.5f;
+        volume = 0.27f;
       
 
         if (SceneManager.GetActiveScene().buildIndex!=0)
@@ -77,6 +77,16 @@ public class SoundManager : MonoBehaviour
     {
         return Array.Find(sounds, sound => sound.GetName() == name);
     }
+    public void PauseSound(string name)
+    {
+        Sound s = FindSound(name);
+        s.GetSource().Pause();
+    }
+    public void UnPauseSound(string name)
+    {
+        Sound s = FindSound(name);
+        s.GetSource().UnPause();
+    }
     public void FadeOutMainTheme(float timeToFade)
     {
         StartCoroutine(StartFade("Calmest", timeToFade, 0f, PauseSound));
@@ -84,6 +94,7 @@ public class SoundManager : MonoBehaviour
     public void FadeInMainTheme()
     {
         Play("Calmest");
+        FindSound("Calmest").SetVolume(0f);
         StartCoroutine(StartFade("Calmest", 5f, volume, NoEffect));
     }
     public IEnumerator StartFade(string name, float duration, float targetVolume, AudioDelegate audioDelegate)
@@ -150,7 +161,7 @@ public class SoundManager : MonoBehaviour
    
         Play("Minigame");
         FindSound("Minigame").SetVolume(0f);
-        StartCoroutine(StartFade("Minigame", 1f, volume, NoEffect));
+        StartCoroutine(StartFade("Minigame", 1f, volume+0.17f, NoEffect));
     }
     public void MainThemeSounds()
     {

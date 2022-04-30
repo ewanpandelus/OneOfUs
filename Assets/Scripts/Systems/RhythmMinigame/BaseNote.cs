@@ -65,8 +65,6 @@ public abstract class BaseNote : MonoBehaviour
       
         }
     }
-
-
     protected virtual void RemoveNote()
     {
         canBePressed = false;

@@ -18,7 +18,7 @@ public class MiracleEffects  :MonoBehaviour
     private Light2D globalLight;
     private Light2D beamOfLight;
     private float savedBeamOfLightIntensity;
-
+    bool fadedIn = false;
     private float rotateCount = 100f;
     private float waitTime = 0.5f;
     public  void SetupMiracleEffects(PlayerAnimator _playerAnimator, GameObject _fireEffectPrefab, PlayerController _playerController, 
@@ -109,8 +109,10 @@ public class MiracleEffects  :MonoBehaviour
 
     private IEnumerator FadeInLight(Light2D beamOfLight)
     {
+        fadedIn = false;
         float x = 0f;
         float t = 0f;
+        SoundManager.instance.PauseSound("AmbientTown");
         float startIntensity = globalLight.intensity;
         while (t < 1 )
         {
@@ -118,6 +120,7 @@ public class MiracleEffects  :MonoBehaviour
             x = Mathf.Lerp(0, 0.9f, t);
             globalLight.intensity = startIntensity - x/1.2f;
             beamOfLight.intensity = 1 - globalLight.intensity-(1-startIntensity);
+            if (t > 0.6 && !fadedIn) { UIManager.instance.FadeInSliderColour(1.2f); fadedIn = true; }
             yield return null;
         }
     }

@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour
     private bool firstInteraction = false;
     private void Awake()
     {
-        evaluateEnvironment = new EvaluateEnvironment(transform);
         playerAnim = new PlayerAnimator(GetComponent<Animator>());
         _transform = transform;
+        evaluateEnvironment = new EvaluateEnvironment(_transform);
     }
 
     void Update()
@@ -39,9 +39,7 @@ public class PlayerController : MonoBehaviour
                 SoundManager.instance.Play("Footsteps");
                 elapsedTime = 0; }        
         }
-    
         EvaluateInteraction();
-      
     }
     private void EvaluateInteraction()
     {
@@ -54,7 +52,6 @@ public class PlayerController : MonoBehaviour
                 if (!firstInteraction) firstInteraction = true;
             }
         }
-    
     }
     public PlayerAnimator GetPlayerAnimator()
     {

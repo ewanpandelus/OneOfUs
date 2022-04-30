@@ -33,8 +33,6 @@ public class MapPan : MonoBehaviour
             mouseX = Input.GetAxis("Mouse X");
             mouseY = Input.GetAxis("Mouse Y");
             CalcNewCameraPanPosition();
-
-           
         }
         if (Input.mouseScrollDelta.magnitude > 0)
         {

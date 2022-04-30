@@ -44,7 +44,6 @@ public class MiracleManager : MonoBehaviour
 
 
     }
-
     private void Start()
     {
         miracleEffects = GetComponent<MiracleEffects>();
@@ -79,6 +78,7 @@ public class MiracleManager : MonoBehaviour
             eventSystem.SetSelectedGameObject(null);
         }
     }
+
     public void TurnBackIntoHuman()
     {
         miracleEffects.TurnBackIntoHuman();
@@ -123,6 +123,8 @@ public class MiracleManager : MonoBehaviour
     }
     private void MiracleAchieved(MiracleType miracleType)
     {
+        UIManager.instance.HideSliderCover();
+        SoundManager.instance.UnPauseSound("AmbientTown");
         miracleEffects.DestroyBeam();
         miracleEffects.SetGlobalLightIntensity(1f);
         if(miracleType == MiracleType.Fire)

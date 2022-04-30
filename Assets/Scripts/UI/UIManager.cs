@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject sheepEffectButton;
     [SerializeField] private GameObject endButton;
     [SerializeField] private GameObject volumeSlider;
+    [SerializeField] private Image sliderCover;
     private Slider volSlider;
     
     public static UIManager instance;
@@ -43,14 +44,25 @@ public class UIManager : MonoBehaviour
     }
 
     public IEnumerator EndScreenFade()
-    { 
+    {
+        SoundManager.instance.PauseSound("AmbientTown");
         UIAnimations.EndEffects();
         yield return new WaitForSeconds(12f);
-        volumeSlider.SetActive(false);
+        FadeInSliderColour(5f);
         endScreen.DOColor(new Color(0, 0, 0, 1), 5f).OnComplete(() => endLogo.DOColor(new Color(1, 0, 0, 1), 1)
         .OnComplete(() => endText.DOColor(finishColor, 1).OnComplete(() => endButtonText.DOColor(finishColor, 1))));
-        yield return new WaitForSeconds(4.9f);
+        yield return new WaitForSeconds(7f);
         endButton.SetActive(true);
+    }
+    public void HideSliderCover()
+    {
+        sliderCover.color = new Color(0, 0, 0, 0);
+        sliderCover.gameObject.SetActive(false);
+    }
+    public void FadeInSliderColour(float timeToFade)
+    {
+        sliderCover.gameObject.SetActive(true);
+        sliderCover.DOColor(new Color(0, 0, 0, 1), timeToFade);
     }
     public void ToggleVolumeSlider()
     {

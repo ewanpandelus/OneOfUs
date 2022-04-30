@@ -19,6 +19,6 @@ MonoBehaviour:
   rightChild: {fileID: 0}
   chanceEffect: 0
   dialogue:
-  - He is having troubles within his parish?
+  - She is having troubles with her parish?
   response:
-  - Hmm, not exactly. A sheep keeps him awake.
+  - Hmm, not exactly. A sheep keeps her awake.

@@ -20,7 +20,7 @@ public class MapUI : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M)&&!UIManager.DialogueBoxShowing())
         {
             showing = !showing;
             map.SetActive(showing);

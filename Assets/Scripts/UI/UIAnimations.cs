@@ -14,6 +14,7 @@ public class UIAnimations : MonoBehaviour
     [SerializeField] private Image startScreen;
     [SerializeField] private GameObject endObj;
     [SerializeField] private GameObject pastor;
+    [SerializeField] private Image tutorialUI;
     private float elapsedTime = 0;
     private Vector3 toolBarStartPos, toolBarEndPos, taskListStartPos, taskListEndPos;
     private bool taskBarShowing = false;
@@ -53,26 +54,31 @@ public class UIAnimations : MonoBehaviour
     private IEnumerator TutorialText()
     {
         yield return new WaitForSeconds(4f);
-        playerText.DOColor(new Color(0, 0, 0, 1), 1f);
+        if (!playerController.GetFirstInteraction())
+        {
+            ColourTutorialText(1);
+        }
         yield return new WaitUntil(() => playerController.GetFirstInteraction());
-        playerText.DOColor(new Color(0, 0, 0, 0), 1f);
+        ColourTutorialText(0);
         yield return new WaitForSeconds(2f);
         yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing() && !UIManager.instance.MapShowing());
         yield return new WaitForSeconds(2f);
         yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing() && !UIManager.instance.MapShowing());
         playerText.text = "Press J to bring up your list of tasks";
-        playerText.DOColor(new Color(0, 0, 0, 1), 1f);
+        ColourTutorialText(1);
         yield return new WaitUntil(() => taskBarShowing);
-        playerText.DOColor(new Color(0, 0, 0, 0), 1f);
+        ColourTutorialText(0);
+        yield return new WaitForSeconds(2f);
         yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing());
-        yield return new WaitForSeconds(2f);
-        yield return new WaitUntil(() => !UIManager.instance.DialogueBoxShowing() && !UIManager.instance.MapShowing());
-        yield return new WaitForSeconds(2f);
         playerText.text = "Press M to bring up a map of the village";
-        playerText.DOColor(new Color(0, 0, 0, 1), 1f);
+        ColourTutorialText(1);
         yield return new WaitUntil(() => UIManager.instance.MapShowing());
-        playerText.DOColor(new Color(0, 0, 0, 0), 1f);
-
+        ColourTutorialText(0);
+    }
+    private void ColourTutorialText(int on)
+    {
+        playerText.DOColor(new Color(0, 0, 0, on), 1f);
+        tutorialUI.DOColor(new Color(1, 1, 1, on), 1f);
     }
 
     public void ShowHiddenUIElement(bool _show, RectTransform UIElement, Vector3 startPos, Vector3 endPos, float lerpTime)
@@ -121,6 +127,7 @@ public class UIAnimations : MonoBehaviour
     public IEnumerator LerpAlphaToFull()
     {
         SoundManager.instance.FadeOutMainTheme(4f);
+        UIManager.instance.FadeInSliderColour(5);
         float t = 0;
         while (t < 1)
         {
@@ -128,6 +135,7 @@ public class UIAnimations : MonoBehaviour
             startScreen.color = new Color(0, 0, 0, t);
             yield return null;
         }
+        UIManager.instance.HideSliderCover();
         BackgroundCutScene();
     }
     private void BackgroundCutScene()

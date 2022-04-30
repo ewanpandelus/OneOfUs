@@ -2836,7 +2836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 344, y: -722}
+  m_AnchoredPosition: {x: 348.07, y: -699}
   m_SizeDelta: {x: 1042.0183, y: 73.3925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &931345091
@@ -2859,7 +2859,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thunder & missing note sound effects from https://www.zapsplat.com
+  m_text: 'Additional sound effects from https://www.zapsplat.com
+
+    Additional
+    sound effects from https://mixkit.co/'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 62dcf8661abec3d498714035c6478d68, type: 2}
   m_sharedMaterial: {fileID: 3921830206433899193, guid: 62dcf8661abec3d498714035c6478d68, type: 2}

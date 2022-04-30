@@ -52,6 +52,7 @@ public class PlayerAnimator
         {
             animator.SetInteger("MovementStatus", 0); //Front
             movementStatus = 0;
+            return;
         }
         if (movement.x < 0)
         {

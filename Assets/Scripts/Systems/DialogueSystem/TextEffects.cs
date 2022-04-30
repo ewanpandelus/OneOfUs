@@ -49,7 +49,7 @@ public class TextEffects : MonoBehaviour
             }
             else
             {
-                _waitTime = 0.00f;
+                _waitTime = 0.01f;
             }
         }
       
